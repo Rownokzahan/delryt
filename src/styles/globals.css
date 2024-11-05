@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .ui-container {
+    @apply max-w-[1440px] px-2 sm:px-5 mx-auto;
+  }
+}
