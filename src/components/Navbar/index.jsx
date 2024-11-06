@@ -9,7 +9,7 @@ import SearchModal from "../modals/SearchModal";
 const Navbar = () => {
   // Toggle states for Sidebar and Search Modal
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isSearchModalOpen, setIsSearchModalOpen] = useState(true);
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
   // Handlers to toggle Sidebar and Search Modal
   const openSidebar = () => setIsSidebarOpen(true);
