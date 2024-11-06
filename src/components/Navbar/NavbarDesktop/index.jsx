@@ -10,9 +10,12 @@ const NavbarDesktop = ({ openSidebar, openSignInModal, openSearchModal }) => {
   return (
     <div className="border-b border-primary-dark shadow-sm">
       <div className="ui-container py-3 flex justify-between items-center">
+        {/* Logo */}
         <Logo />
 
+        {/* Action buttons and links */}
         <div className="flex items-center justify-items-end gap-6 text-primary">
+          {/* Contact Information */}
           <div className="flex items-center gap-1">
             <PiPhoneCall className="text-xl" />
             <div className="grid text-sm text-black">
@@ -21,6 +24,7 @@ const NavbarDesktop = ({ openSidebar, openSignInModal, openSearchModal }) => {
             </div>
           </div>
 
+          {/* Search Button */}
           <button
             onClick={openSearchModal}
             className="flex flex-col items-center"
@@ -29,19 +33,22 @@ const NavbarDesktop = ({ openSidebar, openSignInModal, openSearchModal }) => {
             <span className="text-xs">Search</span>
           </button>
 
+          {/* Cart Link */}
           <Link href={"/"} className="flex flex-col items-center">
             <FiShoppingCart className="text-xl" />
             <span className="text-xs">Cart</span>
           </Link>
 
+          {/* Sign-In Button */}
           <button
             onClick={openSignInModal}
             className="px-3 py-2 border-x border-primary-dark flex flex-row items-center gap-1"
           >
-            <FaCircleUser className="text-3xl text-ui-gray" />
+            <FaCircleUser className="text-3xl text-ui-gray-light" />
             <span className="text-sm font-semibold">Sign In</span>
           </button>
 
+          {/* Sidebar Toggle (Profile) */}
           <button onClick={openSidebar} className="flex flex-col items-center">
             <FiMenu className="text-xl" />
             <span className="text-xs">My Profile</span>

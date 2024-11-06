@@ -7,31 +7,22 @@ import Sidebar from "./Sidebar";
 import SearchModal from "../modals/SearchModal";
 
 const Navbar = () => {
+  // Toggle states for Sidebar and Search Modal
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(true);
 
-  const openSidebar = () => {
-    setIsSidebarOpen(true);
-  };
+  // Handlers to toggle Sidebar and Search Modal
+  const openSidebar = () => setIsSidebarOpen(true);
+  const closeSidebar = () => setIsSidebarOpen(false);
+  const openSearchModal = () => setIsSearchModalOpen(true);
+  const closeSearchModal = () => setIsSearchModalOpen(false);
 
-  const closeSidebar = () => {
-    setIsSidebarOpen(false);
-  };
-
-  const openSearchModal = () => {
-    setIsSearchModalOpen(true);
-  };
-
-  const closeSearchModal = () => {
-    setIsSearchModalOpen(false);
-  };
-
-  const openSignInModal = () => {
-    console.log("object");
-  };
+  // Placeholder for Sign-In Modal functionality
+  const openSignInModal = () => console.log("Sign-In Modal Triggered");
 
   return (
     <>
+      {/* Mobile Navbar */}
       <div className="sm:hidden">
         <NavbarMobile
           openSignInModal={openSignInModal}
@@ -40,6 +31,7 @@ const Navbar = () => {
         />
       </div>
 
+      {/* Desktop Navbar */}
       <div className="hidden sm:block">
         <NavbarDesktop
           openSignInModal={openSignInModal}
@@ -48,11 +40,13 @@ const Navbar = () => {
         />
       </div>
 
+      {/* Search Modal */}
       <SearchModal
         isModalOpen={isSearchModalOpen}
         closeModal={closeSearchModal}
       />
 
+      {/* Sidebar */}
       <Sidebar
         isSidebarOpen={isSidebarOpen}
         closeSidebar={closeSidebar}
