@@ -53,7 +53,7 @@ const Modal = ({
       {/* Modal */}
       <div
         ref={modalRef}
-        className="w-full sm:w-[50%] max-w-full h-screen sm:h-[50vh] overflow-y-auto fixed top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-white"
+        className="w-full sm:w-[500px] max-w-full max-h-screen h-screen sm:h-auto overflow-y-auto fixed top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-white"
       >
         <div className="p-2 pb-0 text-end">
           {/* Modal Close Button */}

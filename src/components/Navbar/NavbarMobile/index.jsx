@@ -4,9 +4,8 @@ import { FiHome, FiShoppingCart } from "react-icons/fi";
 import { LuPartyPopper } from "react-icons/lu";
 import { PiUserCircle } from "react-icons/pi";
 import NavItem from "./NavItem";
-import { RiSearchLine } from "react-icons/ri";
 
-const NavbarMobile = ({ openSidebar, openSignInModal, openSearchModal }) => {
+const NavbarMobile = ({ openSidebar, openSignInModal }) => {
   return (
     <>
       {/* Top Navbar with Logo and Login Button */}
@@ -21,18 +20,6 @@ const NavbarMobile = ({ openSidebar, openSignInModal, openSearchModal }) => {
           <span className="font-semibold text-sm">Login</span>
         </button>
       </div>
-
-      {/* Search Bar */}
-      <button onClick={openSearchModal} className="w-full p-2">
-        <div className="w-full py-1 px-2 ps-3 border rounded-lg shadow flex items-center gap-1">
-          <RiSearchLine className="text-xl text-primary" />
-          <input
-            type="text"
-            placeholder="Search for restaurants, cuisines and more..."
-            className="w-full p-2 outline-none text-sm font-bold placeholder:text-ui-gray-light placeholder:font-normal"
-          />
-        </div>
-      </button>
 
       {/* Sticky Bottom Navigation Bar */}
       <div
