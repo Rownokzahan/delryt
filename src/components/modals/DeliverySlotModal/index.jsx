@@ -4,20 +4,14 @@ import { HiOutlineBolt } from "react-icons/hi2";
 import { IoMdTime } from "react-icons/io";
 import { getAvailableTimeSlots, getNext15Days } from "./utils/dateTimeHelpers";
 import timeSlots from "./utils/timeSlots";
+import { useState } from "react";
 
-const DeliverySlotModal = ({
-  isModalOpen,
-  closeModal,
-  selectedSlot,
-  setSelectedSlot,
-}) => {
+const DeliverySlotModal = ({ isModalOpen, closeModal, setDeliveryTime }) => {
   const daysArray = getNext15Days();
-  console.log(daysArray);
-
-  const availableTimeSlots = getAvailableTimeSlots(
-    selectedSlot?.fullDate,
-    timeSlots
-  );
+  const [selectedSlot, setSelectedSlot] = useState({
+    ...getNext15Days()[0],
+    time: "Now",
+  });
 
   const handleDateSlotChange = (day) => {
     const firstSlot = getAvailableTimeSlots(day.fullDate, timeSlots)[0];
@@ -36,11 +30,39 @@ const DeliverySlotModal = ({
     });
   };
 
+  const handleChangeDateTime = () => {
+    if (selectedSlot?.time === "Now") {
+      setDeliveryTime("Now");
+      closeModal();
+      return;
+    }
+
+    const currentDate= new Date();
+    if (selectedSlot?.fullDate.toDateString() === currentDate.toDateString()) {
+      setDeliveryTime(`By ${selectedSlot?.time}`);
+      closeModal();
+      return;
+    }
+
+    const date = selectedSlot.fullDate.toLocaleDateString("en-us", {
+      day: "numeric",
+      month: "short",
+    });
+    setDeliveryTime(`By ${date}, ${selectedSlot?.time}`);
+    closeModal();
+  };
+
+  const availableTimeSlots = getAvailableTimeSlots(
+    selectedSlot?.fullDate,
+    timeSlots
+  );
+
   return (
     <Modal
       isModalOpen={isModalOpen}
       closeModal={closeModal}
       disableScroll={true}
+      closeOnOutsideClick={true}
     >
       <div
         className="px-6"
@@ -128,7 +150,10 @@ const DeliverySlotModal = ({
           )}
         </div>
 
-        <button className="bg-primary mt-6 mb-3 py-3 rounded-md w-full font-bold text-center text-white">
+        <button
+          onClick={handleChangeDateTime}
+          className="bg-primary mt-6 mb-3 py-3 rounded-md w-full font-bold text-center text-white"
+        >
           Change Date & Time
         </button>
       </div>

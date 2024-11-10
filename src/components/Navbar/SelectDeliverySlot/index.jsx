@@ -1,44 +1,46 @@
 import { MdOutlineDeliveryDining } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
 import { useState } from "react";
-import DeliverySlotModal from "../../modals/DeliverySlotModal";
-import { getNext15Days } from "../../modals/DeliverySlotModal/utils/dateTimeHelpers";
+import DeliverySlotModal from "@/components/modals/DeliverySlotModal";
 
 const SelectDeliverySlot = () => {
+  // State for managing modal open/close status
   const [isDeliverySlotModalOpen, setIsDeliverySlotModalOpen] = useState(false);
 
-  const [selectedSlot, setSelectedSlot] = useState({
-    ...getNext15Days()[0],
-    time: "Now",
-  });
+  // State for storing selected delivery time
+  const [deliveryTime, setDeliveryTime] = useState("Now");
 
+  // Function to open the modal
   const openModal = () => setIsDeliverySlotModalOpen(true);
+  // Function to close the modal
   const closeModal = () => setIsDeliverySlotModalOpen(false);
 
   return (
     <>
+      {/* Button to trigger delivery slot selection */}
       <div className="bg-[#fff5f0] py-2">
-        <div onClick={openModal} className="ui-container cursor-pointer">
+        <button onClick={openModal} className="ui-container">
           <div className="flex items-center border-primary border rounded-md w-max overflow-hidden">
+            {/* Delivery icon and label */}
             <div className="flex items-center gap-1 bg-[#a09cff47]/50 p-2 text-primary">
               <MdOutlineDeliveryDining />
-              <span className="text-sm font-medium">Delivery</span>
+              <span className="text-xs font-medium">Delivery</span>
             </div>
 
-            <div className="flex items-center gap-2 border-primary border-s bg-white p-2 ps-3">
-              <span className="text-sm font-medium">Now</span>
+            {/* Selected delivery time display */}
+            <div className="flex items-center gap-2 border-primary border-s bg-white p-2">
+              <span className="text-xs font-medium">{deliveryTime}</span>
               <IoIosArrowDown className="text-primary" />
             </div>
           </div>
-        </div>
+        </button>
       </div>
 
-      {/* Modal */}
+      {/* Delivery Slot Modal */}
       <DeliverySlotModal
         isModalOpen={isDeliverySlotModalOpen}
         closeModal={closeModal}
-        selectedSlot={selectedSlot}
-        setSelectedSlot={setSelectedSlot}
+        setDeliveryTime={setDeliveryTime}
       />
     </>
   );
