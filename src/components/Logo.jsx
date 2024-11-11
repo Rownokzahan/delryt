@@ -1,11 +1,18 @@
 import Link from "next/link";
 import logo from "../../public/images/logo.svg";
+import logoWhite from "../../public/images/logo-white.svg";
 import Image from "next/image";
 
-const Logo = ({ size = "large" }) => {
+const Logo = ({ size = "medium", color = "primary" }) => {
   const sizes = {
-    "large": "w-24",
-    "small": "w-20",
+    large: "w-28",
+    medium: "w-24",
+    small: "w-20",
+  };
+
+  const imageSrc = {
+    primary: logo.src,
+    white: logoWhite.src,
   };
 
   return (
@@ -13,7 +20,7 @@ const Logo = ({ size = "large" }) => {
       <Image
         width={99}
         height={50}
-        src={logo.src}
+        src={imageSrc[color]}
         alt="Logo"
         className={`${sizes[size]}`}
       />

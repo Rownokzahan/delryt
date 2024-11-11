@@ -8,7 +8,7 @@ import { RiSearchLine } from "react-icons/ri";
 
 const NavbarDesktop = ({ openSidebar, openSignInModal, openSearchModal }) => {
   return (
-    <div className="border-b border-primary-dark shadow-sm">
+    <div className="border-b border-primary-light shadow-sm">
       <div className="ui-container py-3 flex justify-between items-center">
         {/* Logo */}
         <Logo />
@@ -42,7 +42,7 @@ const NavbarDesktop = ({ openSidebar, openSignInModal, openSearchModal }) => {
           {/* Sign-In Button */}
           <button
             onClick={openSignInModal}
-            className="px-3 py-2 border-x border-primary-dark flex flex-row items-center gap-1"
+            className="px-3 py-2 border-x border-primary-light flex flex-row items-center gap-1"
           >
             <FaCircleUser className="text-3xl text-ui-gray-light" />
             <span className="text-sm font-semibold">Sign In</span>

@@ -9,7 +9,7 @@ const NavbarMobile = ({ openSidebar, openSignInModal }) => {
   return (
     <>
       {/* Top Navbar with Logo and Login Button */}
-      <div className="ui-container py-2 border-b border-primary-dark shadow-sm flex justify-between items-center">
+      <div className="ui-container py-2 border-b border-primary-light shadow-sm flex justify-between items-center">
         <Logo size="small" />
 
         <button

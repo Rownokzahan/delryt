@@ -13,9 +13,9 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          dark: "rgba(73, 69, 190, 0.3)",
+          dark: "#3733a5",
           DEFAULT: "#4549BE",
-          light: "",
+          light: "#4945be4d",
         },
         "ui-gray": {
           dark: "",
