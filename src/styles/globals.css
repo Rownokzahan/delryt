@@ -16,6 +16,14 @@
   box-shadow: grey 0px 0px 5px inset;
 }
 
+.carousel-custom-dots {
+  @apply !flex justify-center items-center;
+}
+
+.carousel-custom-dots .slick-active button span {
+  @apply w-5 mx-0 bg-primary;
+}
+
 @layer components {
   .ui-container {
     @apply max-w-[1440px] px-2 sm:px-5 mx-auto;

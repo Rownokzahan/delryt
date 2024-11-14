@@ -19,21 +19,23 @@ const SelectDeliverySlot = () => {
     <>
       {/* Button to trigger delivery slot selection */}
       <div className="bg-[#fff5f0] py-2">
-        <button onClick={openModal} className="ui-container">
-          <div className="flex items-center border-primary border rounded-md w-max overflow-hidden">
-            {/* Delivery icon and label */}
-            <div className="flex items-center gap-1 bg-[#a09cff47]/50 p-2 text-primary">
-              <MdOutlineDeliveryDining />
-              <span className="text-xs font-medium">Delivery</span>
-            </div>
+        <div className="ui-container">
+          <button onClick={openModal}>
+            <div className="flex items-center border-primary border rounded-md w-max overflow-hidden">
+              {/* Delivery icon and label */}
+              <div className="flex items-center gap-1 bg-[#a09cff47]/50 p-2 text-primary">
+                <MdOutlineDeliveryDining />
+                <span className="text-xs font-medium">Delivery</span>
+              </div>
 
-            {/* Selected delivery time display */}
-            <div className="flex items-center gap-2 border-primary border-s bg-white p-2">
-              <span className="text-xs font-medium">{deliveryTime}</span>
-              <IoIosArrowDown className="text-primary" />
+              {/* Selected delivery time display */}
+              <div className="flex items-center gap-2 border-primary border-s bg-white p-2">
+                <span className="text-xs font-medium">{deliveryTime}</span>
+                <IoIosArrowDown className="text-primary" />
+              </div>
             </div>
-          </div>
-        </button>
+          </button>
+        </div>
       </div>
 
       {/* Delivery Slot Modal */}

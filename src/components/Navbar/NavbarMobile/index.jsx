@@ -23,7 +23,7 @@ const NavbarMobile = ({ openSidebar, openSignInModal }) => {
 
       {/* Sticky Bottom Navigation Bar */}
       <div
-        className="w-full ui-container py-3 fixed bottom-0 left-0 bg-white flex justify-between items-center text-ui-gray text-center"
+        className="w-full ui-container py-3 fixed bottom-0 left-0 z-50 bg-white flex justify-between items-center text-ui-gray text-center"
         style={{ boxShadow: "rgba(0, 0, 0, 0.05) 0px -4px 4px 0px" }}
       >
         <NavItem href={"/"} icon={FiHome} label={"Home"} />

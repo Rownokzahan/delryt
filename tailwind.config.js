@@ -17,6 +17,19 @@ module.exports = {
           DEFAULT: "#4549BE",
           light: "#4945be4d",
         },
+
+        secondary: {
+          dark: "",
+          DEFAULT: "#3cb500",
+          light: "",
+        },
+
+        tertiary: {
+          dark: "",
+          DEFAULT: "#f7b500",
+          light: "",
+        },
+
         "ui-gray": {
           dark: "",
           DEFAULT: "#666666",
@@ -24,7 +37,6 @@ module.exports = {
         },
 
         warning: "#ff9800",
-        success: "#4caf50",
 
         background: {
           light: "#f9f6f2",
@@ -39,6 +51,7 @@ module.exports = {
 
       transitionProperty: {
         height: "height",
+        width: "width",
         spacing: "margin, padding",
       },
     },

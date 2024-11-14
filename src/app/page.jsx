@@ -1,3 +1,11 @@
+import SectionSeparator from "@/components/SectionSeparator";
+import Offers from "./home/Offers";
+
 export default function Page() {
-  return <div className="">Home Page</div>;
+  return (
+    <main>
+      <Offers />
+      <SectionSeparator />
+    </main>
+  );
 }
