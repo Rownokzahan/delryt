@@ -6,7 +6,7 @@ import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 // Custom Previous Arrow
 const PrevArrow = ({ onClick, className }) => (
   <button
-    className="w-10 h-10 rounded-full absolute -left-1 top-1/2 -translate-y-1/2 z-10 bg-primary text-white flex items-center justify-center disabled:hidden"
+    className="w-10 h-10 rounded-full absolute -left-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-white flex items-center justify-center disabled:hidden"
     onClick={onClick}
     disabled={className?.includes("slick-disabled")}
   >
@@ -17,7 +17,7 @@ const PrevArrow = ({ onClick, className }) => (
 // Custom Next Arrow
 const NextArrow = ({ onClick, className }) => (
   <button
-    className="w-10 h-10 rounded-full absolute -right-1 top-1/2 -translate-y-1/2 z-10 bg-primary text-white flex items-center justify-center disabled:hidden"
+    className="w-10 h-10 rounded-full absolute -right-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-white flex items-center justify-center disabled:hidden"
     onClick={onClick}
     disabled={className?.includes("slick-disabled")}
   >

@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 
 const Button = ({
@@ -11,14 +13,15 @@ const Button = ({
 }) => {
   // Base button styles for all variants
   const baseStyles =
-    "rounded text-lg text-center capitalize font-semibold flex items-center justify-center transition-all ease-in-out duration-300";
+    "rounded text-center capitalize font-semibold flex items-center justify-center transition-all ease-in-out duration-300";
 
   // Variant-specific styles (primary, secondary, etc.)
   const variantStyles = {
     primary: "bg-primary text-white",
     secondary: "bg-secondary text-white",
     tertiary: "bg-tertiary",
-    outline: "border border-primary text-primary",
+    "primary-outline":
+      "border border-primary-light text-primary bg-primary-light/10",
   };
 
   // Size-specific padding styles

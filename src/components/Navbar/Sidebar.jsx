@@ -18,7 +18,7 @@ const Sidebar = ({ isSidebarOpen, closeSidebar, openSignInModal }) => {
   return (
     <div
       className={clsx(
-        "w-full sm:w-80 h-screen border fixed right-0 top-0 bg-white flex flex-col",
+        "w-full sm:w-80 h-screen border fixed z-40 right-0 top-0 bg-white flex flex-col",
         isSidebarOpen ? "translate-x-0" : "translate-x-full",
         "transition-transform duration-300"
       )}
