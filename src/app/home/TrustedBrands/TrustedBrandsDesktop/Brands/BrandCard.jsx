@@ -9,6 +9,7 @@ const BrandCard = ({ brand }) => {
   return (
     <Link href={link}>
       <div className="mx-3 relative shadow hover:scale-[1.02] duration-300">
+        {/* Brand banner image */}
         <Image
           width={500}
           height={335}
@@ -23,6 +24,7 @@ const BrandCard = ({ brand }) => {
             "p-3 bg-black/50 backdrop-blur flex items-center gap-3"
           )}
         >
+          {/* Brand icon */}
           <Image
             width={40}
             height={40}
@@ -35,10 +37,13 @@ const BrandCard = ({ brand }) => {
             }}
           />
           <div className="flex-1 min-w-0">
+            {/* Brand name */}
             <div className="flex justify-between items-center gap-2">
               <h4 className="text-white text-xl truncate">{name}</h4>
               <TbSquareRoundedChevronRightFilled className="text-white text-2xl flex-shrink-0" />
             </div>
+
+            {/* Brand tagline */}
             <p className="text-ui-gray-light text-sm truncate">{tagline}</p>
           </div>
         </div>
