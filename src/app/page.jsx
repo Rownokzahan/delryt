@@ -6,9 +6,9 @@ import Banner from "./home/Banner";
 export default function Page() {
   return (
     <main>
-      <Offers />
+      {/* <Offers />
       <SectionSeparator />
-      <TrustedBrands />
+      <TrustedBrands /> */}
       <Banner />
     </main>
   );
