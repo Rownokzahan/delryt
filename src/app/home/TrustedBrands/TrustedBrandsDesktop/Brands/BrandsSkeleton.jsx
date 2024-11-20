@@ -1,10 +1,10 @@
-const OffersSkeleton = () => {
+const BrandsSkeleton = () => {
   return (
-    <div className="ui-container py-2 md:py-6">
+    <div className="mt-6">
       <div className="flex gap-6 justify-center">
-        <div className="rounded-xl bg-gray-200 w-full aspect-[2/1] animate-pulse" />
-        <div className="rounded-xl bg-gray-200 w-full aspect-[2/1] animate-pulse hidden sm:block" />
-        <div className="rounded-xl bg-gray-200 w-full aspect-[2/1] animate-pulse hidden sm:block" />
+        <div className="bg-gray-200 w-full aspect-[160/107] animate-pulse" />
+        <div className="bg-gray-200 w-full aspect-[160/107] animate-pulse hidden sm:block" />
+        <div className="bg-gray-200 w-full aspect-[160/107] animate-pulse hidden sm:block" />
       </div>
 
       <div className="flex gap-2 justify-center mt-2">
@@ -17,4 +17,4 @@ const OffersSkeleton = () => {
   );
 };
 
-export default OffersSkeleton;
+export default BrandsSkeleton;

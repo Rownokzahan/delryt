@@ -11,7 +11,7 @@ const BrandCardMobile = ({ brand }) => {
         height={304}
         src={mobileImageUrl}
         alt={name}
-        className="w-full aspect-square rounded-t-md"
+        className="w-full aspect-square rounded-t-md bg-gray-200"
       />
 
       <div className="px-4 py-2 border rounded-b-md text-center shadow-sm">

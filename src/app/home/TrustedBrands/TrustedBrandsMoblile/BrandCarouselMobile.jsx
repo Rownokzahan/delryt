@@ -2,8 +2,16 @@
 
 import Slider from "react-slick";
 import BrandCardMobile from "./BrandCardMobile";
+import useBrands from "@/hooks/useBrands";
+import BrandCarouselMobileSkeleton from "./BrandCarouselMobileSkeleton";
 
-const BrandCarouselMobile = ({ brandData }) => {
+const BrandCarouselMobile = () => {
+  const { data: brands, loading } = useBrands();
+
+  if (loading) {
+    return <BrandCarouselMobileSkeleton />;
+  }
+
   const settings = {
     infinite: false,
     slidesToShow: 2,
@@ -16,7 +24,7 @@ const BrandCarouselMobile = ({ brandData }) => {
   return (
     <div className="overflow-hidden mt-4">
       <Slider {...settings}>
-        {brandData.map((brand) => (
+        {brands?.map((brand) => (
           <BrandCardMobile key={brand.id} brand={brand} />
         ))}
       </Slider>

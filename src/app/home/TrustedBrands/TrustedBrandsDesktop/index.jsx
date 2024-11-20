@@ -3,7 +3,7 @@ import BrandIcons from "./BrandIcons";
 import { IoChevronForward } from "react-icons/io5";
 import Brands from "./Brands";
 
-const TrustedBrandsDesktop = ({ brandData }) => {
+const TrustedBrandsDesktop = () => {
   return (
     <section className="ui-container py-4">
       <div className="flex items-center justify-between">
@@ -19,8 +19,8 @@ const TrustedBrandsDesktop = ({ brandData }) => {
       </div>
 
       {/* Brand icons and details */}
-      <BrandIcons brands={brandData} />
-      <Brands brands={brandData} />
+      <BrandIcons />
+      <Brands />
     </section>
   );
 };

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useOffers = () => {
+const useBrands = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
@@ -8,13 +8,13 @@ const useOffers = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/data/offers.json`);
+        const res = await fetch(`http://localhost:3000/data/brands.json`);
         const result = await res.json();
 
         setData(result?.data || []);
       } catch (err) {
-        console.log(err.message);
         setError(err.message);
+        console.log(err.message);
       } finally {
         setLoading(false);
       }
@@ -25,4 +25,4 @@ const useOffers = () => {
   return { data, loading, error };
 };
 
-export default useOffers;
+export default useBrands;

@@ -1,6 +1,7 @@
 import SectionSeparator from "@/components/SectionSeparator";
 import Offers from "./home/Offers";
 import TrustedBrands from "./home/TrustedBrands";
+import Banner from "./home/Banner";
 
 export default function Page() {
   return (
@@ -8,6 +9,7 @@ export default function Page() {
       <Offers />
       <SectionSeparator />
       <TrustedBrands />
+      <Banner />
     </main>
   );
 }

@@ -1,4 +1,3 @@
-import brandData from "./brandData";
 import TrustedBrandsDesktop from "./TrustedBrandsDesktop";
 import TrustedBrandsMoblile from "./TrustedBrandsMoblile";
 
@@ -7,12 +6,12 @@ const TrustedBrands = () => {
     <>
       {/* Desktop view: Visible on medium screens and larger */}
       <section className="hidden md:block">
-        <TrustedBrandsDesktop brandData={brandData} />
+        <TrustedBrandsDesktop />
       </section>
 
       {/* Mobile view: Visible on small screens only */}
       <section className="md:hidden">
-        <TrustedBrandsMoblile brandData={brandData} />
+        <TrustedBrandsMoblile />
       </section>
     </>
   );
