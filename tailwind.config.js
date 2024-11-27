@@ -17,27 +17,22 @@ module.exports = {
           DEFAULT: "#4549BE",
           light: "#4945be4d",
         },
-
         secondary: {
           dark: "",
           DEFAULT: "#3cb500",
           light: "",
         },
-
         tertiary: {
           dark: "",
           DEFAULT: "#f7b500",
           light: "",
         },
-
         "ui-gray": {
           dark: "",
           DEFAULT: "#666666",
           light: "rgb(192, 192, 201)",
         },
-
         warning: "#ff9800",
-
         background: {
           light: "#f9f6f2",
           gray: "#eeecea",

@@ -16,6 +16,16 @@
   box-shadow: grey 0px 0px 5px inset;
 }
 
+.hide-scrollbar {
+  @apply h-full overflow-scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  @apply hidden; /* Chrome, Safari, and Opera */
+}
+
 .carousel-custom-dots {
   @apply !flex justify-center items-center;
 }
