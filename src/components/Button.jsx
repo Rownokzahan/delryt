@@ -22,6 +22,7 @@ const Button = ({
     tertiary: "bg-tertiary",
     "primary-outline":
       "border border-primary-light text-primary bg-primary-light/10",
+    "secondary-outline": "text-secondary bg-white",
   };
 
   // Size-specific padding styles

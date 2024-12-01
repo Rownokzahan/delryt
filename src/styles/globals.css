@@ -27,11 +27,15 @@
 }
 
 .carousel-custom-dots {
-  @apply !flex justify-center items-center;
+  @apply !flex justify-center items-center mt-2;
 }
 
 .carousel-custom-dots .slick-active button span {
   @apply w-5 mx-0 bg-primary;
+}
+
+.popular-cuisines .carousel-custom-dots .slick-active button span {
+  @apply bg-secondary;
 }
 
 @layer components {

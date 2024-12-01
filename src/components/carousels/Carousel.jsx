@@ -2,6 +2,7 @@
 
 import Slider from "react-slick";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
+import clsx from "clsx";
 
 // Custom Previous Arrow
 const PrevArrow = ({ onClick, className }) => (
@@ -25,7 +26,7 @@ const NextArrow = ({ onClick, className }) => (
   </button>
 );
 
-const Carousel = ({ children, slidesToShow = 3 }) => {
+const Carousel = ({ children, slidesToShow = 3, containerClasses = "" }) => {
   const settings = {
     dots: true,
     customPaging: function (i) {
@@ -61,7 +62,7 @@ const Carousel = ({ children, slidesToShow = 3 }) => {
   };
 
   return (
-    <div className="relative">
+    <div className={clsx("relative", containerClasses ? containerClasses : "")}>
       <Slider {...settings}>{children}</Slider>
     </div>
   );
