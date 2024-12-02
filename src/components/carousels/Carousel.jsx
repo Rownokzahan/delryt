@@ -3,6 +3,7 @@
 import Slider from "react-slick";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import clsx from "clsx";
+import React from "react";
 
 // Custom Previous Arrow
 const PrevArrow = ({ onClick, className }) => (
@@ -27,8 +28,10 @@ const NextArrow = ({ onClick, className }) => (
 );
 
 const Carousel = ({ children, slidesToShow = 3, containerClasses = "" }) => {
+  const isSingleSlide = slidesToShow >= React.Children.count(children);
+
   const settings = {
-    dots: true,
+    dots: !isSingleSlide, // Hide dots if there is only one slide
     customPaging: function (i) {
       return (
         <button>
