@@ -1,3 +1,4 @@
+import ProgressBar from "@/components/ProgressBar";
 import CuisineCardSkeleton from "../CuisineCardSkeleton";
 
 const CuisineCarouselSkeletonMoblie = () => {
@@ -9,9 +10,12 @@ const CuisineCarouselSkeletonMoblie = () => {
         ))}
       </div>
 
-      <div className="w-2/3 h-1 mt-4 mx-auto rounded-full bg-gray-300 animate-pulse">
-        <div className="w-1/2 h-1 bg-secondary/20 rounded-full" />
-      </div>
+      {/* Progress Bar */}
+      <ProgressBar
+        variant="skeleton"
+        progress={33}
+        extraClasses={"mb-0"}
+      />
     </>
   );
 };

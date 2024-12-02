@@ -5,6 +5,7 @@ import usePopularCuisines from "@/hooks/usePopularCuisines";
 import CuisineCard from "../CuisineCard";
 import CuisineCarouselSkeletonMoblie from "./CuisineCarouselSkeletonMoblie";
 import useCarouselProgress from "@/hooks/useCarouselProgress";
+import ProgressBar from "@/components/ProgressBar";
 
 const CuisineCarouselMobile = () => {
   const { data: cuisines = [], loading } = usePopularCuisines();
@@ -51,12 +52,11 @@ const CuisineCarouselMobile = () => {
       </Slider>
 
       {/* Progress Bar */}
-      <div className="w-2/3 h-1 mt-4 mx-auto rounded-full bg-gray-300">
-        <div
-          className="h-1 bg-secondary rounded-full duration-500"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
+      <ProgressBar
+        variant="secondary"
+        progress={progress}
+        extraClasses={"mb-0"}
+      />
     </div>
   );
 };
