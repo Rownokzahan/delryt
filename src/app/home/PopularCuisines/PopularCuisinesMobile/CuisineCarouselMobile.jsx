@@ -1,31 +1,33 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import usePopularCuisines from "@/hooks/usePopularCuisines";
 import CuisineCard from "../CuisineCard";
 import CuisineCarouselSkeletonMoblie from "./CuisineCarouselSkeletonMoblie";
+import useCarouselProgress from "@/hooks/useCarouselProgress";
 
 const CuisineCarouselMobile = () => {
   const { data: cuisines = [], loading } = usePopularCuisines();
-  const [progress, setProgress] = useState(0);
 
-  // Function to calculate progress
-  const calculateProgress = (currentIndex) => {
-    // Calculate the total number of slides (each slide shows 2 cuisines).
-    const totalSlides = Math.ceil(cuisines.length / 2 - 1); // Subtract 1 for incomplete slide groups
+  const slidesToShow = 2;
+  const slidesToScroll = 1;
+  const rowsPerSlide = 2;
 
-    const progressPercent = ((currentIndex + 1) / totalSlides) * 100;
-    setProgress(progressPercent);
-  };
+  // Using custom hook to calculate slider progress
+  const { progress, calculateProgress } = useCarouselProgress({
+    items: cuisines,
+    slidesToShow,
+    slidesToScroll,
+    rowsPerSlide,
+  });
 
   // Slider settings
   const settings = {
     infinite: false,
-    slidesToShow: 2,
-    slidesToScroll: 1,
+    slidesToShow,
+    slidesToScroll,
     speed: 500,
-    rows: 2,
+    rows: rowsPerSlide,
     dots: false,
     arrows: false,
     beforeChange: (current, nextIndex) => {
@@ -33,20 +35,13 @@ const CuisineCarouselMobile = () => {
     },
   };
 
-  useEffect(() => {
-    // Initialize progress when data is loaded and a slide is visible
-    if (cuisines.length > 0) {
-      // Start progress based on the first visible slide (0 index)
-      calculateProgress(0);
-    }
-  }, [cuisines]); // Recalculate progress when cuisines data is loaded or changes
-
   if (loading) {
-    return <CuisineCarouselSkeletonMoblie />;
+    return <CuisineCarouselSkeletonMoblie />; // Display skeleton while loading
   }
 
   return (
     <div>
+      {/* Slider */}
       <Slider {...settings}>
         {cuisines.map((cuisine, index) => (
           <div key={index}>
