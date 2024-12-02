@@ -5,6 +5,7 @@ import Banner from "./home/Banner";
 import FreeDish from "./home/FreeDishes";
 import PopularCuisines from "./home/PopularCuisines";
 import Qualities from "./home/Qualities";
+import LovedCollections from "./home/LovedCollections";
 
 export default function Page() {
   return (
@@ -16,6 +17,9 @@ export default function Page() {
       <FreeDish />
       <PopularCuisines />
       <Qualities />
+      <SectionSeparator />
+      <LovedCollections />
+      <SectionSeparator />
     </main>
   );
 }

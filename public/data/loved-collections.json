@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "title": "Pay day Specials",
+      "imageUrl": "https://product-assets.faasos.io/eatsure_cms/production/e7a95d79-42b4-4482-a987-f9a8647dbd4e.jpg?d=375&tr=w-0.3,h-0.3",
+      "link": ""
+    },
+    {
+      "id": "2",
+      "title": "World's First Multi-Restaurant BOGO",
+      "imageUrl": "https://product-assets.faasos.io/eatsure_cms/production/adb263f0-5bf6-445e-a7a9-f44ac860b0c2.jpg?d=375&tr=w-0.3,h-0.3",
+      "link": ""
+    },
+    {
+      "id": "3",
+      "title": "FLAT 25% off on Orders above 499",
+      "imageUrl": "https://product-assets.faasos.io/eatsure_cms/production/d9453bbf-9a4d-4e71-88c6-03ea621f2b7e.jpg?d=375&tr=w-0.3,h-0.3",
+      "link": ""
+    }
+  ]
+}
