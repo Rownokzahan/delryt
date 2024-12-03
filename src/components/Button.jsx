@@ -13,23 +13,22 @@ const Button = ({
 }) => {
   // Base button styles for all variants
   const baseStyles =
-    "rounded text-center capitalize font-semibold flex items-center justify-center transition-all ease-in-out duration-300";
+    "rounded text-center capitalize flex items-center justify-center transition-all ease-in-out duration-300";
 
   // Variant-specific styles (primary, secondary, etc.)
   const variantStyles = {
     primary: "bg-primary text-white",
     secondary: "bg-secondary text-white",
     tertiary: "bg-tertiary",
-    "primary-outline":
-      "border border-primary-light text-primary bg-primary-light/10",
+    "primary-outline": "border border-primary text-primary bg-white",
     "secondary-outline": "text-secondary bg-white",
   };
 
   // Size-specific padding styles
   const sizeStyles = {
-    large: "px-10 py-4",
-    medium: "px-8 py-3",
-    small: "px-[15px] py-[10px]",
+    large: "px-10 py-4 font-semibold",
+    medium: "px-8 py-3 font-semibold",
+    small: "px-[15px] py-[10px] text-sm font-medium",
   };
 
   // Combining all the styles using clsx

@@ -6,11 +6,12 @@ import FreeDish from "./home/FreeDishes";
 import PopularCuisines from "./home/PopularCuisines";
 import Qualities from "./home/Qualities";
 import LovedCollections from "./home/LovedCollections";
+import RestaurantCombos from "./home/RestaurantCombos";
 
 export default function Page() {
   return (
     <main>
-      <Offers />
+      {/* <Offers />
       <SectionSeparator />
       <TrustedBrands />
       <Banner />
@@ -19,7 +20,8 @@ export default function Page() {
       <Qualities />
       <SectionSeparator />
       <LovedCollections />
-      <SectionSeparator />
+      <SectionSeparator /> */}
+      <RestaurantCombos />
     </main>
   );
 }
