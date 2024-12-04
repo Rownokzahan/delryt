@@ -7,11 +7,12 @@ import PopularCuisines from "./home/PopularCuisines";
 import Qualities from "./home/Qualities";
 import LovedCollections from "./home/LovedCollections";
 import RestaurantCombos from "./home/RestaurantCombos";
+import GiveSure from "./home/GiveSure";
 
 export default function Page() {
   return (
     <main>
-      {/* <Offers />
+      <Offers />
       <SectionSeparator />
       <TrustedBrands />
       <Banner />
@@ -20,8 +21,10 @@ export default function Page() {
       <Qualities />
       <SectionSeparator />
       <LovedCollections />
-      <SectionSeparator /> */}
+      <SectionSeparator />
       <RestaurantCombos />
+      <SectionSeparator />
+      <GiveSure />
     </main>
   );
 }

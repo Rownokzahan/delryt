@@ -19,7 +19,7 @@ const Button = ({
   const variantStyles = {
     primary: "bg-primary text-white",
     secondary: "bg-secondary text-white",
-    tertiary: "bg-tertiary",
+    tertiary: "bg-tertiary text-dark",
     "primary-outline": "border border-primary text-primary bg-white",
     "secondary-outline": "text-secondary bg-white",
   };
