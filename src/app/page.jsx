@@ -9,6 +9,7 @@ import LovedCollections from "./home/LovedCollections";
 import RestaurantCombos from "./home/RestaurantCombos";
 import GiveSure from "./home/GiveSure";
 import DownloadApp from "./home/DownloadApp/DownloadApp";
+import ServingLocations from "./home/ServingLocations";
 
 export default function Page() {
   return (
@@ -29,6 +30,7 @@ export default function Page() {
       <SectionSeparator />
       <DownloadApp />
       <SectionSeparator />
+      <ServingLocations />
     </main>
   );
 }
