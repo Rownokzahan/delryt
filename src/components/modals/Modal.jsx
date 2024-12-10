@@ -1,9 +1,12 @@
+import clsx from "clsx";
 import { useEffect, useRef } from "react";
-import { HiXMark } from "react-icons/hi2";
+import { FaXmark } from "react-icons/fa6";
 
 const Modal = ({
   isModalOpen,
   closeModal,
+  header = null,
+  headerClasses,
   children,
   closeOnOutsideClick = false,
   disableScroll = false,
@@ -48,20 +51,35 @@ const Modal = ({
   return (
     <>
       {/* Overlay */}
-      <div className="fixed z-50 inset-0 bg-black/60 backdrop-blur-sm" />
+      <div className={"fixed z-50 inset-0 bg-black/60 backdrop-blur-sm"}>
+        {/* Modal */}
+        <div
+          ref={modalRef}
+          className={clsx(
+            "w-full max-w-[500px] h-screen sm:h-auto bg-white",
+            "absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
+          )}
+        >
+          <div className="max-h-screen overflow-y-auto">
+            <div className={clsx("flex justify-between gap-2", headerClasses)}>
+              {/* Modal header */}
+              <div>{header && header}</div>
 
-      {/* Modal */}
-      <div
-        ref={modalRef}
-        className="w-full sm:w-[500px] max-w-full max-h-screen h-screen sm:h-auto overflow-y-auto fixed z-50 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-white"
-      >
-        <div className="p-2 pb-0 text-end">
-          {/* Modal Close Button */}
-          <button onClick={closeModal} className="text-2xl text-ui-gray">
-            <HiXMark />
-          </button>
+              {/* Modal Close Button */}
+              <button
+                onClick={closeModal}
+                className={clsx(
+                  "size-6 rounded-full text-2xl sm:text-lg flex-shrink-0 flex justify-center items-center",
+                  "sm:absolute top-0 left-[calc(100%+10px)] bg-white"
+                )}
+              >
+                <FaXmark />
+              </button>
+            </div>
+
+            <>{children}</>
+          </div>
         </div>
-        {children}
       </div>
     </>
   );

@@ -37,7 +37,7 @@ const DeliverySlotModal = ({ isModalOpen, closeModal, setDeliveryTime }) => {
       return;
     }
 
-    const currentDate= new Date();
+    const currentDate = new Date();
     if (selectedSlot?.fullDate.toDateString() === currentDate.toDateString()) {
       setDeliveryTime(`By ${selectedSlot?.time}`);
       closeModal();
@@ -63,16 +63,20 @@ const DeliverySlotModal = ({ isModalOpen, closeModal, setDeliveryTime }) => {
       closeModal={closeModal}
       disableScroll={true}
       closeOnOutsideClick={true}
+      headerClasses={"px-4 pt-4"}
+      header={
+        <>
+          <h3 className="font-bold text-xl">Select Delivery Date & Time</h3>
+        </>
+      }
     >
       <div
-        className="px-6"
+        className="px-4"
         style={{
           scrollbarWidth: "thin",
           scrollbarColor: "rgb(73, 69, 190) transparent",
         }}
       >
-        <h3 className="font-bold text-xl">Select Delivery Date & Time</h3>
-
         {/* Date Selection */}
         <div className="flex gap-3 my-4 pb-1 overflow-x-auto">
           {daysArray?.map((day) => (

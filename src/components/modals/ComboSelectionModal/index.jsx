@@ -22,12 +22,14 @@ const ComboSelectionModal = ({ isModalOpen, closeModal }) => {
       closeModal={closeModal}
       closeOnOutsideClick={true}
       disableScroll={true}
+      headerClasses={"p-4"}
+      header={
+        <>
+          <h4 className="font-semibold text-lg">Free Coke with Lasagna</h4>
+          <p className="text-sm">₹ {269}</p>
+        </>
+      }
     >
-      <div className="p-4 pt-0">
-        <h4 className="font-semibold text-lg">Free Coke with Lasagna</h4>
-        <p className="text-sm">₹ {269}</p>
-      </div>
-
       <div className="p-4 bg-gray-200 grid grid-cols-2 gap-2">
         <ItemCard
           label="Item 1"
@@ -46,7 +48,13 @@ const ComboSelectionModal = ({ isModalOpen, closeModal }) => {
       <div className="p-4 bg-white space-y-4">
         <StepDisplay currentStep={currentStep} />
 
-        <div className="border-t divide-y">
+        <div
+          className="border-t divide-y max-h-[calc(100vh-400px)] overflow-y-auto"
+          style={{
+            scrollbarWidth: "thin",
+            scrollbarColor: "rgb(73, 69, 190) transparent",
+          }}
+        >
           {comboItems?.map((item) => (
             <SelectionCard
               key={item?.id}

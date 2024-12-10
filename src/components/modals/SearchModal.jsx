@@ -7,6 +7,7 @@ const SearchModal = ({ isModalOpen, closeModal }) => {
       isModalOpen={isModalOpen}
       closeModal={closeModal}
       disableScroll={true} // Disable scrolling when modal is open
+      headerClasses={"p-4 sm:pb-0"}
     >
       {/* Search Input */}
       <div className="px-4 pb-6">
