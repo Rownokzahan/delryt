@@ -8,7 +8,7 @@ import ComboSelectionModal from "@/components/modals/ComboSelectionModal";
 import { useState } from "react";
 
 const ComboCarousel = () => {
-  const [isComboModalOpen, setIsComboModalOpen] = useState(true);
+  const [isComboModalOpen, setIsComboModalOpen] = useState(false);
   const { data: combos = [], loading } = useRestaurantCombos();
 
   if (loading) {
