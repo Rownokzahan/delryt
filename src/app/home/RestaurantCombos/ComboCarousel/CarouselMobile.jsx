@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import ComboCard from "../ComboCard";
 import useCarouselProgress from "@/hooks/useCarouselProgress";
 
-const CarouselMobile = ({ combos }) => {
+const CarouselMobile = ({ combos, openComboModal }) => {
   const slidesToShow = 1;
   const slidesToScroll = 1;
   const rowsPerSlide = 1;
@@ -34,7 +34,11 @@ const CarouselMobile = ({ combos }) => {
     <>
       <Slider {...settings}>
         {combos.map((combo) => (
-          <ComboCard key={combo.id} combo={combo} />
+          <ComboCard
+            key={combo.id}
+            combo={combo}
+            openComboModal={openComboModal}
+          />
         ))}
       </Slider>
 
