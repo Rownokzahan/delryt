@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "id": 0,
+      "title": "1+1 Combos",
+      "image": "https://product-assets.faasos.io/eatsure_cms/production/0fb5b7e8-da81-4468-b331-6d215c25c8b1.jpg?d=375&tr=w-0.5,h-0.5"
+    },
+    {
+      "id": 1,
+      "title": "Upvas Specials",
+      "image": "https://product-assets.faasos.io/eatsure_cms/production/6116fc12-0d98-4bb0-88d9-40a1a413dc7e.jpg?d=375&tr=w-0.5,h-0.5"
+    },
+    {
+      "id": 2,
+      "title": "Pizza",
+      "image": "https://product-assets.faasos.io/eatsure_cms/production/a205fdac-47b4-4418-9056-4ab8f1b4d9e5.jpg?d=375&tr=w-0.5,h-0.5"
+    },
+    {
+      "id": 3,
+      "title": "Vegetarian",
+      "image": "https://product-assets.faasos.io/eatsure_cms/production/36c1ee74-58a2-44f1-960b-b869fe64d98b.jpg?d=375&tr=w-0.5,h-0.5"
+    },
+    {
+      "id": 4,
+      "title": "Paneer",
+      "image": "https://product-assets.faasos.io/eatsure_cms/production/21e39778-2020-4749-9b40-2c7e5214a626.jpg?d=375&tr=w-0.5,h-0.5"
+    },
+    {
+      "id": 5,
+      "title": "Biryani",
+      "image": "https://product-assets.faasos.io/eatsure_cms/production/adfef36b-4fbc-49d6-a650-df3a8a44148b.jpg?d=375&tr=w-0.5,h-0.5"
+    },
+    {
+      "id": 6,
+      "title": "Meals & Thalis",
+      "image": "https://product-assets.faasos.io/eatsure_cms/production/38f2b09a-1bc1-4372-b4e8-8e0376fbb49f.jpg?d=375&tr=w-0.5,h-0.5"
+    },
+    {
+      "id": 7,
+      "title": "Cakes & Pastries",
+      "image": "https://product-assets.faasos.io/eatsure_cms/production/2f4902bc-5158-4450-b8f0-28516cc6f4d4.jpg?d=375&tr=w-0.5,h-0.5"
+    }
+  ]
+}

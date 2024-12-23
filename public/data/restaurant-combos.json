@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "id": "item1",
+      "name": "Free Coke with Lasagna",
+      "price": 269,
+      "image": "https://rp-media.faasos.io/catalog/images/MW6EC8DUFF.webp?d=375&tr=w-0.5,h-0.5",
+      "isVeg": false
+    },
+    {
+      "id": "item2",
+      "name": "BOGO - 2 Lasagnas (Serves 2)",
+      "price": 329,
+      "image": "https://rp-media.faasos.io/catalog/images/WVTE76P16R.jpeg?d=375&tr=w-0.5,h-0.5",
+      "isVeg": false
+    },
+    {
+      "id": "item3",
+      "name": "BOGO - 2 Pastas (Serves 2)",
+      "price": 369,
+      "image": "https://rp-media.faasos.io/catalog/images/G8IVUIOM7O.jpeg?d=375&tr=w-0.5,h-0.5",
+      "isVeg": false
+    },
+    {
+      "id": "item4",
+      "name": "BOGO - 2 Quesadillas (Serves 2)",
+      "price": 299,
+      "image": "https://rp-media.faasos.io/catalog/images/KLBUDIFXFS.jpeg?d=375&tr=w-0.5,h-0.5",
+      "isVeg": false
+    },
+    {
+      "id": "item5",
+      "name": "1+1 Kilo Biryanis at 314 each (Veg) (Serves 4-5)",
+      "price": 629,
+      "image": "https://rp-media.faasos.io/catalog/images/WNY7I2VSB8YS.jpeg?d=375&tr=w-0.5,h-0.5",
+      "isVeg": true
+    },
+    {
+      "id": "item6",
+      "name": "BOGO - 2 Non-Veg Signature Rice Bowls",
+      "price": 200,
+      "image": "https://rp-media.faasos.io/catalog/images/ZGYPW3OFGKE5.jpeg?d=375&tr=w-0.5,h-0.5",
+      "isVeg": false
+    }
+  ]
+}
