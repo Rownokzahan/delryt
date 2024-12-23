@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import clsx from "clsx";
 import { rubik } from "@/fonts/fonts";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "Delryt",
@@ -20,6 +21,7 @@ export default function RootLayout({
         <div className="min-h-[calc(100vh-248px)] sm:min-h-[calc(100vh-140px)]">
           {children}
         </div>
+        <Footer/>
       </body>
     </html>
   );

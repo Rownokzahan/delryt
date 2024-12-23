@@ -21,14 +21,6 @@ const links: LinkItem[] = [
   { label: "Coupon", href: "/" },
   { label: "Refer & Earn", href: "/" },
   { label: "Address", href: "/" },
-  { label: "Message", href: "/" },
-  { label: "About Us", href: "/" },
-  { label: "Help & Support", href: "/" },
-  { label: "Privacy Policy", href: "/" },
-  { label: "Terms & Conditions", href: "/" },
-  { label: "Return Policy", href: "/" },
-  { label: "Refund Policy", href: "/" },
-  { label: "Cancellation Policy", href: "/" },
 ];
 
 type SidebarProps = {
