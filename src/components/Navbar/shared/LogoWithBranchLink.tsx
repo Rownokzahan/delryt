@@ -1,8 +1,7 @@
 import Logo from "@/components/ui/Logo";
-import { RootState } from "@/store/store";
+import useCurrentBranch from "@/hooks/useCurrentBranch";
 import Link from "next/link";
 import { RiArrowDownSLine } from "react-icons/ri";
-import { useSelector } from "react-redux";
 
 interface LogoWithBranchLinkProps {
   logoSize?: "small" | "default" | "large";
@@ -11,7 +10,7 @@ interface LogoWithBranchLinkProps {
 const LogoWithBranchLink = ({
   logoSize = "default",
 }: LogoWithBranchLinkProps) => {
-  const branch = useSelector((state: RootState) => state.branch.currentBranch);
+  const {currentBranch} =useCurrentBranch();
 
   return (
     <div className="flex items-center gap-3">
@@ -19,11 +18,13 @@ const LogoWithBranchLink = ({
       <Logo size={logoSize} />
 
       {/* Branch Link */}
-      {branch && (
+      {currentBranch && (
         <Link href={"/branch-list"} className="flex items-center gap-1">
           <div className="grid font-normal">
             <p className="text-xs text-uiBlack-light">Branch</p>
-            <p className="text-primary text-sm font-medium">{branch.name}</p>
+            <p className="text-primary text-sm font-medium">
+              {currentBranch.name}
+            </p>
           </div>
           <RiArrowDownSLine className="text-uiBlack-light" />
         </Link>
