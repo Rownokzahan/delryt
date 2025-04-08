@@ -5,6 +5,7 @@ import deliveryTimeReducer from "./deliveryTime/deliveryTimeSlice";
 import modalReducer from "./modal/modalSlice";
 import checkoutReducer from "./checkout/checkoutSlice";
 import { bannerApi } from "./banner/bannerApi";
+import { cuisineApi } from "./cuisine/cuisineApi";
 
 export const store = configureStore({
   reducer: {
@@ -15,10 +16,15 @@ export const store = configureStore({
 
     [branchApi.reducerPath]: branchApi.reducer,
     [bannerApi.reducerPath]: bannerApi.reducer,
+    [cuisineApi.reducerPath]: cuisineApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(branchApi.middleware, bannerApi.middleware),
+    getDefaultMiddleware().concat(
+      branchApi.middleware,
+      bannerApi.middleware,
+      cuisineApi.middleware
+    ),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

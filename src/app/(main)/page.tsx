@@ -3,6 +3,7 @@ import Banners from "./home/Banners";
 import Branches from "./home/Branches";
 import EliteBanner from "./home/EliteBanner";
 import FreeDishes from "./home/FreeDishes";
+import Cuisines from "./home/Cuisines";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <EliteBanner />
       <FreeDishes />
       <SectionSeparator />
+      <Cuisines />
     </main>
   );
 }

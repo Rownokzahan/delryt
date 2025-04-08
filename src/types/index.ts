@@ -13,6 +13,12 @@ export interface Banner {
   image: string;
 }
 
+export interface Cuisine {
+  id: Id;
+  name: string;
+  image: string;
+}
+
 export interface Category {
   id: Id;
   name: string;
@@ -29,12 +35,6 @@ export interface Restaurant {
   imageUrl: string;
   mobileImageUrl: string;
   link: string;
-}
-
-export interface Cuisine {
-  id: Id;
-  title: string;
-  image: string;
 }
 
 export interface Collection {
