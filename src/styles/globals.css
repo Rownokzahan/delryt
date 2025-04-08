@@ -1,0 +1,150 @@
+/* Base Tailwind imports */
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  --color-primary: #c60e0e;
+  --color-primary-light: #f35858;
+  --color-primary-dark: #a70c0c;
+
+  --color-secondary: #19297c;
+  --color-tertiary: #ffee88;
+  --color-success: #00cc99;
+
+  --color-uiBlack: #333333;
+  --color-uiBlack-light: #333333b3;
+
+  --color-uiWhite: white;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@utility ui-container {
+  @apply max-w-[1440px] px-3 sm:px-5 mx-auto;
+}
+@utility form-input {
+  @apply w-full h-full py-3 px-4
+            border border-transparent border-b-uiBlack/50 font-medium
+            placeholder:font-normal placeholder:text-uiBlack-light/50
+            focus:border-primary focus:rounded-md focus:outline-hidden;
+}
+
+@layer utilities {
+  /* Scrollbar Styles */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-[10px] bg-primary hover:bg-primary-dark duration-100;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply rounded-[10px];
+    box-shadow: inset 0 0 5px grey;
+  }
+
+  /* Custom Scrollbar Syles */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: transparent;
+  }
+
+  .hover-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+
+  .hover-scrollbar:hover {
+    scrollbar-color: rgba(158, 157, 157, 0.726) transparent;
+  }
+
+  /* Carousel Dots Style */
+  .carousel-custom-dots {
+    @apply flex! justify-center items-center mt-2;
+  }
+
+  .carousel-custom-dots .slick-active button span {
+    @apply w-5 mx-0 bg-primary;
+  }
+
+  /* Specific Carousel Dots Style for Popular Cuisines */
+  .popular-cuisines .carousel-custom-dots .slick-active button span {
+    @apply bg-secondary;
+  }
+
+  /* Custom Container Component */
+}
+
+/* Polygon Clipping Styles */
+.polygon-1 {
+  clip-path: polygon(
+    15% 0,
+    85% 0,
+    100% 15%,
+    100% 85%,
+    85% 100%,
+    15% 100%,
+    0 85%,
+    0 15%
+  );
+}
+
+.polygon-2 {
+  clip-path: polygon(
+    25% 0,
+    75% 0,
+    100% 25%,
+    100% 75%,
+    75% 100%,
+    25% 100%,
+    0 75%,
+    0 25%
+  );
+}
+
+.hide-input-number-arrows {
+  -moz-appearance: textfield;
+}
+
+.hide-input-number-arrows::-webkit-inner-spin-button,
+.hide-input-number-arrows::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+select.select-guest option {
+  @apply font-normal text-uiBlack;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+}
