@@ -1,6 +1,7 @@
 import SectionSeparator from "@/components/ui/SectionSeparator";
 import Banners from "./home/Banners";
 import Branches from "./home/Branches";
+import EliteBanner from "./home/EliteBanner";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <Banners />
       <SectionSeparator />
       <Branches />
+      <EliteBanner />
     </main>
   );
 }
