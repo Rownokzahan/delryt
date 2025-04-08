@@ -1,18 +1,19 @@
 "use client";
 
 import { useGetBranchListQuery } from "@/store/branch/branchApi";
-import BranchesCarouselSkeleton from "./BranchesCarouselSkeleton";
-import Carousel from "@/components/Carousel";
-import BranchCard from "@/cards/BranchCard";
 import { Branch } from "@/types";
 import useCurrentBranch from "@/hooks/useCurrentBranch";
+import Carousel from "@/components/Carousel";
+import BranchCard from "@/cards/BranchCard";
+import BranchesCarouselSkeleton from "./BranchesCarouselSkeleton";
 
 const BranchesCarousel = () => {
   const { data: branches = [], isLoading, error } = useGetBranchListQuery();
-  const { currentBranch } = useCurrentBranch();
+  const { currentBranch, updateCurrentBranch } = useCurrentBranch();
 
   const handleBranchSelect = (branch: Branch) => {
     console.log("Selected branch:", branch);
+    updateCurrentBranch(branch);
   };
 
   if (isLoading) {
