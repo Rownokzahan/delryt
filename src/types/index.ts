@@ -31,13 +31,6 @@ export interface Restaurant {
   link: string;
 }
 
-export interface FreeDish {
-  id: Id;
-  image: string;
-  alt: string;
-  text: string;
-}
-
 export interface Cuisine {
   id: Id;
   title: string;
