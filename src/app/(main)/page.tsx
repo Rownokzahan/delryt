@@ -8,6 +8,7 @@ import Qualities from "./home/Qualities";
 import Categories from "./home/Categories";
 import LatestProducts from "./home/LatestProducts";
 import GiveSure from "./home/GiveSure";
+import DownloadApp from "./home/DownloadApp";
 
 export default function Home() {
   return (
@@ -27,6 +28,8 @@ export default function Home() {
       <LatestProducts />
       <SectionSeparator />
       <GiveSure />
+      <SectionSeparator />
+      <DownloadApp />
       <SectionSeparator />
     </main>
   );

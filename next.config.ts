@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "efood-admin.6amtech.com",
       },
+
+      //TODO: These should be removed
       {
         protocol: "https",
         hostname: "rp-media.faasos.io",
@@ -14,6 +16,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "assets.faasos.io",
+      },
+      {
+        protocol: "https",
+        hostname: "product-assets.faasos.io",
       },
     ],
   },
