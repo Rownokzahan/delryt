@@ -6,6 +6,7 @@ import FreeDishes from "./home/FreeDishes";
 import Cuisines from "./home/Cuisines";
 import Qualities from "./home/Qualities";
 import Categories from "./home/Categories";
+import LatestProducts from "./home/LatestProducts";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <SectionSeparator />
       <Categories />
       <SectionSeparator />
+      <LatestProducts />
     </main>
   );
 }

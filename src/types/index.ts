@@ -38,15 +38,12 @@ export type ProductCategory = "all" | { id: Id; name: string; image: string };
 
 export interface Product {
   id: string;
-  name: string;
   image: string;
-  isVeg: boolean;
+  name: string;
   description: string;
+  product_type: string;
   rating: string;
-  price: {
-    current: string;
-    original: string;
-  };
+  price: number;
 }
 
 export interface ComboCollection {

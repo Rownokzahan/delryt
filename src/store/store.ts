@@ -7,6 +7,7 @@ import checkoutReducer from "./checkout/checkoutSlice";
 import { bannerApi } from "./banner/bannerApi";
 import { cuisineApi } from "./cuisine/cuisineApi";
 import { categoryApi } from "./category/categoryApi";
+import { productsApi } from "./products/productsApi";
 
 export const store = configureStore({
   reducer: {
@@ -19,6 +20,7 @@ export const store = configureStore({
     [bannerApi.reducerPath]: bannerApi.reducer,
     [cuisineApi.reducerPath]: cuisineApi.reducer,
     [categoryApi.reducerPath]: categoryApi.reducer,
+    [productsApi.reducerPath]: productsApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -26,7 +28,8 @@ export const store = configureStore({
       branchApi.middleware,
       bannerApi.middleware,
       cuisineApi.middleware,
-      categoryApi.middleware
+      categoryApi.middleware,
+      productsApi.middleware
     ),
 });
 
