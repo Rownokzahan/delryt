@@ -4,7 +4,7 @@ import { IoIosArrowDroprightCircle } from "react-icons/io";
 
 const EliteBanner = () => {
   return (
-    <div className="md:ui-container mb-6">
+    <section className="md:ui-container mb-6">
       <div
         className="pt-6 rounded-md bg-center bg-cover"
         style={{
@@ -112,7 +112,7 @@ const EliteBanner = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

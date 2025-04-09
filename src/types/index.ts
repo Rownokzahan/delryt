@@ -26,23 +26,6 @@ export interface Category {
   banner_image: string;
 }
 
-export interface Restaurant {
-  id: Id;
-  name: string;
-  tagline: string;
-  category: string;
-  iconImageUrl: string;
-  imageUrl: string;
-  mobileImageUrl: string;
-  link: string;
-}
-
-export interface Collection {
-  id: Id;
-  title: string;
-  image: string;
-}
-
 export interface Combo {
   id: Id;
   name: string;

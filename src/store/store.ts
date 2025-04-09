@@ -6,6 +6,7 @@ import modalReducer from "./modal/modalSlice";
 import checkoutReducer from "./checkout/checkoutSlice";
 import { bannerApi } from "./banner/bannerApi";
 import { cuisineApi } from "./cuisine/cuisineApi";
+import { categoryApi } from "./category/categoryApi";
 
 export const store = configureStore({
   reducer: {
@@ -17,13 +18,15 @@ export const store = configureStore({
     [branchApi.reducerPath]: branchApi.reducer,
     [bannerApi.reducerPath]: bannerApi.reducer,
     [cuisineApi.reducerPath]: cuisineApi.reducer,
+    [categoryApi.reducerPath]: categoryApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       branchApi.middleware,
       bannerApi.middleware,
-      cuisineApi.middleware
+      cuisineApi.middleware,
+      categoryApi.middleware
     ),
 });
 

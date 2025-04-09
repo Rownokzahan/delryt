@@ -3,7 +3,7 @@ import FreeDishSlider from "./components/FreeDishSlider";
 
 const FreeDishes = () => {
   return (
-    <div className="bg-linear-to-t from-primary-dark via-primary to-primary-light">
+    <section className="bg-linear-to-t from-primary-dark via-primary to-primary-light">
       <div className="ui-container py-6 sm:py-10">
         <div className="flex justify-between text-uiWhite">
           <h3 className="text-lg sm:text-xl">
@@ -26,7 +26,7 @@ const FreeDishes = () => {
 
         <FreeDishSlider />
       </div>
-    </div>
+    </section>
   );
 };
 

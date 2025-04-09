@@ -5,6 +5,7 @@ import EliteBanner from "./home/EliteBanner";
 import FreeDishes from "./home/FreeDishes";
 import Cuisines from "./home/Cuisines";
 import Qualities from "./home/Qualities";
+import Categories from "./home/Categories";
 
 export default function Home() {
   return (
@@ -18,6 +19,8 @@ export default function Home() {
       <SectionSeparator />
       <Cuisines />
       <Qualities />
+      <SectionSeparator />
+      <Categories />
       <SectionSeparator />
     </main>
   );
