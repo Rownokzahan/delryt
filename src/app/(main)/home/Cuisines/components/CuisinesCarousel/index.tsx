@@ -6,10 +6,15 @@ import CuisineCarouselSkeleton from "./CuisineCarouselSkeleton";
 import { useGetCuisinesQuery } from "@/store/cuisine/cuisineApi";
 
 const CuisineCarousel = () => {
-  const { data: cuisines = [], isLoading } = useGetCuisinesQuery()
+  const { data: cuisines = [], isLoading, error } = useGetCuisinesQuery();
 
   if (isLoading) {
     return <CuisineCarouselSkeleton />;
+  }
+
+  if (error) {
+    console.error("Failed to fetch cuisines:", error);
+    return null;
   }
 
   return (
