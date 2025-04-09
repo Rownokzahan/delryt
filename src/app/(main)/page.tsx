@@ -7,6 +7,7 @@ import Cuisines from "./home/Cuisines";
 import Qualities from "./home/Qualities";
 import Categories from "./home/Categories";
 import LatestProducts from "./home/LatestProducts";
+import GiveSure from "./home/GiveSure";
 
 export default function Home() {
   return (
@@ -24,6 +25,9 @@ export default function Home() {
       <Categories />
       <SectionSeparator />
       <LatestProducts />
+      <SectionSeparator />
+      <GiveSure />
+      <SectionSeparator />
     </main>
   );
 }

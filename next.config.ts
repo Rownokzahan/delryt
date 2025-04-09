@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "rp-media.faasos.io",
       },
+      {
+        protocol: "https",
+        hostname: "assets.faasos.io",
+      },
     ],
   },
 };
