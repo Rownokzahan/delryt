@@ -1,19 +1,18 @@
 "use client";
 
-import { useGetLatestProductsQuery } from "@/store/products/productsApi";
 import ProductsCarouselDesktop from "./ProductsCarouselDesktop";
 import ProductsCarouselMobile from "./ProductsCarouselMobile";
 import ProductsCarouselSkeleton from "./ProductsCarouselSkeleton";
+import { Product } from "@/types";
 
-const ProductsCarousel = () => {
-  const { data: products = [], isLoading, error } = useGetLatestProductsQuery();
+interface ProductsCarouselProps {
+  products: Product[];
+  isLoading: boolean;
+}
 
+const ProductsCarousel = ({ products, isLoading }: ProductsCarouselProps) => {
   if (isLoading) {
     return <ProductsCarouselSkeleton />;
-  }
-
-  if (error) {
-    console.error("Failed to fetch banners:", error);
   }
 
   return (

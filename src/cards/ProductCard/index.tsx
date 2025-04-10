@@ -3,14 +3,19 @@ import VegNonVegIcon from "@/components/ui/VegNonVegIcon";
 import useModalById from "@/hooks/useModalById";
 import { Product } from "@/types";
 import { getImagePath } from "@/utils/imageHelper";
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 
 interface ProductCardProps {
   product: Product;
+  noMobileLayoutShift?: boolean;
 }
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({
+  product,
+  noMobileLayoutShift = false,
+}: ProductCardProps) => {
   const { image, product_type, name, description, price } = product || {};
 
   const imagePath = getImagePath("product", image);
@@ -24,13 +29,21 @@ const ProductCard = ({ product }: ProductCardProps) => {
     useModalById("customizationModal");
 
   return (
-    <article className="md:p-3">
+    <article className={clsx(noMobileLayoutShift ? "p-3" : "md:p-3")}>
       <Link
         href={`/product`}
-        className="border rounded-md shadow-md flex md:block hover:scale-[1.02] duration-300"
+        className={clsx(
+          "border rounded-md shadow-md hover:scale-[1.02] duration-300",
+          noMobileLayoutShift ? "block" : "flex md:block"
+        )}
       >
         <figure
-          className="w-[40%] shrink-0 md:w-full md:aspect-3/2 rounded-md relative overflow-hidden"
+          className={clsx(
+            "shrink-0 rounded-md relative overflow-hidden",
+            noMobileLayoutShift
+              ? "w-full aspect-3/2"
+              : "w-[40%] md:w-full md:aspect-3/2"
+          )}
           title={name}
         >
           <Image

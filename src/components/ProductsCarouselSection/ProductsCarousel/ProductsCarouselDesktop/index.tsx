@@ -11,13 +11,13 @@ const ProductsCarouselDesktop = ({
 }: ProductsCarouselDesktopProps) => {
   return (
     <div className="hidden md:block">
-      <Carousel slidesToShow={4} containerClasses="-mx-3 hidden lg:block">
+      <Carousel slidesToShow={4} containerClasses="hidden lg:block">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </Carousel>
 
-      <Carousel containerClasses="-mx-3 lg:hidden">
+      <Carousel containerClasses="lg:hidden">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
