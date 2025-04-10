@@ -5,9 +5,9 @@ import BranchesCarousel from "./BranchesCarousel";
 
 const Branches = () => {
   return (
-    <section className="ui-container py-4">
+    <section className="ui-container pt-11 sm:pb-8">
       {/* Desktop heading and explore button */}
-      <div className="hidden md:flex items-center justify-between">
+      <div className="mb-6 hidden md:flex items-center justify-between">
         <h3 className="text-2xl">
           <span className="me-1">Find Food From</span>
           <span className="text-primary font-semibold">Our Branches</span>
@@ -22,7 +22,7 @@ const Branches = () => {
       </div>
 
       {/* Mobile heading */}
-      <h3 className="md:hidden mb-2 text-xl text-center font-semibold">
+      <h3 className="md:hidden mb-6 text-2xl text-center font-semibold">
         Find Food from Our Branches
       </h3>
 

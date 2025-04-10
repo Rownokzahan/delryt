@@ -26,7 +26,7 @@ const BranchesCarousel = () => {
   }
 
   return (
-    <Carousel containerClasses="mt-4 -mx-3">
+    <Carousel containerClasses="-mx-3">
       {branches?.map((branch) => (
         <BranchCard
           key={branch?.id}
