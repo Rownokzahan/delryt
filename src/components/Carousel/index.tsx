@@ -37,6 +37,7 @@ interface CarouselProps {
   slidesToShow?: number;
   containerClasses?: string;
   infinite?: boolean;
+  showDots?: boolean;
 }
 
 const Carousel = ({
@@ -44,11 +45,12 @@ const Carousel = ({
   slidesToShow = 3,
   containerClasses = "",
   infinite = false,
+  showDots = true,
 }: CarouselProps) => {
   const isSingleSlide = slidesToShow >= React.Children.count(children);
 
   const settings = {
-    dots: !isSingleSlide, // Hide dots if there is only one slide
+    dots: !isSingleSlide && showDots, // Hide dots if there is only one slide
     customPaging: function () {
       return (
         <button>
