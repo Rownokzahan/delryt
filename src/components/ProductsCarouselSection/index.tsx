@@ -15,7 +15,7 @@ const ProductsCarouselSection: React.FC<ProductsCarouselSectionProps> = ({
   isLoading,
 }) => {
   return (
-    <section className="ui-container py-12 relative">
+    <section className="ui-container py-11 relative">
       {/* Section Title */}
       <h3 className="mb-6 md:mb-3 text-2xl capitalize">
         <span>{titleRegular}</span>{" "}

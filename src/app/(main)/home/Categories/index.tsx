@@ -2,16 +2,17 @@ import CategoriesCarousel from "./components/CategoriesCarousel";
 
 const Categories = () => {
   return (
-    <section className="ui-container pt-12 pb-24 sm:pb-12 relative">
-      <div className="mb-6 flex items-center justify-between">
-        {/* Section Title */}
-        <h3 className="text-2xl">
-          <span>Most Loved</span>{" "}
-          <span className="font-semibold">Categories</span>
-        </h3>
+    <section className="bg-[#f8f8f8]">
+      <div className="ui-container pt-11 pb-6 sm:pb-8 relative">
+        <div className="mb-6 flex items-center justify-between">
+          {/* Section Title */}
+          <h3 className="text-2xl">
+            <span>Most Loved</span>{" "}
+            <span className="font-semibold">Categories</span>
+          </h3>
+        </div>
+        <CategoriesCarousel />
       </div>
-
-      <CategoriesCarousel />
     </section>
   );
 };
