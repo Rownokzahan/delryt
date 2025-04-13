@@ -29,10 +29,6 @@ const StoreInitializerWrapper = ({ children }: { children: ReactNode }) => {
     }
 
     const branchId = localStorage.getItem("branchId");
-    if (!branchId) {
-      return;
-    }
-
     const branch =
       branches.find((branch) => branch.id === Number(branchId)) ?? null;
 
