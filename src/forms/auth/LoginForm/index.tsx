@@ -1,62 +1,83 @@
-import { ViewState } from "@/modals/AuthModal";
-import Button from "@/components/ui/Button";
+"use client";
+
 import { SubmitHandler, useForm } from "react-hook-form";
-import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
-import EmailField from "../componets/EmailField";
 import PasswordField from "../componets/PasswordField";
+import AuthInputField from "../componets/AuthInputField";
+import { useLoginMutation } from "@/store/auth/authApi";
+import { getType, isEmail, isPhone } from "./utils";
+import AuthSubmitButton from "../componets/AuthSubmitButton";
+import { FaCircleExclamation } from "react-icons/fa6";
 
 interface Inputs {
-  email: string;
+  email_or_phone: string;
   password: string;
   rememberMe: boolean;
 }
 
-interface LoginFormProps {
-  handleViewSwitch: (targetView: ViewState) => void;
-}
-
-const LoginForm = ({ handleViewSwitch }: LoginFormProps) => {
+const LoginForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+  const [login, { isLoading, error }] = useLoginMutation();
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const { email_or_phone, password } = data;
+
+    const type = getType(email_or_phone);
+    if (!type) {
+      console.error("Invalid email or phone number");
+      return;
+    }
+
+    const loginData = { email_or_phone, password, type };
+
+    login(loginData)
+      .unwrap()
+      .then((res) => {
+        console.log(res.token);
+        localStorage.setItem("token", res.token);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <EmailField register={register} error={errors.email} />
-      <PasswordField register={register} error={errors.password} />
+    <>
+      {error && (
+        <div className="mb-4 px-3 py-2 bg-red-100 text-sm flex items-center text-primary gap-1">
+          <FaCircleExclamation className="text-base" /> Invalid email or
+          password
+        </div>
+      )}
 
-      <div className="flex items-center justify-between">
-        <label htmlFor="rememberMe" className="w-max flex gap-2 items-center">
-          <input
-            type="checkbox"
-            id="rememberMe"
-            className="hidden peer"
-            {...register("rememberMe")}
-          />
-          <MdCheckBox className="text-primary text-xl hidden peer-checked:block" />
-          <MdCheckBoxOutlineBlank className="text-primary-light text-xl peer-checked:hidden" />
-          <span>Remember me</span>
-        </label>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <AuthInputField
+          id="email_or_phone"
+          type="text"
+          registerProps={{
+            ...register("email_or_phone", {
+              required: "Email or phone number is required.",
+              validate: (value) => {
+                if (isEmail(value) || isPhone(value)) {
+                  return true;
+                }
+                return "Invalid email or phone number.";
+              },
+            }),
+          }}
+          placeholder="Email or phone number"
+          error={errors.email_or_phone}
+        />
 
-        <button
-          onClick={() => handleViewSwitch("forgotPassword")}
-          type="button"
-          className="block mt-1 ml-auto text-primary underline underline-offset-2 text-sm"
-        >
-          Forgot Password?
-        </button>
-      </div>
+        <PasswordField register={register} error={errors.password} />
 
-      <Button type="submit" className="w-full mt-6">
-        Login
-      </Button>
-    </form>
+        <AuthSubmitButton isLoading={isLoading} label="Login" />
+      </form>
+    </>
   );
 };
 

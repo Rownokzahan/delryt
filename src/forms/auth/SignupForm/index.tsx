@@ -5,8 +5,10 @@ import EmailField from "../componets/EmailField";
 import PasswordField from "../componets/PasswordField";
 
 interface Inputs {
-  name: string;
+  f_name: string;
+  l_name: string;
   email: string;
+  phone: string;
   password: string;
 }
 
@@ -15,7 +17,10 @@ const SignupForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>();
+  } = useForm<Inputs>({
+    mode: "onChange",
+    reValidateMode: "onChange",
+  });
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(data);
@@ -24,20 +29,56 @@ const SignupForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <AuthInputField
-        label="Name"
-        id="name"
+        id="f_name"
         type="text"
         registerProps={{
-          ...register("name", {
-            required: { value: true, message: "Name is required." },
+          ...register("f_name", {
+            required: { value: true, message: "First Name is required." },
           }),
         }}
-        placeholder="What should we call you?"
-        error={errors.name}
+        placeholder="First Name"
+        error={errors.f_name}
+      />
+
+      <AuthInputField
+        id="l_name"
+        type="text"
+        registerProps={{
+          ...register("l_name", {
+            required: { value: true, message: "Last Name is required." },
+          }),
+        }}
+        placeholder="Last Name"
+        error={errors.l_name}
       />
 
       <EmailField register={register} error={errors.email} />
-      <PasswordField register={register} error={errors.password} />
+
+      <AuthInputField
+        id="phone"
+        type="text"
+        registerProps={{
+          ...register("phone", {
+            required: { value: true, message: "Phone is required." },
+            minLength: {
+              value: 6,
+              message: "Phone number must be at least 6 characters.",
+            },
+            maxLength: {
+              value: 20,
+              message: "Phone number must be at most 20 characters.",
+            },
+          }),
+        }}
+        placeholder="Phone"
+        error={errors.phone}
+      />
+
+      <PasswordField
+        register={register}
+        error={errors.password}
+        checkMinLength={true}
+      />
 
       <Button type="submit" className="w-full">
         Sign Up

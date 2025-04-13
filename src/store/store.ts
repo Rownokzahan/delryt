@@ -8,6 +8,7 @@ import { bannerApi } from "./banner/bannerApi";
 import { cuisineApi } from "./cuisine/cuisineApi";
 import { categoryApi } from "./category/categoryApi";
 import { productsApi } from "./products/productsApi";
+import { authApi } from "./auth/authApi";
 
 export const store = configureStore({
   reducer: {
@@ -21,6 +22,7 @@ export const store = configureStore({
     [cuisineApi.reducerPath]: cuisineApi.reducer,
     [categoryApi.reducerPath]: categoryApi.reducer,
     [productsApi.reducerPath]: productsApi.reducer,
+    [authApi.reducerPath]: authApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -29,7 +31,8 @@ export const store = configureStore({
       bannerApi.middleware,
       cuisineApi.middleware,
       categoryApi.middleware,
-      productsApi.middleware
+      productsApi.middleware,
+      authApi.middleware
     ),
 });
 

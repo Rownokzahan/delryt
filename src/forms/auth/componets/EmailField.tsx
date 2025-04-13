@@ -10,7 +10,6 @@ interface EmailFieldProps {
 const EmailField = ({ register, error }: EmailFieldProps) => {
   return (
     <AuthInputField
-      label="Email"
       id="email"
       type="email"
       registerProps={{
@@ -20,9 +19,15 @@ const EmailField = ({ register, error }: EmailFieldProps) => {
             value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
             message: "Invalid email address.",
           },
+          validate: (value) => {
+            if (value.length < 10) {
+              return "Email must be at least 10 characters.";
+            }
+            return true;
+          },
         }),
       }}
-      placeholder="Enter your email"
+      placeholder="Email"
       error={error}
     />
   );

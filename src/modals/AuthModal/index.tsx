@@ -6,7 +6,6 @@ import SignupForm from "@/forms/auth/SignupForm";
 import ForgotPasswordForm from "@/forms/auth/ForgotPasswordForm";
 import { useState } from "react";
 import ModalHeader from "./ModalHeader";
-import SocialLogin from "./SocialLogin";
 
 export type ViewState = "login" | "signup" | "forgotPassword";
 
@@ -81,9 +80,7 @@ const AuthModal = () => {
         <Form handleViewSwitch={handleViewSwitch} />
       </div>
 
-      {currentView !== "forgotPassword" && <SocialLogin />}
-
-      <p className="my-8 mx-6 text-center text-sm">
+      <p className="mb-8 mt-6 mx-6 text-center text-sm">
         {message}{" "}
         <button
           onClick={() => setCurrentView(targetView)}
