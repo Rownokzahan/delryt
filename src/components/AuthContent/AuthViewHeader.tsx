@@ -1,9 +1,9 @@
-interface ModalHeaderProps {
+interface AuthViewHeaderProps {
   title: string;
   subtitle: string;
 }
 
-const ModalHeader = ({ title, subtitle }: ModalHeaderProps) => {
+const AuthViewHeader = ({ title, subtitle }: AuthViewHeaderProps) => {
   return (
     <div
       className="bg-cover bg-center"
@@ -22,4 +22,4 @@ const ModalHeader = ({ title, subtitle }: ModalHeaderProps) => {
   );
 };
 
-export default ModalHeader;
+export default AuthViewHeader;
