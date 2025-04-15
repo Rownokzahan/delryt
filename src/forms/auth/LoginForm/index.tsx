@@ -6,12 +6,12 @@ import AuthInputField from "../componets/AuthInputField";
 import { useLoginMutation } from "@/store/auth/authApi";
 import { getType, isEmail, isPhone } from "./utils";
 import AuthSubmitButton from "../componets/AuthSubmitButton";
-import { FaCircleExclamation } from "react-icons/fa6";
+import AuthAlert from "../componets/AuthAlert";
+import { redirect } from "next/navigation";
 
 interface Inputs {
   email_or_phone: string;
   password: string;
-  rememberMe: boolean;
 }
 
 const LoginForm = () => {
@@ -19,40 +19,43 @@ const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>();
+    reset,
+  } = useForm<Inputs>({
+    mode: "onChange",
+    reValidateMode: "onChange",
+  });
 
-  const [login, { isLoading, error }] = useLoginMutation();
+  const [login, { isLoading, isError, isSuccess, error }] = useLoginMutation();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const { email_or_phone, password } = data;
 
     const type = getType(email_or_phone);
-    if (!type) {
+    if (type === undefined) {
       console.error("Invalid email or phone number");
       return;
     }
 
     const loginData = { email_or_phone, password, type };
 
-    login(loginData)
-      .unwrap()
-      .then((res) => {
-        console.log(res.token);
-        localStorage.setItem("token", res.token);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    try {
+      const res = await login(loginData).unwrap();
+      reset();
+      localStorage.setItem("token", res.token);
+      redirect("/");
+    } catch (err) {
+      console.log("Login failed", err);
+    }
   };
 
   return (
-    <>
-      {error && (
-        <div className="mb-4 px-3 py-2 bg-red-100 text-sm flex items-center text-primary gap-1">
-          <FaCircleExclamation className="text-base" /> Invalid email or
-          password
-        </div>
-      )}
+    <div className="space-y-4">
+      <AuthAlert isVisible={isError} message={error as string} status="error" />
+      <AuthAlert
+        isVisible={isSuccess}
+        message="Successfully logged in"
+        status="success"
+      />
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <AuthInputField
@@ -77,7 +80,7 @@ const LoginForm = () => {
 
         <AuthSubmitButton isLoading={isLoading} label="Login" />
       </form>
-    </>
+    </div>
   );
 };
 

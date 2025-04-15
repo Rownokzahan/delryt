@@ -12,11 +12,7 @@ interface PasswordFieldProps {
   checkMinLength?: boolean;
 }
 
-const PasswordField = ({
-  register,
-  error,
-  checkMinLength = false,
-}: PasswordFieldProps) => {
+const PasswordField = ({ register, error }: PasswordFieldProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -28,19 +24,16 @@ const PasswordField = ({
       <AuthInputField
         id="password"
         type={showPassword ? "text" : "password"}
-        registerProps={{
-          ...register("password", {
-            required: { value: true, message: "Password is required." },
-            ...(checkMinLength && {
-              minLength: {
-                value: 6,
-                message: "Password must be at least 6 characters.",
-              },
-            }),
-          }),
-        }}
+        registerProps={register("password", {
+          required: { value: true, message: "Password is required." },
+          minLength: {
+            value: 6,
+            message: "Password must be at least 6 characters.",
+          },
+        })}
         placeholder="Password"
         error={error}
+        isPasswordField={true}
       />
 
       <button

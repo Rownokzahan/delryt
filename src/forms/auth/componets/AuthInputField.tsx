@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { FieldError } from "react-hook-form";
 import { BsExclamationCircle } from "react-icons/bs";
 
@@ -7,6 +8,7 @@ interface AuthInputFieldProps {
   registerProps: object;
   placeholder: string;
   error?: FieldError;
+  isPasswordField?: boolean;
 }
 
 const AuthInputField = ({
@@ -15,6 +17,7 @@ const AuthInputField = ({
   registerProps,
   placeholder,
   error,
+  isPasswordField = false,
 }: AuthInputFieldProps) => {
   return (
     <div className="space-y-1">
@@ -23,7 +26,11 @@ const AuthInputField = ({
         type={type}
         {...registerProps}
         placeholder={placeholder}
-        className="w-full px-3 py-2 rounded-lg border focus:border-primary outline-0 font-medium placeholder:font-normal"
+        className={clsx(
+          "w-full py-2 pl-3",
+          isPasswordField ? "pr-9" : "pr-3",
+          "rounded-lg outline-0 border focus:border-primary font-medium placeholder:font-normal"
+        )}
       />
 
       {error && (
