@@ -17,6 +17,7 @@ interface RegisterCredentials {
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({ baseUrl: "https://admin.delryt.com/api/v1" }),
+  tagTypes: ["User"],
   endpoints: (builder) => ({
     login: builder.mutation<{ token: string }, LoginCredentials>({
       query: (credentials) => ({
@@ -24,6 +25,9 @@ export const authApi = createApi({
         method: "POST",
         body: credentials,
       }),
+
+      //Refech the user data after login
+      invalidatesTags: ["User"],
 
       transformErrorResponse: (response) => {
         // Handle network errors (e.g., server down, no connection)
@@ -36,10 +40,21 @@ export const authApi = createApi({
           return "Incorrect email or password";
         }
 
-        console.log(response);
-
         // Handle other errors
         return "An unknown error occurred";
+      },
+
+      onQueryStarted: async (_, { queryFulfilled }) => {
+        try {
+          const { data } = await queryFulfilled;
+          console.log("Inside login api", data);
+
+          if (data) {
+            localStorage.setItem("token", data.token);
+          }
+        } catch (error) {
+          console.error("Error during login:", error);
+        }
       },
     }),
 
@@ -49,6 +64,9 @@ export const authApi = createApi({
         method: "POST",
         body: newUser,
       }),
+
+      //Refech the user data after registration
+      invalidatesTags: ["User"],
 
       transformErrorResponse: (response) => {
         // Handle network errors (e.g., server down, no connection)
@@ -65,10 +83,19 @@ export const authApi = createApi({
           return errorMessages.join(" ");
         }
 
-        console.log(response);
-
         // Handle other errors
         return "An unknown error occurred";
+      },
+
+      onQueryStarted: async (_, { queryFulfilled }) => {
+        try {
+          const { data } = await queryFulfilled;
+          if (data) {
+            localStorage.setItem("token", data.token);
+          }
+        } catch (error) {
+          console.error("Error during registration:", error);
+        }
       },
     }),
   }),

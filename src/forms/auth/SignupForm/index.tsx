@@ -29,17 +29,12 @@ const SignupForm = () => {
   const [signup, { isLoading, isError, isSuccess, error }] =
     useRegisterMutation();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    signup(data)
+  const onSubmit: SubmitHandler<Inputs> = (newUser) => {
+    signup(newUser)
       .unwrap()
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         reset();
-        localStorage.setItem("token", res.token);
         redirect("/");
-      })
-      .catch((err) => {
-        console.log(err);
       });
   };
 

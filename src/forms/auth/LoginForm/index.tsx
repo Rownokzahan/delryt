@@ -27,7 +27,7 @@ const LoginForm = () => {
 
   const [login, { isLoading, isError, isSuccess, error }] = useLoginMutation();
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
     const { email_or_phone, password } = data;
 
     const type = getType(email_or_phone);
@@ -38,14 +38,12 @@ const LoginForm = () => {
 
     const loginData = { email_or_phone, password, type };
 
-    try {
-      const res = await login(loginData).unwrap();
-      reset();
-      localStorage.setItem("token", res.token);
-      redirect("/");
-    } catch (err) {
-      console.log("Login failed", err);
-    }
+    login(loginData)
+      .unwrap()
+      .then(() => {
+        reset();
+        redirect("/");
+      });
   };
 
   return (
