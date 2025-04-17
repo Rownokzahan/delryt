@@ -1,5 +1,14 @@
 export type Id = string | number;
 
+export interface User {
+  id: Id;
+  f_name: string;
+  l_name: string;
+  email: string;
+  phone: string;
+  image: string;
+}
+
 export interface Branch {
   id: Id;
   cover_image: string;

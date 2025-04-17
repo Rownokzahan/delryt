@@ -1,4 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { userApi } from "../user/userApi";
+import { clearUser } from "../user/userSlice";
 
 interface LoginCredentials {
   email_or_phone: string;
@@ -44,16 +46,16 @@ export const authApi = createApi({
         return "An unknown error occurred";
       },
 
-      onQueryStarted: async (_, { queryFulfilled }) => {
+      onQueryStarted: async (_, { queryFulfilled, dispatch }) => {
         try {
           const { data } = await queryFulfilled;
-          console.log("Inside login api", data);
-
           if (data) {
             localStorage.setItem("token", data.token);
           }
+
+          dispatch(userApi.util.invalidateTags(["User"]));
         } catch (error) {
-          console.error("Error during login:", error);
+          console.log("Error during registration:", error);
         }
       },
     }),
@@ -87,15 +89,27 @@ export const authApi = createApi({
         return "An unknown error occurred";
       },
 
-      onQueryStarted: async (_, { queryFulfilled }) => {
+      onQueryStarted: async (_, { queryFulfilled, dispatch }) => {
         try {
           const { data } = await queryFulfilled;
           if (data) {
             localStorage.setItem("token", data.token);
           }
+
+          dispatch(userApi.util.invalidateTags(["User"]));
         } catch (error) {
-          console.error("Error during registration:", error);
+          console.log("Error during registration:", error);
         }
+      },
+    }),
+
+    logout: builder.mutation<void, void>({
+      // This doesn't make a network call, just runs some logic
+      queryFn: (_arg, { dispatch }) => {
+        localStorage.removeItem("token");
+        dispatch(clearUser());
+
+        return { data: undefined };
       },
     }),
   }),
