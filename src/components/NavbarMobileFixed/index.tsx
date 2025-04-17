@@ -4,12 +4,12 @@ import { FiHome, FiShoppingCart } from "react-icons/fi";
 import { BiUser } from "react-icons/bi";
 import { LuPartyPopper } from "react-icons/lu";
 import NavItem from "./NavItem";
-import useSidebarById from "@/hooks/useSidebarById";
+import useUser from "@/hooks/useUser";
+import useModalById from "@/hooks/useModalById";
 
 const NavbarMobileFixed = () => {
-  const { openSidebar } = useSidebarById("myProfileSidebar");
-
-  const isUserLoggedIn = true;
+  const { user } = useUser();
+  const { openModal: openAuthModal } = useModalById("authModal");
 
   return (
     <div className="sm:hidden pb-[60px] sm:pb-0">
@@ -19,12 +19,12 @@ const NavbarMobileFixed = () => {
       >
         <NavItem href={"/"} icon={FiHome} label={"Home"} />
 
-        {isUserLoggedIn ? (
+        {user ? (
           <NavItem href={"/profile"} icon={BiUser} label={"My Profile"} />
         ) : (
           <NavItem
             isButton={true}
-            onClick={openSidebar}
+            onClick={openAuthModal}
             icon={BiUser}
             label={"My Profile"}
           />

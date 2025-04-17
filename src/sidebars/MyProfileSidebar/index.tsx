@@ -9,6 +9,8 @@ import useModalById from "@/hooks/useModalById";
 import useSidebarById from "@/hooks/useSidebarById";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import useUser from "@/hooks/useUser";
+import { useLogoutMutation } from "@/store/auth/authApi";
 
 interface LinkItem {
   label: string;
@@ -16,7 +18,6 @@ interface LinkItem {
 }
 
 const links: LinkItem[] = [
-  { label: "My Profile", href: "/profile" },
   { label: "About Delryt", href: "/about-us" },
   { label: "Party Orders", href: "/party-orders" },
   { label: "FAQs", href: "/faq" },
@@ -29,7 +30,8 @@ const MyProfileSidebar = () => {
   const { openModal: openAuthModal } = useModalById("authModal");
   const pathname = usePathname();
 
-  const isUserLoggedIn = true;
+  const { user } = useUser();
+  const [logout] = useLogoutMutation();
 
   // Close sidebar if route changes
   useEffect(() => {
@@ -97,8 +99,11 @@ const MyProfileSidebar = () => {
         </div>
 
         <div className="px-5 py-4 border-t">
-          {isUserLoggedIn ? (
-            <button className="px-3 py-2 border border-primary rounded-md flex items-center gap-2 text-primary">
+          {user ? (
+            <button
+              onClick={() => logout()}
+              className="px-3 py-2 border border-primary rounded-md flex items-center gap-2 text-primary"
+            >
               <FaSignOutAlt />
               <span>Logout</span>
             </button>

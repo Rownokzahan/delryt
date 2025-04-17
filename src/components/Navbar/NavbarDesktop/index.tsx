@@ -8,11 +8,13 @@ import { RiSearchLine } from "react-icons/ri";
 import useModalById from "@/hooks/useModalById";
 import useSidebarById from "@/hooks/useSidebarById";
 import LogoWithBranchLink from "../shared/LogoWithBranchLink";
+import useUser from "@/hooks/useUser";
 
 const NavbarDesktop = () => {
   const { openModal: openSearchModal } = useModalById("searchModal");
   const { openModal: openAuthModal } = useModalById("authModal");
   const { openSidebar } = useSidebarById("myProfileSidebar");
+  const { user } = useUser();
 
   return (
     <div className="border-b border-primary/20 shadow-xs bg-uiWhite">
@@ -51,15 +53,21 @@ const NavbarDesktop = () => {
             <span className="text-xs">Cart</span>
           </Link>
 
-          {/* Sign-In Button */}
-          <button
-            onClick={openAuthModal}
-            className="px-3 py-2 border-x border-primary/10 flex flex-row items-center gap-2"
-            aria-label="Sign In"
-          >
-            <FaCircleUser className="text-3xl text-gray-300" />
-            <span className="text-sm font-semibold">Sign In</span>
-          </button>
+          {user ? (
+            <Link href={"/profile"} className="px-3 py-2 border-x border-primary/10 flex flex-row items-center gap-2">
+              <FaCircleUser className="text-3xl text-gray-300" />
+              <span className="text-sm font-semibold">{user.f_name}</span>
+            </Link>
+          ) : (
+            <button
+              onClick={openAuthModal}
+              className="px-3 py-2 border-x border-primary/10 flex flex-row items-center gap-2"
+              aria-label="Sign In"
+            >
+              <FaCircleUser className="text-3xl text-gray-300" />
+              <span className="text-sm font-semibold">Sign In</span>
+            </button>
+          )}
 
           {/* Sidebar Toggle (Profile) */}
           <button
@@ -68,7 +76,7 @@ const NavbarDesktop = () => {
             aria-label="My Profile"
           >
             <FiMenu className="text-xl" />
-            <span className="text-xs">My Profile</span>
+            <span className="text-xs">Menu</span>
           </button>
         </div>
       </div>
