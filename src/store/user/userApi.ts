@@ -1,6 +1,6 @@
 import { User } from "@/types";
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { setUser } from "./userSlice";
+import { initializeCurrentUser } from "./userSlice";
 import authorizationBaseQuery from "../utils/authorizationBaseQuery";
 
 export const userApi = createApi({
@@ -27,10 +27,11 @@ export const userApi = createApi({
         try {
           const { data: user } = await queryFulfilled;
           if (user) {
-            dispatch(setUser(user));
+            dispatch(initializeCurrentUser(user));
           }
         } catch (error) {
           console.log("Error fetching user data:", error);
+          dispatch(initializeCurrentUser(null));
         }
       },
     }),

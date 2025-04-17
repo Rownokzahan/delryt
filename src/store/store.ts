@@ -5,6 +5,7 @@ import deliveryTimeReducer from "./deliveryTime/deliveryTimeSlice";
 import modalReducer from "./modal/modalSlice";
 import checkoutReducer from "./checkout/checkoutSlice";
 import userReducer from "./user/userSlice";
+import authReducer from "./auth/authSlice";
 import { bannerApi } from "./banner/bannerApi";
 import { cuisineApi } from "./cuisine/cuisineApi";
 import { categoryApi } from "./category/categoryApi";
@@ -19,6 +20,7 @@ export const store = configureStore({
     deliveryTime: deliveryTimeReducer,
     checkout: checkoutReducer,
     user: userReducer,
+    auth: authReducer,
 
     [branchApi.reducerPath]: branchApi.reducer,
     [bannerApi.reducerPath]: bannerApi.reducer,

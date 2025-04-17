@@ -1,17 +1,35 @@
 import { User } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type UserState = User | null;
-const initialState = null as UserState;
+interface CurrentUserState {
+  user: User | null;
+  isLoading: boolean;
+}
+
+const initialState: CurrentUserState = {
+  user: null,
+  isLoading: true,
+};
 
 const userSlice = createSlice({
-  name: "user",
+  name: "currentUser",
   initialState: initialState,
   reducers: {
-    setUser: (state, { payload }: PayloadAction<User>) => payload,
-    clearUser: () => null,
+    initializeCurrentUser: (state, { payload }: PayloadAction<User | null>) => {
+      state.user = payload;
+      state.isLoading = false;
+    },
+
+    updateCurrentUser: (state, { payload }: PayloadAction<User>) => {
+      state.user = payload;
+    },
+
+    clearUser: (state) => {
+      state.user = null;
+    },
   },
 });
 
-export const { setUser, clearUser } = userSlice.actions;
+export const { initializeCurrentUser, updateCurrentUser, clearUser } =
+  userSlice.actions;
 export default userSlice.reducer;

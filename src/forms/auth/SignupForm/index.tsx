@@ -6,6 +6,7 @@ import { useRegisterMutation } from "@/store/auth/authApi";
 import AuthSubmitButton from "../componets/AuthSubmitButton";
 import { redirect } from "next/navigation";
 import AuthAlert from "../componets/AuthAlert";
+import useReturnToPath from "@/hooks/useReturnToPath";
 
 interface Inputs {
   f_name: string;
@@ -28,13 +29,14 @@ const SignupForm = () => {
 
   const [signup, { isLoading, isError, isSuccess, error }] =
     useRegisterMutation();
+  const { returnToPath } = useReturnToPath();
 
   const onSubmit: SubmitHandler<Inputs> = (newUser) => {
     signup(newUser)
       .unwrap()
       .then(() => {
         reset();
-        redirect("/");
+        redirect(returnToPath);
       });
   };
 
