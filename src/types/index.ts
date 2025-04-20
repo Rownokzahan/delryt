@@ -53,6 +53,8 @@ export interface Product {
   product_type: string;
   rating: string;
   price: number;
+  discount_type: string;
+  discount: number;
 }
 
 export interface ComboCollection {

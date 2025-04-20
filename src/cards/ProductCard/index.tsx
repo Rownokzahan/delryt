@@ -2,10 +2,10 @@ import Button from "@/components/ui/Button";
 import VegNonVegIcon from "@/components/ui/VegNonVegIcon";
 import useModalById from "@/hooks/useModalById";
 import { Product } from "@/types";
-import { getImagePath } from "@/utils/imageHelper";
 import clsx from "clsx";
-import Image from "next/image";
 import Link from "next/link";
+import ProductCardImage from "./ProductCardImage";
+import { getBeforeDiscountedPrice } from "@/utils/priceHelper";
 
 interface ProductCardProps {
   product: Product;
@@ -16,14 +16,27 @@ const ProductCard = ({
   product,
   noMobileLayoutShift = false,
 }: ProductCardProps) => {
-  const { image, product_type, name, description, price } = product || {};
+  const {
+    id,
+    image,
+    product_type,
+    name,
+    description,
+    price,
+    discount_type,
+    discount,
+  } = product || {};
 
-  const imagePath = getImagePath("product", image);
   const isVeg = product_type === "veg" ? true : false;
 
   //TODO: These valuse should be fetched from the API
   const avgRating = 4.5;
-  const beforeDiscountedPrice = price + 100;
+
+  const beforeDiscountedPrice = getBeforeDiscountedPrice(
+    price,
+    discount,
+    discount_type
+  );
 
   const { openModal: openCustomizationModal } =
     useModalById("customizationModal");
@@ -31,29 +44,19 @@ const ProductCard = ({
   return (
     <article className={clsx(noMobileLayoutShift ? "p-3" : "md:p-3")}>
       <Link
-        href={`/product`}
+        href={`/product/${id}`}
         className={clsx(
           "border rounded-md shadow-md hover:scale-[1.02] duration-300",
           noMobileLayoutShift ? "block" : "flex md:block"
         )}
       >
-        <figure
-          className={clsx(
-            "shrink-0 rounded-md relative overflow-hidden",
-            noMobileLayoutShift
-              ? "w-full aspect-3/2"
-              : "w-[40%] md:w-full md:aspect-3/2"
-          )}
-          title={name}
-        >
-          <Image
-            width={300}
-            height={200}
-            src={imagePath}
-            alt={"Product Image"}
-            className="absolute h-full w-full object-cover bg-gray-100 rounded-md"
-          />
-        </figure>
+        <ProductCardImage
+          name={name}
+          image={image}
+          discount={discount}
+          discount_type={discount_type}
+          noMobileLayoutShift={noMobileLayoutShift}
+        />
 
         <div className="flex-1 min-w-0 p-3 md:p-0">
           <div className="md:p-3">
@@ -79,9 +82,11 @@ const ProductCard = ({
             <div className="flex items-center gap-2">
               <h4 className="font-medium md:text-xl">₹ {price}</h4>
 
-              <h4 className="text-uiBlack-light line-through text-xs md:text-xl">
-                ₹ {beforeDiscountedPrice}
-              </h4>
+              {beforeDiscountedPrice > 0 && (
+                <h4 className="text-uiBlack-light line-through text-xs md:text-base">
+                  ₹ {beforeDiscountedPrice}
+                </h4>
+              )}
             </div>
 
             <Button
