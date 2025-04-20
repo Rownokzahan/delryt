@@ -4,12 +4,11 @@ import useModalById from "@/hooks/useModalById";
 import LogoWithBranchLink from "../shared/LogoWithBranchLink";
 import useUser from "@/hooks/useUser";
 import { FiMenu } from "react-icons/fi";
-import useSidebarById from "@/hooks/useSidebarById";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
 const NavbarMobile = () => {
   const { openModal: openAuthModal } = useModalById("authModal");
-  const { openSidebar } = useSidebarById("myProfileSidebar");
+  const { openModal: openSidebar } = useModalById("menuSidebar");
   const { user } = useUser();
 
   return (

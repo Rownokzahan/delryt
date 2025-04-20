@@ -6,14 +6,13 @@ import { FiMenu, FiShoppingCart } from "react-icons/fi";
 import { PiPhoneCall } from "react-icons/pi";
 import { RiSearchLine } from "react-icons/ri";
 import useModalById from "@/hooks/useModalById";
-import useSidebarById from "@/hooks/useSidebarById";
 import LogoWithBranchLink from "../shared/LogoWithBranchLink";
 import useUser from "@/hooks/useUser";
 
 const NavbarDesktop = () => {
   const { openModal: openSearchModal } = useModalById("searchModal");
   const { openModal: openAuthModal } = useModalById("authModal");
-  const { openSidebar } = useSidebarById("myProfileSidebar");
+  const { openModal: openSidebar } = useModalById("menuSidebar");
   const { user } = useUser();
 
   return (
@@ -54,7 +53,10 @@ const NavbarDesktop = () => {
           </Link>
 
           {user ? (
-            <Link href={"/profile"} className="px-3 py-2 border-x border-primary/10 flex flex-row items-center gap-2">
+            <Link
+              href={"/profile"}
+              className="px-3 py-2 border-x border-primary/10 flex flex-row items-center gap-2"
+            >
               <FaCircleUser className="text-3xl text-gray-300" />
               <span className="text-sm font-semibold">{user.f_name}</span>
             </Link>

@@ -4,14 +4,13 @@ import "../styles/globals.css";
 import clsx from "clsx";
 import { rubik } from "@/fonts/fonts";
 import StoreProvider from "@/providers/StoreProvider";
-import SidebarProvider from "@/providers/SidebarProvider";
-import MyProfileSidebar from "@/sidebars/MyProfileSidebar";
 import DeliverySlotModal from "@/modals/DeliverySlotModal";
 import SearchModal from "@/modals/SearchModal";
 import AuthModal from "@/modals/AuthModal";
 import CustomizationModal from "@/modals/CustomizationModal";
 import ShareModal from "@/modals/ShareModal";
 import AddAddressModal from "@/modals/AddAddressModal";
+import MenuSidebar from "@/components/MenuSidebar";
 
 export const metadata = {
   title: "Delryt",
@@ -29,20 +28,18 @@ export default function RootLayout({
         className={clsx(rubik.className, "antialiased bg-uiWhite text-uiBlack")}
       >
         <StoreProvider>
-          <SidebarProvider>
-            {children}
+          {children}
 
-            {/* Modals */}
-            <AuthModal />
-            <SearchModal />
-            <ShareModal />
-            <DeliverySlotModal />
-            <CustomizationModal />
-            <AddAddressModal />
+          {/* Modals */}
+          <AuthModal />
+          <SearchModal />
+          <ShareModal />
+          <DeliverySlotModal />
+          <CustomizationModal />
+          <AddAddressModal />
 
-            {/* My profile Sidebar */}
-            <MyProfileSidebar />
-          </SidebarProvider>
+          {/* My profile Sidebar */}
+          <MenuSidebar />
         </StoreProvider>
       </body>
     </html>
