@@ -10,6 +10,7 @@ import {
   MdOutlineInfo,
   MdOutlineOfflineBolt,
 } from "react-icons/md";
+import LogoutButton from "./LogoutButton";
 
 const menuItems = [
   {
@@ -54,6 +55,8 @@ const ProfileSidebar = () => {
         {menuItems.map((item) => (
           <ProfileMenuItem key={item.id} item={item} />
         ))}
+
+        <LogoutButton />
       </div>
     </aside>
   );

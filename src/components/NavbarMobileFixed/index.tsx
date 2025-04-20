@@ -6,10 +6,17 @@ import { LuPartyPopper } from "react-icons/lu";
 import NavItem from "./NavItem";
 import useUser from "@/hooks/useUser";
 import useModalById from "@/hooks/useModalById";
+import useReturnToPath from "@/hooks/useReturnToPath";
 
 const NavbarMobileFixed = () => {
   const { user } = useUser();
   const { openModal: openAuthModal } = useModalById("authModal");
+  const { setReturnToPath } = useReturnToPath();
+
+  const handleProfileClick = () => {
+    setReturnToPath("/profile");
+    openAuthModal();
+  };
 
   return (
     <div className="sm:hidden pb-[60px] sm:pb-0">
@@ -24,7 +31,7 @@ const NavbarMobileFixed = () => {
         ) : (
           <NavItem
             isButton={true}
-            onClick={openAuthModal}
+            onClick={handleProfileClick}
             icon={BiUser}
             label={"My Profile"}
           />

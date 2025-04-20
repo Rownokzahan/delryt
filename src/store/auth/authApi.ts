@@ -103,13 +103,12 @@ export const authApi = createApi({
       },
     }),
 
-    logout: builder.mutation<void, void>({
-      // This doesn't make a network call, just runs some logic
+    logout: builder.mutation<{ status: string }, void>({
       queryFn: (_arg, { dispatch }) => {
         localStorage.removeItem("token");
         dispatch(clearUser());
 
-        return { data: undefined };
+        return { data: { status: "success" } }; // ✅ valid object shape
       },
     }),
   }),

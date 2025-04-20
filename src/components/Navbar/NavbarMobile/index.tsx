@@ -15,32 +15,28 @@ const NavbarMobile = () => {
     <div className="ui-container py-3 shadow-xs flex justify-between items-center">
       <LogoWithBranchLink logoSize="small" />
 
-      {user ? (
-        <button
-          onClick={openSidebar}
-          className="flex flex-col items-center"
-          aria-label="My Profile"
-        >
-          <FiMenu className="text-xl" />
-        </button>
-      ) : (
-        <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2">
+        {!user && (
           <button
             onClick={openAuthModal}
             className="h-max px-3 py-1 border border-primary text-primary rounded-sm shadow-xs flex items-center gap-1"
           >
             <span className="font-semibold text-sm">Sign in</span>
           </button>
+        )}
 
-          <button
-            onClick={openSidebar}
-            className="flex flex-col items-center"
-            aria-label="My Profile"
-          >
+        <button
+          onClick={openSidebar}
+          className="flex flex-col items-center"
+          aria-label="Open Menu"
+        >
+          {user ? (
+            <FiMenu className="text-xl" />
+          ) : (
             <BsThreeDotsVertical className="text-lg" />
-          </button>
-        </div>
-      )}
+          )}
+        </button>
+      </div>
     </div>
   );
 };

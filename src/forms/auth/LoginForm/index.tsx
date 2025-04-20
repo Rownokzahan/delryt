@@ -9,6 +9,7 @@ import AuthSubmitButton from "../componets/AuthSubmitButton";
 import AuthAlert from "../componets/AuthAlert";
 import { redirect } from "next/navigation";
 import useReturnToPath from "@/hooks/useReturnToPath";
+import useModalById from "@/hooks/useModalById";
 
 interface Inputs {
   email_or_phone: string;
@@ -28,6 +29,7 @@ const LoginForm = () => {
 
   const [login, { isLoading, isError, isSuccess, error }] = useLoginMutation();
   const { returnToPath } = useReturnToPath();
+  const { closeModal } = useModalById("authModal");
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const { email_or_phone, password } = data;
@@ -44,6 +46,7 @@ const LoginForm = () => {
       .unwrap()
       .then(() => {
         reset();
+        closeModal();
         redirect(returnToPath);
       });
   };

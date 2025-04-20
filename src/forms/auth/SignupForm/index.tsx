@@ -7,6 +7,7 @@ import AuthSubmitButton from "../componets/AuthSubmitButton";
 import { redirect } from "next/navigation";
 import AuthAlert from "../componets/AuthAlert";
 import useReturnToPath from "@/hooks/useReturnToPath";
+import useModalById from "@/hooks/useModalById";
 
 interface Inputs {
   f_name: string;
@@ -30,12 +31,14 @@ const SignupForm = () => {
   const [signup, { isLoading, isError, isSuccess, error }] =
     useRegisterMutation();
   const { returnToPath } = useReturnToPath();
+    const { closeModal } = useModalById("authModal");
 
   const onSubmit: SubmitHandler<Inputs> = (newUser) => {
     signup(newUser)
       .unwrap()
       .then(() => {
         reset();
+        closeModal();
         redirect(returnToPath);
       });
   };
