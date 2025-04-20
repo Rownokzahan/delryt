@@ -29,7 +29,7 @@ const ProductCard = ({
 
   const isVeg = product_type === "veg" ? true : false;
 
-  //TODO: These valuse should be fetched from the API
+  //TODO: This valuse should be calculated
   const avgRating = 4.5;
 
   const beforeDiscountedPrice = getBeforeDiscountedPrice(
