@@ -1,4 +1,4 @@
-import { updateCurrentBranch as updateCurrentBranchAction } from "@/store/branch/branchSlice";
+import { updateCurrentBranch as updateCurrentBranchAction } from "@/store/features/branch/branchSlice";
 import { RootState } from "@/store/store";
 import { Branch } from "@/types";
 import { redirect } from "next/navigation";

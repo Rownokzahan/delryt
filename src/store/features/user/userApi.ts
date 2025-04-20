@@ -1,7 +1,7 @@
 import { User } from "@/types";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { initializeCurrentUser } from "./userSlice";
-import authorizationBaseQuery from "../utils/authorizationBaseQuery";
+import authorizationBaseQuery from "@/store/utils/authorizationBaseQuery";
 
 export const userApi = createApi({
   reducerPath: "userApi",

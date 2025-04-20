@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetCategoriesQuery } from "@/store/category/categoryApi";
+import { useGetCategoriesQuery } from "@/store/features/category/categoryApi";
 import CategoriesCarouselDesktop from "./CategoriesCarouselDesktop";
 import CategoriesCarouselMobile from "./CategoriesCarouselMobile";
 import CategoriesCarouselSkeleton from "./CategoriesCarouselSkeleton";

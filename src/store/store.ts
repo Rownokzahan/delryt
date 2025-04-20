@@ -1,17 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
-import branchReducer from "./branch/branchSlice";
-import { branchApi } from "./branch/branchApi";
-import deliveryTimeReducer from "./deliveryTime/deliveryTimeSlice";
-import modalReducer from "./modal/modalSlice";
-import checkoutReducer from "./checkout/checkoutSlice";
-import userReducer from "./user/userSlice";
-import authReducer from "./auth/authSlice";
-import { bannerApi } from "./banner/bannerApi";
-import { cuisineApi } from "./cuisine/cuisineApi";
-import { categoryApi } from "./category/categoryApi";
-import { productsApi } from "./products/productsApi";
-import { authApi } from "./auth/authApi";
-import { userApi } from "./user/userApi";
+import branchReducer from "./features/branch/branchSlice";
+import { branchApi } from "./features/branch/branchApi";
+import deliveryTimeReducer from "./features/deliveryTime/deliveryTimeSlice";
+import modalReducer from "./features/modal/modalSlice";
+import checkoutReducer from "./features/checkout/checkoutSlice";
+import userReducer from "./features/user/userSlice";
+import authReducer from "./features/auth/authSlice";
+import { bannerApi } from "./features/banner/bannerApi";
+import { cuisineApi } from "./features/cuisine/cuisineApi";
+import { categoryApi } from "./features/category/categoryApi";
+import { productsApi } from "./features/products/productsApi";
+import { authApi } from "./features/auth/authApi";
+import { userApi } from "./features/user/userApi";
 
 export const store = configureStore({
   reducer: {

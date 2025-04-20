@@ -1,7 +1,7 @@
 "use client";
 
 import ProductsCarouselSection from "@/components/ProductsCarouselSection";
-import { useGetLatestProductsQuery } from "@/store/products/productsApi";
+import { useGetLatestProductsQuery } from "@/store/features/products/productsApi";
 
 const LatestProducts = () => {
   const { data: products = [], isLoading, error } = useGetLatestProductsQuery();

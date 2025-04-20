@@ -1,7 +1,7 @@
 "use client";
 
 import ProductsCarouselSection from "@/components/ProductsCarouselSection";
-import { useGetPopularProductsQuery } from "@/store/products/productsApi";
+import { useGetPopularProductsQuery } from "@/store/features/products/productsApi";
 
 const PopularProducts = () => {
   const {

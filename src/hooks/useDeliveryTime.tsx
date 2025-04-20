@@ -1,7 +1,7 @@
 import {
   resetDeliveryTime,
   setDeliveryTime,
-} from "@/store/deliveryTime/deliveryTimeSlice";
+} from "@/store/features/deliveryTime/deliveryTimeSlice";
 import { RootState } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
 

@@ -4,8 +4,8 @@ import { store } from "@/store/store";
 import { ReactNode } from "react";
 import { Provider } from "react-redux";
 import LoadingPage from "@/components/ui/LoadingPage";
-import { useGetBranchListQuery } from "@/store/branch/branchApi";
-import { useGetUserQuery } from "@/store/user/userApi";
+import { useGetBranchListQuery } from "@/store/features/branch/branchApi";
+import { useGetUserQuery } from "@/store/features/user/userApi";
 
 const StoreProvider = ({ children }: { children: ReactNode }) => {
   return (

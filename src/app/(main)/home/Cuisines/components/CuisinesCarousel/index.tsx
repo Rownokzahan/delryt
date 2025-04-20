@@ -3,7 +3,7 @@
 import CuisineCarouselDesktop from "./CuisineCarouselDesktop";
 import CuisineCarouselMobile from "./CuisineCarouselMobile";
 import CuisineCarouselSkeleton from "./CuisineCarouselSkeleton";
-import { useGetCuisinesQuery } from "@/store/cuisine/cuisineApi";
+import { useGetCuisinesQuery } from "@/store/features/cuisine/cuisineApi";
 
 const CuisineCarousel = () => {
   const { data: cuisines = [], isLoading, error } = useGetCuisinesQuery();

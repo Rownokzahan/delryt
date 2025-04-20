@@ -1,6 +1,6 @@
+import branchHeaderBaseQuery from "@/store/utils/branchHeaderBaseQuery";
 import { Product } from "@/types";
 import { createApi, EndpointBuilder } from "@reduxjs/toolkit/query/react";
-import branchHeaderBaseQuery from "../utils/branchHeaderBaseQuery";
 
 // Type for query parameters
 type ProductQueryParams = {

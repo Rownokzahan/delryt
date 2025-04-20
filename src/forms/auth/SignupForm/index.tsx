@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import AuthInputField from "../componets/AuthInputField";
 import EmailField from "../componets/EmailField";
 import PasswordField from "../componets/PasswordField";
-import { useRegisterMutation } from "@/store/auth/authApi";
+import { useRegisterMutation } from "@/store/features/auth/authApi";
 import AuthSubmitButton from "../componets/AuthSubmitButton";
 import { redirect } from "next/navigation";
 import AuthAlert from "../componets/AuthAlert";

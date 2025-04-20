@@ -1,7 +1,7 @@
 import {
   clearReturnToPath as clearReturnToPathAction,
   setReturnToPath as setReturnToPathAction,
-} from "@/store/auth/authSlice";
+} from "@/store/features/auth/authSlice";
 import { RootState } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
 

@@ -7,7 +7,7 @@ import { FaCircleUser } from "react-icons/fa6";
 import { TbChevronRight } from "react-icons/tb";
 import { FaEdit } from "react-icons/fa";
 import useUser from "@/hooks/useUser";
-import { useLogoutMutation } from "@/store/auth/authApi";
+import { useLogoutMutation } from "@/store/features/auth/authApi";
 import { useRouter } from "next/navigation";
 
 const menuItems = [

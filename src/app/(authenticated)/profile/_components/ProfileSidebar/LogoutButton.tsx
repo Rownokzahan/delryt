@@ -1,6 +1,6 @@
 import { IoChevronForwardOutline } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
-import { useLogoutMutation } from "@/store/auth/authApi";
+import { useLogoutMutation } from "@/store/features/auth/authApi";
 import { useRouter } from "next/navigation";
 
 const LogoutButton = () => {

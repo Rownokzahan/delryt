@@ -3,7 +3,7 @@
 import BannersSkeleton from "./BannersSkeleton";
 import Carousel from "@/components/Carousel";
 import BannerCard from "@/cards/BannerCard";
-import { useGetBannersQuery } from "@/store/banner/bannerApi";
+import { useGetBannersQuery } from "@/store/features/banner/bannerApi";
 
 const Banners = () => {
   const { data: banners = [], isLoading, error } = useGetBannersQuery();

@@ -1,6 +1,9 @@
 "use client"
 
-import { closeModalById, openModalById } from "@/store/modal/modalSlice";
+import {
+  closeModalById,
+  openModalById,
+} from "@/store/features/modal/modalSlice";
 import { RootState } from "@/store/store";
 import { ModalId } from "@/types";
 import { useDispatch, useSelector } from "react-redux";

@@ -3,7 +3,7 @@ import {
   removeCoupon,
   resetDeliveryTipAmount,
   updateDeliveryTipAmount,
-} from "@/store/checkout/checkoutSlice";
+} from "@/store/features/checkout/checkoutSlice";
 import { RootState } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
 

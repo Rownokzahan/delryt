@@ -1,6 +1,6 @@
+import branchHeaderBaseQuery from "@/store/utils/branchHeaderBaseQuery";
 import { Banner } from "@/types";
 import { createApi } from "@reduxjs/toolkit/query/react";
-import branchHeaderBaseQuery from "../utils/branchHeaderBaseQuery";
 
 export const bannerApi = createApi({
   reducerPath: "bannerApi",

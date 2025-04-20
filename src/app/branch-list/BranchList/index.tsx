@@ -1,5 +1,5 @@
 import { Branch } from "@/types";
-import { useGetBranchListQuery } from "@/store/branch/branchApi";
+import { useGetBranchListQuery } from "@/store/features/branch/branchApi";
 import BranchCard from "@/cards/BranchCard";
 import BranchListSkeleton from "./BranchListSkeleton";
 

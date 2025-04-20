@@ -3,7 +3,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import PasswordField from "../componets/PasswordField";
 import AuthInputField from "../componets/AuthInputField";
-import { useLoginMutation } from "@/store/auth/authApi";
+import { useLoginMutation } from "@/store/features/auth/authApi";
 import { getType, isEmail, isPhone } from "./utils";
 import AuthSubmitButton from "../componets/AuthSubmitButton";
 import AuthAlert from "../componets/AuthAlert";

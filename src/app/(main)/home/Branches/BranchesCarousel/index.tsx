@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetBranchListQuery } from "@/store/branch/branchApi";
+import { useGetBranchListQuery } from "@/store/features/branch/branchApi";
 import { Branch } from "@/types";
 import useCurrentBranch from "@/hooks/useCurrentBranch";
 import Carousel from "@/components/Carousel";
