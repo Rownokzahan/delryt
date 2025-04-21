@@ -7,10 +7,10 @@ import StoreProvider from "@/providers/StoreProvider";
 import DeliverySlotModal from "@/modals/DeliverySlotModal";
 import SearchModal from "@/modals/SearchModal";
 import AuthModal from "@/modals/AuthModal";
-import CustomizationModal from "@/modals/CustomizationModal";
 import ShareModal from "@/modals/ShareModal";
 import AddAddressModal from "@/modals/AddAddressModal";
 import MenuSidebar from "@/components/MenuSidebar";
+import ProductCustomizationModal from "@/modals/ProductCustomizationModal";
 
 export const metadata = {
   title: "Delryt",
@@ -35,7 +35,7 @@ export default function RootLayout({
           <SearchModal />
           <ShareModal />
           <DeliverySlotModal />
-          <CustomizationModal />
+          <ProductCustomizationModal />
           <AddAddressModal />
 
           {/* My profile Sidebar */}

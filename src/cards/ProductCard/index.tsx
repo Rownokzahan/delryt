@@ -25,6 +25,8 @@ const ProductCard = ({
     price,
     discount_type,
     discount,
+    variations,
+    add_ons,
   } = product || {};
 
   const isVeg = product_type === "veg" ? true : false;
@@ -38,8 +40,16 @@ const ProductCard = ({
     discount_type
   );
 
-  const { openModal: openCustomizationModal } =
-    useModalById("customizationModal");
+  const { openModalWithData } = useModalById("productCustomizationModal");
+
+  const handleAddButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    if (variations.length !== 0 || add_ons.length !== 0) {
+      openModalWithData({ product });
+      return;
+    }
+  };
 
   return (
     <article className={clsx(noMobileLayoutShift ? "p-3" : "md:p-3")}>
@@ -90,10 +100,7 @@ const ProductCard = ({
             </div>
 
             <Button
-              onClick={(e) => {
-                e.preventDefault();
-                openCustomizationModal();
-              }}
+              onClick={handleAddButtonClick}
               variant="primary-outline"
               size="small"
               className="h-max py-1! px-4! !md:px-6 !md:py-2"

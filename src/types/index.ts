@@ -45,6 +45,27 @@ export interface Combo {
 
 export type ProductCategory = "all" | { id: Id; name: string; image: string };
 
+export interface ProductVariationItem {
+  label: string;
+  optionPrice: string;
+}
+
+export interface ProductVariation {
+  name: string;
+  type: string;
+  min: number;
+  max: number;
+  required: string;
+  values: ProductVariationItem[];
+}
+
+export interface ProductAddOnItem {
+  id: number;
+  name: string;
+  price: number;
+  tax: number;
+}
+
 export interface Product {
   id: string;
   image: string;
@@ -55,6 +76,8 @@ export interface Product {
   price: number;
   discount_type: string;
   discount: number;
+  variations: ProductVariation[];
+  add_ons: ProductAddOnItem[];
 }
 
 export interface ComboCollection {
@@ -69,10 +92,4 @@ export interface Coupon {
   id: Id;
   code: string;
   description: string;
-}
-
-export interface NutritionItem {
-  name: string;
-  value: number;
-  unit: string;
 }
