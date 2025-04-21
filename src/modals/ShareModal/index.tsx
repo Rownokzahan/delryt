@@ -10,6 +10,7 @@ import { IoLogoWhatsapp } from "react-icons/io";
 import { IconType } from "react-icons";
 import { FaFacebook, FaXTwitter } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
+import { usePathname } from "next/navigation";
 
 interface Social {
   name: string;
@@ -43,13 +44,14 @@ const socials: Social[] = [
 const ShareModal = () => {
   const [currentUrl, setCurrentUrl] = useState<string>("");
   const [isCopied, setIsCopied] = useState<boolean>(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const fullUrl = window.location.href;
       setCurrentUrl(fullUrl);
     }
-  }, []);
+  }, [pathname]);
 
   const handleCopyLinkClick = () => {
     navigator.clipboard
