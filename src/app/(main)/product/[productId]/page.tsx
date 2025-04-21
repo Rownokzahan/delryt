@@ -8,8 +8,8 @@ type ProductPageProps = {
   };
 };
 
-const ProductPage = ({ params }: ProductPageProps) => {
-  const { productId } = params;
+const ProductPage = async ({ params }: ProductPageProps) => {
+  const { productId } = await params;
 
   return (
     <main className="my-8 mt-4">
