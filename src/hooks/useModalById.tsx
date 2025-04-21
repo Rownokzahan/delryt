@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   closeModalById,
@@ -10,15 +10,26 @@ import { useDispatch, useSelector } from "react-redux";
 
 const useModalById = (modalId: ModalId) => {
   const dispatch = useDispatch();
-  const modalStatus = useSelector((state: RootState) => state.modalStatus);
+  const modal = useSelector((state: RootState) => state.modalStatus[modalId]);
 
-  const openModal = () => dispatch(openModalById(modalId));
+  const isModalOpen = !!modal?.isOpen;
+  const modalData = modal?.data;
+
+  // Open modal without data
+  const openModal = () => dispatch(openModalById({ modalId }));
+
+  // Open modal with data
+  const openModalWithData = (data: unknown) =>
+    dispatch(openModalById({ modalId, data }));
+
   const closeModal = () => dispatch(closeModalById(modalId));
 
   return {
+    isModalOpen,
+    modalData,
     openModal,
+    openModalWithData,
     closeModal,
-    isModalOpen: !!modalStatus[modalId],
   };
 };
 
