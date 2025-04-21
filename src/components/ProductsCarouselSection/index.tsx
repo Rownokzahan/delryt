@@ -14,6 +14,10 @@ const ProductsCarouselSection: React.FC<ProductsCarouselSectionProps> = ({
   products,
   isLoading,
 }) => {
+  if (!isLoading && products.length === 0) {
+    return null;
+  }
+
   return (
     <section className="ui-container py-11 relative">
       {/* Section Title */}

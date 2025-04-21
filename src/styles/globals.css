@@ -101,7 +101,9 @@
     @apply bg-secondary;
   }
 
-  /* Custom Container Component */
+  .products-carousel .slick-track {
+    @apply !ms-0;
+  }
 }
 
 /* Polygon Clipping Styles */

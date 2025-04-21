@@ -16,7 +16,7 @@ const ProductsCarousel = ({ products, isLoading }: ProductsCarouselProps) => {
   }
 
   return (
-    <div>
+    <div className="products-carousel">
       <ProductsCarouselDesktop products={products} />
       <ProductsCarouselMobile products={products} />
     </div>
