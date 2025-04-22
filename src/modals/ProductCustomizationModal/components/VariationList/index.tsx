@@ -1,11 +1,11 @@
-import { ProductVariation } from "@/types";
 import Variation from "./Variation";
+import { useProductCustomization } from "../../ProductCustomizationProvider";
 
-interface VariationListProps {
-  variations: ProductVariation[];
-}
+const VariationList = () => {
+  const {
+    product: { variations },
+  } = useProductCustomization();
 
-const VariationList = ({ variations }: VariationListProps) => {
   if (variations.length === 0) {
     return null;
   }

@@ -1,11 +1,11 @@
-import { ProductAddOnItem } from "@/types";
 import AddOnItem from "./AddOnItem";
+import { useProductCustomization } from "../../ProductCustomizationProvider";
 
-interface AddOnListProps {
-  addOns: ProductAddOnItem[];
-}
+const AddOnList = () => {
+  const {
+    product: { add_ons: addOns },
+  } = useProductCustomization();
 
-const AddOnList = ({ addOns }: AddOnListProps) => {
   if (addOns.length === 0) {
     return null;
   }

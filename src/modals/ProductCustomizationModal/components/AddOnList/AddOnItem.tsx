@@ -1,19 +1,20 @@
 import { ProductAddOnItem } from "@/types";
 import { RiCheckboxBlankLine, RiCheckboxFill } from "react-icons/ri";
+import { useProductCustomization } from "../../ProductCustomizationProvider";
 
 interface AddOnItemProps {
   addOnItem: ProductAddOnItem;
 }
 
 const AddOnItem = ({ addOnItem }: AddOnItemProps) => {
-  const { name, price } = addOnItem;
-  const isSelected = false;
+  const { selectedAddOnIds, toggleAddOn } = useProductCustomization();
 
-  const handleOnClick = () => {};
+  const { id, name, price } = addOnItem;
+  const isSelected = selectedAddOnIds.includes(id);
 
   return (
     <li
-      onClick={() => handleOnClick}
+      onClick={() => toggleAddOn(id)}
       className="flex items-center justify-between cursor-pointer"
     >
       <div className="flex items-center gap-2">
