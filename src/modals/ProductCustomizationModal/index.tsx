@@ -3,7 +3,6 @@
 import useModalById from "@/hooks/useModalById";
 import Modal from "../Modal";
 import { Product } from "@/types";
-import VariationList from "./components/VariationList";
 import AddOnList from "./components/AddOnList";
 import ProductCustomizationProvider from "./ProductCustomizationProvider";
 import ProductCustomizationHeader from "./components/ProductCustomizationHeader";
@@ -32,7 +31,6 @@ const ProductCustomizationModal = () => {
         <ProductCustomizationHeader />
 
         <div className="h-[50dvh] sm:h-80 pb-3 space-y-3 overflow-y-auto hover-scrollbar">
-          <VariationList />
           <AddOnList />
         </div>
 

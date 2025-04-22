@@ -55,7 +55,7 @@ export interface ProductVariation {
   type: string;
   min: number;
   max: number;
-  required: string;
+  required: "on" | "off";
   values: ProductVariationItem[];
 }
 

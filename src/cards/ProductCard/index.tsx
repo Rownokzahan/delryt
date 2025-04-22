@@ -25,7 +25,6 @@ const ProductCard = ({
     price,
     discount_type,
     discount,
-    variations,
     add_ons,
   } = product || {};
 
@@ -45,7 +44,7 @@ const ProductCard = ({
   const handleAddButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
-    if (variations.length !== 0 || add_ons.length !== 0) {
+    if (add_ons.length !== 0) {
       openModalWithData({ product });
       return;
     }
