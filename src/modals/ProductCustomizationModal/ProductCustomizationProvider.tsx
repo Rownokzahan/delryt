@@ -1,13 +1,11 @@
-import { useCart } from "@/hooks/useCart";
-import { LocalCartItem, Id, Product } from "@/types";
+import { Product, SelectedAddOnItem } from "@/types";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface CustomizationContextType {
   product: Product;
-  addProductToCart: () => void;
   totalPrice: number;
-  selectedAddOnIds: Id[];
-  toggleAddOn: (addOnId: Id) => void;
+  selectedAddOns: SelectedAddOnItem[];
+  setSelectedAddOns: React.Dispatch<React.SetStateAction<SelectedAddOnItem[]>>;
   resetCustomization: () => void;
 }
 
@@ -24,37 +22,11 @@ const ProductCustomizationProvider = ({
   product,
   children,
 }: ProductCustomizationProviderProps) => {
-  const [selectedAddOnIds, setSelectedAddOnIds] = useState<Id[]>([]);
+  const [selectedAddOns, setSelectedAddOns] = useState<SelectedAddOnItem[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const { addToCart } = useCart();
-
-  const addProductToCart = () => {
-    const cartItem: LocalCartItem = {
-      productId: product.id,
-      price: totalPrice,
-      discounted_price: 0,
-      tax_amount: 0,
-      quantity: 1,
-      variation: [],
-      selectedAddOns: selectedAddOnIds.map((id) => ({ id, quantity: 1 })),
-      product,
-    };
-
-    addToCart(cartItem);
-  };
-
-  const toggleAddOn = (addOnId: Id) => {
-    setSelectedAddOnIds((prev) => {
-      if (prev.includes(addOnId)) {
-        return prev.filter((id) => id !== addOnId);
-      }
-      return [...prev, addOnId];
-    });
-  };
-
   const resetCustomization = () => {
-    setSelectedAddOnIds([]);
+    setSelectedAddOns([]);
   };
 
   useEffect(() => {
@@ -62,23 +34,26 @@ const ProductCustomizationProvider = ({
 
     if (product.add_ons) {
       for (const addOn of product.add_ons) {
-        if (selectedAddOnIds.includes(addOn.id)) {
-          totalPrice += addOn.price;
+        const selectedAddOn = selectedAddOns.find(
+          (item) => item.id === addOn.id
+        );
+
+        if (selectedAddOn) {
+          totalPrice += addOn.price * selectedAddOn.quantity;
         }
       }
     }
 
     setTotalPrice(totalPrice);
-  }, [selectedAddOnIds, product]);
+  }, [selectedAddOns, product]);
 
   return (
     <CustomizationContext.Provider
       value={{
         product,
-        addProductToCart,
         totalPrice,
-        selectedAddOnIds,
-        toggleAddOn,
+        selectedAddOns,
+        setSelectedAddOns,
         resetCustomization,
       }}
     >
