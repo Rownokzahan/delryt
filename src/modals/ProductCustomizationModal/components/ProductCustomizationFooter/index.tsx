@@ -1,10 +1,12 @@
 import { useCart } from "@/hooks/useCart";
 import { useProductCustomization } from "../../ProductCustomizationProvider";
 import { LocalCartItem } from "@/types";
+import useModalById from "@/hooks/useModalById";
 
 const ProductCustomizationFooter = () => {
   const { totalPrice, product, selectedAddOns } = useProductCustomization();
   const { addToCart } = useCart();
+  const { closeModal } = useModalById("productCustomizationModal");
 
   const handleAddToCart = () => {
     const newCartItem: LocalCartItem = {
@@ -19,6 +21,7 @@ const ProductCustomizationFooter = () => {
     };
 
     addToCart(newCartItem);
+    closeModal();
   };
 
   return (
