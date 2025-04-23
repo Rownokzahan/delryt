@@ -29,7 +29,7 @@ const branchSlice = createSlice({
 
     updateCurrentBranch: (state, { payload }: PayloadAction<Branch>) => {
       state.currentBranch.branch = payload;
-      localStorage.setItem("branchId", payload.id.toString());
+      localStorage.setItem("branch-id", payload.id.toString());
     },
   },
 });

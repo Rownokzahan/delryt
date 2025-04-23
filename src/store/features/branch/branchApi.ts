@@ -16,7 +16,7 @@ export const branchApi = createApi({
         try {
           const { data: branches } = await queryFulfilled;
 
-          const branchId = localStorage.getItem("branchId");
+          const branchId = localStorage.getItem("branch-id");
 
           const branch =
             branches.find((branch) => branch.id === Number(branchId)) ?? null;

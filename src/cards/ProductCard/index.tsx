@@ -1,11 +1,10 @@
-import Button from "@/components/ui/Button";
 import VegNonVegIcon from "@/components/ui/VegNonVegIcon";
-import useModalById from "@/hooks/useModalById";
 import { Product } from "@/types";
 import clsx from "clsx";
 import Link from "next/link";
 import ProductCardImage from "./ProductCardImage";
 import { getBeforeDiscountedPrice } from "@/utils/priceHelper";
+import AddToCartButton from "@/components/ui/AddToCartButton";
 
 interface ProductCardProps {
   product: Product;
@@ -25,7 +24,6 @@ const ProductCard = ({
     price,
     discount_type,
     discount,
-    add_ons,
   } = product || {};
 
   const isVeg = product_type === "veg" ? true : false;
@@ -38,17 +36,6 @@ const ProductCard = ({
     discount,
     discount_type
   );
-
-  const { openModalWithData } = useModalById("productCustomizationModal");
-
-  const handleAddButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-
-    if (add_ons.length !== 0) {
-      openModalWithData({ product });
-      return;
-    }
-  };
 
   return (
     <article className={clsx(noMobileLayoutShift ? "p-3" : "md:p-3")}>
@@ -98,14 +85,7 @@ const ProductCard = ({
               )}
             </div>
 
-            <Button
-              onClick={handleAddButtonClick}
-              variant="primary-outline"
-              size="small"
-              className="h-max py-1! px-4! !md:px-6 !md:py-2"
-            >
-              Add
-            </Button>
+            <AddToCartButton product={product} />
           </div>
         </div>
       </Link>

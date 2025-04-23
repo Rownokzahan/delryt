@@ -1,8 +1,10 @@
-import { Id, Product } from "@/types";
+import { useCart } from "@/hooks/useCart";
+import { LocalCartItem, Id, Product } from "@/types";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface CustomizationContextType {
   product: Product;
+  addProductToCart: () => void;
   totalPrice: number;
   selectedAddOnIds: Id[];
   toggleAddOn: (addOnId: Id) => void;
@@ -24,6 +26,23 @@ const ProductCustomizationProvider = ({
 }: ProductCustomizationProviderProps) => {
   const [selectedAddOnIds, setSelectedAddOnIds] = useState<Id[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
+
+  const { addToCart } = useCart();
+
+  const addProductToCart = () => {
+    const cartItem: LocalCartItem = {
+      productId: product.id,
+      price: totalPrice,
+      discounted_price: 0,
+      tax_amount: 0,
+      quantity: 1,
+      variation: [],
+      selectedAddOns: selectedAddOnIds.map((id) => ({ id, quantity: 1 })),
+      product,
+    };
+
+    addToCart(cartItem);
+  };
 
   const toggleAddOn = (addOnId: Id) => {
     setSelectedAddOnIds((prev) => {
@@ -56,6 +75,7 @@ const ProductCustomizationProvider = ({
     <CustomizationContext.Provider
       value={{
         product,
+        addProductToCart,
         totalPrice,
         selectedAddOnIds,
         toggleAddOn,

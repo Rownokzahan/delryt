@@ -35,14 +35,6 @@ export interface Category {
   banner_image: string;
 }
 
-export interface Combo {
-  id: Id;
-  name: string;
-  price: number;
-  image: string;
-  isVeg: boolean;
-}
-
 export type ProductCategory = "all" | { id: Id; name: string; image: string };
 
 export interface ProductVariationItem {
@@ -80,10 +72,28 @@ export interface Product {
   add_ons: ProductAddOnItem[];
 }
 
-export interface ComboCollection {
+export interface SelectedAddOnItem {
   id: Id;
-  name: string;
-  products: Product[];
+  quantity: number;
+}
+
+interface BaseCartItem {
+  productId: Id;
+  quantity: number;
+  price: number;
+  discounted_price: number;
+  tax_amount: number;
+  variation: [];
+}
+
+export interface LocalCartItem extends BaseCartItem {
+  selectedAddOns: SelectedAddOnItem[];
+  product: Product;
+}
+
+export interface OrderCartItem extends BaseCartItem {
+  add_on_ids: Id[];
+  add_on_qtys: number[];
 }
 
 export type ModalId = string;

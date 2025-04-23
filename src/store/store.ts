@@ -6,6 +6,7 @@ import modalReducer from "./features/modal/modalSlice";
 import checkoutReducer from "./features/checkout/checkoutSlice";
 import userReducer from "./features/user/userSlice";
 import authReducer from "./features/auth/authSlice";
+import cartReducer from "./features/cart/cartSlice";
 import { bannerApi } from "./features/banner/bannerApi";
 import { cuisineApi } from "./features/cuisine/cuisineApi";
 import { categoryApi } from "./features/category/categoryApi";
@@ -22,6 +23,7 @@ export const store = configureStore({
     checkout: checkoutReducer,
     user: userReducer,
     auth: authReducer,
+    cart: cartReducer,
 
     [branchApi.reducerPath]: branchApi.reducer,
     [bannerApi.reducerPath]: bannerApi.reducer,

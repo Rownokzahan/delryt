@@ -1,11 +1,12 @@
 "use client";
 
 import { store } from "@/store/store";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { Provider } from "react-redux";
 import LoadingPage from "@/components/ui/LoadingPage";
 import { useGetBranchListQuery } from "@/store/features/branch/branchApi";
 import { useGetUserQuery } from "@/store/features/user/userApi";
+import { useCart } from "@/hooks/useCart";
 
 const StoreProvider = ({ children }: { children: ReactNode }) => {
   return (
@@ -21,6 +22,13 @@ const StoreInitializerWrapper = ({ children }: { children: ReactNode }) => {
 
   // Wait for the user to load
   const { isLoading: isUserLoading } = useGetUserQuery();
+
+  const { initializeCart } = useCart();
+
+  useEffect(() => {
+    initializeCart();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (isBranchesLoading || isUserLoading) {
     return <LoadingPage />;
