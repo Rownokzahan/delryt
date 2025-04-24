@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import AddressForm from "@/forms/AddressForm";
 import Modal from "../Modal";
@@ -19,24 +19,16 @@ const AddAddressModal = () => {
 
   const { f_name, l_name, phone } = user;
 
-  const handleCreateAddress = (data: Address) => {
-    createAddress(data)
-      .unwrap()
-      .then(() => {
-        toast.success("Address saved successfully!", {
-          position: "top-center",
-          duration: 3000,
-        });
-        closeModal();
-      })
-      .catch((error) => {
-        toast.error("Failed to save address. Please try again!", {
-          position: "top-center",
-          duration: 4000,
-        });
+  const handleCreateAddress = async (address: Address) => {
+    try {
+      await createAddress(address).unwrap();
+      toast.success("Address saved successfully!");
 
-        console.error("Address creation error:", error);
-      });
+      closeModal();
+    } catch (error) {
+      toast.error("Failed to save address. Please try again!");
+      console.error("Address creation error:", error);
+    }
   };
 
   return (
