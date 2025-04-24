@@ -103,3 +103,13 @@ export interface Coupon {
   code: string;
   description: string;
 }
+
+export interface Address {
+  contact_person_name: string;
+  contact_person_number: string;
+  address: string;
+  road: string;
+  house: string;
+  floor: string;
+  address_type: string;
+}

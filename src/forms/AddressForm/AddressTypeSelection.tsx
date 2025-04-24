@@ -17,7 +17,7 @@ interface AddressTypeSelectionProps {
 const AddressTypeSelection = ({ register }: AddressTypeSelectionProps) => {
   return (
     <div className="py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm">
-      <p>Save As</p>
+      <p className="text-xs">Save As</p>
 
       <div className="flex gap-4">
         {addressTypes.map(({ label, Icon }) => (
@@ -25,7 +25,9 @@ const AddressTypeSelection = ({ register }: AddressTypeSelectionProps) => {
             <input
               type="radio"
               value={label}
-              {...register("addressType")}
+              {...register("address_type", {
+                required: true,
+              })}
               className="hidden"
             />
             <div

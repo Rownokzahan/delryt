@@ -14,6 +14,7 @@ import { productsApi } from "./features/products/productsApi";
 import { authApi } from "./features/auth/authApi";
 import { userApi } from "./features/user/userApi";
 import { productApi } from "./features/product/productApi";
+import { addressApi } from "./features/address/adressApi";
 
 export const store = configureStore({
   reducer: {
@@ -33,6 +34,7 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
     [productApi.reducerPath]: productApi.reducer,
+    [addressApi.reducerPath]: addressApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -44,7 +46,8 @@ export const store = configureStore({
       productsApi.middleware,
       authApi.middleware,
       userApi.middleware,
-      productApi.middleware
+      productApi.middleware,
+      addressApi.middleware
     ),
 });
 

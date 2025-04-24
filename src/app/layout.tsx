@@ -11,6 +11,7 @@ import ShareModal from "@/modals/ShareModal";
 import AddAddressModal from "@/modals/AddAddressModal";
 import MenuSidebar from "@/components/MenuSidebar";
 import ProductCustomizationModal from "@/modals/ProductCustomizationModal";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "Delryt",
@@ -38,9 +39,11 @@ export default function RootLayout({
           <ProductCustomizationModal />
           <AddAddressModal />
 
-          {/* My profile Sidebar */}
+          {/* Menu Sidebar */}
           <MenuSidebar />
         </StoreProvider>
+
+        <Toaster />
       </body>
     </html>
   );
