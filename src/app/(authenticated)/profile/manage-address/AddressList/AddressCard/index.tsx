@@ -3,6 +3,7 @@ import { Address } from "@/types";
 import { useDeleteAddressMutation } from "@/store/features/address/adressApi";
 import toast from "react-hot-toast";
 import { TbInnerShadowTopRightFilled } from "react-icons/tb";
+import useModalById from "@/hooks/useModalById";
 
 interface AddressCardProps {
   addressItem: Address;
@@ -18,6 +19,7 @@ const AddressCard = ({ addressItem }: AddressCardProps) => {
   } = addressItem;
 
   const [deleteAddress, { isLoading: isDeleting }] = useDeleteAddressMutation();
+  const { openModalWithData } = useModalById("updateAddressModal");
 
   const handleDelete = async () => {
     try {
@@ -27,6 +29,10 @@ const AddressCard = ({ addressItem }: AddressCardProps) => {
       console.log("Failed to delete address", error);
       toast.error("Failed to delete address!");
     }
+  };
+
+  const handleUpdate = () => {
+    openModalWithData({ address: addressItem });
   };
 
   return (
@@ -48,7 +54,7 @@ const AddressCard = ({ addressItem }: AddressCardProps) => {
             )}
           </div>
 
-          <button className="flex items-center gap-1">
+          <button onClick={handleUpdate} className="flex items-center gap-1">
             <MdEdit className="text-base" />
           </button>
         </div>

@@ -30,6 +30,18 @@ export const addressApi = createApi({
       }),
       invalidatesTags: ["AddressList"],
     }),
+
+    updateAddress: builder.mutation<
+      void,
+      { addressId: Id; updatedAddress: Address }
+    >({
+      query: ({ addressId, updatedAddress }) => ({
+        url: `customer/address/update/${addressId}`,
+        method: "PUT",
+        body: updatedAddress,
+      }),
+      invalidatesTags: ["AddressList"],
+    }),
   }),
 });
 
@@ -37,4 +49,5 @@ export const {
   useGetAddressListQuery,
   useCreateAddressMutation,
   useDeleteAddressMutation,
+  useUpdateAddressMutation,
 } = addressApi;

@@ -11,6 +11,7 @@ import ShareModal from "@/modals/ShareModal";
 import AddAddressModal from "@/modals/AddAddressModal";
 import MenuSidebar from "@/components/MenuSidebar";
 import ProductCustomizationModal from "@/modals/ProductCustomizationModal";
+import UpdateAddressModal from "@/modals/UpdateAddressModal";
 import { Toaster } from "react-hot-toast";
 
 export const metadata = {
@@ -38,6 +39,7 @@ export default function RootLayout({
           <DeliverySlotModal />
           <ProductCustomizationModal />
           <AddAddressModal />
+          <UpdateAddressModal />
 
           {/* Menu Sidebar */}
           <MenuSidebar />

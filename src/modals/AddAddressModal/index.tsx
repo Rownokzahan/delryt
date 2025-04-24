@@ -10,7 +10,7 @@ import useModalById from "@/hooks/useModalById";
 
 const AddAddressModal = () => {
   const { user } = useUser();
-  const [createAddress] = useCreateAddressMutation();
+  const [createAddress, { isLoading: isCreating }] = useCreateAddressMutation();
   const { closeModal } = useModalById("addAddressModal");
 
   if (!user) {
@@ -45,6 +45,7 @@ const AddAddressModal = () => {
         onSubmit={(data) => {
           handleCreateAddress(data);
         }}
+        isSubmitting={isCreating}
       />
     </Modal>
   );
