@@ -6,6 +6,12 @@ export const addressApi = createApi({
   reducerPath: "addressApi",
   baseQuery: authorizationBaseQuery,
   endpoints: (builder) => ({
+    getAddressList: builder.query<Address[], void>({
+      query: () => ({
+        url: "customer/address/list",
+      }),
+    }),
+
     createAddress: builder.mutation<void, Address>({
       query: (newAddress: Address) => ({
         url: "customer/address/add",
@@ -16,4 +22,4 @@ export const addressApi = createApi({
   }),
 });
 
-export const { useCreateAddressMutation } = addressApi;
+export const { useGetAddressListQuery, useCreateAddressMutation } = addressApi;

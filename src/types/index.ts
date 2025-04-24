@@ -105,6 +105,7 @@ export interface Coupon {
 }
 
 export interface Address {
+  id: Id;
   contact_person_name: string;
   contact_person_number: string;
   address: string;
@@ -112,4 +113,5 @@ export interface Address {
   house: string;
   floor: string;
   address_type: string;
+  is_default: 0 | 1;
 }
