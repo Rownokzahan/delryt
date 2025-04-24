@@ -11,10 +11,15 @@ import useModalById from "@/hooks/useModalById";
 const AddAddressModal = () => {
   const { user } = useUser();
   const [createAddress, { isLoading: isCreating }] = useCreateAddressMutation();
-  const { closeModal } = useModalById("addAddressModal");
+  const { closeModal, isModalOpen } = useModalById("addAddressModal");
+
+  if (!isModalOpen) {
+    return null;
+  }
 
   if (!user) {
-    return <p>No User Found</p>;
+    console.log("User Not Found From Address Modal");
+    return null;
   }
 
   const { f_name, l_name, phone } = user;
