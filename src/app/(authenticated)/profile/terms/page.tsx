@@ -1,10 +1,10 @@
 import TermsPage from "@/app/(main)/terms/page";
-import ProfileHeaderMobile from "../_components/ProfileHeaderMobile";
+import ProfileHeaderBar from "../_components/ProfileHeaderBar";
 
 const ProfileTermsPage = () => {
   return (
     <>
-      <ProfileHeaderMobile label="Terms & Conditions" />
+      <ProfileHeaderBar label="Terms & Conditions" />
       <TermsPage />
     </>
   );

@@ -1,11 +1,12 @@
 import Button from "@/components/ui/Button";
 import { BsEmojiExpressionless } from "react-icons/bs";
-import ProfileHeaderMobile from "../_components/ProfileHeaderMobile";
+import ProfileHeaderBar from "../_components/ProfileHeaderBar";
+
 
 const MyOrdersPage = () => {
   return (
     <>
-      <ProfileHeaderMobile label="My Orders" />
+      <ProfileHeaderBar label="My Orders" />
 
       <main className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">
         <BsEmojiExpressionless className="mx-auto mb-4 text-6xl" />

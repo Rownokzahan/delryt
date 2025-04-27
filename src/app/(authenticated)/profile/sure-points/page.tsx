@@ -1,11 +1,11 @@
-import ProfileHeaderMobile from "../_components/ProfileHeaderMobile";
 import FilterByDate from "../_components/FilterByDate";
 import { MdOutlineOfflineBolt, MdOfflineBolt } from "react-icons/md";
+import ProfileHeaderBar from "../_components/ProfileHeaderBar";
 
 const ProfileSurePointsPage = () => {
   return (
     <>
-      <ProfileHeaderMobile label="Sure Points" />
+      <ProfileHeaderBar label="Sure Points" />
 
       <main className="p-3">
         <div className="flex items-center justify-between">

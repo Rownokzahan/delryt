@@ -1,11 +1,11 @@
 import { FaWallet } from "react-icons/fa";
 import FilterByDate from "../_components/FilterByDate";
-import ProfileHeaderMobile from "../_components/ProfileHeaderMobile";
+import ProfileHeaderBar from "../_components/ProfileHeaderBar";
 
 const ProfileWalletPage = () => {
   return (
     <>
-      <ProfileHeaderMobile label="Delryt Wallet" />
+      <ProfileHeaderBar label="Delryt Wallet" />
 
       <main className="p-4 bg-uiBlack/10 space-y-4">
         <div className="p-4 rounded-md bg-uiWhite flex items-center gap-3">

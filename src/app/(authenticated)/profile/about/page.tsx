@@ -1,10 +1,10 @@
-import ProfileHeaderMobile from "../_components/ProfileHeaderMobile";
+import ProfileHeaderBar from "../_components/ProfileHeaderBar";
 import AboutUsPage from "@/app/(main)/about-us/page";
 
 const ProfileAboutPage = () => {
   return (
     <>
-      <ProfileHeaderMobile label="About Us" />
+      <ProfileHeaderBar label="About Us" />
       <AboutUsPage />
     </>
   );
