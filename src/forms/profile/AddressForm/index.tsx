@@ -3,7 +3,7 @@
 import AddressTypeSelection from "./AddressTypeSelection";
 import { Address } from "@/types";
 import { SubmitHandler, useForm } from "react-hook-form";
-import SubmitButton from "../components/ProfileSubmitButton";
+import ProfileSubmitButton from "../components/ProfileSubmitButton";
 import ProfileInputField from "../components/ProfileInputField";
 
 interface AddressFormProps {
@@ -107,11 +107,17 @@ const AddressForm = ({
           />
         </div>
 
-        <AddressTypeSelection register={register} fieldError={errors.address_type} />
+        <AddressTypeSelection
+          register={register}
+          fieldError={errors.address_type}
+        />
       </div>
 
       {/* Submit Button */}
-      <SubmitButton label="Save Address Details" isSubmitting={isSubmitting} />
+      <ProfileSubmitButton
+        label="Save Address Details"
+        isSubmitting={isSubmitting}
+      />
     </form>
   );
 };
