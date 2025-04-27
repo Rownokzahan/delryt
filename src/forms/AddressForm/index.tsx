@@ -1,11 +1,11 @@
 "use client";
 
 import Button from "@/components/ui/Button";
-import AddressInputField from "./AddressInputField";
 import AddressTypeSelection from "./AddressTypeSelection";
 import { Address } from "@/types";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { CgSpinner } from "react-icons/cg";
+import InputField from "../components/InputField";
 
 interface AddressFormProps {
   defaultValues?: Partial<Address>;
@@ -31,7 +31,7 @@ const AddressForm = ({
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="p-3 sm:px-8 sm:py-4 bg-gray-100 max-h-[70vh] overflow-y-auto space-y-3">
         <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
-          <AddressInputField
+          <InputField
             id="contact_person_name"
             label="Full Name"
             placeholder="Full Name"
@@ -39,7 +39,7 @@ const AddressForm = ({
             register={register}
           />
 
-          <AddressInputField
+          <InputField
             id="contact_person_number"
             label="Phone Number"
             placeholder="Phone Number"
@@ -48,27 +48,27 @@ const AddressForm = ({
           />
         </div>
 
-        <AddressInputField
+        <InputField
           id="address"
           label="Delivery Address"
           placeholder="Delivery Address"
           isRequired={true}
           register={register}
         />
-        <AddressInputField
+        <InputField
           id="road"
           label="Street"
           placeholder="Street"
           register={register}
         />
         <div className="grid grid-cols-2 gap-4">
-          <AddressInputField
+          <InputField
             id="house"
             label="House"
             placeholder="House"
             register={register}
           />
-          <AddressInputField
+          <InputField
             id="floor"
             label="Floor"
             placeholder="Floor"

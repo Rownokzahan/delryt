@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-interface AddressInputFieldProps {
+interface InputFieldProps {
   id: string;
   label: string;
   placeholder: string;
@@ -9,13 +9,13 @@ interface AddressInputFieldProps {
   register: any;
 }
 
-const AddressInputField = ({
+const InputField = ({
   id,
   label,
   placeholder,
   isRequired = false,
   register,
-}: AddressInputFieldProps) => {
+}: InputFieldProps) => {
   return (
     <div className="space-y-3">
       <label htmlFor={id} className="text-xs text-uiBlack-light">
@@ -38,4 +38,4 @@ const AddressInputField = ({
   );
 };
 
-export default AddressInputField;
+export default InputField;
