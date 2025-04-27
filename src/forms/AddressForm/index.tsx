@@ -1,11 +1,10 @@
 "use client";
 
-import Button from "@/components/ui/Button";
 import AddressTypeSelection from "./AddressTypeSelection";
 import { Address } from "@/types";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { CgSpinner } from "react-icons/cg";
 import InputField from "../components/InputField";
+import SubmitButton from "../components/SubmitButton";
 
 interface AddressFormProps {
   defaultValues?: Partial<Address>;
@@ -80,17 +79,11 @@ const AddressForm = ({
       </div>
 
       {/* Submit Button */}
-      <div className="px-3 py-2 shadow-md">
-        {isSubmitting ? (
-          <Button type="button" className="w-full">
-            <CgSpinner className="animate-spin text-2xl" />
-          </Button>
-        ) : (
-          <Button disabled={!isValid} type="submit" className="w-full">
-            Save Address Details
-          </Button>
-        )}
-      </div>
+      <SubmitButton
+        label="Save Address Details"
+        isFormValid={isValid}
+        isSubmitting={isSubmitting}
+      />
     </form>
   );
 };
