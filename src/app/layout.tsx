@@ -13,6 +13,7 @@ import MenuSidebar from "@/components/MenuSidebar";
 import ProductCustomizationModal from "@/modals/ProductCustomizationModal";
 import UpdateAddressModal from "@/modals/UpdateAddressModal";
 import { Toaster } from "react-hot-toast";
+import ChangePasswordModal from "@/modals/ChangePasswordModal";
 
 export const metadata = {
   title: "Delryt",
@@ -40,6 +41,7 @@ export default function RootLayout({
           <ProductCustomizationModal />
           <AddAddressModal />
           <UpdateAddressModal />
+          <ChangePasswordModal />
 
           {/* Menu Sidebar */}
           <MenuSidebar />

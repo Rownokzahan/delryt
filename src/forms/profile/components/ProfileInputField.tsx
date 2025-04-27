@@ -9,6 +9,7 @@ interface ProfileInputFieldProps {
   isOptional?: boolean;
   registerProps: object;
   fieldError: FieldError | undefined;
+  isPasswordField?: boolean;
 }
 
 const ProfileInputField = ({
@@ -18,6 +19,7 @@ const ProfileInputField = ({
   isOptional = false,
   registerProps,
   fieldError,
+  isPasswordField = false,
 }: ProfileInputFieldProps) => {
   return (
     <div className="space-y-3">
@@ -35,7 +37,8 @@ const ProfileInputField = ({
             "w-full p-2 rounded-sm border outline-0",
             "focus:border-primary",
             "font-medium text-uiBlack text-sm",
-            "placeholder-uiBlack-light/50 placeholder:font-normal"
+            "placeholder-uiBlack-light/50 placeholder:font-normal",
+            isPasswordField && "pe-9"
           )}
         />
 

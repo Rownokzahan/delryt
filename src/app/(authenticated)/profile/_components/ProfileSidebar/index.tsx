@@ -11,6 +11,9 @@ import { useRouter } from "next/navigation";
 
 const ProfileSidebar = () => {
   const { openModal: openEditProfileModal } = useModalById("editProfileModal");
+  const { openModal: openChangePasswordModal } = useModalById(
+    "changePasswordModal"
+  );
 
   const [logout] = useLogoutMutation();
   const router = useRouter();
@@ -35,7 +38,7 @@ const ProfileSidebar = () => {
       />
 
       <ProfileMenuItem
-        onClick={() => {}}
+        onClick={openChangePasswordModal}
         Icon={TbLockPassword}
         label={"Change Password"}
       />
