@@ -7,7 +7,6 @@ interface AddressInputFieldProps {
   isRequired?: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: any;
-  defaultValue?: string;
 }
 
 const AddressInputField = ({
@@ -16,7 +15,6 @@ const AddressInputField = ({
   placeholder,
   isRequired = false,
   register,
-  defaultValue,
 }: AddressInputFieldProps) => {
   return (
     <div className="space-y-3">
@@ -28,7 +26,6 @@ const AddressInputField = ({
         type="text"
         id={id}
         placeholder={placeholder}
-        defaultValue={defaultValue}
         {...register(id, { required: isRequired })}
         className={clsx(
           "w-full p-2 rounded-sm border outline-0",
