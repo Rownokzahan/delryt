@@ -2,6 +2,8 @@ import { TiHome } from "react-icons/ti";
 import { GoBriefcase } from "react-icons/go";
 import { FiMapPin } from "react-icons/fi";
 import clsx from "clsx";
+import { FieldError } from "react-hook-form";
+import { BsExclamationCircle } from "react-icons/bs";
 
 const addressTypes = [
   { label: "Home", Icon: TiHome },
@@ -12,9 +14,13 @@ const addressTypes = [
 interface AddressTypeSelectionProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: any;
+  fieldError: FieldError | undefined;
 }
 
-const AddressTypeSelection = ({ register }: AddressTypeSelectionProps) => {
+const AddressTypeSelection = ({
+  register,
+  fieldError,
+}: AddressTypeSelectionProps) => {
   return (
     <div className="py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm">
       <p className="text-xs">Save As</p>
@@ -26,7 +32,7 @@ const AddressTypeSelection = ({ register }: AddressTypeSelectionProps) => {
               type="radio"
               value={label}
               {...register("address_type", {
-                required: true,
+                required: "Address type is required",
               })}
               className="hidden"
             />
@@ -44,6 +50,13 @@ const AddressTypeSelection = ({ register }: AddressTypeSelectionProps) => {
           </label>
         ))}
       </div>
+
+      {fieldError && (
+        <p className="ms-1 text-xs text-primary/90 flex gap-1 items-center">
+          <BsExclamationCircle className="text-[10px]" />
+          <span>{fieldError.message}</span>
+        </p>
+      )}
     </div>
   );
 };

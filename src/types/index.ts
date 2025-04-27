@@ -9,6 +9,8 @@ export interface User {
   image: string;
 }
 
+export type UpdateUser = Pick<User, "f_name" | "l_name" | "email" | "phone">;
+
 export interface Branch {
   id: Id;
   cover_image: string;

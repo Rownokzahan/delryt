@@ -6,12 +6,12 @@ import { FaEdit } from "react-icons/fa";
 import { FaCircleUser } from "react-icons/fa6";
 
 const ProfileHeaderMobile = () => {
-  const { openModalWithData } = useModalById("editProfileModal");
+  const { openModal } = useModalById("editProfileModal");
   const { user } = useUser();
   const { f_name, l_name, phone } = user || {};
 
   const handleProfileEdit = () => {
-    openModalWithData({ user });
+    openModal();
   };
 
   return (

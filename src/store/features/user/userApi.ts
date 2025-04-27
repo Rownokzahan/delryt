@@ -1,4 +1,4 @@
-import { User } from "@/types";
+import { UpdateUser, User } from "@/types";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { initializeCurrentUser } from "./userSlice";
 import authorizationBaseQuery from "@/store/utils/authorizationBaseQuery";
@@ -35,7 +35,16 @@ export const userApi = createApi({
         }
       },
     }),
+
+    updateUser: builder.mutation<{ message: string }, UpdateUser>({
+      query: (updatedUser: UpdateUser) => ({
+        url: "customer/update-profile",
+        method: "PUT",
+        body: updatedUser,
+      }),
+      invalidatesTags: ["User"],
+    }),
   }),
 });
 
-export const { useGetUserQuery } = userApi;
+export const { useGetUserQuery, useUpdateUserMutation } = userApi;

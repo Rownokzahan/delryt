@@ -1,6 +1,6 @@
 "use client";
 
-import AddressForm from "@/forms/AddressForm";
+import AddressForm from "@/forms/profile/AddressForm";
 import Modal from "../Modal";
 import useModalById from "@/hooks/useModalById";
 import { Address } from "@/types";

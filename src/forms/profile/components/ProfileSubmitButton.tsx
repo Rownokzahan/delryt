@@ -1,17 +1,15 @@
 import Button from "@/components/ui/Button";
 import { CgSpinner } from "react-icons/cg";
 
-interface SubmitButtonProps {
+interface ProfileSubmitButtonProps {
   label: string;
   isSubmitting: boolean;
-  isFormValid: boolean;
 }
 
-const SubmitButton = ({
+const ProfileSubmitButton = ({
   label,
   isSubmitting,
-  isFormValid,
-}: SubmitButtonProps) => {
+}: ProfileSubmitButtonProps) => {
   return (
     <div className="px-3 py-2 shadow-md">
       {isSubmitting ? (
@@ -19,7 +17,7 @@ const SubmitButton = ({
           <CgSpinner className="animate-spin text-2xl" />
         </Button>
       ) : (
-        <Button disabled={!isFormValid} type="submit" className="w-full">
+        <Button type="submit" className="w-full">
           {label}
         </Button>
       )}
@@ -27,4 +25,4 @@ const SubmitButton = ({
   );
 };
 
-export default SubmitButton;
+export default ProfileSubmitButton;
