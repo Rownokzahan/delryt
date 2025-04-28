@@ -1,22 +1,31 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface DeliveryTimeState {
-  value: string;
+  date: string; // store date as string (ISO format)
+  time: string;
+  text: string;
 }
 
 const initialState: DeliveryTimeState = {
-  value: "Now",
+  text: "Now",
+  date: new Date().toISOString(),
+  time: "now",
 };
 
 const deliveryTimeSlice = createSlice({
   name: "deliveryTime",
   initialState,
   reducers: {
-    setDeliveryTime: (state, { payload }) => {
-      state.value = payload;
+    setDeliveryTime: (state, { payload }: PayloadAction<DeliveryTimeState>) => {
+      state.date = payload.date;
+      state.time = payload.time;
+      state.text = payload.text;
     },
+
     resetDeliveryTime: (state) => {
-      state.value = "Now";
+      state.date = initialState.date; // reset the date string
+      state.time = initialState.time;
+      state.text = initialState.text;
     },
   },
 });

@@ -7,7 +7,7 @@ import { MdOutlineDeliveryDining } from "react-icons/md";
 
 const SelectDeliverySlotSection = () => {
   const { deliveryTime } = useDeliveryTime();
-  const { openModal } = useModalById("deliverySlotModal");
+  const { openModal } = useModalById("deliveryTimeSelectionModal");
 
   return (
     <div className="border-t border-primary/5 py-3">
@@ -24,7 +24,7 @@ const SelectDeliverySlotSection = () => {
 
           {/* Selected delivery time display */}
           <div className="h-full ps-3 pe-2 rounded-e-md flex items-center gap-2 bg-white">
-            <span className="text-xs text-nowrap">{deliveryTime.value}</span>
+            <span className="text-xs text-nowrap">{deliveryTime.text}</span>
             <IoIosArrowDown className="text-primary" />
           </div>
         </button>

@@ -4,7 +4,6 @@ import "../styles/globals.css";
 import clsx from "clsx";
 import { rubik } from "@/fonts/fonts";
 import StoreProvider from "@/providers/StoreProvider";
-import DeliverySlotModal from "@/modals/DeliverySlotModal";
 import SearchModal from "@/modals/SearchModal";
 import AuthModal from "@/modals/AuthModal";
 import ShareModal from "@/modals/ShareModal";
@@ -15,6 +14,7 @@ import UpdateAddressModal from "@/modals/UpdateAddressModal";
 import { Toaster } from "react-hot-toast";
 import ChangePasswordModal from "@/modals/ChangePasswordModal";
 import LogoutConfirmModal from "@/modals/LogoutConfirmModal/LogoutConfirmModal";
+import DeliveryTimeSelectionModal from "@/modals/DeliveryTimeSelectionModal";
 
 export const metadata = {
   title: "Delryt",
@@ -39,7 +39,7 @@ export default function RootLayout({
           <LogoutConfirmModal />
           <SearchModal />
           <ShareModal />
-          <DeliverySlotModal />
+          <DeliveryTimeSelectionModal />
           <ProductCustomizationModal />
           <AddAddressModal />
           <UpdateAddressModal />

@@ -6,7 +6,7 @@ import useModalById from "@/hooks/useModalById";
 import useDeliveryTime from "@/hooks/useDeliveryTime";
 
 const ChangeDeliveryTime = () => {
-  const { openModal } = useModalById("deliverySlotModal");
+  const { openModal } = useModalById("deliveryTimeSelectionModal");
   const { deliveryTime } = useDeliveryTime();
 
   return (
@@ -22,7 +22,7 @@ const ChangeDeliveryTime = () => {
       </div>
 
       <div className="flex-1 ps-2 border-s flex items-center justify-between gap-2">
-        <p className="font-medium text-sm sm:text-base">{deliveryTime.value}</p>
+        <p className="font-medium text-sm sm:text-base">{deliveryTime.text}</p>
         <IoIosArrowDropdown className="shrink-0 text-xl text-primary" />
       </div>
     </button>

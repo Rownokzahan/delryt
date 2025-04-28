@@ -1,5 +1,3 @@
-import { TimeSlots } from "../types";
-
 const START_HOUR: number = 10;
 const END_HOUR: number = 22;
 const DURATION_MINUTES: number = 60;
@@ -13,11 +11,11 @@ const formatTime = (hour: number, minute: number = 0): string => {
 };
 
 // Function get time slots accroding to starting hour
-const getTimeSlotsByStartHour = (startHour: number = START_HOUR): TimeSlots => {
+const getTimeSlotsByStartHour = (startHour: number = START_HOUR) => {
   const endHour: number = END_HOUR;
   const durationInMinutes: number = DURATION_MINUTES;
 
-  const slots: TimeSlots = [];
+  const slots: string[] = [];
 
   if (startHour > endHour) {
     return slots; // empty array

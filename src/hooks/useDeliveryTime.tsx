@@ -9,8 +9,12 @@ const useDeliveryTime = () => {
   const dispatch = useDispatch();
   const deliveryTime = useSelector((state: RootState) => state.deliveryTime);
 
-  const updateDeliveryTime = (time: string) => {
-    dispatch(setDeliveryTime(time));
+  const updateDeliveryTime = (deliveryTime: {
+    time: string;
+    text: string;
+    date: string;
+  }) => {
+    dispatch(setDeliveryTime(deliveryTime));
   };
 
   const resetDeliveryTimeToNow = () => {
