@@ -6,22 +6,14 @@ import { BiLogOut } from "react-icons/bi";
 import { TbLockPassword, TbUser } from "react-icons/tb";
 import ProfileLinkList from "./ProfileLinkList/ProfileLinkList";
 import useModalById from "@/hooks/useModalById";
-import { useLogoutMutation } from "@/store/features/auth/authApi";
-import { useRouter } from "next/navigation";
 
 const ProfileSidebar = () => {
   const { openModal: openEditProfileModal } = useModalById("editProfileModal");
   const { openModal: openChangePasswordModal } = useModalById(
     "changePasswordModal"
   );
-
-  const [logout] = useLogoutMutation();
-  const router = useRouter();
-
-  const handleLogout = () => {
-    logout();
-    router.push("/");
-  };
+  const { openModal: openLogoutConfirmModal } =
+    useModalById("logoutConfirmModal");
 
   return (
     <aside className="w-[32%] max-w-96 border-e">
@@ -44,7 +36,7 @@ const ProfileSidebar = () => {
       />
 
       <ProfileMenuItem
-        onClick={handleLogout}
+        onClick={openLogoutConfirmModal}
         Icon={BiLogOut}
         label={"Logout"}
       />

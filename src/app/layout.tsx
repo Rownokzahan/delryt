@@ -14,6 +14,7 @@ import ProductCustomizationModal from "@/modals/ProductCustomizationModal";
 import UpdateAddressModal from "@/modals/UpdateAddressModal";
 import { Toaster } from "react-hot-toast";
 import ChangePasswordModal from "@/modals/ChangePasswordModal";
+import LogoutConfirmModal from "@/modals/LogoutConfirmModal/LogoutConfirmModal";
 
 export const metadata = {
   title: "Delryt",
@@ -35,6 +36,7 @@ export default function RootLayout({
 
           {/* Modals */}
           <AuthModal />
+          <LogoutConfirmModal />
           <SearchModal />
           <ShareModal />
           <DeliverySlotModal />

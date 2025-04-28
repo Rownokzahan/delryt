@@ -1,8 +1,7 @@
 "use client";
 
-import { useLogoutMutation } from "@/store/features/auth/authApi";
+import useModalById from "@/hooks/useModalById";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { TbChevronRight } from "react-icons/tb";
 
 const menuItems = [
@@ -20,13 +19,7 @@ const menuItems = [
 ];
 
 const ProfileMenuList = () => {
-  const [logout] = useLogoutMutation();
-  const router = useRouter();
-
-  const handleLogout = () => {
-    logout();
-    router.push("/");
-  };
+  const { openModal: openLogoutConfirmModal } = useModalById("logoutConfirmModal");
 
   return (
     <div className="mt-3 space-y-3 text-uiBlack-light">
@@ -56,7 +49,7 @@ const ProfileMenuList = () => {
         ))}
 
         <button
-          onClick={handleLogout}
+          onClick={openLogoutConfirmModal}
           className="w-full py-3 rounded-md bg-uiWhite flex justify-between gap-2"
         >
           <p>Logout</p>
