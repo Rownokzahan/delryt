@@ -1,0 +1,17 @@
+import { GiWallet } from "react-icons/gi";
+
+const ChoosePayment = () => {
+  return (
+    <div className="p-3 rounded-lg bg-uiWhite flex items-center gap-3 relative">
+      <div className="size-8 rounded-full bg-gray-400 grid place-items-center">
+        <GiWallet className="text-white" />
+      </div>
+
+      <div className="flex-1">
+        <h3>Choose Payments</h3>
+      </div>
+    </div>
+  );
+};
+
+export default ChoosePayment;

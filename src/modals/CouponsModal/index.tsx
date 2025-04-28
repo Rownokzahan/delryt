@@ -1,10 +1,10 @@
 "use client";
 
-import CouponCard from "@/cards/CouponCard";
 import Modal from "../Modal";
 import useCheckoutStates from "@/hooks/useCheckoutStates";
 import useModalById from "@/hooks/useModalById";
 import CouponCodeModal from "./CouponCodeModal";
+import CouponCard from "./CouponCard";
 
 const CouponsModal = () => {
   const { openModal: openCouponCodeModal } = useModalById("couponCodeModal");
