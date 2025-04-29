@@ -1,8 +1,6 @@
-import { MdEdit, MdDelete } from "react-icons/md";
 import { Address } from "@/types";
 import { useDeleteAddressMutation } from "@/store/features/address/adressApi";
 import toast from "react-hot-toast";
-import { TbInnerShadowTopRightFilled } from "react-icons/tb";
 import useModalById from "@/hooks/useModalById";
 
 interface AddressCardProps {
@@ -36,43 +34,35 @@ const AddressCard = ({ addressItem }: AddressCardProps) => {
   };
 
   return (
-    <div className="rounded-lg shadow-sm">
-      <div className="px-4 pt-3 pb-2 rounded-t-lg bg-primary/5 flex items-center justify-between">
-        <h4>
-          <span className="font-medium">{address_type}</span>{" "}
-          {is_default === 1 && <span>(Default)</span>}
-        </h4>
+    <div className="p-4 border shadow-sm">
+      <h4>
+        <span className="font-medium">{address_type}</span>{" "}
+        {is_default === 1 && <span>(Default)</span>}
+      </h4>
 
-        <div className="flex justify-end gap-4  text-sm font-medium underline">
-          <div className="text-red-600 text-lg">
-            {isDeleting ? (
-              <TbInnerShadowTopRightFilled className="animate-spin flex" />
-            ) : (
-              <button onClick={handleDelete} className="flex">
-                <MdDelete />
-              </button>
-            )}
-          </div>
-
-          <button onClick={handleUpdate} className="flex items-center gap-1">
-            <MdEdit className="text-base" />
-          </button>
-        </div>
+      <div className="mt-2 text-sm text-uiBlack-light space-y-px">
+        <p className="flex items-center">
+          <span className="w-18">Name</span>
+          <span>{contact_person_name}</span>
+        </p>
+        <p className="flex items-center">
+          <span className="w-18">Phone</span>
+          <span>{contact_person_number}</span>
+        </p>
+        <p className="flex items-center">
+          <span className="w-18">Address</span>
+          <span>{address}</span>
+        </p>
       </div>
 
-      <div className="px-4 py-3 text-sm space-y-1">
-        <div className="flex items-center">
-          <p className="w-18">Name</p>
-          <p className="text-uiBlack-light">{contact_person_name}</p>
-        </div>
-        <div className="flex items-center">
-          <p className="w-18">Phone</p>
-          <p className="text-uiBlack-light">{contact_person_number}</p>
-        </div>
-        <div className="flex items-center">
-          <p className="w-18">Address</p>
-          <p className="text-uiBlack-light">{address}</p>
-        </div>
+      <div className="mt-3 font-medium text-sm text-primary flex gap-4">
+        <button onClick={handleUpdate}>Edit</button>
+
+        {isDeleting ? (
+          <p>Deleting..</p>
+        ) : (
+          <button onClick={handleDelete}>Delete</button>
+        )}
       </div>
     </div>
   );
