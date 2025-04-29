@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
 import getTimeSlotsByStartHour from "./getTimeSlotsByStartHour";
 import TimeCard from "./TimeCard";
 import { useSelectedTimeDate } from "../../SelectedTimeDateProvider";
 
 const TimeSelection = () => {
-  const { selectedDate, setSelectedTime } = useSelectedTimeDate();
+  const { selectedDate } = useSelectedTimeDate();
 
   let timeSlots = getTimeSlotsByStartHour();
 
@@ -17,15 +16,6 @@ const TimeSelection = () => {
     timeSlots = getTimeSlotsByStartHour(currentHour + 1);
     timeSlots.unshift("now");
   }
-
-  // Automatically select the first time slot when the time slots list updates
-  useEffect(() => {
-    if (timeSlots.length > 0) {
-      setSelectedTime(timeSlots[0]);
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedDate]);
 
   return (
     <div className="px-4 pb-4">

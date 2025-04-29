@@ -26,11 +26,8 @@ const SelectedTimeDateProvider = ({
 
   useEffect(() => {
     setSelectedDate(new Date(deliveryTime.date));
-  }, [deliveryTime.date]);
-
-  useEffect(() => {
     setSelectedTime(deliveryTime.time);
-  }, [deliveryTime.time]);
+  }, [deliveryTime]);
 
   return (
     <SelectedTimeDateContext.Provider
