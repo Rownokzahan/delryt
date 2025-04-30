@@ -2,32 +2,32 @@
 
 import AddAddressButton from "@/components/ui/AddAddressButton";
 import { useGetAddressListQuery } from "@/store/features/address/adressApi";
-import { useCheckoutProvider } from "../../CheckoutProvider";
 import { useEffect } from "react";
 import useModalById from "@/hooks/useModalById";
+import useCheckoutStates from "@/hooks/useCheckoutStates";
 
 const AddressInfo = () => {
   const { data: addressList = [], isLoading } = useGetAddressListQuery();
-  const { selectedAddress, setSelectedAddress } = useCheckoutProvider();
+  const { checkoutAddress, updateCheckoutAddress } = useCheckoutStates();
   const { openModal: openChooseAddressModal } =
     useModalById("chooseAddressModal");
 
   useEffect(() => {
-    if (!isLoading && !selectedAddress && addressList.length > 0) {
-      setSelectedAddress(addressList[0]);
+    if (!isLoading && !checkoutAddress && addressList.length > 0) {
+      updateCheckoutAddress(addressList[0]);
     }
-  }, [isLoading, selectedAddress, addressList, setSelectedAddress]);
+  }, [isLoading, checkoutAddress, addressList, updateCheckoutAddress]);
 
   if (isLoading) {
     return <div className="h-16 bg-gray-100" />;
   }
 
-  if (!selectedAddress && addressList.length === 0) {
+  if (!checkoutAddress && addressList.length === 0) {
     return <AddAddressButton />;
   }
 
   const { address_type, contact_person_name, contact_person_number, address } =
-    selectedAddress || {};
+    checkoutAddress || {};
 
   return (
     <div className="h-16 pt-1 flex justify-between items-start">

@@ -1,14 +1,15 @@
 import {
   applyCouponById,
   removeCoupon,
+  setCheckoutAddress,
   setDeliveryTime,
 } from "@/store/features/checkout/checkoutSlice";
 import { RootState } from "@/store/store";
-import { DeliveryTimeState } from "@/types";
+import { Address, DeliveryTimeState } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 
 const useCheckoutStates = () => {
-  const { deliveryTime, coupon } = useSelector(
+  const { deliveryTime, checkoutAddress, coupon } = useSelector(
     (state: RootState) => state.checkout
   );
   const dispatch = useDispatch();
@@ -17,9 +18,15 @@ const useCheckoutStates = () => {
     dispatch(setDeliveryTime(deliveryTime));
   };
 
+  const updateCheckoutAddress = (address: Address) => {
+    dispatch(setCheckoutAddress(address));
+  };
+
   return {
     deliveryTime,
     updateDeliveryTime,
+    checkoutAddress,
+    updateCheckoutAddress,
     coupon,
     applyCouponById: (couponId: string) => dispatch(applyCouponById(couponId)),
     removeCoupon: () => dispatch(removeCoupon()),

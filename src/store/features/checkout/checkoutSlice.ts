@@ -16,8 +16,8 @@ interface CouponState {
 
 interface CheckoutState {
   deliveryTime: DeliveryTimeState;
+  checkoutAddress: Address | null;
   coupon: CouponState;
-  address: Address | null;
 }
 
 const initialDeliveryTime: DeliveryTimeState = {
@@ -28,6 +28,7 @@ const initialDeliveryTime: DeliveryTimeState = {
 
 const initialState: CheckoutState = {
   deliveryTime: initialDeliveryTime,
+  checkoutAddress: null,
   coupon: {
     appliedCoupon: null,
     couponList: [
@@ -48,7 +49,6 @@ const initialState: CheckoutState = {
       },
     ],
   },
-  address: null,
 };
 
 const checkoutSlice = createSlice({
@@ -57,6 +57,9 @@ const checkoutSlice = createSlice({
   reducers: {
     setDeliveryTime: (state, { payload }: PayloadAction<DeliveryTimeState>) => {
       state.deliveryTime = payload;
+    },
+    setCheckoutAddress: (state, { payload }: PayloadAction<Address>) => {
+      state.checkoutAddress = payload;
     },
 
     applyCouponById: (state, { payload }: PayloadAction<string>) => {
@@ -71,7 +74,11 @@ const checkoutSlice = createSlice({
   },
 });
 
-export const { setDeliveryTime, applyCouponById, removeCoupon } =
-  checkoutSlice.actions;
+export const {
+  setDeliveryTime,
+  setCheckoutAddress,
+  applyCouponById,
+  removeCoupon,
+} = checkoutSlice.actions;
 
 export default checkoutSlice.reducer;

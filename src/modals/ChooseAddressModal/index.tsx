@@ -1,28 +1,31 @@
 "use client";
 
 import { useGetAddressListQuery } from "@/store/features/address/adressApi";
-import { useCheckoutProvider } from "@/app/(authenticated)/checkout/CheckoutProvider";
 import Modal from "../Modal";
 import AddressOption from "./AddressOption/AddressOption";
 import { useEffect, useState } from "react";
 import Button from "@/components/ui/Button";
 import useModalById from "@/hooks/useModalById";
+import useCheckoutStates from "@/hooks/useCheckoutStates";
 
 const ChooseAddressModal = () => {
   const { data: addressList = [] } = useGetAddressListQuery();
-  const { selectedAddress, setSelectedAddress } = useCheckoutProvider();
+  const { checkoutAddress, updateCheckoutAddress } = useCheckoutStates();
   const { openModal: openAddAddressModal } = useModalById("addAddressModal");
   const { closeModal } = useModalById("chooseAddressModal");
 
-  const [tempSelectedAddress, setTempSelectedAddress] =
-    useState(selectedAddress);
+  const [selectedAddress, setSelectedAddress] = useState(checkoutAddress);
 
   useEffect(() => {
-    setTempSelectedAddress(selectedAddress);
-  }, [selectedAddress]);
+    setSelectedAddress(checkoutAddress);
+  }, [checkoutAddress]);
 
   const handleSelectAddress = () => {
-    setSelectedAddress(tempSelectedAddress);
+    if (!selectedAddress) {
+      return;
+    }
+
+    updateCheckoutAddress(selectedAddress);
     closeModal();
   };
 
@@ -43,8 +46,8 @@ const ChooseAddressModal = () => {
           <AddressOption
             key={address.id}
             addressItem={address}
-            isSelected={tempSelectedAddress?.id === address.id}
-            onSelect={() => setTempSelectedAddress(address)}
+            isSelected={selectedAddress?.id === address.id}
+            onSelect={() => setSelectedAddress(address)}
           />
         ))}
       </div>
