@@ -4,10 +4,13 @@ import AddAddressButton from "@/components/ui/AddAddressButton";
 import { useGetAddressListQuery } from "@/store/features/address/adressApi";
 import { useCheckoutProvider } from "../../CheckoutProvider";
 import { useEffect } from "react";
+import useModalById from "@/hooks/useModalById";
 
 const AddressInfo = () => {
   const { data: addressList = [], isLoading } = useGetAddressListQuery();
   const { selectedAddress, setSelectedAddress } = useCheckoutProvider();
+  const { openModal: openChooseAddressModal } =
+    useModalById("chooseAddressModal");
 
   useEffect(() => {
     if (!isLoading && !selectedAddress && addressList.length > 0) {
@@ -39,7 +42,12 @@ const AddressInfo = () => {
         </div>
       </div>
 
-      <button className="font-medium text-xs text-primary">Change</button>
+      <button
+        onClick={openChooseAddressModal}
+        className="font-medium text-xs text-primary"
+      >
+        Change
+      </button>
     </div>
   );
 };
