@@ -9,7 +9,7 @@ const AddAddressButton = () => {
   return (
     <button
       onClick={openModal}
-      className="w-full h-20 lg:h-28 p-4 border-2 border-dashed border-primary rounded-lg bg-primary/5 grid place-items-center"
+      className="w-full h-16 p-4 border-2 border-dashed border-primary rounded-lg bg-primary/5 grid place-items-center"
     >
       <p className="flex items-center gap-2">
         <BsPlusCircleFill className="text-primary text-xl" />{" "}

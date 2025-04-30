@@ -3,9 +3,9 @@ import Link from "next/link";
 import { FaCircleUser } from "react-icons/fa6";
 import { PiPhoneCall } from "react-icons/pi";
 
-const NavbarCheckoutDesktop = () => {
+const CheckoutNavbarDesktop = () => {
   return (
-    <header>
+    <div className="hidden sm:block">
       <nav className="border-b border-primary/20 shadow-xs">
         <div className="ui-container py-3 flex justify-between items-center">
           <div className="flex items-center justify-items-end gap-6">
@@ -32,7 +32,9 @@ const NavbarCheckoutDesktop = () => {
                 aria-label="Sign In"
               >
                 <FaCircleUser className="text-4xl text-gray-300" />
-                <span className="w-20 truncate font-semibold text-primary">Rownok Zahan</span>
+                <span className="w-20 truncate font-semibold text-primary">
+                  Rownok Zahan
+                </span>
               </Link>
             </div>
           </div>
@@ -48,8 +50,8 @@ const NavbarCheckoutDesktop = () => {
           <Link href={"/checkout"}>Checkout</Link>
         </div>
       </div>
-    </header>
+    </div>
   );
 };
 
-export default NavbarCheckoutDesktop;
+export default CheckoutNavbarDesktop;

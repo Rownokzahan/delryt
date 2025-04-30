@@ -1,23 +1,19 @@
-import CheckoutPageDesktop from "./CheckoutPageDesktop";
-import CheckoutPageMobile from "./CheckoutPageMobile";
+"use client";
+
 import CustomTipModal from "@/modals/CustomTipModal";
 import CouponsModal from "@/modals/CouponsModal";
+import CheckoutProvider from "./CheckoutProvider";
+import CheckoutContent from "./components/CheckoutContent";
 
 const CheckoutPage = () => {
   return (
-    <>
-      <div className="sm:hidden">
-        <CheckoutPageMobile />
-      </div>
-
-      <div className="hidden sm:block">
-        <CheckoutPageDesktop />
-      </div>
+    <CheckoutProvider>
+      <CheckoutContent />
 
       {/* Modals */}
       <CustomTipModal />
       <CouponsModal />
-    </>
+    </CheckoutProvider>
   );
 };
 

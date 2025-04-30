@@ -11,7 +11,7 @@ const FixedBottomBar = () => {
     <div
       className={clsx(
         "w-full ui-container py-3 rounded-t-xl",
-        "bg-uiWhite bg-primary/20 flex items-center justify-between",
+        "bg-primary/20 flex items-center justify-between",
         "fixed bottom-0"
       )}
     >
