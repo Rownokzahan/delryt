@@ -13,18 +13,8 @@ interface CouponState {
   couponList: Coupon[];
 }
 
-interface DeliveryTipState {
-  amount: null | number;
-  suggestedOptions: {
-    text: string;
-    amount: number;
-    is_most_tipped: boolean;
-  }[];
-}
-
 interface CheckoutState {
   coupon: CouponState;
-  deliveryTip: DeliveryTipState;
 }
 
 const initialState: CheckoutState = {
@@ -48,15 +38,6 @@ const initialState: CheckoutState = {
       },
     ],
   },
-
-  deliveryTip: {
-    amount: null,
-    suggestedOptions: [
-      { text: "₹11", amount: 11, is_most_tipped: false },
-      { text: "₹21", amount: 21, is_most_tipped: true },
-      { text: "₹51", amount: 51, is_most_tipped: false },
-    ],
-  },
 };
 
 const checkoutSlice = createSlice({
@@ -72,21 +53,9 @@ const checkoutSlice = createSlice({
     removeCoupon: (state) => {
       state.coupon.appliedCoupon = null;
     },
-
-    updateDeliveryTipAmount: (state, { payload }: PayloadAction<number>) => {
-      state.deliveryTip.amount = payload;
-    },
-    resetDeliveryTipAmount: (state) => {
-      state.deliveryTip.amount = null;
-    },
   },
 });
 
-export const {
-  applyCouponById,
-  removeCoupon,
-  updateDeliveryTipAmount,
-  resetDeliveryTipAmount,
-} = checkoutSlice.actions;
+export const { applyCouponById, removeCoupon } = checkoutSlice.actions;
 
 export default checkoutSlice.reducer;
