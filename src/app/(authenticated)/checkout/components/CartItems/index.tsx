@@ -1,10 +1,13 @@
+import { useCart } from "@/hooks/useCart";
 import CartItemCard from "./CartItemCard";
 
 const CartItems = () => {
+  const { cart } = useCart();
+
   return (
-    <div className="px-3 pb-3 rounded-lg bg-uiWhite divide-y space-y-3">
-      {[...Array(3)].map((_, index) => (
-        <CartItemCard key={index} />
+    <div className="px-3 py-1 rounded-lg bg-uiWhite divide-y">
+      {cart.map((cartItem, index) => (
+        <CartItemCard key={index} cartItem={cartItem} index={index} />
       ))}
     </div>
   );
