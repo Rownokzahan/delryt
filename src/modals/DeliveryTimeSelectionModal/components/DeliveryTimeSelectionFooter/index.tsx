@@ -1,12 +1,12 @@
 "use client";
 
-import useDeliveryTime from "@/hooks/useDeliveryTime";
 import { useSelectedTimeDate } from "../../SelectedTimeDateProvider";
 import useModalById from "@/hooks/useModalById";
+import useCheckoutStates from "@/hooks/useCheckoutStates";
 
 const DeliveryTimeSelectionFooter = () => {
   const { selectedDate, selectedTime } = useSelectedTimeDate();
-  const { updateDeliveryTime } = useDeliveryTime();
+  const { updateDeliveryTime } = useCheckoutStates();
   const { closeModal } = useModalById("deliveryTimeSelectionModal");
 
   const getFormattedDeliveryText = () => {

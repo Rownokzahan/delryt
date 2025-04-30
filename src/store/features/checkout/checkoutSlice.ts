@@ -1,3 +1,4 @@
+import { Address, DeliveryTimeState } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface Coupon {
@@ -14,10 +15,19 @@ interface CouponState {
 }
 
 interface CheckoutState {
+  deliveryTime: DeliveryTimeState;
   coupon: CouponState;
+  address: Address | null;
 }
 
+const initialDeliveryTime: DeliveryTimeState = {
+  text: "Now",
+  date: new Date().toISOString(),
+  time: "now",
+};
+
 const initialState: CheckoutState = {
+  deliveryTime: initialDeliveryTime,
   coupon: {
     appliedCoupon: null,
     couponList: [
@@ -38,12 +48,17 @@ const initialState: CheckoutState = {
       },
     ],
   },
+  address: null,
 };
 
 const checkoutSlice = createSlice({
   name: "checkout",
   initialState,
   reducers: {
+    setDeliveryTime: (state, { payload }: PayloadAction<DeliveryTimeState>) => {
+      state.deliveryTime = payload;
+    },
+
     applyCouponById: (state, { payload }: PayloadAction<string>) => {
       const selectedCoupon = state.coupon.couponList.find(
         (coupon) => coupon.id === payload
@@ -56,6 +71,7 @@ const checkoutSlice = createSlice({
   },
 });
 
-export const { applyCouponById, removeCoupon } = checkoutSlice.actions;
+export const { setDeliveryTime, applyCouponById, removeCoupon } =
+  checkoutSlice.actions;
 
 export default checkoutSlice.reducer;

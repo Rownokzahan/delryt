@@ -19,6 +19,13 @@ export interface Branch {
   address: string;
 }
 
+export interface DeliveryTimeState {
+  date: string; // store date as string (ISO format)
+  time: string;
+  text: string;
+}
+
+
 export interface Banner {
   id: Id;
   image: string;

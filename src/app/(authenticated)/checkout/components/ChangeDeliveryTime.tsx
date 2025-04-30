@@ -3,11 +3,11 @@
 import { MdDeliveryDining } from "react-icons/md";
 import { IoIosArrowDropdown } from "react-icons/io";
 import useModalById from "@/hooks/useModalById";
-import useDeliveryTime from "@/hooks/useDeliveryTime";
+import useCheckoutStates from "@/hooks/useCheckoutStates";
 
 const ChangeDeliveryTime = () => {
   const { openModal } = useModalById("deliveryTimeSelectionModal");
-  const { deliveryTime } = useDeliveryTime();
+  const { deliveryTime } = useCheckoutStates();
 
   return (
     <button
