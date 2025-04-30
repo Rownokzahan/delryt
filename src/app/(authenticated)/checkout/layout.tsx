@@ -8,7 +8,7 @@ const CheckoutLayout = ({ children }: CheckoutLayoutProps) => {
   return (
     <>
       <CheckoutNavbar />
-      <main className="bg-gray-200">{children}</main>
+      {children}
     </>
   );
 };
