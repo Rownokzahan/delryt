@@ -1,39 +1,19 @@
 "use client";
 
 import VegNonVegIcon from "@/components/ui/VegNonVegIcon";
-import { useCart } from "@/hooks/useCart";
 import { LocalCartItem } from "@/types";
 import { getImagePath } from "@/utils/imageHelper";
 import Image from "next/image";
-import { HiOutlineMinusSm, HiOutlinePlusSm } from "react-icons/hi";
+import QuantityControl from "./QuantityControl";
+import CustomizationInfo from "./CustomizationInfo";
 
 interface CartItemCardProps {
   cartItem: LocalCartItem;
-  index: number;
+  cartItemIndex: number;
 }
 
-const CartItemCard = ({ cartItem, index }: CartItemCardProps) => {
-  const { updateCartItemByIndex, removeFromCartByIndex } = useCart();
+const CartItemCard = ({ cartItem, cartItemIndex }: CartItemCardProps) => {
   const { quantity, price, product } = cartItem;
-
-  const increaseQuantity = () => {
-    updateCartItemByIndex(index, {
-      ...cartItem,
-      quantity: cartItem.quantity + 1,
-    });
-  };
-
-  const decreaseQuantity = () => {
-    if (cartItem.quantity <= 1) {
-      removeFromCartByIndex(index);
-      return;
-    }
-
-    updateCartItemByIndex(index, {
-      ...cartItem,
-      quantity: cartItem.quantity - 1,
-    });
-  };
 
   return (
     <div className="py-3 flex items-center gap-3">
@@ -42,7 +22,7 @@ const CartItemCard = ({ cartItem, index }: CartItemCardProps) => {
         height={64}
         src={getImagePath("product", product.image)}
         alt={product.name}
-        className="size-14 rounded-lg object-cover"
+        className="size-14 rounded-md object-cover"
       />
 
       <div className="flex-1 min-w-0 space-y-3">
@@ -54,26 +34,16 @@ const CartItemCard = ({ cartItem, index }: CartItemCardProps) => {
             />
             {product.name}
           </p>
-          <p className="text-end shrink-0">৳ {price}</p>
-        </div>
-        <div className="flex items-center justify-between">
-          <p className="text-primary text-sm">Edit</p>
 
-          <div className="h-7 rounded-sm bg-primary/10 font-medium flex items-center">
-            <button
-              onClick={decreaseQuantity}
-              className="flex-1 px-1 text-primary"
-            >
-              <HiOutlineMinusSm />
-            </button>
-            <p className="px-1 text-sm">{quantity}</p>
-            <button
-              onClick={increaseQuantity}
-              className="flex-1 px-1 text-primary"
-            >
-              <HiOutlinePlusSm />
-            </button>
-          </div>
+          <p className="text-end shrink-0">৳ {price * quantity}</p>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <CustomizationInfo
+            cartItem={cartItem}
+            cartItemIndex={cartItemIndex}
+          />
+          <QuantityControl cartItem={cartItem} cartItemIndex={cartItemIndex} />
         </div>
       </div>
     </div>

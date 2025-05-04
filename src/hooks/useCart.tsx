@@ -1,4 +1,3 @@
-import { RootState } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { LocalCartItem } from "@/types";
 import {
@@ -8,9 +7,11 @@ import {
   updateCartItemByIndex as updateCartItemByIndexAction,
   clearCart as clearCartAction,
 } from "@/store/features/cart/cartSlice";
+import { selectCart, selectCartTotal } from "@/store/features/cart/cartSelectors";
 
 export const useCart = () => {
-  const cart = useSelector((state: RootState) => state.cart);
+  const cart = useSelector(selectCart);
+  const cartTotal = useSelector(selectCartTotal);
   const dispatch = useDispatch();
 
   const initializeCart = () => {
@@ -40,6 +41,7 @@ export const useCart = () => {
 
   return {
     cart,
+    cartTotal,
     initializeCart,
     addToCart,
     removeFromCartByIndex,

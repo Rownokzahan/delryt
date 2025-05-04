@@ -7,7 +7,7 @@ const CartItems = () => {
   return (
     <div className="px-3 py-1 rounded-lg bg-uiWhite divide-y">
       {cart.map((cartItem, index) => (
-        <CartItemCard key={index} cartItem={cartItem} index={index} />
+        <CartItemCard key={index} cartItem={cartItem} cartItemIndex={index} />
       ))}
     </div>
   );
