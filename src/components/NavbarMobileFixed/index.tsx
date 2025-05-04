@@ -7,11 +7,13 @@ import NavItem from "./NavItem";
 import useUser from "@/hooks/useUser";
 import useModalById from "@/hooks/useModalById";
 import useReturnToPath from "@/hooks/useReturnToPath";
+import { useCart } from "@/hooks/useCart";
 
 const NavbarMobileFixed = () => {
   const { user } = useUser();
   const { openModal: openAuthModal } = useModalById("authModal");
   const { setReturnToPath } = useReturnToPath();
+  const { cart } = useCart();
 
   const handleProfileClick = () => {
     setReturnToPath("/profile");
@@ -42,7 +44,14 @@ const NavbarMobileFixed = () => {
           icon={LuPartyPopper}
           label={"Party Order"}
         />
-        <NavItem href={"/checkout"} icon={FiShoppingCart} label={"Cart"} />
+
+        {/* Cart */}
+        <NavItem
+          href={"/checkout"}
+          icon={FiShoppingCart}
+          label={"Cart"}
+          count={cart.length}
+        />
       </nav>
     </div>
   );

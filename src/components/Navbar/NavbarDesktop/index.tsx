@@ -7,10 +7,12 @@ import { RiSearchLine } from "react-icons/ri";
 import useModalById from "@/hooks/useModalById";
 import LogoWithBranchLink from "../shared/LogoWithBranchLink";
 import ProfileOrSignInButton from "./ProfileOrSignInButton";
+import { useCart } from "@/hooks/useCart";
 
 const NavbarDesktop = () => {
   const { openModal: openSearchModal } = useModalById("searchModal");
   const { openModal: openSidebar } = useModalById("menuSidebar");
+  const { cart } = useCart();
 
   return (
     <div className="border-b border-primary/20 shadow-xs bg-uiWhite">
@@ -42,11 +44,17 @@ const NavbarDesktop = () => {
           {/* Cart Link */}
           <Link
             href={"/checkout"}
-            className="flex flex-col items-center"
+            className="flex flex-col items-center relative"
             aria-label="Cart"
           >
             <FiShoppingCart className="text-xl" />
             <span className="text-xs">Cart</span>
+
+            {cart.length > 0 && (
+              <span className="size-[15px] bg-primary rounded-full grid place-items-center absolute -top-1 -right-2 text-[10px] text-uiWhite">
+                {cart.length}
+              </span>
+            )}
           </Link>
 
           {/* Profile or Sign In Button */}

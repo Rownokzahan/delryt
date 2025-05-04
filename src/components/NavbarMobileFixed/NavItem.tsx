@@ -9,7 +9,7 @@ interface NavItemProps {
   href?: string;
   label: string;
   icon: IconType;
-  badge?: string | number;
+  count?: string | number;
   isButton?: boolean;
   onClick?: () => void;
 }
@@ -18,7 +18,7 @@ const NavItem = ({
   href,
   icon: Icon,
   label,
-  badge,
+  count,
   isButton = false,
   onClick,
 }: NavItemProps) => {
@@ -50,27 +50,28 @@ const NavItem = ({
         <Icon
           className={clsx("text-lg", pathname === href && "text-primary")}
         />
-        {badge !== undefined && badge !== null && (
+
+        {!!count && (
           <div
             className={clsx(
-              "size-4 bg-primary rounded-full shadow-sm",
-              "flex justify-center items-center",
-              "absolute -top-2 -right-3"
+              "size-[13px] bg-primary rounded-full shadow-sm",
+              "flex place-content-center",
+              "absolute -top-1 -right-2"
             )}
           >
-            <span className="text-uiWhite text-xs">{badge}</span>
+            <span className="text-uiWhite text-[10px]">{count}</span>
           </div>
         )}
       </div>
 
-      <span
+      <p
         className={clsx(
           "text-xs font-semibold",
           pathname === href && "text-black"
         )}
       >
         {label}
-      </span>
+      </p>
     </Link>
   );
 };
