@@ -8,8 +8,11 @@ import toast from "react-hot-toast";
 import { useUpdateAddressMutation } from "@/store/features/address/adressApi";
 
 const UpdateAddressModal = () => {
-  const { isModalOpen, modalData, closeModal } =
-    useModalById("updateAddressModal");
+  const {
+    isModalOpen,
+    modalData: addressData,
+    closeModal,
+  } = useModalById("updateAddressModal");
 
   const [updateAddress, { isLoading: isUpdating }] = useUpdateAddressMutation();
 
@@ -17,11 +20,9 @@ const UpdateAddressModal = () => {
     return null;
   }
 
-  const addressData = (modalData as { address: Address | undefined })?.address;
-
   if (!addressData) {
     console.warn("Address data is missing in UpdateAddressModal.", {
-      modalData,
+      addressData,
     });
 
     return null;

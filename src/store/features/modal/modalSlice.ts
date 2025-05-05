@@ -1,13 +1,13 @@
-import { ModalId } from "@/types";
+import { ModalData, ModalDataMap, ModalId } from "@/types/modal";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// Modal state structure: modal ID as key, containing visibility and optional data.
-interface ModalState {
-  [key: ModalId]: {
+// Modal state structure: modal ID as K, containing visibility and optional data.
+type ModalState = {
+  [K in ModalId]?: {
     isOpen: boolean; // Indicates if the modal is open.
-    data?: unknown; // Optional data for the modal.
+    data: ModalData<K>; // Optional data for the modal.
   };
-}
+};
 
 // Initial state: no modals open at the start.
 const initialState: ModalState = {};
@@ -17,12 +17,18 @@ const modalSlice = createSlice({
   initialState,
   reducers: {
     // Opens a modal with optional data.
-    openModalById: (
-      state,
-      action: PayloadAction<{ modalId: ModalId; data?: unknown }>
+    openModalById: <T extends ModalId>(
+      state: ModalState,
+      action: PayloadAction<{
+        modalId: T;
+        data: ModalDataMap[T];
+      }>
     ) => {
       const { modalId, data } = action.payload;
-      state[modalId] = { isOpen: true, data }; // Set modal open and store data.
+      state[modalId] = {
+        isOpen: true,
+        data,
+      } as ModalState[T];
     },
 
     // Closes the modal by removing it from state.

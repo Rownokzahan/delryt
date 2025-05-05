@@ -25,7 +25,6 @@ export interface DeliveryTimeState {
   text: string;
 }
 
-
 export interface Banner {
   id: Id;
   image: string;
@@ -104,8 +103,6 @@ export interface OrderCartItem extends BaseCartItem {
   add_on_ids: Id[];
   add_on_qtys: number[];
 }
-
-export type ModalId = string;
 
 export interface Coupon {
   id: Id;

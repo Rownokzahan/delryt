@@ -9,7 +9,7 @@ interface AddToCartButtonProps {
 }
 
 const AddToCartButton = ({ product }: AddToCartButtonProps) => {
-  const { openModalWithData } = useModalById("productCustomizationModal");
+  const { openModal } = useModalById("productCustomizationModal");
   const { cart, addToCart, updateCartItemByIndex, removeFromCartByIndex } =
     useCart();
 
@@ -17,7 +17,7 @@ const AddToCartButton = ({ product }: AddToCartButtonProps) => {
     event.preventDefault();
 
     if (product.add_ons.length !== 0) {
-      openModalWithData({ product, selectedAddOns: [] });
+      openModal();
       return;
     }
 

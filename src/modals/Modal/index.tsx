@@ -1,7 +1,7 @@
 "use client";
 
 import useModalById from "@/hooks/useModalById";
-import { ModalId } from "@/types";
+import { ModalId } from "@/types/modal";
 import clsx from "clsx";
 import { useEffect, useRef } from "react";
 import { FaXmark } from "react-icons/fa6";

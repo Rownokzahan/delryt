@@ -17,7 +17,7 @@ const AddressCard = ({ addressItem }: AddressCardProps) => {
   } = addressItem;
 
   const [deleteAddress, { isLoading: isDeleting }] = useDeleteAddressMutation();
-  const { openModalWithData } = useModalById("updateAddressModal");
+  const { openModal } = useModalById("updateAddressModal");
 
   const handleDelete = async () => {
     try {
@@ -30,7 +30,7 @@ const AddressCard = ({ addressItem }: AddressCardProps) => {
   };
 
   const handleUpdate = () => {
-    openModalWithData({ address: addressItem });
+    openModal(addressItem);
   };
 
   return (
