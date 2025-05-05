@@ -15,14 +15,17 @@ const CustomizationContext = createContext<CustomizationContextType | null>(
 
 interface ProductCustomizationProviderProps {
   product: Product;
+  prevSelectedAddOns: SelectedAddOnItem[];
   children: React.ReactNode;
 }
 
 const ProductCustomizationProvider = ({
   product,
+  prevSelectedAddOns,
   children,
 }: ProductCustomizationProviderProps) => {
-  const [selectedAddOns, setSelectedAddOns] = useState<SelectedAddOnItem[]>([]);
+  const [selectedAddOns, setSelectedAddOns] =
+    useState<SelectedAddOnItem[]>(prevSelectedAddOns);
   const [totalPrice, setTotalPrice] = useState(0);
 
   const resetCustomization = () => {

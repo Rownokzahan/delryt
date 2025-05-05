@@ -17,7 +17,7 @@ const AddToCartButton = ({ product }: AddToCartButtonProps) => {
     event.preventDefault();
 
     if (product.add_ons.length !== 0) {
-      openModalWithData({ product });
+      openModalWithData({ product, selectedAddOns: [] });
       return;
     }
 

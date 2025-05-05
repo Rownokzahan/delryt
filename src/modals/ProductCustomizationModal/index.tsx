@@ -2,7 +2,7 @@
 
 import useModalById from "@/hooks/useModalById";
 import Modal from "../Modal";
-import { Product } from "@/types";
+import { Product, SelectedAddOnItem } from "@/types";
 import AddOnList from "./components/AddOnList";
 import ProductCustomizationProvider from "./ProductCustomizationProvider";
 import ProductCustomizationHeader from "./components/ProductCustomizationHeader";
@@ -15,18 +15,27 @@ const ProductCustomizationModal = () => {
     return null;
   }
 
-  const product = (modalData as { product: Product | undefined })?.product;
+  const { product, selectedAddOns } = modalData as {
+    product: Product | undefined;
+    selectedAddOns: SelectedAddOnItem[] | undefined;
+  };
 
-  if (!product) {
-    console.warn("Product data is missing in ProductCustomizationModal.", {
-      modalData,
-    });
+  if (!product || !selectedAddOns) {
+    console.warn(
+      "Product or selectedAddOns data is missing in ProductCustomizationModal.",
+      {
+        modalData,
+      }
+    );
 
     return null;
   }
 
   return (
-    <ProductCustomizationProvider product={product}>
+    <ProductCustomizationProvider
+      product={product}
+      prevSelectedAddOns={selectedAddOns}
+    >
       <Modal modalId="productCustomizationModal">
         <ProductCustomizationHeader />
 
