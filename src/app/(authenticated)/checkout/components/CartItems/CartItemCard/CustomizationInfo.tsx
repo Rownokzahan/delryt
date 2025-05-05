@@ -7,9 +7,12 @@ interface CustomizationInfoProps {
   cartItemIndex: number;
 }
 
-const CustomizationInfo = ({ cartItem }: CustomizationInfoProps) => {
+const CustomizationInfo = ({
+  cartItem,
+  cartItemIndex,
+}: CustomizationInfoProps) => {
   const { selectedAddOns, product } = cartItem;
-  const { openModalWithData } = useModalById("productCustomizationModal");
+  const { openModal } = useModalById("productCustomizationModal");
 
   if (product.add_ons.length === 0) {
     return (
@@ -26,7 +29,13 @@ const CustomizationInfo = ({ cartItem }: CustomizationInfoProps) => {
     .join(", ");
 
   const handleEdit = () => {
-    openModalWithData({ product, selectedAddOns });
+    openModal({
+      mode: "edit",
+      product,
+      selectedAddOns,
+      cartItemIndex,
+      quantity: cartItem.quantity,
+    });
   };
 
   return (

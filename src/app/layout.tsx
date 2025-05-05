@@ -49,7 +49,7 @@ export default function RootLayout({
           <MenuSidebar />
         </StoreProvider>
 
-        <Toaster />
+        <Toaster position="bottom-center" />
       </body>
     </html>
   );

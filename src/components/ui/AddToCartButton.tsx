@@ -3,6 +3,7 @@ import { FaPlus, FaMinus } from "react-icons/fa6";
 import Button from "./Button";
 import useModalById from "@/hooks/useModalById";
 import { useCart } from "@/hooks/useCart";
+import toast from "react-hot-toast";
 
 interface AddToCartButtonProps {
   product: Product;
@@ -17,7 +18,7 @@ const AddToCartButton = ({ product }: AddToCartButtonProps) => {
     event.preventDefault();
 
     if (product.add_ons.length !== 0) {
-      openModal();
+      openModal({ mode: "add", product });
       return;
     }
 
@@ -33,6 +34,7 @@ const AddToCartButton = ({ product }: AddToCartButtonProps) => {
     };
 
     addToCart(cartItem);
+    toast.success("Added to cart");
   };
 
   const productIndexInCart = cart.findIndex(

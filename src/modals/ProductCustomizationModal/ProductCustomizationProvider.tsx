@@ -15,13 +15,13 @@ const CustomizationContext = createContext<CustomizationContextType | null>(
 
 interface ProductCustomizationProviderProps {
   product: Product;
-  prevSelectedAddOns: SelectedAddOnItem[];
+  selectedAddOns : SelectedAddOnItem[];
   children: React.ReactNode;
 }
 
 const ProductCustomizationProvider = ({
   product,
-  prevSelectedAddOns,
+  selectedAddOns :prevSelectedAddOns,
   children,
 }: ProductCustomizationProviderProps) => {
   const [selectedAddOns, setSelectedAddOns] =
