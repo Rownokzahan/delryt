@@ -12,7 +12,7 @@ const CustomizationInfo = ({
   cartItemIndex,
 }: CustomizationInfoProps) => {
   const { selectedAddOns, product } = cartItem;
-  const { openModal } = useModalById("productCustomizationModal");
+  const { openModalWithData } = useModalById("productCustomizationModal");
 
   if (product.add_ons.length === 0) {
     return (
@@ -29,7 +29,7 @@ const CustomizationInfo = ({
     .join(", ");
 
   const handleEdit = () => {
-    openModal({
+    openModalWithData({
       mode: "edit",
       product,
       selectedAddOns,

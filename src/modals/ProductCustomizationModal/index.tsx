@@ -22,12 +22,10 @@ const ProductCustomizationModal = () => {
     return null;
   }
 
-  const { product, selectedAddOns = [] } = modalData;
-
   return (
     <ProductCustomizationProvider
-      product={product}
-      selectedAddOns={selectedAddOns}
+      product={modalData.product}
+      selectedAddOns={modalData.mode === "edit" ? modalData.selectedAddOns : []}
     >
       <Modal modalId="productCustomizationModal">
         <ProductCustomizationHeader />

@@ -20,7 +20,6 @@ export interface ModalDataMap {
     | {
         mode: "add";
         product: Product;
-        selectedAddOns?: SelectedAddOnItem[];
       }
     | {
         mode: "edit";

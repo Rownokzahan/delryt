@@ -25,10 +25,7 @@ const modalSlice = createSlice({
       }>
     ) => {
       const { modalId, data } = action.payload;
-      state[modalId] = {
-        isOpen: true,
-        data,
-      } as ModalState[T];
+      state[modalId] = { isOpen: true, data } as ModalState[typeof modalId];
     },
 
     // Closes the modal by removing it from state.
