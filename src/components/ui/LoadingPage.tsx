@@ -6,6 +6,8 @@ const LoadingPage = () => {
       <Image
         width={150}
         height={150}
+        unoptimized
+        priority
         src={"/images/page-loading.webp"}
         alt={"Loading Image"}
       />

@@ -16,6 +16,7 @@ const BannerCard = ({ banner }: BannerCardProps) => {
         <Image
           width={640}
           height={320}
+          priority
           src={imagePath}
           alt="Offer Image"
           className="w-full aspect-2/1 object-cover rounded-xl hover:scale-[0.99] duration-300 bg-gray-200"
