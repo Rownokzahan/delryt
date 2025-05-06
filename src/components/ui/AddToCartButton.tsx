@@ -58,6 +58,7 @@ const AddToCartButton = ({ product }: AddToCartButtonProps) => {
 
     if (productInCart.quantity <= 1) {
       removeFromCartByIndex(productIndexInCart);
+      toast.error("Removed from cart", { duration: 1000 });
       return;
     }
 
