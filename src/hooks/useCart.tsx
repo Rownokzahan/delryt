@@ -1,13 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import { LocalCartItem } from "@/types";
+import { Id, Product, SelectedAddOnItem } from "@/types";
 import {
   initializeCart as initializeCartAction,
-  addToCart as addToCartAction,
-  removeFromCartByIndex as removeFromCartByIndexAction,
-  updateCartItemByIndex as updateCartItemByIndexAction,
-  clearCart as clearCartAction,
+  addSimpleProductToCart as addSimpleProductToCartAction,
+  updateCartItemQuantity as updateCartItemQuantityAction,
+  removeLastCustomizedProduct as removeLastCustomizedProductAction,
+  addCustomProductToCart as addCustomProductToCartAction,
 } from "@/store/features/cart/cartSlice";
-import { selectCart, selectCartTotal } from "@/store/features/cart/cartSelectors";
+import {
+  selectCart,
+  selectCartTotal,
+} from "@/store/features/cart/cartSelectors";
 
 export const useCart = () => {
   const cart = useSelector(selectCart);
@@ -18,34 +21,49 @@ export const useCart = () => {
     dispatch(initializeCartAction());
   };
 
-  const addToCart = (cartItem: LocalCartItem) => {
-    dispatch(addToCartAction(cartItem));
+  const addSimpleProductToCart = (product: Product) => {
+    dispatch(addSimpleProductToCartAction(product));
   };
 
-  const removeFromCartByIndex = (cartItemIndex: number) => {
-    dispatch(removeFromCartByIndexAction(cartItemIndex));
-  };
-
-  const updateCartItemByIndex = (
-    cartItemIndex: number,
-    cartItem: LocalCartItem
+  const addCustomProductToCart = (
+    product: Product,
+    totalPrice: number,
+    selectedAddOns: SelectedAddOnItem[]
   ) => {
     dispatch(
-      updateCartItemByIndexAction({ index: cartItemIndex, item: cartItem })
+      addCustomProductToCartAction({ product, totalPrice, selectedAddOns })
     );
   };
 
-  const clearCart = () => {
-    dispatch(clearCartAction());
+  const updateCartItemQuantity = ({
+    id,
+    idType,
+    action,
+  }: {
+    id: Id;
+    idType: "productId" | "cartItemId";
+    action: "increment" | "decrement";
+  }) => {
+    dispatch(
+      updateCartItemQuantityAction({
+        id,
+        idType,
+        action,
+      })
+    );
+  };
+
+  const removeLastCustomizedProduct = (productId: Id) => {
+    dispatch(removeLastCustomizedProductAction(productId));
   };
 
   return {
     cart,
     cartTotal,
     initializeCart,
-    addToCart,
-    removeFromCartByIndex,
-    updateCartItemByIndex,
-    clearCart,
+    addSimpleProductToCart,
+    addCustomProductToCart,
+    updateCartItemQuantity,
+    removeLastCustomizedProduct,
   };
 };

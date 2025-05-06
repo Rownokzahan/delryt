@@ -18,7 +18,3 @@ export const getStoredCart = (): LocalCartItem[] => {
 export const storeCart = (cart: LocalCartItem[]) => {
   localStorage.setItem(getCartStorageKey(), JSON.stringify(cart));
 };
-
-export const removeStoredCart = () => {
-  localStorage.removeItem(getCartStorageKey());
-};

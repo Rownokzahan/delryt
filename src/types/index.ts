@@ -95,6 +95,7 @@ interface BaseCartItem {
 }
 
 export interface LocalCartItem extends BaseCartItem {
+  id: string; // <-- new UUID or unique key per entr
   selectedAddOns: SelectedAddOnItem[];
   product: Product;
 }

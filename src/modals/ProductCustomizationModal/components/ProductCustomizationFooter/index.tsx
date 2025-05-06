@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 const ProductCustomizationFooter = () => {
   const { totalPrice, product, selectedAddOns } = useProductCustomization();
-  const { addToCart, updateCartItemByIndex } = useCart();
+  const { addCustomProductToCart, updateCartItemByIndex } = useCart();
   const { closeModal, modalData } = useModalById("productCustomizationModal");
 
   const saveCartItem = () => {
@@ -14,22 +14,11 @@ const ProductCustomizationFooter = () => {
 
     const quantity = modalData.mode === "edit" ? modalData.quantity : 1;
 
-    const newCartItem: LocalCartItem = {
-      productId: product.id,
-      price: totalPrice,
-      discounted_price: 0,
-      tax_amount: 0,
-      quantity,
-      variation: [],
-      selectedAddOns,
-      product,
-    };
-
     if (modalData.mode === "edit") {
-      updateCartItemByIndex(modalData.cartItemIndex, newCartItem);
+      // updateCartItemByIndex(modalData, cartItemIndex, newCartItem);
       toast.success("Cart item updated");
     } else {
-      addToCart(newCartItem);
+      addCustomProductToCart(product, totalPrice, selectedAddOns);
       toast.success("Added to cart");
     }
 

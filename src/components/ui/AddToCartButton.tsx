@@ -1,4 +1,4 @@
-import { LocalCartItem, Product } from "@/types";
+import { Product } from "@/types";
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import Button from "./Button";
 import useModalById from "@/hooks/useModalById";
@@ -11,66 +11,65 @@ interface AddToCartButtonProps {
 
 const AddToCartButton = ({ product }: AddToCartButtonProps) => {
   const { openModalWithData } = useModalById("productCustomizationModal");
-  const { cart, addToCart, updateCartItemByIndex, removeFromCartByIndex } =
-    useCart();
+  const {
+    cart,
+    addSimpleProductToCart,
+    updateCartItemQuantity,
+    removeLastCustomizedProduct,
+  } = useCart();
 
-  const handleAddToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
+  const isCustomizable = product.add_ons.length !== 0;
 
-    if (product.add_ons.length !== 0) {
+  const handleAddToCart = () => {
+    if (isCustomizable) {
       openModalWithData({ mode: "add", product });
-      return;
+    } else {
+      addSimpleProductToCart(product);
+      toast.success("Added to cart");
     }
-
-    const cartItem: LocalCartItem = {
-      productId: product.id,
-      price: product.price,
-      discounted_price: 0,
-      tax_amount: 0,
-      quantity: 1,
-      variation: [],
-      selectedAddOns: [],
-      product,
-    };
-
-    addToCart(cartItem);
-    toast.success("Added to cart");
   };
 
-  const productIndexInCart = cart.findIndex(
-    (cartItem) => cartItem.productId === product.id
-  );
-
-  const productInCart =
-    productIndexInCart !== -1 ? cart[productIndexInCart] : undefined;
-
   const incrementQuantity = () => {
-    if (!productInCart) return;
-
-    updateCartItemByIndex(productIndexInCart, {
-      ...productInCart,
-      quantity: productInCart.quantity + 1,
-    });
+    if (isCustomizable) {
+      openModalWithData({ mode: "add", product });
+    } else {
+      updateCartItemQuantity({
+        id: product.id,
+        idType: "productId",
+        action: "increment",
+      });
+    }
   };
 
   const decrementQuantity = () => {
-    if (!productInCart) return;
+    if (isCustomizable) {
+      removeLastCustomizedProduct(product.id);
+    } else {
+      updateCartItemQuantity({
+        id: product.id,
+        idType: "productId",
+        action: "decrement",
+      });
+    }
+  };
 
-    if (productInCart.quantity <= 1) {
-      removeFromCartByIndex(productIndexInCart);
-      toast.error("Removed from cart", { duration: 1000 });
-      return;
+  const getQuantityInCart = () => {
+    if (isCustomizable) {
+      const productEntries = cart.filter(
+        (item) => item.productId === product.id
+      );
+      return productEntries.length;
     }
 
-    updateCartItemByIndex(productIndexInCart, {
-      ...productInCart,
-      quantity: productInCart.quantity - 1,
-    });
+    const productInCart = cart.find((item) => item.productId === product.id);
+    return productInCart?.quantity || 0;
   };
+
+  const quantityInCart = getQuantityInCart();
 
   return (
     <div onClick={(e) => e.preventDefault()}>
-      {productInCart ? (
+      {quantityInCart ? (
         <div className="h-8 w-18 border border-primary rounded-sm flex items-center">
           <button
             onClick={decrementQuantity}
@@ -78,7 +77,7 @@ const AddToCartButton = ({ product }: AddToCartButtonProps) => {
           >
             <FaMinus />
           </button>
-          <span className="p-1">{productInCart.quantity}</span>
+          <span className="p-1">{quantityInCart}</span>
           <button
             onClick={incrementQuantity}
             className="h-full flex-1 place-items-center text-sm text-primary"
