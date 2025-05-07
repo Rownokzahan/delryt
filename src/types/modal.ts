@@ -1,4 +1,4 @@
-import { Address, Id, Product, SelectedAddOnItem } from ".";
+import { Address, Branch, Id, Product, SelectedAddOnItem } from ".";
 
 export interface ModalDataMap {
   addAddressModal: undefined;
@@ -15,6 +15,8 @@ export interface ModalDataMap {
   searchModal: undefined;
   shareModal: undefined;
   sortModal: undefined;
+  confirmBranchSwitchModal: Branch;
+  menuSidebar: undefined;
 
   productCustomizationModal:
     | {

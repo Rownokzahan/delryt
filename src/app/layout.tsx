@@ -15,6 +15,7 @@ import { Toaster } from "react-hot-toast";
 import ChangePasswordModal from "@/modals/ChangePasswordModal";
 import LogoutConfirmModal from "@/modals/LogoutConfirmModal";
 import DeliveryTimeSelectionModal from "@/modals/DeliveryTimeSelectionModal";
+import ConfirmBranchSwitchModal from "@/modals/ConfirmBranchSwitchModal";
 
 export const metadata = {
   title: "Delryt",
@@ -44,6 +45,7 @@ export default function RootLayout({
           <AddAddressModal />
           <UpdateAddressModal />
           <ChangePasswordModal />
+          <ConfirmBranchSwitchModal />
 
           {/* Menu Sidebar */}
           <MenuSidebar />

@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import Button from "@/components/ui/Button";
 import BranchList from "./BranchList";
 import { Branch } from "@/types";
-import useCurrentBranch from "@/hooks/useCurrentBranch";
+import useBranch from "@/hooks/useBranch";
 
 const Page = () => {
-  const { currentBranch, updateCurrentBranch } = useCurrentBranch();
+  const { currentBranch, updateCurrentBranch } = useBranch();
   const [selectedBranch, setSelectedBranch] = useState(currentBranch);
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import Logo from "@/components/ui/Logo";
-import useCurrentBranch from "@/hooks/useCurrentBranch";
+import useBranch from "@/hooks/useBranch";
 import Link from "next/link";
 import { RiArrowDownSLine } from "react-icons/ri";
 
@@ -10,7 +10,7 @@ interface LogoWithBranchLinkProps {
 const LogoWithBranchLink = ({
   logoSize = "default",
 }: LogoWithBranchLinkProps) => {
-  const {currentBranch} =useCurrentBranch();
+  const {currentBranch} =useBranch();
 
   return (
     <div className="flex items-center gap-3">

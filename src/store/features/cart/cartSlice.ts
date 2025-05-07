@@ -13,6 +13,7 @@ const cartSlice = createSlice({
   reducers: {
     initializeCart: () => {
       if (typeof window === "undefined") return [];
+      console.log(getStoredCart());
       return getStoredCart();
     },
 

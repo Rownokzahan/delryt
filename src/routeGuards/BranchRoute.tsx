@@ -3,14 +3,14 @@
 import LoadingPage from "@/components/ui/LoadingPage";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
-import useCurrentBranch from "@/hooks/useCurrentBranch";
+import useBranch from "@/hooks/useBranch";
 
 interface BranchRouteProps {
   children: React.ReactNode;
 }
 
 const BranchRoute = ({ children }: BranchRouteProps) => {
-  const { currentBranch, isLoading } = useCurrentBranch();
+  const { currentBranch, isLoading } = useBranch();
   const currentPath = usePathname();
   const router = useRouter();
 
