@@ -19,7 +19,8 @@ const menuItems = [
 ];
 
 const ProfileMenuList = () => {
-  const { openModal: openLogoutConfirmModal } = useModalById("logoutConfirmModal");
+  const { openModal: openConfirmLogoutModal } =
+    useModalById("confirmLogoutModal");
 
   return (
     <div className="mt-3 space-y-3 text-uiBlack-light">
@@ -49,7 +50,7 @@ const ProfileMenuList = () => {
         ))}
 
         <button
-          onClick={openLogoutConfirmModal}
+          onClick={openConfirmLogoutModal}
           className="w-full py-3 rounded-md bg-uiWhite flex justify-between gap-2"
         >
           <p>Logout</p>

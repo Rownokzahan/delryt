@@ -7,8 +7,8 @@ import useModalById from "@/hooks/useModalById";
 import toast from "react-hot-toast";
 import Button from "@/components/ui/Button";
 
-const LogoutConfirmModal = () => {
-  const { isModalOpen, closeModal } = useModalById("logoutConfirmModal");
+const ConfirmLogoutModal = () => {
+  const { isModalOpen, closeModal } = useModalById("confirmLogoutModal");
   const [logout] = useLogoutMutation();
   const router = useRouter();
 
@@ -24,7 +24,7 @@ const LogoutConfirmModal = () => {
   };
 
   return (
-    <Modal modalId="logoutConfirmModal" containerClasses="p-6">
+    <Modal modalId="confirmLogoutModal" containerClasses="p-6">
       <h3 className="text-xl font-medium">Confirm Logout</h3>
 
       <div className="mt-4">
@@ -44,4 +44,4 @@ const LogoutConfirmModal = () => {
   );
 };
 
-export default LogoutConfirmModal;
+export default ConfirmLogoutModal;

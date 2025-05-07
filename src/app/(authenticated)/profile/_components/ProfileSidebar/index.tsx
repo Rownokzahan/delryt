@@ -12,8 +12,8 @@ const ProfileSidebar = () => {
   const { openModal: openChangePasswordModal } = useModalById(
     "changePasswordModal"
   );
-  const { openModal: openLogoutConfirmModal } =
-    useModalById("logoutConfirmModal");
+  const { openModal: openConfirmLogoutModal } =
+    useModalById("confirmLogoutModal");
 
   return (
     <aside className="w-[32%] max-w-96 border-e">
@@ -36,7 +36,7 @@ const ProfileSidebar = () => {
       />
 
       <ProfileMenuItem
-        onClick={openLogoutConfirmModal}
+        onClick={openConfirmLogoutModal}
         Icon={BiLogOut}
         label={"Logout"}
       />

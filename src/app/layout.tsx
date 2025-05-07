@@ -13,7 +13,7 @@ import ProductCustomizationModal from "@/modals/ProductCustomizationModal";
 import UpdateAddressModal from "@/modals/UpdateAddressModal";
 import { Toaster } from "react-hot-toast";
 import ChangePasswordModal from "@/modals/ChangePasswordModal";
-import LogoutConfirmModal from "@/modals/LogoutConfirmModal";
+import ConfirmLogoutModal from "@/modals/ConfirmLogoutModal";
 import DeliveryTimeSelectionModal from "@/modals/DeliveryTimeSelectionModal";
 import ConfirmBranchSwitchModal from "@/modals/ConfirmBranchSwitchModal";
 
@@ -37,7 +37,7 @@ export default function RootLayout({
 
           {/* Modals */}
           <AuthModal />
-          <LogoutConfirmModal />
+          <ConfirmLogoutModal />
           <SearchModal />
           <ShareModal />
           <DeliveryTimeSelectionModal />

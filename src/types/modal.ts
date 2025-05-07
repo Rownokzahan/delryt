@@ -10,14 +10,13 @@ export interface ModalDataMap {
   dateSortModal: undefined;
   deliveryTimeSelectionModal: undefined;
   editProfileModal: undefined;
-  logoutConfirmModal: undefined;
   menuModal: undefined;
   searchModal: undefined;
   shareModal: undefined;
   sortModal: undefined;
-  confirmBranchSwitchModal: Branch;
-  menuSidebar: undefined;
+  confirmLogoutModal: undefined;
 
+  confirmBranchSwitchModal: Branch;
   productCustomizationModal:
     | {
         mode: "add";
@@ -31,6 +30,8 @@ export interface ModalDataMap {
       };
 
   updateAddressModal: Address;
+
+  menuSidebar: undefined;
 }
 
 export type ModalId = keyof ModalDataMap;
