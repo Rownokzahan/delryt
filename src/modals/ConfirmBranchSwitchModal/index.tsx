@@ -4,6 +4,7 @@ import Button from "@/components/ui/Button";
 import Modal from "../Modal";
 import useModalById from "@/hooks/useModalById";
 import useBranch from "@/hooks/useBranch";
+import toast from "react-hot-toast";
 
 const ConfirmBranchSwitchModal = () => {
   const {
@@ -29,6 +30,7 @@ const ConfirmBranchSwitchModal = () => {
   const handleBranchSwitch = () => {
     closeModal();
     confirmBranchSwitch(branch);
+    toast.success("Branch updated successfully");
   };
 
   return (

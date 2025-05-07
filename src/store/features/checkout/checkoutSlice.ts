@@ -34,7 +34,7 @@ const initialState: CheckoutState = {
     couponList: [
       {
         id: "01",
-        title: "Save ₹235 more",
+        title: "Save ৳235 more",
         code: "ES50",
         amountSaved: 235,
         description:
@@ -42,7 +42,7 @@ const initialState: CheckoutState = {
       },
       {
         id: "02",
-        title: "Save ₹150 more",
+        title: "Save ৳150 more",
         code: "SAVE150",
         amountSaved: 150,
         description: "Get 30% off on your next order",

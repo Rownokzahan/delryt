@@ -21,7 +21,7 @@ const coupons: Coupon[] = [
   {
     id: 8022222,
     code: "SMALLBITE",
-    description: "Get FLAT ₹50 off",
+    description: "Get FLAT ৳50 off",
   },
   {
     id: 8070456,
@@ -41,12 +41,12 @@ const coupons: Coupon[] = [
   {
     id: 8071646,
     code: "FLAT150",
-    description: "Get FLAT ₹150 off",
+    description: "Get FLAT ৳150 off",
   },
   {
     id: 8071739,
     code: "ES90",
-    description: "Get FLAT ₹90 off",
+    description: "Get FLAT ৳90 off",
   },
   {
     id: 8071742,

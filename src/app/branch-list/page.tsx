@@ -5,6 +5,7 @@ import Button from "@/components/ui/Button";
 import BranchList from "./BranchList";
 import { Branch } from "@/types";
 import useBranch from "@/hooks/useBranch";
+import { redirect } from "next/navigation";
 
 const Page = () => {
   const { currentBranch, updateCurrentBranch } = useBranch();
@@ -23,6 +24,7 @@ const Page = () => {
   const handleUpdateCurrentBranch = () => {
     if (selectedBranch) {
       updateCurrentBranch(selectedBranch);
+      redirect("/");
     }
   };
 

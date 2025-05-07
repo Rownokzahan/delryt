@@ -2,7 +2,6 @@ import { LocalCartItem } from "@/types";
 
 export const getCartStorageKey = () => {
   const branchId = localStorage.getItem("branch-id");
-  console.log(branchId);
   return `cart-${branchId}`;
 };
 

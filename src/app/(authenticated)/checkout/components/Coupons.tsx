@@ -32,7 +32,7 @@ const Coupons = () => {
             <div>
               <h4 className="text-sm">{appliedCoupon.code}</h4>
               <p className="text-xs text-uiBlack-light">
-                ₹ {appliedCoupon.amountSaved} Saved
+                ৳ {appliedCoupon.amountSaved} Saved
               </p>
             </div>
           </div>

@@ -32,7 +32,6 @@ const branchSlice = createSlice({
       state.currentBranch.branch = branch;
 
       const branchId = branch.id.toString().trim();
-      console.log(branchId);
       localStorage.setItem("branch-id", branchId);
     },
   },

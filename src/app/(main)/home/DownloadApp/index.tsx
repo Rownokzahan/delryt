@@ -18,8 +18,8 @@ const DownloadApp = () => {
             <p className="text-[#cacaca]">
               EatSure, when you want to enjoy multiple cuisines from different
               trusted restaurants in one single order. Become an EatSure Elite,
-              unlock FREE dishes on orders above ₹299 and pay ZERO delivery fees
-              for orders above ₹199.
+              unlock FREE dishes on orders above ৳299 and pay ZERO delivery fees
+              for orders above ৳199.
             </p>
           </div>
 

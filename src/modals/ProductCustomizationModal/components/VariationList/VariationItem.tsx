@@ -27,7 +27,7 @@ const VariationItem = ({ variationItem }: VariationItemProps) => {
         <p className="text-sm text-uiBlack-light">{label}</p>
       </div>
 
-      <p className="text-xs text-uiBlack-light">₹ {optionPrice}</p>
+      <p className="text-xs text-uiBlack-light">৳ {optionPrice}</p>
     </li>
   );
 };

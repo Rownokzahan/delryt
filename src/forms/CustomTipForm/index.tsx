@@ -57,11 +57,11 @@ const CustomTipForm = () => {
             required: true,
             min: {
               value: 5,
-              message: "Tip amount is too low! Minimum ₹5!",
+              message: "Tip amount is too low! Minimum ৳5!",
             },
             max: {
               value: 3000,
-              message: "Thanks for being generous! Maximum tip is ₹3000!",
+              message: "Thanks for being generous! Maximum tip is ৳3000!",
             },
           })}
           className={clsx(

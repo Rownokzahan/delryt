@@ -16,8 +16,8 @@ const FixedBottomBar = () => {
       )}
     >
       <div className="flex items-center gap-1">
-        <p className="text-xl text-primary font-medium">₹375 </p>{" "}
-        <p className="text-uiBlack-light text-sm line-through">₹464</p>
+        <p className="text-xl text-primary font-medium">৳375 </p>{" "}
+        <p className="text-uiBlack-light text-sm line-through">৳464</p>
       </div>
 
       <Button onClick={openModal} size="small">

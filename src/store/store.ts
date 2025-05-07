@@ -14,6 +14,7 @@ import { authApi } from "./features/auth/authApi";
 import { userApi } from "./features/user/userApi";
 import { productApi } from "./features/product/productApi";
 import { addressApi } from "./features/address/adressApi";
+import { initializeCart } from "@/store/features/cart/cartSlice";
 
 export const store = configureStore({
   reducer: {
@@ -48,6 +49,16 @@ export const store = configureStore({
       addressApi.middleware
     ),
 });
+
+export const resetBranchRelatedState = () => (dispatch: AppDispatch) => {
+  dispatch(bannerApi.util.resetApiState());
+  dispatch(cuisineApi.util.resetApiState());
+  dispatch(categoryApi.util.resetApiState());
+  dispatch(productsApi.util.resetApiState());
+  dispatch(productApi.util.resetApiState());
+
+  dispatch(initializeCart());
+};
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

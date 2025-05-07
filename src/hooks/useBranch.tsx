@@ -1,11 +1,10 @@
 import { updateCurrentBranch as updateCurrentBranchAction } from "@/store/features/branch/branchSlice";
-import { RootState } from "@/store/store";
+import { AppDispatch, resetBranchRelatedState, RootState } from "@/store/store";
 import { Branch } from "@/types";
 import { redirect } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { useCart } from "./useCart";
 import useModalById from "./useModalById";
-import { initializeCart } from "@/store/features/cart/cartSlice";
 
 const useBranch = () => {
   const { branch: currentBranch, isLoading } = useSelector(
@@ -14,12 +13,12 @@ const useBranch = () => {
 
   const { openModalWithData } = useModalById("confirmBranchSwitchModal");
   const { cart } = useCart();
-  const dispatch = useDispatch();
+
+  const dispatch = useDispatch<AppDispatch>();
 
   const confirmBranchSwitch = (branch: Branch) => {
     dispatch(updateCurrentBranchAction(branch));
-    initializeCart();
-    redirect("/");
+    dispatch(resetBranchRelatedState());
   };
 
   const updateCurrentBranch = (branch: Branch) => {
@@ -28,6 +27,7 @@ const useBranch = () => {
       return;
     }
     confirmBranchSwitch(branch);
+    redirect("/");
   };
 
   return {

@@ -63,7 +63,7 @@ const AddOnItem = ({ addOnItem }: AddOnItemProps) => {
           <span className="text-sm text-uiBlack-light">{name}</span>
         </span>
 
-        <span className="text-xs text-uiBlack-light">₹ {price}</span>
+        <span className="text-xs text-uiBlack-light">৳ {price}</span>
       </button>
 
       {alreadySelected && (

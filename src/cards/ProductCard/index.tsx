@@ -76,11 +76,11 @@ const ProductCard = ({
 
           <div className="mt-3 md:mt-0 pt-3 md:p-3 border-t flex justify-between items-center gap-2">
             <div className="flex items-center gap-2">
-              <h4 className="font-medium md:text-xl">₹ {price}</h4>
+              <h4 className="font-medium md:text-xl">৳ {price}</h4>
 
               {beforeDiscountedPrice > 0 && (
                 <h4 className="text-uiBlack-light line-through text-xs md:text-base">
-                  ₹ {beforeDiscountedPrice}
+                  ৳ {beforeDiscountedPrice}
                 </h4>
               )}
             </div>
