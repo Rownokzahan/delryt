@@ -108,7 +108,8 @@ const cartSlice = createSlice({
       if (!targetItem) return state;
 
       if (targetItem.quantity === 1) {
-        const updatedCart = state.filter((item) => isMatch(item));
+        // remove the item from cart
+        const updatedCart = state.filter((item) => !isMatch(item));
         storeCart(updatedCart);
         return updatedCart;
       }
