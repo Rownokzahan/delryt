@@ -27,6 +27,7 @@ const ConfirmBranchSwitchModal = () => {
   }
 
   const handleBranchSwitch = () => {
+    closeModal();
     confirmBranchSwitch(branch);
   };
 
