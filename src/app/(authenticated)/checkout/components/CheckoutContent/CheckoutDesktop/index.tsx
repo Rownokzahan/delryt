@@ -1,9 +1,12 @@
 import Button from "@/components/ui/Button";
 import ChangeDeliveryTime from "../../ChangeDeliveryTime";
-import CheckoutDetails from "../../CheckoutDetails";
 import ChooseAddress from "../../ChooseAddress";
 import ChoosePayment from "../../ChoosePayment";
 import CartSummaryHeader from "./CartSummaryHeader";
+import CartItems from "../../CartItems";
+import Coupons from "../../Coupons";
+import BillSummary from "../../BillSummary";
+import OrderNoteForm from "@/forms/OrderNoteForm";
 
 const CheckoutDesktop = () => {
   return (
@@ -24,7 +27,10 @@ const CheckoutDesktop = () => {
             scrollbarColor: "#c60e0e transparent",
           }}
         >
-          <CheckoutDetails />
+          <CartItems />
+          <Coupons />
+          <BillSummary />
+          <OrderNoteForm />
         </div>
 
         <div className="px-4 py-3 bg-uiWhite">
