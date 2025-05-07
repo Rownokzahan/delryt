@@ -1,28 +1,29 @@
 "use client";
 
 import Button from "@/components/ui/Button";
+import { useCart } from "@/hooks/useCart";
 import useModalById from "@/hooks/useModalById";
 import clsx from "clsx";
+import { IoChevronDown } from "react-icons/io5";
 
 const FixedBottomBar = () => {
+  const { cartTotal } = useCart();
   const { openModal } = useModalById("addAddressModal");
 
   return (
     <div
-      className={clsx(
-        "w-full ui-container py-3 rounded-t-xl",
-        "bg-primary/20 flex items-center justify-between",
-        "fixed bottom-0"
-      )}
+      className={clsx("w-full fixed left-0 bottom-0 bg-uiWhite rounded-t-2xl")}
     >
-      <div className="flex items-center gap-1">
-        <p className="text-xl text-primary font-medium">৳375 </p>{" "}
-        <p className="text-uiBlack-light text-sm line-through">৳464</p>
-      </div>
+      <div className="ui-container py-3 bg-primary/5 rounded-t-2xl flex items-center justify-between">
+        <div>
+          <p className="text-lg font-medium">৳{cartTotal} </p>
+          <button className="font-medium text-sm flex items-center">
+            Bill Summary <IoChevronDown />
+          </button>
+        </div>
 
-      <Button onClick={openModal} size="small">
-        Add Address
-      </Button>
+        <Button onClick={openModal}>Place Order</Button>
+      </div>
     </div>
   );
 };
