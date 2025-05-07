@@ -4,13 +4,9 @@ import { GoDotFill } from "react-icons/go";
 
 interface CustomizationInfoProps {
   cartItem: LocalCartItem;
-  cartItemIndex: number;
 }
 
-const CustomizationInfo = ({
-  cartItem,
-  cartItemIndex,
-}: CustomizationInfoProps) => {
+const CustomizationInfo = ({ cartItem }: CustomizationInfoProps) => {
   const { selectedAddOns, product } = cartItem;
   const { openModalWithData } = useModalById("productCustomizationModal");
 
@@ -33,8 +29,7 @@ const CustomizationInfo = ({
       mode: "edit",
       product,
       selectedAddOns,
-      cartItemIndex,
-      quantity: cartItem.quantity,
+      cartId: cartItem.id,
     });
   };
 

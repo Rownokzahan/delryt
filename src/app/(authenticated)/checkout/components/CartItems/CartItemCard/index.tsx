@@ -9,10 +9,9 @@ import CustomizationInfo from "./CustomizationInfo";
 
 interface CartItemCardProps {
   cartItem: LocalCartItem;
-  cartItemIndex: number;
 }
 
-const CartItemCard = ({ cartItem, cartItemIndex }: CartItemCardProps) => {
+const CartItemCard = ({ cartItem }: CartItemCardProps) => {
   const { quantity, price, product } = cartItem;
 
   return (
@@ -41,9 +40,8 @@ const CartItemCard = ({ cartItem, cartItemIndex }: CartItemCardProps) => {
         <div className="flex items-center gap-2">
           <CustomizationInfo
             cartItem={cartItem}
-            cartItemIndex={cartItemIndex}
           />
-          <QuantityControl cartItem={cartItem} cartItemIndex={cartItemIndex} />
+          <QuantityControl cartItem={cartItem} />
         </div>
       </div>
     </div>

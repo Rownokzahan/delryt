@@ -1,4 +1,4 @@
-import { Address, Product, SelectedAddOnItem } from ".";
+import { Address, Id, Product, SelectedAddOnItem } from ".";
 
 export interface ModalDataMap {
   addAddressModal: undefined;
@@ -25,8 +25,7 @@ export interface ModalDataMap {
         mode: "edit";
         product: Product;
         selectedAddOns: SelectedAddOnItem[];
-        cartItemIndex: number;
-        quantity: number;
+        cartId: Id;
       };
 
   updateAddressModal: Address;

@@ -120,6 +120,28 @@ const cartSlice = createSlice({
       storeCart(updatedCart);
       return updatedCart;
     },
+
+    updateCartItem: (
+      state,
+      {
+        payload,
+      }: PayloadAction<{
+        cartId: Id;
+        totalPrice: number;
+        selectedAddOns: SelectedAddOnItem[];
+      }>
+    ) => {
+      const { cartId, totalPrice, selectedAddOns } = payload;
+
+      const updatedCart = state.map((item) =>
+        item.id === cartId
+          ? { ...item, price: totalPrice, selectedAddOns }
+          : item
+      );
+
+      storeCart(updatedCart);
+      return updatedCart;
+    },
   },
 });
 
@@ -129,6 +151,7 @@ export const {
   addCustomProductToCart,
   removeLastCustomizedProduct,
   updateCartItemQuantity,
+  updateCartItem,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

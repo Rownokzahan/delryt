@@ -4,6 +4,7 @@ import {
   initializeCart as initializeCartAction,
   addSimpleProductToCart as addSimpleProductToCartAction,
   updateCartItemQuantity as updateCartItemQuantityAction,
+  updateCartItem as updateCartItemAction,
   removeLastCustomizedProduct as removeLastCustomizedProductAction,
   addCustomProductToCart as addCustomProductToCartAction,
 } from "@/store/features/cart/cartSlice";
@@ -53,6 +54,24 @@ export const useCart = () => {
     );
   };
 
+  const updateCartItem = ({
+    cartId,
+    totalPrice,
+    selectedAddOns,
+  }: {
+    cartId: Id;
+    totalPrice: number;
+    selectedAddOns: SelectedAddOnItem[];
+  }) => {
+    dispatch(
+      updateCartItemAction({
+        cartId,
+        totalPrice,
+        selectedAddOns,
+      })
+    );
+  };
+
   const removeLastCustomizedProduct = (productId: Id) => {
     dispatch(removeLastCustomizedProductAction(productId));
   };
@@ -64,6 +83,7 @@ export const useCart = () => {
     addSimpleProductToCart,
     addCustomProductToCart,
     updateCartItemQuantity,
+    updateCartItem,
     removeLastCustomizedProduct,
   };
 };

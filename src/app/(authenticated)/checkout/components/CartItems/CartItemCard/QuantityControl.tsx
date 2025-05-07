@@ -4,31 +4,19 @@ import { HiOutlineMinusSm, HiOutlinePlusSm } from "react-icons/hi";
 
 interface QuantityControlProps {
   cartItem: LocalCartItem;
-  cartItemIndex: number;
 }
 
-const QuantityControl = ({ cartItem, cartItemIndex }: QuantityControlProps) => {
-  const { updateCartItemByIndex, removeFromCartByIndex } = useCart();
+const QuantityControl = ({ cartItem }: QuantityControlProps) => {
+  const { updateCartItemQuantity } = useCart();
 
-  const { quantity } = cartItem;
+  const { id, quantity } = cartItem;
 
   const increaseQuantity = () => {
-    updateCartItemByIndex(cartItemIndex, {
-      ...cartItem,
-      quantity: quantity + 1,
-    });
+    updateCartItemQuantity({ id, idType: "cartItemId", action: "increment" });
   };
 
   const decreaseQuantity = () => {
-    if (quantity <= 1) {
-      removeFromCartByIndex(cartItemIndex);
-      return;
-    }
-
-    updateCartItemByIndex(cartItemIndex, {
-      ...cartItem,
-      quantity: quantity - 1,
-    });
+    updateCartItemQuantity({ id, idType: "cartItemId", action: "decrement" });
   };
 
   return (
