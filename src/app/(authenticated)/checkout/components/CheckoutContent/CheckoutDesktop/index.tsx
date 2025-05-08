@@ -17,7 +17,7 @@ const CheckoutDesktop = () => {
         <ChoosePayment />
       </div>
 
-      <div className="w-[47%] lg:w-[40%] overflow-hidden rounded-xl bg-gray-100">
+      <div className="w-[48%] overflow-hidden rounded-xl bg-gray-100">
         <CartSummaryHeader />
 
         <div
