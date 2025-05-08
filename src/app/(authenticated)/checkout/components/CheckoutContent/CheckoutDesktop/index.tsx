@@ -1,20 +1,16 @@
 import Button from "@/components/ui/Button";
-import ChangeDeliveryTime from "../../ChangeDeliveryTime";
-import ChooseAddress from "../../ChooseAddress";
-import ChoosePayment from "../../ChoosePayment";
 import CartSummaryHeader from "./CartSummaryHeader";
 import CartItems from "../../CartItems";
 import Coupons from "../../Coupons";
 import BillSummary from "../../BillSummary";
 import OrderNoteForm from "@/forms/OrderNoteForm";
+import CheckoutDetails from "../../CheckoutDetails";
 
 const CheckoutDesktop = () => {
   return (
     <div className="hidden md:flex ui-container py-6 gap-8">
-      <div className="w-[52%] space-y-4">
-        <ChangeDeliveryTime />
-        <ChooseAddress />
-        <ChoosePayment />
+      <div className="w-[52%]">
+        <CheckoutDetails />
       </div>
 
       <div className="min-w-0 flex-1 rounded-xl bg-gray-100">

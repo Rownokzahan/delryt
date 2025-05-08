@@ -1,15 +1,9 @@
-import OrderNoteForm from "@/forms/OrderNoteForm";
-import ChangeDeliveryTime from "../../../ChangeDeliveryTime";
-import ChooseAddress from "../../../ChooseAddress";
-import ChoosePayment from "../../../ChoosePayment";
+import CheckoutDetails from "../../../CheckoutDetails";
 
 const CheckoutView = () => {
   return (
-    <div className="py-4 space-y-4">
-      <ChangeDeliveryTime />
-      <ChooseAddress />
-      <ChoosePayment />
-      <OrderNoteForm />
+    <div className="py-4">
+      <CheckoutDetails />
     </div>
   );
 };

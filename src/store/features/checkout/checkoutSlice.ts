@@ -32,7 +32,7 @@ const initialState: CheckoutState = {
   deliveryTime: initialDeliveryTime,
   checkoutAddress: null,
   orderNote: "",
-  mobileCheckoutView: "cart",
+  mobileCheckoutView: "checkout",
   coupon: {
     appliedCoupon: null,
     couponList: [
@@ -80,7 +80,7 @@ const checkoutSlice = createSlice({
       state.mobileCheckoutView = action.payload;
     },
     resetMobileCheckoutView: (state) => {
-      state.mobileCheckoutView = "cart";
+      state.mobileCheckoutView = "checkout";
     },
 
     applyCouponById: (state, { payload }: PayloadAction<string>) => {
