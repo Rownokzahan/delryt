@@ -31,8 +31,8 @@ const ChooseAddressModal = () => {
 
   return (
     <Modal modalId="chooseAddressModal" closeOnOutsideClick={false}>
-      <div className="p-3 border-b shadow-md flex justify-between items-center">
-        <h3 className="text-lg font-medium">Select Your Address</h3>
+      <div className="h-13 p-3 border-b shadow-md flex justify-between items-center">
+        <h3 className="sm:text-lg font-medium">Select Your Address</h3>
         <button
           onClick={openAddAddressModal}
           className="text-sm text-primary font-medium"

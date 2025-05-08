@@ -5,6 +5,7 @@ import { useGetAddressListQuery } from "@/store/features/address/adressApi";
 import { useEffect } from "react";
 import useModalById from "@/hooks/useModalById";
 import useCheckoutStates from "@/hooks/useCheckoutStates";
+import { MdOutlineEditLocationAlt } from "react-icons/md";
 
 const AddressInfo = () => {
   const { data: addressList = [], isLoading } = useGetAddressListQuery();
@@ -30,23 +31,22 @@ const AddressInfo = () => {
     checkoutAddress || {};
 
   return (
-    <div className="h-16 pt-1 flex justify-between items-start">
-      <div className="space-y-1">
-        <div className="flex items-start gap-2">
-          <p className="w-16 font-medium">{address_type}</p>
-          <div className="border-s ps-2 text-sm">
-            <p className="font-medium">{address}</p>
-            <p>{contact_person_name}</p>
-            <p>{contact_person_number}</p>
-          </div>
-        </div>
+    <div className="h-16 pt-1 flex justify-between items-start gap-3">
+      <h4 className="text-sm sm:text-base font-medium">{address_type}</h4>
+
+      <div className="flex-1 min-w-0 border-s ps-3">
+        <p className="font-medium text-sm truncate">
+          {address}
+        </p>
+        <p className="text-xs sm:text-sm truncate">{contact_person_name}</p>
+        <p className="text-xs sm:text-sm truncate">{contact_person_number}</p>
       </div>
 
       <button
         onClick={openChooseAddressModal}
-        className="font-medium text-xs text-primary"
+        className="shrink-0 text-xl text-primary"
       >
-        Change
+        <MdOutlineEditLocationAlt />
       </button>
     </div>
   );
