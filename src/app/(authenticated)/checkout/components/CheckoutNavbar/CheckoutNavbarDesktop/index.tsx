@@ -3,7 +3,7 @@ import TopNav from "./TopNav";
 
 const CheckoutNavbarDesktop = () => {
   return (
-    <div className="hidden sm:block">
+    <div className="hidden md:block">
       {/* Top Navbar */}
       <TopNav />
 
