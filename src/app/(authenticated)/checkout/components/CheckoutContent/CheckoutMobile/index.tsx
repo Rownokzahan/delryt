@@ -15,7 +15,7 @@ const CheckoutMobile = () => {
   }, []);
 
   return (
-    <div className="md:hidden ui-container">
+    <div className="md:hidden min-h-[calc(100dvh-56px)] ui-container">
       {mobileCheckoutView === "cart" ? <CartView /> : <CheckoutView />}
     </div>
   );

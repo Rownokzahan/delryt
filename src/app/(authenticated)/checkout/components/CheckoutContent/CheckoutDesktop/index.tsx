@@ -11,13 +11,13 @@ import OrderNoteForm from "@/forms/OrderNoteForm";
 const CheckoutDesktop = () => {
   return (
     <div className="hidden md:flex ui-container py-6 gap-8">
-      <div className="flex-1 space-y-4">
+      <div className="w-[52%] space-y-4">
         <ChangeDeliveryTime />
         <ChooseAddress />
         <ChoosePayment />
       </div>
 
-      <div className="w-[48%] overflow-hidden rounded-xl bg-gray-100">
+      <div className="min-w-0 flex-1 rounded-xl bg-gray-100">
         <CartSummaryHeader />
 
         <div

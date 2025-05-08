@@ -36,7 +36,7 @@ const AddressInfo = () => {
 
       <div className="flex-1 min-w-0 border-s ps-3">
         <p className="font-medium text-sm truncate">
-          {address}
+          {address} Extra long long text
         </p>
         <p className="text-xs sm:text-sm truncate">{contact_person_name}</p>
         <p className="text-xs sm:text-sm truncate">{contact_person_number}</p>

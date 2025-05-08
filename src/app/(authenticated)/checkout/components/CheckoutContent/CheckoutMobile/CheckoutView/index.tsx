@@ -5,7 +5,7 @@ import ChoosePayment from "../../../ChoosePayment";
 
 const CheckoutView = () => {
   return (
-    <div className="min-h-[calc(100dvh-56px)] py-4 space-y-4">
+    <div className="py-4 space-y-4">
       <ChangeDeliveryTime />
       <ChooseAddress />
       <ChoosePayment />
