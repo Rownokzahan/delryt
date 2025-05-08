@@ -1,20 +1,22 @@
-import OrderNoteForm from "@/forms/OrderNoteForm";
-import BillSummary from "../../BillSummary";
-import CartItems from "../../CartItems";
-import Coupons from "../../Coupons";
-import FixedBottomBar from "./FixedBottomBar";
+"use client";
+
+import useCheckoutStates from "@/hooks/useCheckoutStates";
+import CartView from "./CartView";
+import CheckoutView from "./CheckoutView";
+import { useEffect } from "react";
 
 const CheckoutMobile = () => {
+  const { mobileCheckoutView, resetMobileCheckoutView } = useCheckoutStates();
+
+  useEffect(() => {
+    resetMobileCheckoutView();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <div className="md:hidden ui-container pt-3 pb-20 space-y-4">
-      <div className="bg-uiWhite rounded-lg">
-        Cart
-        <CartItems />
-      </div>
-      <Coupons />
-      <BillSummary />
-      <OrderNoteForm />
-      <FixedBottomBar />
+    <div className="md:hidden ui-container">
+      {mobileCheckoutView === "cart" ? <CartView /> : <CheckoutView />}
     </div>
   );
 };

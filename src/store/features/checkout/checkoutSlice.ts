@@ -18,6 +18,7 @@ interface CheckoutState {
   deliveryTime: DeliveryTimeState;
   checkoutAddress: Address | null;
   orderNote: string;
+  mobileCheckoutView: "cart" | "checkout";
   coupon: CouponState;
 }
 
@@ -31,6 +32,7 @@ const initialState: CheckoutState = {
   deliveryTime: initialDeliveryTime,
   checkoutAddress: null,
   orderNote: "",
+  mobileCheckoutView: "cart",
   coupon: {
     appliedCoupon: null,
     couponList: [
@@ -71,6 +73,16 @@ const checkoutSlice = createSlice({
       state.orderNote = "";
     },
 
+    setMobileCheckoutView: (
+      state,
+      action: PayloadAction<"cart" | "checkout">
+    ) => {
+      state.mobileCheckoutView = action.payload;
+    },
+    resetMobileCheckoutView: (state) => {
+      state.mobileCheckoutView = "cart";
+    },
+
     applyCouponById: (state, { payload }: PayloadAction<string>) => {
       const selectedCoupon = state.coupon.couponList.find(
         (coupon) => coupon.id === payload
@@ -88,6 +100,8 @@ export const {
   setCheckoutAddress,
   setOrderNote,
   resetOrderNote,
+  setMobileCheckoutView,
+  resetMobileCheckoutView,
   applyCouponById,
   removeCoupon,
 } = checkoutSlice.actions;
