@@ -1,6 +1,6 @@
 "use client";
 
-import { MdAccessTimeFilled } from "react-icons/md";
+import { MdAccessTime } from "react-icons/md";
 import InfoCard from "./InfoCard";
 import useModalById from "@/hooks/useModalById";
 import useCheckoutStates from "@/hooks/useCheckoutStates";
@@ -11,7 +11,7 @@ const DeliveryTime = () => {
 
   return (
     <InfoCard
-      Icon={MdAccessTimeFilled}
+      Icon={MdAccessTime}
       label="Delivery Time"
       onArrowButtonClick={openModal}
     >

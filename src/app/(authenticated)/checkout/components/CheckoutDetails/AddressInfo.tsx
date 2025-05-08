@@ -1,6 +1,6 @@
 "use client";
 
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { RiMapPinLine } from "react-icons/ri";
 import InfoCard from "./InfoCard";
 import { useGetAddressListQuery } from "@/store/features/address/adressApi";
 import useCheckoutStates from "@/hooks/useCheckoutStates";
@@ -23,7 +23,7 @@ const AddressInfo = () => {
 
   if (isLoading) {
     return (
-      <InfoCard Icon={FaMapMarkerAlt} label={"Address"} showArrowButton={false}>
+      <InfoCard Icon={RiMapPinLine} label={"Address"} showArrowButton={false}>
         <p className="text-uiBlack-light">Loading address...</p>
       </InfoCard>
     );
@@ -32,7 +32,7 @@ const AddressInfo = () => {
   if (!checkoutAddress || addressList.length === 0) {
     return (
       <InfoCard
-        Icon={FaMapMarkerAlt}
+        Icon={RiMapPinLine}
         label={"Address"}
         onArrowButtonClick={openAddAddressModal}
       >
@@ -46,13 +46,17 @@ const AddressInfo = () => {
 
   return (
     <InfoCard
-      Icon={FaMapMarkerAlt}
+      Icon={RiMapPinLine}
       label={address_type}
       onArrowButtonClick={openChooseAddressModal}
     >
-      <p>{address}</p>
-      <p>{contact_person_name}</p>
-      <p>{contact_person_number}</p>
+      <div className="space-y-px">
+        <p className="truncate">{address}</p>
+        <p className="truncate">
+          {contact_person_name} this is a super duper long long long text
+        </p>
+        <p className="truncate">{contact_person_number}</p>
+      </div>
     </InfoCard>
   );
 };

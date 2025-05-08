@@ -17,14 +17,14 @@ const InfoCard = ({
   onArrowButtonClick,
 }: InfoCardProps) => {
   return (
-    <div className="p-3 rounded-lg bg-uiWhite flex justify-between">
-      <div className="flex-1 flex items-start gap-2">
+    <div className="p-3 rounded-lg bg-uiWhite flex">
+      <div className="min-w-0 flex-1 flex items-start gap-2">
         <div className="size-9 rounded-full bg-primary/10 grid place-content-center">
           <Icon className="text-xl text-primary" />
         </div>
 
-        <div className="text-sm">
-          <h5 className="font-medium">{label}</h5>
+        <div className="min-w-0 flex-1 text-sm">
+          <h5 className="mb-[2px] font-medium">{label}</h5>
           {children}
         </div>
       </div>

@@ -1,10 +1,10 @@
-import { BiSolidPackage } from "react-icons/bi";
+import { TbPaperBag } from "react-icons/tb";
 import InfoCard from "./InfoCard";
 
 const DeliveryType = () => {
   return (
     <InfoCard
-      Icon={BiSolidPackage}
+      Icon={TbPaperBag}
       label="Delivery Type"
       onArrowButtonClick={() => {}}
     >

@@ -1,10 +1,10 @@
-import { IoWallet } from "react-icons/io5";
+import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import InfoCard from "./InfoCard";
 
 const PaymentMethod = () => {
   return (
     <InfoCard
-      Icon={IoWallet}
+      Icon={MdOutlineAccountBalanceWallet}
       label="Payment Method"
       onArrowButtonClick={() => {}}
     >
