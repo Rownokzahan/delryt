@@ -6,7 +6,7 @@ const PaymentMethod = () => {
     <InfoCard
       Icon={MdOutlineAccountBalanceWallet}
       label="Payment Method"
-      onArrowButtonClick={() => {}}
+      showArrowButton={false}
     >
       <p>Cash On Delivery</p>
     </InfoCard>
