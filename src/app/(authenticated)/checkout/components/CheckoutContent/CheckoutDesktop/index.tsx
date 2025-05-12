@@ -3,7 +3,6 @@ import CartSummaryHeader from "./CartSummaryHeader";
 import CartItems from "../../CartItems";
 import Coupons from "../../Coupons";
 import BillSummary from "../../BillSummary";
-import OrderNoteForm from "@/forms/OrderNoteForm";
 import CheckoutDetails from "../../CheckoutDetails";
 
 const CheckoutDesktop = () => {
@@ -26,7 +25,6 @@ const CheckoutDesktop = () => {
           <CartItems />
           <Coupons />
           <BillSummary />
-          <OrderNoteForm />
         </div>
 
         <div className="px-4 py-3 bg-uiWhite">

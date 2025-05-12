@@ -1,18 +1,15 @@
 import { BiMessageSquareEdit } from "react-icons/bi";
-import InfoCard from "./InfoCard";
+import InfoCard from "../InfoCard";
+import OrderNoteForm from "./OrderNoteForm";
 
 const AdditonalRequest = () => {
   return (
     <InfoCard
       Icon={BiMessageSquareEdit}
-      label="Additonal Request (Optional)"
+      label="Additonal Request"
       showArrowButton={false}
     >
-      <textarea
-        name=""
-        id=""
-        className="mt-2 w-full p-2 border rounded-sm outline-0"
-      />
+      <OrderNoteForm />
     </InfoCard>
   );
 };

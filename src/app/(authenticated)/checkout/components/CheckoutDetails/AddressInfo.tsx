@@ -52,9 +52,7 @@ const AddressInfo = () => {
     >
       <div className="space-y-px">
         <p className="truncate">{address}</p>
-        <p className="truncate">
-          {contact_person_name} this is a super duper long long long text
-        </p>
+        <p className="truncate">{contact_person_name}</p>
         <p className="truncate">{contact_person_number}</p>
       </div>
     </InfoCard>

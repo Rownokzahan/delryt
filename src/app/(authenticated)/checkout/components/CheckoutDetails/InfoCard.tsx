@@ -23,8 +23,8 @@ const InfoCard = ({
           <Icon className="text-xl text-primary" />
         </div>
 
-        <div className="min-w-0 flex-1 text-sm">
-          <h5 className="mb-[2px] font-medium">{label}</h5>
+        <div className="min-w-0 flex-1 text-sm text-uiBlack-light/80">
+          <h5 className="mb-[2px] font-medium text-uiBlack">{label}</h5>
           {children}
         </div>
       </div>
