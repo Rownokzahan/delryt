@@ -7,6 +7,8 @@ interface CheckoutState {
   orderNote: string;
   mobileCheckoutView: "cart" | "checkout";
   appliedCoupon: null | Coupon;
+  orderType: string,
+  paymentMethod: string,
 }
 
 // Initial value for deliveryTime
@@ -22,6 +24,8 @@ const initialState: CheckoutState = {
   orderNote: "",
   mobileCheckoutView: "cart",
   appliedCoupon: null,
+  orderType: "delivery",
+  paymentMethod: "cash_on_delivery",
 };
 
 const checkoutSlice = createSlice({

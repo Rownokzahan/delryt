@@ -23,6 +23,8 @@ const useCheckoutState = () => {
     appliedCoupon,
     orderNote,
     mobileCheckoutView,
+    orderType,
+    paymentMethod,
   } = useSelector((state: RootState) => state.checkout);
 
   // Delivery time
@@ -69,6 +71,8 @@ const useCheckoutState = () => {
     appliedCoupon,
     orderNote,
     mobileCheckoutView,
+    orderType,
+    paymentMethod,
 
     // Actions
     updateDeliveryTime,
