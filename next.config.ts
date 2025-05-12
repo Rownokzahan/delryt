@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "efood-admin.6amtech.com",
       },
+      {
+        protocol: "https",
+        hostname: "admin.delryt.com",
+      },
 
       //TODO: These should be removed
       {
