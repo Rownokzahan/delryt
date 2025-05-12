@@ -6,11 +6,11 @@ import AddressOption from "./AddressOption/AddressOption";
 import { useEffect, useState } from "react";
 import Button from "@/components/ui/Button";
 import useModalById from "@/hooks/useModalById";
-import useCheckoutStates from "@/hooks/useCheckoutStates";
+import useCheckoutState from "@/hooks/useCheckoutState";
 
 const ChooseAddressModal = () => {
   const { data: addressList = [] } = useGetAddressListQuery();
-  const { checkoutAddress, updateCheckoutAddress } = useCheckoutStates();
+  const { checkoutAddress, updateCheckoutAddress } = useCheckoutState();
   const { openModal: openAddAddressModal } = useModalById("addAddressModal");
   const { closeModal } = useModalById("chooseAddressModal");
 

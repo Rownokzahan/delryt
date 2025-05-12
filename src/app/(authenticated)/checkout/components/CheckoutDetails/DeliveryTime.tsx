@@ -3,11 +3,11 @@
 import { MdAccessTime } from "react-icons/md";
 import InfoCard from "./InfoCard";
 import useModalById from "@/hooks/useModalById";
-import useCheckoutStates from "@/hooks/useCheckoutStates";
+import useCheckoutState from "@/hooks/useCheckoutState";
 
 const DeliveryTime = () => {
   const { openModal } = useModalById("deliveryTimeSelectionModal");
-  const { deliveryTime } = useCheckoutStates();
+  const { deliveryTime } = useCheckoutState();
 
   return (
     <InfoCard

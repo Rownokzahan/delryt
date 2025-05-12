@@ -1,12 +1,12 @@
 "use client";
 
-import useCheckoutStates from "@/hooks/useCheckoutStates";
+import useCheckoutState from "@/hooks/useCheckoutState";
 import CartView from "./CartView";
 import CheckoutView from "./CheckoutView";
 import { useEffect } from "react";
 
 const CheckoutMobile = () => {
-  const { mobileCheckoutView, resetMobileCheckoutView } = useCheckoutStates();
+  const { mobileCheckoutView, resetMobileCheckoutView } = useCheckoutState();
 
   useEffect(() => {
     resetMobileCheckoutView();

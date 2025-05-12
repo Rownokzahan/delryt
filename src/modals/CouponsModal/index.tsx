@@ -1,16 +1,12 @@
 "use client";
 
 import Modal from "../Modal";
-import useCheckoutStates from "@/hooks/useCheckoutStates";
 import useModalById from "@/hooks/useModalById";
 import CouponCodeModal from "./CouponCodeModal";
-import CouponCard from "./CouponCard";
+import CouponList from "./CouponList";
 
 const CouponsModal = () => {
   const { openModal: openCouponCodeModal } = useModalById("couponCodeModal");
-  const {
-    coupon: { couponList },
-  } = useCheckoutStates();
 
   return (
     <Modal modalId="couponsModal" containerClasses="rounded-md ">
@@ -46,10 +42,8 @@ const CouponsModal = () => {
           </div>
         </div>
 
-        <div className="space-y-4">
-          {couponList.map((coupon) => (
-            <CouponCard key={coupon.id} coupon={coupon} />
-          ))}
+        <div className="min-h-82">
+          <CouponList />
         </div>
       </div>
 

@@ -1,12 +1,12 @@
 "use client";
 
 import Logo from "@/components/ui/Logo";
-import useCheckoutStates from "@/hooks/useCheckoutStates";
+import useCheckoutState from "@/hooks/useCheckoutState";
 import clsx from "clsx";
 import { MdArrowBackIosNew } from "react-icons/md";
 
 const CheckoutNavbarMobile = () => {
-  const { mobileCheckoutView, updateMobileCheckoutView } = useCheckoutStates();
+  const { mobileCheckoutView, updateMobileCheckoutView } = useCheckoutState();
 
   const isCartView = mobileCheckoutView === "cart";
 

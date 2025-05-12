@@ -105,12 +105,6 @@ export interface OrderCartItem extends BaseCartItem {
   add_on_qtys: number[];
 }
 
-export interface Coupon {
-  id: Id;
-  code: string;
-  description: string;
-}
-
 export interface Address {
   id: Id;
   contact_person_name: string;
@@ -121,4 +115,16 @@ export interface Address {
   floor: string;
   address_type: string;
   is_default: 0 | 1;
+}
+
+export interface Coupon {
+  id: Id;
+  title: string;
+  code: string;
+  expire_date: string; // ISO date string
+  min_purchase: number;
+  max_discount: number;
+  discount: number;
+  discount_type: "percent" | "amount";
+  limit: number;
 }

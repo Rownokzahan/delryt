@@ -3,13 +3,13 @@
 import { RiMapPinLine } from "react-icons/ri";
 import InfoCard from "./InfoCard";
 import { useGetAddressListQuery } from "@/store/features/address/adressApi";
-import useCheckoutStates from "@/hooks/useCheckoutStates";
+import useCheckoutState from "@/hooks/useCheckoutState";
 import useModalById from "@/hooks/useModalById";
 import { useEffect } from "react";
 
 const AddressInfo = () => {
   const { data: addressList = [], isLoading } = useGetAddressListQuery();
-  const { checkoutAddress, updateCheckoutAddress } = useCheckoutStates();
+  const { checkoutAddress, updateCheckoutAddress } = useCheckoutState();
   const { openModal: openChooseAddressModal } =
     useModalById("chooseAddressModal");
 

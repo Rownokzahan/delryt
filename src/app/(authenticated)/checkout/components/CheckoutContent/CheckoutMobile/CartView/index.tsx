@@ -1,6 +1,6 @@
 "use client";
 
-import useCheckoutStates from "@/hooks/useCheckoutStates";
+import useCheckoutState from "@/hooks/useCheckoutState";
 import BillSummary from "../../../BillSummary";
 import CartItems from "../../../CartItems";
 import Coupons from "../../../Coupons";
@@ -9,7 +9,7 @@ import { useCart } from "@/hooks/useCart";
 
 const CartView = () => {
   const { cart, cartTotal } = useCart();
-  const { updateMobileCheckoutView } = useCheckoutStates();
+  const { updateMobileCheckoutView } = useCheckoutState();
 
   return (
     <div className="pt-3 pb-19 space-y-4">

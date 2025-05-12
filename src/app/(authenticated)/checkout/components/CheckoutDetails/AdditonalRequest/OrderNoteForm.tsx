@@ -1,4 +1,4 @@
-import useCheckoutStates from "@/hooks/useCheckoutStates";
+import useCheckoutState from "@/hooks/useCheckoutState";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -8,7 +8,7 @@ type FormData = {
 
 const OrderNoteForm = () => {
   const { register, handleSubmit, reset, watch } = useForm<FormData>();
-  const { updateOrderNote, removeOrderNote } = useCheckoutStates();
+  const { updateOrderNote, removeOrderNote } = useCheckoutState();
 
   const [isOnFocus, setIsOnFocus] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);

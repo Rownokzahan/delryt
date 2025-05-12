@@ -1,16 +1,13 @@
 "use client";
 
-import useCheckoutStates from "@/hooks/useCheckoutStates";
+import useCheckoutState from "@/hooks/useCheckoutState";
 import useModalById from "@/hooks/useModalById";
 import { CgCheck } from "react-icons/cg";
 import { IoMdArrowDropright } from "react-icons/io";
 
 const Coupons = () => {
   const { openModal } = useModalById("couponsModal");
-  const {
-    coupon: { appliedCoupon },
-    removeCoupon,
-  } = useCheckoutStates();
+  const { appliedCoupon, removeCoupon } = useCheckoutState();
 
   return (
     <div className="p-3 rounded-lg bg-uiWhite">
@@ -32,7 +29,9 @@ const Coupons = () => {
             <div>
               <h4 className="text-sm">{appliedCoupon.code}</h4>
               <p className="text-xs text-uiBlack-light">
-                ৳ {appliedCoupon.amountSaved} Saved
+                {appliedCoupon.discount_type === "amount"
+                  ? `৳ ${appliedCoupon.discount} off`
+                  : `${appliedCoupon.discount}% off`}
               </p>
             </div>
           </div>

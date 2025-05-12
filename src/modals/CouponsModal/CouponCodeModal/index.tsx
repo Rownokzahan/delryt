@@ -1,5 +1,5 @@
-import CouponCodeForm from "@/forms/CouponCodeForm";
 import Modal from "../../Modal";
+import CouponCodeForm from "./CouponCodeForm";
 
 const CouponCodeModal = () => {
   return (

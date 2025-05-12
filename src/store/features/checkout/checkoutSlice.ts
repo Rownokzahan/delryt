@@ -1,27 +1,15 @@
-import { Address, DeliveryTimeState } from "@/types";
+import { Address, Coupon, DeliveryTimeState } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface Coupon {
-  id: string;
-  title: string;
-  amountSaved: number;
-  code: string;
-  description: string;
-}
-
-interface CouponState {
-  appliedCoupon: null | Coupon;
-  couponList: Coupon[];
-}
 
 interface CheckoutState {
   deliveryTime: DeliveryTimeState;
   checkoutAddress: Address | null;
   orderNote: string;
   mobileCheckoutView: "cart" | "checkout";
-  coupon: CouponState;
+  appliedCoupon: null | Coupon;
 }
 
+// Initial value for deliveryTime
 const initialDeliveryTime: DeliveryTimeState = {
   text: "Now",
   date: new Date().toISOString(),
@@ -32,40 +20,25 @@ const initialState: CheckoutState = {
   deliveryTime: initialDeliveryTime,
   checkoutAddress: null,
   orderNote: "",
-  mobileCheckoutView: "checkout",
-  coupon: {
-    appliedCoupon: null,
-    couponList: [
-      {
-        id: "01",
-        title: "Save ৳235 more",
-        code: "ES50",
-        amountSaved: 235,
-        description:
-          "Flat 50% off on orders above Rs. 199. Not applicable on combos, Sides & Beverages",
-      },
-      {
-        id: "02",
-        title: "Save ৳150 more",
-        code: "SAVE150",
-        amountSaved: 150,
-        description: "Get 30% off on your next order",
-      },
-    ],
-  },
+  mobileCheckoutView: "cart",
+  appliedCoupon: null,
 };
 
 const checkoutSlice = createSlice({
   name: "checkout",
   initialState,
   reducers: {
+    // Set delivery time
     setDeliveryTime: (state, { payload }: PayloadAction<DeliveryTimeState>) => {
       state.deliveryTime = payload;
     },
+
+    // Set address for checkout
     setCheckoutAddress: (state, { payload }: PayloadAction<Address>) => {
       state.checkoutAddress = payload;
     },
 
+    // Set or reset order note
     setOrderNote: (state, { payload }: PayloadAction<string>) => {
       state.orderNote = payload;
     },
@@ -73,6 +46,7 @@ const checkoutSlice = createSlice({
       state.orderNote = "";
     },
 
+    // Manage mobile checkout view state
     setMobileCheckoutView: (
       state,
       action: PayloadAction<"cart" | "checkout">
@@ -80,18 +54,28 @@ const checkoutSlice = createSlice({
       state.mobileCheckoutView = action.payload;
     },
     resetMobileCheckoutView: (state) => {
-      state.mobileCheckoutView = "checkout";
+      state.mobileCheckoutView = initialState.mobileCheckoutView;
     },
 
-    applyCouponById: (state, { payload }: PayloadAction<string>) => {
-      const selectedCoupon = state.coupon.couponList.find(
-        (coupon) => coupon.id === payload
-      );
-      state.coupon.appliedCoupon = selectedCoupon ?? null;
+    // Apply or remove a coupon
+    applyCoupon: (state, { payload }: PayloadAction<Coupon>) => {
+      const coupon = payload;
+      state.appliedCoupon = coupon;
     },
     removeCoupon: (state) => {
-      state.coupon.appliedCoupon = null;
+      state.appliedCoupon = initialState.appliedCoupon;
     },
+
+    // Reset checkout state but keep the selected delivery time
+    resetCheckoutStateExceptDeliveryTime: (state) => {
+      return {
+        ...initialState,
+        deliveryTime: state.deliveryTime, // Preserve current deliveryTime
+      };
+    },
+
+    // Fully reset checkout state
+    resetCheckoutState: () => initialState,
   },
 });
 
@@ -102,8 +86,10 @@ export const {
   resetOrderNote,
   setMobileCheckoutView,
   resetMobileCheckoutView,
-  applyCouponById,
+  applyCoupon,
   removeCoupon,
+  resetCheckoutStateExceptDeliveryTime,
+  resetCheckoutState,
 } = checkoutSlice.actions;
 
 export default checkoutSlice.reducer;

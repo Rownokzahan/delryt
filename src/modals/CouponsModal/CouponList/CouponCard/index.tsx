@@ -1,30 +1,34 @@
-import useCheckoutStates from "@/hooks/useCheckoutStates";
+import useCheckoutState from "@/hooks/useCheckoutState";
 import useModalById from "@/hooks/useModalById";
+import { Coupon } from "@/types";
 import clsx from "clsx";
 import { PiPercentBold } from "react-icons/pi";
-
-interface Coupon {
-  id: string;
-  title: string;
-  code: string;
-  description: string;
-}
 
 interface CouponCardProps {
   coupon: Coupon;
 }
 
 const CouponCard = ({ coupon }: CouponCardProps) => {
-  const { id, title, code, description } = coupon;
-
-  const {
-    coupon: { appliedCoupon },
-    applyCouponById,
-    removeCoupon,
-  } = useCheckoutStates();
+  const { appliedCoupon, applyCoupon, removeCoupon } = useCheckoutState();
   const { closeModal } = useModalById("couponsModal");
 
+  const {
+    id,
+    title,
+    discount_type,
+    code,
+    expire_date,
+    min_purchase,
+    max_discount,
+  } = coupon;
+
   const isApplied = appliedCoupon?.id === id;
+
+  const formatedExpireDate = new Date(expire_date).toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
 
   const handleClick = () => {
     if (isApplied) {
@@ -32,7 +36,7 @@ const CouponCard = ({ coupon }: CouponCardProps) => {
       return;
     }
 
-    applyCouponById(id);
+    applyCoupon(coupon);
     closeModal();
   };
 
@@ -44,7 +48,10 @@ const CouponCard = ({ coupon }: CouponCardProps) => {
 
       <div className="p-3">
         <div className="mb-3 ps-3 p-1 border border-dashed rounded-xs flex items-center">
-          <PiPercentBold className="text-success" />
+          <div className="text-success">
+            {discount_type === "amount" ? <PiPercentBold /> : <p>৳</p>}
+          </div>
+
           <p className="flex-1 px-3 font-medium">{code}</p>
 
           <button
@@ -59,7 +66,12 @@ const CouponCard = ({ coupon }: CouponCardProps) => {
           </button>
         </div>
 
-        <p className="text-xs text-uiBlack-light">{description}</p>
+        <div className="text-xs text-uiBlack-light">
+          <p>
+            Valid till {formatedExpireDate} • Minimum purchase {min_purchase} •
+            Maximum discount {max_discount}
+          </p>
+        </div>
       </div>
     </div>
   );
