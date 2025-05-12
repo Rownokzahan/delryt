@@ -15,6 +15,7 @@ import { userApi } from "./features/user/userApi";
 import { productApi } from "./features/product/productApi";
 import { addressApi } from "./features/address/adressApi";
 import { initializeCart } from "@/store/features/cart/cartSlice";
+import { couponApi } from "./features/checkout/couponApi";
 
 export const store = configureStore({
   reducer: {
@@ -34,6 +35,7 @@ export const store = configureStore({
     [userApi.reducerPath]: userApi.reducer,
     [productApi.reducerPath]: productApi.reducer,
     [addressApi.reducerPath]: addressApi.reducer,
+    [couponApi.reducerPath]: couponApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -56,6 +58,7 @@ export const resetBranchRelatedState = () => (dispatch: AppDispatch) => {
   dispatch(categoryApi.util.resetApiState());
   dispatch(productsApi.util.resetApiState());
   dispatch(productApi.util.resetApiState());
+  dispatch(couponApi.util.resetApiState());
 
   dispatch(initializeCart());
 };

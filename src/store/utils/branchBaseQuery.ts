@@ -2,7 +2,7 @@ import { API_BASE_URL } from "@/config/apiConfig";
 import { fetchBaseQuery } from "@reduxjs/toolkit/query";
 import { RootState } from "../store";
 
-const branchHeaderBaseQuery = fetchBaseQuery({
+const branchBaseQuery = fetchBaseQuery({
   baseUrl: API_BASE_URL,
   prepareHeaders: (headers, { getState }) => {
     const currentBranchId = (getState() as RootState).branch?.currentBranch
@@ -16,4 +16,4 @@ const branchHeaderBaseQuery = fetchBaseQuery({
   },
 });
 
-export default branchHeaderBaseQuery;
+export default branchBaseQuery;

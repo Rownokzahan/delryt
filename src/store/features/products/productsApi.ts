@@ -1,4 +1,4 @@
-import branchHeaderBaseQuery from "@/store/utils/branchHeaderBaseQuery";
+import branchBaseQuery from "@/store/utils/branchBaseQuery";
 import { Product } from "@/types";
 import { createApi, EndpointBuilder } from "@reduxjs/toolkit/query/react";
 
@@ -23,7 +23,7 @@ const createProductQuery = (
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
-  baseQuery: branchHeaderBaseQuery,
+  baseQuery: branchBaseQuery,
   endpoints: (builder) => ({
     getFrequentlyBoughtProducts: createProductQuery(
       builder,

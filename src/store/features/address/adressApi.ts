@@ -1,10 +1,10 @@
-import authorizationBaseQuery from "@/store/utils/authorizationBaseQuery";
+import authBaseQuery from "@/store/utils/authBaseQuery";
 import { Address, Id } from "@/types";
 import { createApi } from "@reduxjs/toolkit/query/react";
 
 export const addressApi = createApi({
   reducerPath: "addressApi",
-  baseQuery: authorizationBaseQuery,
+  baseQuery: authBaseQuery,
   tagTypes: ["AddressList"],
   endpoints: (builder) => ({
     getAddressList: builder.query<Address[], void>({

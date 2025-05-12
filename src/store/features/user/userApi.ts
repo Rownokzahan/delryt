@@ -1,11 +1,11 @@
 import { UpdateUser, User } from "@/types";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { initializeCurrentUser } from "./userSlice";
-import authorizationBaseQuery from "@/store/utils/authorizationBaseQuery";
+import authBaseQuery from "@/store/utils/authBaseQuery";
 
 export const userApi = createApi({
   reducerPath: "userApi",
-  baseQuery: authorizationBaseQuery,
+  baseQuery: authBaseQuery,
   tagTypes: ["User"],
   endpoints: (builder) => ({
     getUser: builder.query<User, void>({
