@@ -48,7 +48,8 @@ export const store = configureStore({
       authApi.middleware,
       userApi.middleware,
       productApi.middleware,
-      addressApi.middleware
+      addressApi.middleware,
+      couponApi.middleware
     ),
 });
 
