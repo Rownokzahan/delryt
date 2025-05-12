@@ -3,11 +3,11 @@ import AuthInputField from "../componets/AuthInputField";
 import EmailField from "../componets/EmailField";
 import PasswordField from "../componets/PasswordField";
 import { useRegisterMutation } from "@/store/features/auth/authApi";
-import AuthSubmitButton from "../componets/AuthSubmitButton";
 import { redirect } from "next/navigation";
 import AuthAlert from "../componets/AuthAlert";
 import useReturnToPath from "@/hooks/useReturnToPath";
 import useModalById from "@/hooks/useModalById";
+import FormSubmitButton from "@/forms/components/FormSubmitButton";
 
 interface Inputs {
   f_name: string;
@@ -105,7 +105,11 @@ const SignupForm = () => {
           checkMinLength={true}
         />
 
-        <AuthSubmitButton isLoading={isLoading} label="Sign Up" />
+        <FormSubmitButton
+          className="mt-6"
+          isSubmitting={isLoading}
+          label="Sign Up"
+        />
       </form>
     </div>
   );

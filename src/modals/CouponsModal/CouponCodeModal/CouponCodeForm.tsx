@@ -1,8 +1,12 @@
 "use client";
 
-import Button from "@/components/ui/Button";
+import FormSubmitButton from "@/forms/components/FormSubmitButton";
+import useCheckoutState from "@/hooks/useCheckoutState";
 import useModalById from "@/hooks/useModalById";
+import { useLazyCheckCouponCodeQuery } from "@/store/features/checkout/couponApi";
 import { SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { BsExclamationCircle } from "react-icons/bs";
 
 interface Inputs {
   couponCode: string;
@@ -13,29 +17,55 @@ const CouponCodeForm = () => {
     register,
     handleSubmit,
     reset,
-    formState: { isValid },
+    formState: { errors },
   } = useForm<Inputs>();
 
-  const { closeModal } = useModalById("couponCodeModal");
+  const [checkCouponCode, { isLoading }] = useLazyCheckCouponCodeQuery();
+  const { applyCoupon } = useCheckoutState();
+  const { closeModal: closeCouponCodeModal } = useModalById("couponCodeModal");
+  const { closeModal: closeCouponsModal } = useModalById("couponsModal");
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-    reset();
-    closeModal();
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    try {
+      const coupon = await checkCouponCode(data.couponCode).unwrap();
+      if (coupon) {
+        applyCoupon(coupon);
+        toast.success("Coupon code applied successfully!");
+        closeCouponsModal();
+      }
+    } catch (error) {
+      console.error("Error applying coupon code:", error);
+      toast.error("Invalid coupon code. Please try again.");
+      ;
+    } finally {
+      reset();
+      closeCouponCodeModal();
+    }
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      <input
-        type="text"
-        {...register("couponCode", { required: true })}
-        placeholder="Type your coupon code here"
-        className="w-full py-2 px-4 border rounded-md outline-0"
-      />
+      <div className="space-y-[2px]">
+        <input
+          type="text"
+          {...register("couponCode", { required: "Code is required" })}
+          placeholder="Type your coupon code here"
+          className="w-full py-2 px-4 border rounded-md outline-0"
+        />
 
-      <Button type="submit" disabled={!isValid} className="w-full">
-        Apply
-      </Button>
+        {errors?.couponCode && (
+          <p className="ms-1 text-xs text-primary/90 flex gap-1 items-center">
+            <BsExclamationCircle className="text-[10px]" />
+            <span>{errors.couponCode.message}</span>
+          </p>
+        )}
+      </div>
+
+      <FormSubmitButton
+        className="mt-6"
+        isSubmitting={isLoading}
+        label="Apply"
+      />
     </form>
   );
 };

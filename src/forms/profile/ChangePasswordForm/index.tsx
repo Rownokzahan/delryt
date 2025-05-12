@@ -1,8 +1,8 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import ProfileInputField from "../components/ProfileInputField";
-import ProfileSubmitButton from "../components/ProfileSubmitButton";
 import { useState } from "react";
 import { PiEyeBold, PiEyeClosedBold } from "react-icons/pi";
+import FormSubmitButton from "@/forms/components/FormSubmitButton";
 
 interface FormInputs {
   password: string;
@@ -90,9 +90,10 @@ const ChangePasswordForm = ({
       </div>
 
       {/* Submit Button */}
-      <ProfileSubmitButton
-        label="Change Password"
+      <FormSubmitButton
+        className="px-3 py-2 shadow-md"
         isSubmitting={isSubmitting}
+        label="Change Password"
       />
     </form>
   );

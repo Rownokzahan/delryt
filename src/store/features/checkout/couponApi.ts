@@ -20,4 +20,4 @@ export const couponApi = createApi({
   }),
 });
 
-export const { useGetCouponsQuery, useCheckCouponCodeQuery } = couponApi;
+export const { useGetCouponsQuery, useLazyCheckCouponCodeQuery } = couponApi;

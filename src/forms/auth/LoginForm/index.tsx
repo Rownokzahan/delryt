@@ -5,11 +5,11 @@ import PasswordField from "../componets/PasswordField";
 import AuthInputField from "../componets/AuthInputField";
 import { useLoginMutation } from "@/store/features/auth/authApi";
 import { getType, isEmail, isPhone } from "./utils";
-import AuthSubmitButton from "../componets/AuthSubmitButton";
 import AuthAlert from "../componets/AuthAlert";
 import { redirect } from "next/navigation";
 import useReturnToPath from "@/hooks/useReturnToPath";
 import useModalById from "@/hooks/useModalById";
+import FormSubmitButton from "@/forms/components/FormSubmitButton";
 
 interface Inputs {
   email_or_phone: string;
@@ -81,7 +81,11 @@ const LoginForm = () => {
 
         <PasswordField register={register} error={errors.password} />
 
-        <AuthSubmitButton isLoading={isLoading} label="Login" />
+        <FormSubmitButton
+          className="mt-6"
+          isSubmitting={isLoading}
+          label="Login"
+        />
       </form>
     </div>
   );

@@ -3,7 +3,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { UpdateUser } from "@/types";
 import ProfileInputField from "../components/ProfileInputField";
-import ProfileSubmitButton from "../components/ProfileSubmitButton";
+import FormSubmitButton from "@/forms/components/FormSubmitButton";
 
 interface EditProfileFormProps {
   defaultValues: UpdateUser;
@@ -95,7 +95,11 @@ const EditProfileForm = ({
       </div>
 
       {/* Submit Button */}
-      <ProfileSubmitButton label="Update Profile" isSubmitting={isSubmitting} />
+      <FormSubmitButton
+        className="px-3 py-2 shadow-md"
+        isSubmitting={isSubmitting}
+        label="Update Profile"
+      />
     </form>
   );
 };

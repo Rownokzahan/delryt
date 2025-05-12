@@ -3,8 +3,8 @@
 import AddressTypeSelection from "./AddressTypeSelection";
 import { Address } from "@/types";
 import { SubmitHandler, useForm } from "react-hook-form";
-import ProfileSubmitButton from "../components/ProfileSubmitButton";
 import ProfileInputField from "../components/ProfileInputField";
+import FormSubmitButton from "@/forms/components/FormSubmitButton";
 
 interface AddressFormProps {
   defaultValues?: Partial<Address>;
@@ -114,9 +114,10 @@ const AddressForm = ({
       </div>
 
       {/* Submit Button */}
-      <ProfileSubmitButton
-        label="Save Address Details"
+      <FormSubmitButton
+        className="px-3 py-2 shadow-md"
         isSubmitting={isSubmitting}
+        label="Save Address Details"
       />
     </form>
   );
