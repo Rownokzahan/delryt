@@ -7,6 +7,7 @@ import {
   setDeliveryTime,
   setMobileCheckoutView,
   setOrderNote,
+  toggleAddCutlery as toggleAddCutleryAction,
 } from "@/store/features/checkout/checkoutSlice";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -28,6 +29,7 @@ const useCheckoutState = () => {
     mobileCheckoutView,
     orderType,
     paymentMethod,
+    addCutlery,
   } = useSelector((state: RootState) => state.checkout);
 
   // Delivery time
@@ -102,6 +104,10 @@ const useCheckoutState = () => {
     toast.error("Coupon removed!");
   };
 
+  const toggleAddCutlery = () => {
+    dispatch(toggleAddCutleryAction());
+  };
+
   return {
     // State
     deliveryTime,
@@ -111,6 +117,7 @@ const useCheckoutState = () => {
     mobileCheckoutView,
     orderType,
     paymentMethod,
+    addCutlery,
 
     // Actions
     updateDeliveryTime,
@@ -121,6 +128,7 @@ const useCheckoutState = () => {
     resetMobileCheckoutView,
     applyCoupon,
     removeCoupon,
+    toggleAddCutlery,
   };
 };
 

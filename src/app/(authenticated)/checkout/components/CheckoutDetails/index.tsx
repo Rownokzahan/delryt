@@ -3,6 +3,7 @@ import AddressInfo from "./AddressInfo";
 import DeliveryTime from "./DeliveryTime";
 import PaymentMethod from "./PaymentMethod";
 import AdditonalRequest from "./AdditonalRequest";
+import AddCutlery from "./AddCutlery";
 
 const CheckoutDetails = () => {
   return (
@@ -11,6 +12,7 @@ const CheckoutDetails = () => {
       <AddressInfo />
       <DeliveryType />
       <PaymentMethod />
+      <AddCutlery />
       <AdditonalRequest />
     </div>
   );

@@ -12,6 +12,7 @@ interface CheckoutState {
   };
   orderType: string;
   paymentMethod: string;
+  addCutlery: boolean;
 }
 
 // Initial value for deliveryTime
@@ -32,6 +33,7 @@ const initialState: CheckoutState = {
   },
   orderType: "delivery",
   paymentMethod: "cash_on_delivery",
+  addCutlery: false,
 };
 
 const checkoutSlice = createSlice({
@@ -80,6 +82,11 @@ const checkoutSlice = createSlice({
       state.appliedCoupon = initialState.appliedCoupon;
     },
 
+    // Toggle add cutlery option
+    toggleAddCutlery: (state) => {
+      state.addCutlery = !state.addCutlery;
+    },
+
     // Reset checkout state but keep the selected delivery time
     resetCheckoutStateExceptDeliveryTime: (state) => {
       return {
@@ -102,6 +109,7 @@ export const {
   resetMobileCheckoutView,
   applyCoupon,
   removeCoupon,
+  toggleAddCutlery,
   resetCheckoutStateExceptDeliveryTime,
   resetCheckoutState,
 } = checkoutSlice.actions;
