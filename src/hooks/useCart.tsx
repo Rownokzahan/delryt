@@ -7,6 +7,7 @@ import {
   updateCartItem as updateCartItemAction,
   removeLastCustomizedProduct as removeLastCustomizedProductAction,
   addCustomProductToCart as addCustomProductToCartAction,
+  clearCart as clearCartAction,
 } from "@/store/features/cart/cartSlice";
 import {
   selectCart,
@@ -93,6 +94,10 @@ export const useCart = () => {
     dispatch(removeLastCustomizedProductAction(productId));
   };
 
+  const clearCart = () => {
+    dispatch(clearCartAction());
+  };
+
   return {
     cart,
     cartTotal,
@@ -102,5 +107,6 @@ export const useCart = () => {
     updateCartItemQuantity,
     updateCartItem,
     removeLastCustomizedProduct,
+    clearCart,
   };
 };

@@ -142,6 +142,11 @@ const cartSlice = createSlice({
       storeCart(updatedCart);
       return updatedCart;
     },
+
+    clearCart: () => {
+      storeCart(initialState);
+      return initialState;
+    },
   },
 });
 
@@ -152,6 +157,7 @@ export const {
   removeLastCustomizedProduct,
   updateCartItemQuantity,
   updateCartItem,
+  clearCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
