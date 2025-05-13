@@ -1,9 +1,9 @@
-import Button from "@/components/ui/Button";
 import CartSummaryHeader from "./CartSummaryHeader";
 import CartItems from "../../CartItems";
 import Coupon from "../../Coupon";
 import BillSummary from "../../BillSummary";
 import CheckoutDetails from "../../CheckoutDetails";
+import PlaceOrderButton from "../../PlaceOrderButton";
 
 const CheckoutDesktop = () => {
   return (
@@ -28,7 +28,7 @@ const CheckoutDesktop = () => {
         </div>
 
         <div className="px-4 py-3 bg-uiWhite">
-          <Button className="w-full">Place order</Button>
+          <PlaceOrderButton />
         </div>
       </div>
     </div>

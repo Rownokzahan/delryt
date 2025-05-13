@@ -12,7 +12,7 @@ const CartView = () => {
   const { updateMobileCheckoutView } = useCheckoutState();
 
   return (
-    <div className="pt-3 pb-19 space-y-4">
+    <div className="pt-5 pb-20 space-y-4">
       <div className="bg-uiWhite rounded-lg">
         <div className="p-3 border-b flex justify-between items-center">
           <h3>Cart Summary</h3>
