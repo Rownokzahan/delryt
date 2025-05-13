@@ -12,7 +12,7 @@ const CheckoutView = () => {
     appliedCoupon: { couponDiscountAmount },
   } = useCheckoutState();
 
-  const [showBillSummary, setShowBillSummary] = useState(true);
+  const [showBillSummary, setShowBillSummary] = useState(false);
 
   const toggleSummary = () => {
     setShowBillSummary((prev) => !prev);
