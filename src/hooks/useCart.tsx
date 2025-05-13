@@ -12,20 +12,27 @@ import {
   selectCart,
   selectCartTotal,
 } from "@/store/features/cart/cartSelectors";
+import useCheckoutState from "./useCheckoutState";
+import toast from "react-hot-toast";
 
 export const useCart = () => {
+  const dispatch = useDispatch();
+  const { appliedCoupon, removeCoupon } = useCheckoutState();
+
   const cart = useSelector(selectCart);
   const cartTotal = useSelector(selectCartTotal);
-  const dispatch = useDispatch();
 
+  // Initialize cart stat
   const initializeCart = () => {
     dispatch(initializeCartAction());
   };
 
+  // Add a simple product to the cart
   const addSimpleProductToCart = (product: Product) => {
     dispatch(addSimpleProductToCartAction(product));
   };
 
+  // Add a customized product with add-ons to the cart
   const addCustomProductToCart = (
     product: Product,
     totalPrice: number,
@@ -36,6 +43,7 @@ export const useCart = () => {
     );
   };
 
+  // Update item quantity (increment/decrement) in the cart
   const updateCartItemQuantity = ({
     id,
     idType,
@@ -52,8 +60,14 @@ export const useCart = () => {
         action,
       })
     );
+
+    if (appliedCoupon) {
+      removeCoupon();
+      toast.error("Coupon removed. Reapply if still valid.");
+    }
   };
 
+  // Update a cart item (customized) with new add-ons or pricing
   const updateCartItem = ({
     cartId,
     totalPrice,
@@ -70,8 +84,14 @@ export const useCart = () => {
         selectedAddOns,
       })
     );
+
+    if (appliedCoupon) {
+      removeCoupon();
+      toast.error("Coupon removed. Reapply if still valid.");
+    }
   };
 
+  // Remove the last customized version of a specific product
   const removeLastCustomizedProduct = (productId: Id) => {
     dispatch(removeLastCustomizedProductAction(productId));
   };
