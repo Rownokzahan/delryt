@@ -1,7 +1,7 @@
 import Button from "@/components/ui/Button";
 import CartSummaryHeader from "./CartSummaryHeader";
 import CartItems from "../../CartItems";
-import Coupons from "../../Coupons";
+import Coupon from "../../Coupon";
 import BillSummary from "../../BillSummary";
 import CheckoutDetails from "../../CheckoutDetails";
 
@@ -23,7 +23,7 @@ const CheckoutDesktop = () => {
           }}
         >
           <CartItems />
-          <Coupons />
+          <Coupon />
           <BillSummary />
         </div>
 

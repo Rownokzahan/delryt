@@ -30,7 +30,6 @@ const CouponCodeForm = () => {
       const coupon = await checkCouponCode(data.couponCode).unwrap();
       if (coupon) {
         applyCoupon(coupon);
-        toast.success("Coupon code applied successfully!");
         closeCouponsModal();
       }
     } catch (error) {

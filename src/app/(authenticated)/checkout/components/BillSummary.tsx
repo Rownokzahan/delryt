@@ -1,9 +1,11 @@
 "use client";
 
 import { useCart } from "@/hooks/useCart";
+import useCheckoutState from "@/hooks/useCheckoutState";
 
 const BillSummary = () => {
   const { cartTotal } = useCart();
+  const { appliedCoupon } = useCheckoutState();
 
   return (
     <div className="p-3 rounded-lg bg-uiWhite">
@@ -17,6 +19,11 @@ const BillSummary = () => {
               <span className="text-uiBlack-light">(Excl.Taxes)</span>
             </p>
             <p className="text-end">৳{cartTotal}</p>
+          </div>
+
+          <div className="flex item-center justify-between">
+            <p>Coupon Discount </p>
+            <p className="text-end">- ৳{appliedCoupon.couponDiscountAmount}</p>
           </div>
 
           <div className="flex item-center justify-between">
@@ -41,7 +48,9 @@ const BillSummary = () => {
             <span className="text-uiBlack-light line-through">
               {cartTotal + 60}
             </span>{" "}
-            <span className="font-medium">৳{cartTotal}</span>
+            <span className="font-medium">
+              ৳{cartTotal - appliedCoupon.couponDiscountAmount}
+            </span>
           </p>
         </div>
       </div>

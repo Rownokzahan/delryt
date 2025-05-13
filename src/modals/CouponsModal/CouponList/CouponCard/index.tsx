@@ -22,7 +22,7 @@ const CouponCard = ({ coupon }: CouponCardProps) => {
     max_discount,
   } = coupon;
 
-  const isApplied = appliedCoupon?.id === id;
+  const isApplied = appliedCoupon.coupon?.id === id;
 
   const formatedExpireDate = new Date(expire_date).toLocaleDateString("en-GB", {
     day: "2-digit",

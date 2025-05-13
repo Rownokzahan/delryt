@@ -6,9 +6,12 @@ interface CheckoutState {
   checkoutAddress: Address | null;
   orderNote: string;
   mobileCheckoutView: "cart" | "checkout";
-  appliedCoupon: null | Coupon;
-  orderType: string,
-  paymentMethod: string,
+  appliedCoupon: {
+    coupon: null | Coupon;
+    couponDiscountAmount: number;
+  };
+  orderType: string;
+  paymentMethod: string;
 }
 
 // Initial value for deliveryTime
@@ -23,7 +26,10 @@ const initialState: CheckoutState = {
   checkoutAddress: null,
   orderNote: "",
   mobileCheckoutView: "cart",
-  appliedCoupon: null,
+  appliedCoupon: {
+    coupon: null,
+    couponDiscountAmount: 0,
+  },
   orderType: "delivery",
   paymentMethod: "cash_on_delivery",
 };
@@ -62,9 +68,13 @@ const checkoutSlice = createSlice({
     },
 
     // Apply or remove a coupon
-    applyCoupon: (state, { payload }: PayloadAction<Coupon>) => {
-      const coupon = payload;
-      state.appliedCoupon = coupon;
+    applyCoupon: (
+      state,
+      { payload }: PayloadAction<{ coupon: Coupon; discountAmount: number }>
+    ) => {
+      const { coupon, discountAmount } = payload;
+      state.appliedCoupon.coupon = coupon;
+      state.appliedCoupon.couponDiscountAmount = discountAmount;
     },
     removeCoupon: (state) => {
       state.appliedCoupon = initialState.appliedCoupon;

@@ -13,7 +13,6 @@ import {
   selectCartTotal,
 } from "@/store/features/cart/cartSelectors";
 import useCheckoutState from "./useCheckoutState";
-import toast from "react-hot-toast";
 
 export const useCart = () => {
   const dispatch = useDispatch();
@@ -61,9 +60,8 @@ export const useCart = () => {
       })
     );
 
-    if (appliedCoupon) {
+    if (appliedCoupon.coupon !== null) {
       removeCoupon();
-      toast.error("Coupon removed. Reapply if still valid.");
     }
   };
 
@@ -85,9 +83,8 @@ export const useCart = () => {
       })
     );
 
-    if (appliedCoupon) {
+    if (appliedCoupon.coupon !== null) {
       removeCoupon();
-      toast.error("Coupon removed. Reapply if still valid.");
     }
   };
 

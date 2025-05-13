@@ -3,7 +3,7 @@
 import useCheckoutState from "@/hooks/useCheckoutState";
 import BillSummary from "../../../BillSummary";
 import CartItems from "../../../CartItems";
-import Coupons from "../../../Coupons";
+import Coupon from "../../../Coupon";
 import Button from "@/components/ui/Button";
 import { useCart } from "@/hooks/useCart";
 
@@ -24,7 +24,7 @@ const CartView = () => {
         <CartItems />
       </div>
 
-      <Coupons />
+      <Coupon />
       <BillSummary />
 
       <div className="w-full fixed left-0 bottom-0 bg-uiWhite rounded-t-2xl">
