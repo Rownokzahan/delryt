@@ -1,8 +1,9 @@
 import {
   applyCoupon as applyCouponAction,
   removeCoupon as removeCouponAction,
-  resetMobileCheckoutView as resetMobileCheckoutViewAction,
   resetOrderNote,
+  resetCheckoutExceptTime as resetCheckoutExceptTimeAction,
+  resetCheckout as resetCheckoutAction,
   setCheckoutAddress,
   setDeliveryTime,
   setMobileCheckoutView,
@@ -56,10 +57,6 @@ const useCheckoutState = () => {
     dispatch(setMobileCheckoutView(view));
   };
 
-  const resetMobileCheckoutView = () => {
-    dispatch(resetMobileCheckoutViewAction());
-  };
-
   // Coupon
   const applyCoupon = (coupon: Coupon) => {
     const minPurchase = coupon.min_purchase;
@@ -108,6 +105,16 @@ const useCheckoutState = () => {
     dispatch(toggleAddCutleryAction());
   };
 
+  // Reset checkout state except for the selected delivery time
+  const resetCheckoutExceptTime = () => {
+    dispatch(resetCheckoutExceptTimeAction());
+  };
+
+  // Reset all checkout state
+  const resetCheckout = () => {
+    dispatch(resetCheckoutAction());
+  };
+
   return {
     // State
     deliveryTime,
@@ -125,10 +132,11 @@ const useCheckoutState = () => {
     updateOrderNote,
     removeOrderNote,
     updateMobileCheckoutView,
-    resetMobileCheckoutView,
     applyCoupon,
     removeCoupon,
     toggleAddCutlery,
+    resetCheckoutExceptTime,
+    resetCheckout,
   };
 };
 

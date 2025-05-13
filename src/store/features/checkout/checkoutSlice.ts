@@ -65,9 +65,6 @@ const checkoutSlice = createSlice({
     ) => {
       state.mobileCheckoutView = action.payload;
     },
-    resetMobileCheckoutView: (state) => {
-      state.mobileCheckoutView = initialState.mobileCheckoutView;
-    },
 
     // Apply or remove a coupon
     applyCoupon: (
@@ -88,7 +85,7 @@ const checkoutSlice = createSlice({
     },
 
     // Reset checkout state but keep the selected delivery time
-    resetCheckoutStateExceptDeliveryTime: (state) => {
+    resetCheckoutExceptTime: (state) => {
       return {
         ...initialState,
         deliveryTime: state.deliveryTime, // Preserve current deliveryTime
@@ -96,7 +93,7 @@ const checkoutSlice = createSlice({
     },
 
     // Fully reset checkout state
-    resetCheckoutState: () => initialState,
+    resetCheckout: () => initialState,
   },
 });
 
@@ -106,12 +103,11 @@ export const {
   setOrderNote,
   resetOrderNote,
   setMobileCheckoutView,
-  resetMobileCheckoutView,
   applyCoupon,
   removeCoupon,
   toggleAddCutlery,
-  resetCheckoutStateExceptDeliveryTime,
-  resetCheckoutState,
+  resetCheckoutExceptTime,
+  resetCheckout,
 } = checkoutSlice.actions;
 
 export default checkoutSlice.reducer;

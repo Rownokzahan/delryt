@@ -1,5 +1,5 @@
 import useCheckoutState from "@/hooks/useCheckoutState";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 type FormData = {
@@ -12,13 +12,6 @@ const OrderNoteForm = () => {
 
   const [isOnFocus, setIsOnFocus] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  useEffect(() => {
-    removeOrderNote();
-
-    return removeOrderNote();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const orderNoteValue = watch("orderNote", ""); // Watch the input field value
 
