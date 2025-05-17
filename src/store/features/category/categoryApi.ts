@@ -10,10 +10,6 @@ export const categoryApi = createApi({
       query: () => ({
         url: "categories",
       }),
-
-      // Extracts only the categories array from the API response.
-      transformResponse: (response: { categories: Category[] }) =>
-        response.categories,
     }),
   }),
 });

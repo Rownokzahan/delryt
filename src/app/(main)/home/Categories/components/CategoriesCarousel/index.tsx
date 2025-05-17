@@ -9,9 +9,7 @@ const CategoriesCarousel = () => {
   const { data: categories = [], isLoading, error } = useGetCategoriesQuery();
 
   if (isLoading) {
-    return (
-      <CategoriesCarouselSkeleton />
-    );
+    return <CategoriesCarouselSkeleton />;
   }
 
   if (error) {
