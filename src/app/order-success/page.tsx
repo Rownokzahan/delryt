@@ -17,9 +17,15 @@ const OrderSuccessPage = () => {
           support.
         </p>
 
-        <div className="mt-8 w-max mx-auto">
-          <Link href={"/"}>
-            <Button variant="primary-outline">Back to Home</Button>
+        <div className="max-w-md mt-8 mx-auto flex flex-col md:flex-row justify-center gap-4">
+          <Link href={"/"} className="w-full">
+            <Button variant="primary-outline" className="w-full">
+              Back to Home
+            </Button>
+          </Link>
+
+          <Link href={"/checkout"} className="w-full">
+            <Button className="w-full">Try Checkout Again</Button>
           </Link>
         </div>
       </div>

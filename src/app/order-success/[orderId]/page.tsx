@@ -27,7 +27,7 @@ const OrderSuccessPage = async ({ params }: OrderSuccessPageProps) => {
           <span className="font-medium">Order ID:</span> {orderId}
         </p>
 
-        <div className="max-w-sm mt-8 mx-auto flex justify-center gap-4">
+        <div className="max-w-sm mt-8 mx-auto flex flex-col md:flex-row justify-center gap-4">
           <Link href={"/"} className="w-full">
             <Button variant="primary-outline" className="w-full">
               Back to Home

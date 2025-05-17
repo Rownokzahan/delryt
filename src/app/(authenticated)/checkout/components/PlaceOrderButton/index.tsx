@@ -13,6 +13,7 @@ import {
 import useModalById from "@/hooks/useModalById";
 import { useCreateOrderMutation } from "@/store/features/order/orderApi";
 import { CgSpinner } from "react-icons/cg";
+import { useRouter } from "next/navigation";
 
 const PlaceOrderButton = () => {
   const { openModal: openAddAddressModal } = useModalById("addAddressModal");
@@ -27,6 +28,7 @@ const PlaceOrderButton = () => {
   } = useCheckoutState();
   const { currentBranch } = useBranch();
   const [createOrder, { isLoading }] = useCreateOrderMutation();
+  const router = useRouter();
 
   const handlePlaceOrder = async () => {
     if (!checkoutAddress) {
@@ -55,12 +57,13 @@ const PlaceOrderButton = () => {
 
     try {
       const response = await createOrder(orderPayload).unwrap();
-      console.log("Order Response:", response);
 
       clearCart();
       resetCheckout();
+      router.push(`/order-success/${response.order_id}`);
     } catch (error) {
       console.error("Error placing order:", error);
+      router.push(`/order-success`);
     }
   };
 
