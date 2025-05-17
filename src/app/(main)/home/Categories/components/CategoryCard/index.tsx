@@ -16,7 +16,7 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
     <article className="p-3">
       <Link
         href={``}
-        className="block p-3 hover:scale-105 duration-300"
+        className="block p-3 hover:scale-105 bg-uiWhite duration-300"
         style={{ boxShadow: "rgba(0, 0, 0, 0.08) 0px 0px 16px 0px" }}
       >
         <figure className="relative w-full">
@@ -29,7 +29,7 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
           />
 
           {/* Triangle */}
-          <span className="border-[16px] border-s-transparent border-b-transparent border-white absolute -top-px -right-px"></span>
+          <span className="border-[16px] border-s-transparent border-b-transparent border-uiWhite absolute -top-px -right-px"></span>
         </figure>
 
         <div className="my-3 flex justify-between items-center gap-3">
