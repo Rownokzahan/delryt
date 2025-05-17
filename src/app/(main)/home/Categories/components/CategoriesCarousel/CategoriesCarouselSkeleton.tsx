@@ -1,6 +1,6 @@
 import ProgressBar from "@/components/ui/ProgressBar";
-import CategoryCardSkeleton from "../CategoryCard/CategoryCardSkeleton";
 import CarouselDotsSkeleton from "@/components/Carousel/CarouselDotsSkeleton";
+import CategoryCardSkeleton from "@/cards/CategoryCard/CategoryCardSkeleton";
 
 const CategoriesCarouselSkeleton = () => {
   return (

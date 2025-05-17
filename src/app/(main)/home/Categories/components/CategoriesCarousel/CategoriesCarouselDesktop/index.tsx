@@ -1,5 +1,5 @@
+import CategoryCard from "@/cards/CategoryCard";
 import Carousel from "@/components/Carousel";
-import CategoryCard from "../../CategoryCard";
 import { Category } from "@/types";
 
 interface CategoriesCarouselDesktopProps {

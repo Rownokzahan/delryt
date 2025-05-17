@@ -8,14 +8,14 @@ interface CategoryCardProps {
 }
 
 const CategoryCard = ({ category }: CategoryCardProps) => {
-  const { name, image } = category || {};
+  const { id, name, image } = category || {};
 
   const imagePath = getImagePath("category", image);
 
   return (
     <article className="p-3">
       <Link
-        href={``}
+        href={`/categories/${id}`}
         className="block p-3 hover:scale-105 bg-uiWhite duration-300"
         style={{ boxShadow: "rgba(0, 0, 0, 0.08) 0px 0px 16px 0px" }}
       >

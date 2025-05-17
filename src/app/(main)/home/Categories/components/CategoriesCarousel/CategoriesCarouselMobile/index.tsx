@@ -1,8 +1,8 @@
+import CategoryCard from "@/cards/CategoryCard";
 import ProgressBar from "@/components/ui/ProgressBar";
 import useCarouselProgress from "@/hooks/useCarouselProgress";
 import { Category } from "@/types";
 import Slider from "react-slick";
-import CategoryCard from "../../CategoryCard";
 
 interface CategoriesCarouselMobileProps {
   categories: Category[];
