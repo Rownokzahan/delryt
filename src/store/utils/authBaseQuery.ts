@@ -1,7 +1,8 @@
+import { API_BASE_URL } from "@/config/apiConfig";
 import { fetchBaseQuery } from "@reduxjs/toolkit/query";
 
 const authBaseQuery = fetchBaseQuery({
-  baseUrl: "https://admin.delryt.com/api/v1",
+  baseUrl: API_BASE_URL,
   prepareHeaders: (headers) => {
     const token = localStorage.getItem("token");
 

@@ -128,3 +128,22 @@ export interface Coupon {
   discount_type: "percent" | "amount";
   limit: number;
 }
+
+export type OrderPayload = {
+  cart: OrderCartItem[];
+  coupon_discount_amount: number;
+  coupon_discount_title: string;
+  order_amount: number;
+  order_type: "delivery" | "takeaway";
+  delivery_address_id: number;
+  payment_method: "cash_on_delivery" | "online";
+  order_note: string;
+  coupon_code: string;
+  delivery_time: string;
+  delivery_date: string;
+  branch_id: number;
+  distance: number;
+  selected_delivery_area: number | null;
+  is_partial: "0" | "1";
+  is_cutlery_required: "0" | "1";
+};

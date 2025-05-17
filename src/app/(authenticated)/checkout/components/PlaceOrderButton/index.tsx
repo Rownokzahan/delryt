@@ -4,32 +4,15 @@ import Button from "@/components/ui/Button";
 import useBranch from "@/hooks/useBranch";
 import { useCart } from "@/hooks/useCart";
 import useCheckoutState from "@/hooks/useCheckoutState";
-import { OrderCartItem } from "@/types";
+import { OrderPayload } from "@/types";
 import {
   formatDeliveryDate,
   formatDeliveryTime,
   localCartToOrderCart,
 } from "./orderUtils";
 import useModalById from "@/hooks/useModalById";
-
-type OrderPayload = {
-  cart: OrderCartItem[];
-  coupon_discount_amount: number;
-  coupon_discount_title: string;
-  order_amount: number;
-  order_type: "delivery" | "takeaway";
-  delivery_address_id: number;
-  payment_method: "cash_on_delivery" | "online";
-  order_note: string;
-  coupon_code: string;
-  delivery_time: string;
-  delivery_date: string;
-  branch_id: number;
-  distance: number;
-  selected_delivery_area: number | null;
-  is_partial: "0" | "1";
-  is_cutlery_required: "0" | "1";
-};
+import { useCreateOrderMutation } from "@/store/features/order/orderApi";
+import { CgSpinner } from "react-icons/cg";
 
 const PlaceOrderButton = () => {
   const { openModal: openAddAddressModal } = useModalById("addAddressModal");
@@ -43,8 +26,9 @@ const PlaceOrderButton = () => {
     resetCheckout,
   } = useCheckoutState();
   const { currentBranch } = useBranch();
+  const [createOrder, { isLoading }] = useCreateOrderMutation();
 
-  const handlePlaceOrder = () => {
+  const handlePlaceOrder = async () => {
     if (!checkoutAddress) {
       openAddAddressModal();
       return;
@@ -69,19 +53,29 @@ const PlaceOrderButton = () => {
       payment_method: "cash_on_delivery",
     };
 
-    console.log("Order Payload:", orderPayload);
+    try {
+      const response = await createOrder(orderPayload).unwrap();
+      console.log("Order Response:", response);
 
-    const orderResponse: string = "success";
-    if (orderResponse === "fail") {
       clearCart();
       resetCheckout();
+    } catch (error) {
+      console.error("Error placing order:", error);
     }
   };
 
   return (
-    <Button onClick={handlePlaceOrder} className="w-full">
-      Place order
-    </Button>
+    <>
+      {isLoading ? (
+        <Button className="w-full h-12">
+          <CgSpinner className="animate-spin text-2xl" />
+        </Button>
+      ) : (
+        <Button onClick={handlePlaceOrder} className="w-full h-12">
+          Place Order
+        </Button>
+      )}
+    </>
   );
 };
 

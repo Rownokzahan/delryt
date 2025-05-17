@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { userApi } from "../user/userApi";
 import { clearUser } from "../user/userSlice";
+import { API_BASE_URL } from "@/config/apiConfig";
 
 interface LoginCredentials {
   email_or_phone: string;
@@ -18,7 +19,7 @@ interface RegisterCredentials {
 
 export const authApi = createApi({
   reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://admin.delryt.com/api/v1" }),
+  baseQuery: fetchBaseQuery({ baseUrl: API_BASE_URL }),
   tagTypes: ["User"],
   endpoints: (builder) => ({
     login: builder.mutation<{ token: string }, LoginCredentials>({
