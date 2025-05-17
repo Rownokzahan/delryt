@@ -11,7 +11,15 @@ export const categoryApi = createApi({
         url: "categories",
       }),
     }),
+
+    getCategoryById: builder.query<Category, string>({
+      query: (id) => ({
+        url: `categories/${id}`,
+      }),
+
+      transformResponse: (response: Category[]) => response[0],
+    }),
   }),
 });
 
-export const { useGetCategoriesQuery } = categoryApi;
+export const { useGetCategoriesQuery, useGetCategoryByIdQuery } = categoryApi;
