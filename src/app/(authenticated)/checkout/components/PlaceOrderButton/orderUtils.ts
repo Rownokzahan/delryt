@@ -8,12 +8,13 @@ export const localCartToOrderCart = (
     const addOnQuantities = item.selectedAddOns?.map((addon) => addon.quantity);
 
     const cartItem: OrderCartItem = {
-      productId: item.productId,
+      product_id: item.productId,
       quantity: item.quantity,
       price: item.price,
       discounted_price: item.discounted_price,
       tax_amount: item.tax_amount,
-      variation: item.variation,
+      variant: item.variant,
+      variations: item.variations,
       add_on_ids: addOnIds,
       add_on_qtys: addOnQuantities,
     };

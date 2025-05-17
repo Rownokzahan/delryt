@@ -86,21 +86,23 @@ export interface SelectedAddOnItem {
 }
 
 interface BaseCartItem {
-  productId: Id;
   quantity: number;
   price: number;
   discounted_price: number;
   tax_amount: number;
-  variation: [];
+  variant: [];
+  variations: [];
 }
 
 export interface LocalCartItem extends BaseCartItem {
   id: string; // <-- new UUID or unique key per entr
   selectedAddOns: SelectedAddOnItem[];
+  productId: Id;
   product: Product;
 }
 
 export interface OrderCartItem extends BaseCartItem {
+  product_id: Id;
   add_on_ids: Id[];
   add_on_qtys: number[];
 }

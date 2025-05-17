@@ -26,7 +26,8 @@ const cartSlice = createSlice({
         discounted_price: 0,
         tax_amount: 0,
         quantity: 1,
-        variation: [],
+        variant: [],
+        variations: [],
         selectedAddOns: [],
         product,
       };
@@ -54,7 +55,8 @@ const cartSlice = createSlice({
         discounted_price: 0,
         tax_amount: 0,
         quantity: 1,
-        variation: [],
+        variant: [],
+        variations: [],
         selectedAddOns,
         product,
       };
