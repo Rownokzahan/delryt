@@ -41,6 +41,12 @@ export interface Category {
   name: string;
   image: string;
   banner_image: string;
+  childes: {
+    id: Id;
+    name: string;
+    image: string;
+    banner_image: string;
+  }[];
 }
 
 export type ProductCategory = "all" | { id: Id; name: string; image: string };
