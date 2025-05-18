@@ -3,9 +3,7 @@ import ProductDisplay from "./components/ProductDisplay";
 import RelatedProducts from "./components/RelatedProducts";
 
 type ProductPageProps = {
-  params: {
-    productId: string;
-  };
+  params: Promise<{ productId: string }>;
 };
 
 const ProductPage = async ({ params }: ProductPageProps) => {

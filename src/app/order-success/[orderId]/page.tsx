@@ -3,11 +3,11 @@ import Link from "next/link";
 import { IoBagCheck } from "react-icons/io5";
 
 interface OrderSuccessPageProps {
-  params: { orderId: string };
+  params: Promise<{ orderId: string }>;
 }
 
 const OrderSuccessPage = async ({ params }: OrderSuccessPageProps) => {
-  const { orderId } = params;
+  const { orderId } = await params;
 
   return (
     <main className="min-h-[100dvh] grid place-items-center px-4">
