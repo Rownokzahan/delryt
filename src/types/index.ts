@@ -86,6 +86,8 @@ export interface Product {
   add_ons: ProductAddOnItem[];
 }
 
+export type ProductType = "all" | "veg" | "non_veg";
+
 export interface SelectedAddOnItem {
   id: Id;
   quantity: number;

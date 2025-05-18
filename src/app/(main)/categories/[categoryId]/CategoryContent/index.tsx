@@ -1,9 +1,9 @@
-import { Category } from "@/types";
+import { Category, ProductType } from "@/types";
 import CategoryBanner from "./CategoryBanner";
 import CategorySlider from "./CategorySlider";
-import VegNonVegFilter from "./VegNonVegFilter";
 import ProductList from "./ProductList";
 import { useState } from "react";
+import ProductTypeFilter from "./ProductTypeFilter";
 
 interface CategoryContentProps {
   category: Category;
@@ -11,6 +11,8 @@ interface CategoryContentProps {
 
 const CategoryContent = ({ category }: CategoryContentProps) => {
   const [activeCategoryId, setActiveCategoryId] = useState(category.id);
+  const [selectedProductType, setSelectedProductType] =
+    useState<ProductType>("all");
 
   return (
     <main className="bg-gray-100">
@@ -27,7 +29,10 @@ const CategoryContent = ({ category }: CategoryContentProps) => {
           </div>
 
           <div className="mx-auto py-2">
-            <VegNonVegFilter />
+            <ProductTypeFilter
+              selectedProductType={selectedProductType}
+              setSelectedProductType={setSelectedProductType}
+            />
           </div>
         </div>
 
