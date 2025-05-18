@@ -1,5 +1,5 @@
 import branchBaseQuery from "@/store/utils/branchBaseQuery";
-import { Category } from "@/types";
+import { Category, Id, Product, ProductType } from "@/types";
 import { createApi } from "@reduxjs/toolkit/query/react";
 
 export const categoryApi = createApi({
@@ -19,7 +19,23 @@ export const categoryApi = createApi({
 
       transformResponse: (response: Category[]) => response[0],
     }),
+
+    getProductsByCategoryId: builder.query<
+      Product[],
+      { categoryId: Id; productType: ProductType }
+    >({
+      query: ({ categoryId, productType }) => ({
+        url: `categories/products/${categoryId}?product_type=${productType}`,
+      }),
+
+      transformResponse: (response: { products: Product[] }) =>
+        response.products,
+    }),
   }),
 });
 
-export const { useGetCategoriesQuery, useGetCategoryByIdQuery } = categoryApi;
+export const {
+  useGetCategoriesQuery,
+  useGetCategoryByIdQuery,
+  useGetProductsByCategoryIdQuery,
+} = categoryApi;

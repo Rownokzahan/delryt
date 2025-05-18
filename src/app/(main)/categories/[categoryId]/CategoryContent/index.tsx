@@ -1,7 +1,7 @@
 import { Category, ProductType } from "@/types";
 import CategoryBanner from "./CategoryBanner";
 import CategorySlider from "./CategorySlider";
-import ProductList from "./ProductList";
+import CategoryProductList from "./CategoryProductList";
 import { useState } from "react";
 import ProductTypeFilter from "./ProductTypeFilter";
 
@@ -18,8 +18,8 @@ const CategoryContent = ({ category }: CategoryContentProps) => {
     <main className="bg-gray-100">
       <CategoryBanner category={category} />
 
-      <section className="ui-container">
-        <div className="sticky top-0 sm:border-b flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm sm:text-base">
+      <section className="sticky z-10 bg-gray-100 top-0">
+        <div className="ui-container sm:border-b flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm sm:text-base">
           <div className="flex-1 overflow-hidden">
             <CategorySlider
               category={category}
@@ -27,7 +27,6 @@ const CategoryContent = ({ category }: CategoryContentProps) => {
               setActiveCategoryId={setActiveCategoryId}
             />
           </div>
-
           <div className="mx-auto py-2">
             <ProductTypeFilter
               selectedProductType={selectedProductType}
@@ -35,8 +34,13 @@ const CategoryContent = ({ category }: CategoryContentProps) => {
             />
           </div>
         </div>
+      </section>
 
-        <ProductList />
+      <section className="min-h-[60dvh] ui-container pb-8 pt-4 md:pt-8 relative">
+        <CategoryProductList
+          activeCategoryId={activeCategoryId}
+          selectedProductType={selectedProductType}
+        />
       </section>
     </main>
   );
