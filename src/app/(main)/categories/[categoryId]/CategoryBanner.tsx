@@ -15,17 +15,9 @@ const { openModal: openShareModal } = useModalById("shareModal");
   const bannerImagePath = getImagePath("category/banner", banner_image);
 
   return (
-    <section className="mt-2 ui-container">
-      <div className="h-44 ui-container bg-linear-to-r from-black to-black/10 grid items-end relative">
-        <h3 className="pb-8 text-5xl text-uiWhite">{name}</h3>
-
-        {/* Background banner image */}
-        <Image
-          fill
-          src={bannerImagePath}
-          alt=""
-          className="absolute object-cover size-full -z-10"
-        />
+    <section className="mt-2 relative z-0 bg-linear-to-r from-black to-black/10">
+      <div className="ui-container h-48 px-4 grid items-end relative">
+        <h3 className="pb-8 text-3xl text-uiWhite">{name}</h3>
 
         {/* Share button */}
         <button
@@ -36,6 +28,14 @@ const { openModal: openShareModal } = useModalById("shareModal");
           <LuShare2 />
         </button>
       </div>
+
+      {/* Background banner image */}
+      <Image
+        fill
+        src={bannerImagePath}
+        alt=""
+        className="absolute object-cover size-full -z-10 mix-blend-overlay"
+      />
     </section>
   );
 };
