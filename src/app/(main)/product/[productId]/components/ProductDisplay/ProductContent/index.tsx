@@ -14,8 +14,9 @@ interface ProductContentProps {
 
 const ProductContent = ({ product }: ProductContentProps) => {
   const { openModal: openShareModal } = useModalById("shareModal");
-  const { openModal: openCustomizationModal } =
-    useModalById("customizationModal");
+  const { openModal: openCustomizationModal } = useModalById(
+    "productCustomizationModal"
+  );
 
   const {
     image,
