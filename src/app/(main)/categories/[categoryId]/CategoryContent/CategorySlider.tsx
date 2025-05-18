@@ -1,14 +1,17 @@
 import { Category, Id } from "@/types";
 import clsx from "clsx";
-import { useState } from "react";
 
 interface CategorySliderProps {
   category: Category;
+  activeCategoryId: Id;
+  setActiveCategoryId:(id: Id) => void;
 }
 
-const CategorySlider = ({ category }: CategorySliderProps) => {
-  const [activeCategoryId, setActiveCategoryId] = useState(category.id);
-
+const CategorySlider = ({
+  category,
+  activeCategoryId,
+  setActiveCategoryId,
+}: CategorySliderProps) => {
   const getButtonClasses = (id: Id) =>
     clsx(
       "whitespace-nowrap px-3 py-2 border-b-2 transition-colors duration-200",
