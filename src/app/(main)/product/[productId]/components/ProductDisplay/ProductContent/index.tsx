@@ -1,4 +1,4 @@
-import Button from "@/components/ui/Button";
+import AddToCartButton from "@/components/ui/AddToCartButton";
 import VegNonVegIcon from "@/components/ui/VegNonVegIcon";
 import useModalById from "@/hooks/useModalById";
 import { Product } from "@/types";
@@ -14,9 +14,6 @@ interface ProductContentProps {
 
 const ProductContent = ({ product }: ProductContentProps) => {
   const { openModal: openShareModal } = useModalById("shareModal");
-  const { openModal: openCustomizationModal } = useModalById(
-    "productCustomizationModal"
-  );
 
   const {
     image,
@@ -88,9 +85,7 @@ const ProductContent = ({ product }: ProductContentProps) => {
           </div>
 
           {/* Add to Cart Button */}
-          <Button onClick={openCustomizationModal} size="small">
-            Add to Cart
-          </Button>
+          <AddToCartButton product={product} />
         </div>
       </div>
     </section>
