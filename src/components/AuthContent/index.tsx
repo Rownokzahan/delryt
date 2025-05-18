@@ -1,12 +1,11 @@
 "use client";
 
-import ForgotPasswordForm from "@/forms/auth/ForgotPasswordForm";
 import LoginForm from "@/forms/auth/LoginForm";
 import SignupForm from "@/forms/auth/SignupForm";
 import { useState } from "react";
 import AuthViewHeader from "./AuthViewHeader";
 
-export type ViewState = "login" | "signup" | "forgotPassword";
+export type ViewState = "login" | "signup";
 
 interface ViewContent {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -37,16 +36,6 @@ const viewContents: Record<ViewState, ViewContent> = {
     subtitle: "Fill in the details to get started.",
     viewSwitcher: {
       message: "Already have an account?",
-      linkText: "Log In",
-      targetView: "login",
-    },
-  },
-  forgotPassword: {
-    Form: ForgotPasswordForm,
-    title: "Forgot Password?",
-    subtitle: "Enter your email to reset your password.",
-    viewSwitcher: {
-      message: "Remember your password?",
       linkText: "Log In",
       targetView: "login",
     },
