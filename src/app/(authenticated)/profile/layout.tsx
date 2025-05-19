@@ -10,13 +10,16 @@ interface ProfileLayoutProps {
 const ProfileLayout = ({ children }: ProfileLayoutProps) => {
   return (
     <>
-      <div className="hidden sm:block min-h-screen bg-uiBlack/10">
+      <div className="hidden sm:block bg-uiBlack/10">
         <NavbarDesktop />
 
-        <div className="ui-container py-8">
-          <div className="min-h-96 bg-uiWhite flex">
+        <div className="py-8 px-4 max-w-6xl mx-auto">
+          <div className="h-[calc(100dvh-137px)] bg-uiWhite grid grid-cols-13">
             <ProfileSidebar />
-            <main className="flex-1 p-4 relative">{children}</main>
+
+            <main className="col-span-9 p-4 relative overflow-y-auto">
+              {children}
+            </main>
           </div>
         </div>
       </div>

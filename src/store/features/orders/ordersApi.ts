@@ -1,5 +1,5 @@
 import authorizedBranchBaseQuery from "@/store/utils/authorizedBranchBaseQuery";
-import { CreateOrderPayload } from "@/types";
+import { CreateOrderPayload, Order } from "@/types";
 import { createApi } from "@reduxjs/toolkit/query/react";
 
 interface CreateOrderResponse {
@@ -18,7 +18,15 @@ export const ordersApi = createApi({
         body,
       }),
     }),
+
+    getOrders: builder.query<Order[], void>({
+      query: () => ({
+        url: `customer/order/list`,
+      }),
+
+      transformResponse: (response: { orders: Order[] }) => response.orders,
+    }),
   }),
 });
 
-export const { useCreateOrderMutation } = ordersApi;
+export const { useCreateOrderMutation, useGetOrdersQuery } = ordersApi;

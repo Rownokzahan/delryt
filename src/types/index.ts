@@ -139,7 +139,7 @@ export interface Coupon {
   limit: number;
 }
 
-export type CreateOrderPayload = {
+export interface CreateOrderPayload {
   cart: OrderCartItem[];
   coupon_discount_amount: number;
   coupon_discount_title: string;
@@ -156,6 +156,24 @@ export type CreateOrderPayload = {
   selected_delivery_area: number | null;
   is_partial: "0" | "1";
   is_cutlery_required: "0" | "1";
-};
+}
 
 export type OrderFilterType = "ongoing" | "history";
+
+export type OrderStatusType =
+  | "pending"
+  | "confirmed"
+  | "processing"
+  | "out_for_delivery"
+  | "delivered"
+  | "canceled"
+  | "returned"
+  | "failed";
+
+export interface Order {
+  id: Id;
+  product_images: string[];
+  order_amount: number;
+  total_quantity: string;
+  order_status: OrderStatusType;
+}

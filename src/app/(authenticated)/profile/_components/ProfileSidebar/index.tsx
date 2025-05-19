@@ -16,7 +16,10 @@ const ProfileSidebar = () => {
     useModalById("confirmLogoutModal");
 
   return (
-    <aside className="w-[32%] max-w-96 border-e">
+    <aside
+      className="h-full overflow-y-auto col-span-4 border-e"
+      style={{ scrollbarWidth: "thin" }}
+    >
       <ProfileHeaderDesktop />
 
       <ProfileLinkList />
