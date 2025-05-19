@@ -16,7 +16,7 @@ import { productApi } from "./features/product/productApi";
 import { addressApi } from "./features/address/adressApi";
 import { initializeCart } from "@/store/features/cart/cartSlice";
 import { couponApi } from "./features/checkout/couponApi";
-import { orderApi } from "./features/order/orderApi";
+import { ordersApi } from "./features/orders/ordersApi";
 
 export const store = configureStore({
   reducer: {
@@ -37,7 +37,7 @@ export const store = configureStore({
     [productApi.reducerPath]: productApi.reducer,
     [addressApi.reducerPath]: addressApi.reducer,
     [couponApi.reducerPath]: couponApi.reducer,
-    [orderApi.reducerPath]: orderApi.reducer,
+    [ordersApi.reducerPath]: ordersApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -52,7 +52,7 @@ export const store = configureStore({
       productApi.middleware,
       addressApi.middleware,
       couponApi.middleware,
-      orderApi.middleware
+      ordersApi.middleware
     ),
 });
 

@@ -4,16 +4,16 @@ import Button from "@/components/ui/Button";
 import useBranch from "@/hooks/useBranch";
 import { useCart } from "@/hooks/useCart";
 import useCheckoutState from "@/hooks/useCheckoutState";
-import { OrderPayload } from "@/types";
+import { CreateOrderPayload } from "@/types";
 import {
   formatDeliveryDate,
   formatDeliveryTime,
   localCartToOrderCart,
 } from "./orderUtils";
 import useModalById from "@/hooks/useModalById";
-import { useCreateOrderMutation } from "@/store/features/order/orderApi";
 import { CgSpinner } from "react-icons/cg";
 import { useRouter } from "next/navigation";
+import { useCreateOrderMutation } from "@/store/features/orders/ordersApi";
 
 const PlaceOrderButton = () => {
   const { openModal: openAddAddressModal } = useModalById("addAddressModal");
@@ -36,7 +36,7 @@ const PlaceOrderButton = () => {
       return;
     }
 
-    const orderPayload: OrderPayload = {
+    const orderPayload: CreateOrderPayload = {
       cart: localCartToOrderCart(cart),
       order_amount: cartTotal - appliedCoupon.couponDiscountAmount,
       coupon_discount_title: appliedCoupon.coupon?.title || "",
@@ -57,10 +57,9 @@ const PlaceOrderButton = () => {
 
     try {
       const response = await createOrder(orderPayload).unwrap();
-
+      router.push(`/order-success/${response.order_id}`);
       clearCart();
       resetCheckout();
-      router.push(`/order-success/${response.order_id}`);
     } catch (error) {
       console.error("Error placing order:", error);
       router.push(`/order-success`);

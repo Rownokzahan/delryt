@@ -139,7 +139,7 @@ export interface Coupon {
   limit: number;
 }
 
-export type OrderPayload = {
+export type CreateOrderPayload = {
   cart: OrderCartItem[];
   coupon_discount_amount: number;
   coupon_discount_title: string;
@@ -157,3 +157,5 @@ export type OrderPayload = {
   is_partial: "0" | "1";
   is_cutlery_required: "0" | "1";
 };
+
+export type OrderFilterType = "ongoing" | "history";

@@ -1,17 +1,17 @@
 import authorizedBranchBaseQuery from "@/store/utils/authorizedBranchBaseQuery";
-import { OrderPayload } from "@/types";
+import { CreateOrderPayload } from "@/types";
 import { createApi } from "@reduxjs/toolkit/query/react";
 
-interface OrderResponse {
+interface CreateOrderResponse {
   message: string;
   order_id: number;
 }
 
-export const orderApi = createApi({
-  reducerPath: "orderApi",
+export const ordersApi = createApi({
+  reducerPath: "ordersApi",
   baseQuery: authorizedBranchBaseQuery,
   endpoints: (builder) => ({
-    createOrder: builder.mutation<OrderResponse, OrderPayload>({
+    createOrder: builder.mutation<CreateOrderResponse, CreateOrderPayload>({
       query: (body) => ({
         url: "customer/order/place",
         method: "POST",
@@ -21,4 +21,4 @@ export const orderApi = createApi({
   }),
 });
 
-export const { useCreateOrderMutation } = orderApi;
+export const { useCreateOrderMutation } = ordersApi;
