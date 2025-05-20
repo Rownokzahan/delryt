@@ -3,7 +3,7 @@ import CategoryBanner from "./CategoryBanner";
 import CategorySlider from "./CategorySlider";
 import CategoryProductList from "./CategoryProductList";
 import { useState } from "react";
-import ProductTypeFilter from "./ProductTypeFilter";
+import ProductTypeFilter from "@/components/ui/ProductTypeFilter";
 
 interface CategoryContentProps {
   category: Category;
