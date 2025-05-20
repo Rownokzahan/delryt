@@ -32,12 +32,13 @@ export const store = configureStore({
     [cuisineApi.reducerPath]: cuisineApi.reducer,
     [categoryApi.reducerPath]: categoryApi.reducer,
     [productsApi.reducerPath]: productsApi.reducer,
-    [authApi.reducerPath]: authApi.reducer,
-    [userApi.reducerPath]: userApi.reducer,
     [productApi.reducerPath]: productApi.reducer,
-    [addressApi.reducerPath]: addressApi.reducer,
     [couponApi.reducerPath]: couponApi.reducer,
     [ordersApi.reducerPath]: ordersApi.reducer,
+    
+    [authApi.reducerPath]: authApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
+    [addressApi.reducerPath]: addressApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -47,12 +48,13 @@ export const store = configureStore({
       cuisineApi.middleware,
       categoryApi.middleware,
       productsApi.middleware,
+      productApi.middleware,
+      couponApi.middleware,
+      ordersApi.middleware,
+      
       authApi.middleware,
       userApi.middleware,
-      productApi.middleware,
       addressApi.middleware,
-      couponApi.middleware,
-      ordersApi.middleware
     ),
 });
 
@@ -63,6 +65,7 @@ export const resetBranchRelatedState = () => (dispatch: AppDispatch) => {
   dispatch(productsApi.util.resetApiState());
   dispatch(productApi.util.resetApiState());
   dispatch(couponApi.util.resetApiState());
+  dispatch(ordersApi.util.resetApiState());
 
   dispatch(initializeCart());
 };
