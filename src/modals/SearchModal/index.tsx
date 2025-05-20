@@ -1,21 +1,30 @@
-import { RiSearchLine } from "react-icons/ri";
+"use client";
+
+import useModalById from "@/hooks/useModalById";
 import Modal from "../Modal";
+import SearchModalContent from "./SearchModalContent";
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const SearchModal = () => {
-  return (
-    <Modal modalId={"searchModal"} fullHeightOnSmall={true}>
-      {/* Search Input */}
-      <div className="px-4 py-6">
-        <div className="p-2 ps-3 border rounded-lg shadow-sm flex items-center gap-1">
-          <RiSearchLine className="text-xl text-uiBlack/30" />
+  const { isModalOpen, closeModal } = useModalById("searchModal");
+  const pathname = usePathname();
 
-          <input
-            type="text"
-            placeholder="What would you like to eat today?"
-            className="w-full p-2 outline-hidden text-sm font-medium placeholder:text-uiBlack/30"
-          />
-        </div>
-      </div>
+  useEffect(() => {
+    if (isModalOpen) {
+      closeModal();
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
+
+  return (
+    <Modal
+      modalId={"searchModal"}
+      fullHeightOnSmall={true}
+      containerClasses="px-4 py-6"
+    >
+      <SearchModalContent />
     </Modal>
   );
 };

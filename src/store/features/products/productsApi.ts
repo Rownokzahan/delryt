@@ -1,5 +1,5 @@
 import branchBaseQuery from "@/store/utils/branchBaseQuery";
-import { Product } from "@/types";
+import { Product, ProductType } from "@/types";
 import { createApi, EndpointBuilder } from "@reduxjs/toolkit/query/react";
 
 // Type for query parameters
@@ -33,6 +33,27 @@ export const productsApi = createApi({
     getPopularProducts: createProductQuery(builder, "popular"),
     getSetMenuProducts: createProductQuery(builder, "set-menu"),
     getRecommendedProducts: createProductQuery(builder, "recommended"),
+
+    getSearchedProducts: builder.mutation<
+      Product[],
+      { name: string; productType?: ProductType }
+    >({
+      query: ({ name, productType }) => {
+        const searchPayload = {
+          name,
+          ...(productType && { product_type: productType }),
+        };
+
+        return {
+          url: "products/search",
+          method: "POST",
+          body: searchPayload,
+        };
+      },
+
+      transformResponse: (response: { products: Product[] }) =>
+        response.products,
+    }),
   }),
 });
 
@@ -42,4 +63,5 @@ export const {
   useGetPopularProductsQuery,
   useGetSetMenuProductsQuery,
   useGetRecommendedProductsQuery,
+  useGetSearchedProductsMutation,
 } = productsApi;
