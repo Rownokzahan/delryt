@@ -6,7 +6,7 @@ const MyOrdersPage = () => {
     <>
       <ProfileHeaderBar label="My Orders" />
 
-      <main className="p-3 space-y-4">
+      <main className="p-3">
         <OrderList />
       </main>
     </>

@@ -5,6 +5,7 @@ import OrderListDesktop from "./OrderListDesktop";
 import OrderListMobile from "./OrderListMobile";
 import OrderListDesktopSkeleton from "./OrderListDesktop/OrderListDesktopSkeleton";
 import OrderListNotFound from "./OrderListNotFound";
+import OrderListMobileSkeleton from "./OrderListMobile/OrderListMobileSkeleton";
 
 const OrderList = () => {
   const { data: orders = [], isLoading, error } = useGetOrdersQuery();
@@ -13,6 +14,7 @@ const OrderList = () => {
     return (
       <>
         <OrderListDesktopSkeleton />
+        <OrderListMobileSkeleton />
       </>
     );
   }

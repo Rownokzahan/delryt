@@ -7,8 +7,8 @@ interface OrderListDesktopProps {
 
 const OrderListDesktop = ({ orders }: OrderListDesktopProps) => {
   return (
-    <section className="hidden sm:block mt-8">
-      <div className="px-3 mb-3 grid grid-cols-5 place-items-center text-sm">
+    <section className="hidden sm:block">
+      <div className="p-3 pt-4 rounded-t-md bg-gray-200 grid grid-cols-5 place-items-center text-sm font-medium">
         <p className="place-self-start truncate">Order Details</p>
         <p>Quantity</p>
         <p>Order Id</p>
@@ -17,7 +17,7 @@ const OrderListDesktop = ({ orders }: OrderListDesktopProps) => {
       </div>
 
       <div
-        className="space-y-2 max-h-[calc(100dvh-315px)] overflow-y-auto pe-2"
+        className="space-y-2 pt-2 max-h-[calc(100dvh-244px)] overflow-y-auto"
         style={{ scrollbarWidth: "thin" }}
       >
         {orders.map((order) => (
