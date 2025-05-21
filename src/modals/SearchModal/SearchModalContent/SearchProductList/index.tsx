@@ -1,33 +1,27 @@
-import { Product, ProductType } from "@/types";
 import SearchProductCard from "./SearchProductCard";
 import ProductTypeFilter from "@/components/ui/ProductTypeFilter";
 import SearchProductListSkeleton from "./SearchProductListSkeleton";
+import { useSearch } from "../SearchProvider";
 
-interface SearchProductListProps {
-  isLoading: boolean;
-  searchQuery: string;
-  products: Product[];
-  selectedProductType: ProductType;
-  setSelectedProductType: (productType: ProductType) => void;
-}
+const SearchProductList = () => {
+  const {
+    searchQuery,
+    isProductsLoading,
+    selectedProductType,
+    products,
+    setSelectedProductType,
+  } = useSearch();
 
-const SearchProductList = ({
-  isLoading,
-  searchQuery,
-  products,
-  selectedProductType,
-  setSelectedProductType,
-}: SearchProductListProps) => {
-  if (isLoading) {
-    return <SearchProductListSkeleton />;
-  }
-
-  if (searchQuery.trim() === "") {
+  if (searchQuery === "") {
     return null;
   }
 
+  if (isProductsLoading) {
+    return <SearchProductListSkeleton />;
+  }
+
   return (
-    <>
+    <div className="h-[calc(100%-48px)]">
       <div className="h-16 flex justify-between items-center">
         <p className="text-sm">
           Showing <span className="font-medium">{products.length}</span> results
@@ -42,7 +36,9 @@ const SearchProductList = ({
       </div>
 
       {products.length === 0 ? (
-        <p className="pt-6 text-center text-sm font-medium text-gray-400">No results found.</p>
+        <p className="pt-6 text-center text-sm font-medium text-gray-400">
+          No results found.
+        </p>
       ) : (
         <div
           className="h-[calc(100%-64px)] overflow-y-auto space-y-2"
@@ -53,7 +49,7 @@ const SearchProductList = ({
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
 
