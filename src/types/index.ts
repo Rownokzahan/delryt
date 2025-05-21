@@ -177,3 +177,11 @@ export interface Order {
   total_quantity: string;
   order_status: OrderStatusType;
 }
+
+export interface OrderItemType {
+  id: Id;
+  delivery_date: string;
+  price: number;
+  quantity: number;
+  product_details: Product;
+}

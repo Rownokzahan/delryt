@@ -11,11 +11,11 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
   return (
     <>
       <ProfileHeaderBar
-        label={`Order #${orderId}`}
+        label={`Order Details`}
         backLink="/profile/my-orders"
       />
 
-      <main className="p-3">
+      <main className="sm:p-3">
         <OrderDetails orderId={orderId} />
       </main>
     </>
