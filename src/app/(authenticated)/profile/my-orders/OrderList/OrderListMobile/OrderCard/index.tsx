@@ -13,7 +13,7 @@ const OrderCard = ({ order }: OrderCardProps) => {
 
   return (
     <Link
-      href={`#`}
+      href={`/profile/my-orders/${id}`}
       className="w-full p-2 border rounded-md flex gap-3 relative"
     >
       <OrderCardImages images={product_images} />
