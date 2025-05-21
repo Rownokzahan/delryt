@@ -3,13 +3,17 @@ import { IoIosArrowBack } from "react-icons/io";
 
 interface ProfileHeaderBarProps {
   label: string;
+  backLink?: string;
 }
 
-const ProfileHeaderBar = ({ label }: ProfileHeaderBarProps) => {
+const ProfileHeaderBar = ({
+  label,
+  backLink = "/profile",
+}: ProfileHeaderBarProps) => {
   return (
     <header className="sm:hidden w-full ui-container py-3 shadow-sm bg-uiWhite sticky z-20 top-0">
       <div className="flex items-center gap-3">
-        <Link href={"/profile"}>
+        <Link href={backLink}>
           <IoIosArrowBack />
         </Link>
 
