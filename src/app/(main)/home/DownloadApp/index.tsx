@@ -13,11 +13,11 @@ const DownloadApp = () => {
           <div className="space-y-2">
             <h3 className="text-uiWhite text-4xl">
               <span className="fon-medium">Downoload</span> <br />
-              <span className="font-semibold">EatSure App</span>
+              <span className="font-semibold">Delryt App</span>
             </h3>
             <p className="text-[#cacaca]">
-              EatSure, when you want to enjoy multiple cuisines from different
-              trusted restaurants in one single order. Become an EatSure Elite,
+              Delryt, when you want to enjoy multiple cuisines from different
+              trusted restaurants in one single order. Become an Delryt Elite,
               unlock FREE dishes on orders above ৳299 and pay ZERO delivery fees
               for orders above ৳199.
             </p>
