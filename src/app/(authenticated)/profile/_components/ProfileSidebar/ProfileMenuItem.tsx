@@ -51,7 +51,7 @@ const ProfileMenuItem = ({
         href={href}
         className={clsx(
           containerClass,
-          pathname === href && "bg-primary text-uiWhite"
+          pathname.startsWith(href) && "bg-primary text-uiWhite"
         )}
       >
         {content}

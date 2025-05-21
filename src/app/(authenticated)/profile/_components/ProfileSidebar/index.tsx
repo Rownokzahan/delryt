@@ -4,7 +4,7 @@ import ProfileHeaderDesktop from "./ProfileHeaderDesktop";
 import ProfileMenuItem from "./ProfileMenuItem";
 import { BiLogOut } from "react-icons/bi";
 import { TbLockPassword, TbUser } from "react-icons/tb";
-import ProfileLinkList from "./ProfileLinkList/ProfileLinkList";
+import ProfileLinkList from "./ProfileLinkList";
 import useModalById from "@/hooks/useModalById";
 
 const ProfileSidebar = () => {
