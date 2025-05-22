@@ -10,7 +10,7 @@ const CustomizationInfo = ({ cartItem }: CustomizationInfoProps) => {
   const { selectedAddOns, product } = cartItem;
   const { openModalWithData } = useModalById("productCustomizationModal");
 
-  if (product.add_ons.length === 0) {
+  if (product?.add_ons.length === 0) {
     return (
       <p className="text-xs text-uiBlack-light truncate">No customization</p>
     );

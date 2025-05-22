@@ -23,7 +23,7 @@ const BillSummary = () => {
 
           <div className="flex item-center justify-between">
             <p>Coupon Discount </p>
-            <p className="text-end">- ৳{appliedCoupon.couponDiscountAmount}</p>
+            <p className="text-end">- ৳{appliedCoupon?.couponDiscountAmount}</p>
           </div>
 
           <div className="flex item-center justify-between">
@@ -49,7 +49,7 @@ const BillSummary = () => {
               {cartTotal + 60}
             </span>{" "}
             <span className="font-medium">
-              ৳{cartTotal - appliedCoupon.couponDiscountAmount}
+              ৳{cartTotal - appliedCoupon?.couponDiscountAmount}
             </span>
           </p>
         </div>

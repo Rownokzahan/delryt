@@ -16,7 +16,7 @@ const OrderDelivery = ({ order }: OrderDeliveryProps) => {
           <RiMapPinLine className="mt-[2px] text-lg" />
           <div>
             <p>From</p>
-            <p>{branch.name}</p>
+            <p>{branch?.name}</p>
           </div>
         </div>
 
@@ -24,7 +24,7 @@ const OrderDelivery = ({ order }: OrderDeliveryProps) => {
           <RiMapPinUserLine className="mt-[2px] text-lg" />
           <div>
             <p>To</p>
-            <p>{delivery_address.address}</p>
+            <p>{delivery_address?.address}</p>
           </div>
         </div>
       </div>
