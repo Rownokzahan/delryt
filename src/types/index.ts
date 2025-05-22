@@ -170,18 +170,28 @@ export type OrderStatusType =
   | "returned"
   | "failed";
 
-export interface Order {
-  id: Id;
-  product_images: string[];
-  order_amount: number;
-  total_quantity: string;
-  order_status: OrderStatusType;
-}
-
 export interface OrderItemType {
   id: Id;
   delivery_date: string;
   price: number;
   quantity: number;
   product_details: Product;
+}
+
+export interface Order {
+  id: Id;
+  product_images: string[];
+  total_quantity: string;
+  order_status: OrderStatusType;
+  is_cutlery_required: 0 | 1;
+  branch: Branch;
+  delivery_address: Address;
+  delivery_date: string;
+  order_note: string;
+  details: OrderItemType[];
+
+  order_amount: number;
+  total_tax_amount: number;
+  coupon_discount_amount: number;
+  delivery_charge: number;
 }

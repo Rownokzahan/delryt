@@ -2,29 +2,43 @@
 
 import { useGetOrderByIdQuery } from "@/store/features/orders/ordersApi";
 import { Id } from "@/types";
-import OrderItems from "./OrderItems";
+
+import OrderDelivery from "./components/OrderDelivery";
+import OrderCostSummary from "./components/OrderCostSummary";
+import OrderCutlery from "./components/OrderCutlery";
+import OrderPayment from "./components/OrderPayment";
+import OrderStatus from "./components/OrderStatus";
+import OrderItems from "./components/OrderItems";
+import OrderDetailsSkeleton from "./OrderDetailsSkeleton";
 
 interface OrderDetails {
   orderId: Id;
 }
 
 const OrderDetails = ({ orderId }: OrderDetails) => {
-  const { data: order } = useGetOrderByIdQuery(orderId);
+  const { data: order, isLoading, error } = useGetOrderByIdQuery(orderId);
+
+  if (isLoading) {
+    return <OrderDetailsSkeleton />;
+  }
+
+  if (error) {
+    console.error("Error fetching order details:", error);
+    return;
+  }
+
+  if (order === undefined) {
+    return <>No Order Found</>;
+  }
 
   return (
-    <div>
-      <div className="p-4 bg-uiBlack/10 space-y-4">
-        <div className="p-4 bg-uiWhite rounded-md flex justify-between items-center">
-          <h3 className="font-medium">Order#{orderId}</h3>
-
-          <p className="text-sm text-uiBlack-light">{order?.delivery_date}</p>
-        </div>
-
-        <div className="p-4 bg-uiWhite rounded-md">
-          <h3 className="sm:text-lg font-medium">Ordered Items</h3>
-          <OrderItems orderId={orderId} />
-        </div>
-      </div>
+    <div className="p-4 bg-uiBlack/10 space-y-4">
+      <OrderStatus order={order} />
+      <OrderDelivery order={order} />
+      <OrderPayment />
+      <OrderCostSummary order={order} />
+      <OrderCutlery order={order} />
+      <OrderItems order={order} />
     </div>
   );
 };

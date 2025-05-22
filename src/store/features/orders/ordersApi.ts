@@ -1,5 +1,5 @@
 import authorizedBranchBaseQuery from "@/store/utils/authorizedBranchBaseQuery";
-import { CreateOrderPayload, Id, Order, OrderItem } from "@/types";
+import { CreateOrderPayload, Id, Order, OrderItemType } from "@/types";
 import { createApi } from "@reduxjs/toolkit/query/react";
 
 interface CreateOrderResponse {
@@ -27,7 +27,7 @@ export const ordersApi = createApi({
       transformResponse: (response: { orders: Order[] }) => response.orders,
     }),
 
-    getOrderById: builder.query<any, Id>({
+    getOrderById: builder.query<Order, Id>({
       query: (id) => `customer/order/track?order_id=${id}`,
     }),
 
