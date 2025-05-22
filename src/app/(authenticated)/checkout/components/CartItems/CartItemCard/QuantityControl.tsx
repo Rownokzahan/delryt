@@ -9,7 +9,7 @@ interface QuantityControlProps {
 const QuantityControl = ({ cartItem }: QuantityControlProps) => {
   const { updateCartItemQuantity } = useCart();
 
-  const { id, quantity } = cartItem;
+  const { id, quantity } = cartItem || {};
 
   const increaseQuantity = () => {
     updateCartItemQuantity({ id, idType: "cartItemId", action: "increment" });

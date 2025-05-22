@@ -6,7 +6,7 @@ interface OrderDeliveryProps {
 }
 
 const OrderDelivery = ({ order }: OrderDeliveryProps) => {
-  const { branch, delivery_address } = order;
+  const { branch, delivery_address } = order || {};
 
   return (
     <div className="p-4 bg-uiWhite rounded-md">

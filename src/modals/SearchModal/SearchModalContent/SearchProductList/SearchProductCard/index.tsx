@@ -10,7 +10,7 @@ interface SearchProductCardProps {
 }
 
 const SearchProductCard = ({ product }: SearchProductCardProps) => {
-  const { id, image, name, product_type, price } = product;
+  const { id, image, name, product_type, price } = product || {};
 
   const isVeg = product_type === "veg" ? true : false;
 

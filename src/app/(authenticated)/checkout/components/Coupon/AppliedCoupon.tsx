@@ -10,7 +10,7 @@ const AppliedCoupon = () => {
     return null;
   }
 
-  const { code, discount_type, discount } = appliedCoupon.coupon;
+  const { code, discount_type, discount } = appliedCoupon.coupon || {};
 
   return (
     <div className="mt-2 p-2 ps-3 border rounded-md bg-uiBlack-light/5 flex items-center gap-2 justify-between">

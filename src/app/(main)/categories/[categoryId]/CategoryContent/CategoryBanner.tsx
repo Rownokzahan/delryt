@@ -11,7 +11,7 @@ interface CategoryBannerProps {
 const CategoryBanner = ({ category }: CategoryBannerProps) => {
   const { openModal: openShareModal } = useModalById("shareModal");
 
-  const { name, banner_image } = category;
+  const { name, banner_image } = category || {};
   const bannerImagePath = getImagePath("category/banner", banner_image);
 
   return (

@@ -12,7 +12,7 @@ interface CartItemCardProps {
 }
 
 const CartItemCard = ({ cartItem }: CartItemCardProps) => {
-  const { quantity, price, product } = cartItem;
+  const { quantity, price, product } = cartItem || {};
 
   return (
     <div className="py-3 flex items-center gap-3">

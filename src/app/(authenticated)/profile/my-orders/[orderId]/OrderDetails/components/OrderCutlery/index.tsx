@@ -5,7 +5,7 @@ interface OrderCutleryProps {
 }
 
 const OrderCutlery = ({ order }: OrderCutleryProps) => {
-  const { is_cutlery_required } = order;
+  const { is_cutlery_required } = order || {};
 
   return (
     <div className="p-4 bg-uiWhite rounded-md flex items-center justify-between gap-4">

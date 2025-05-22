@@ -42,7 +42,7 @@ const AddressInfo = () => {
   }
 
   const { address_type, contact_person_name, contact_person_number, address } =
-    checkoutAddress;
+    checkoutAddress || {};
 
   return (
     <InfoCard

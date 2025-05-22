@@ -10,7 +10,7 @@ const OrderCostSummary = ({ order }: OrderCostSummaryProps) => {
     coupon_discount_amount,
     total_tax_amount,
     delivery_charge,
-  } = order;
+  } = order || {};
 
   const total =
     order_amount + total_tax_amount + delivery_charge - coupon_discount_amount;

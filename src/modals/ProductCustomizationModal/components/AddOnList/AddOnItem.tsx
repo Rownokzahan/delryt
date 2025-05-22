@@ -10,7 +10,7 @@ interface AddOnItemProps {
 
 const AddOnItem = ({ addOnItem }: AddOnItemProps) => {
   const { selectedAddOns, setSelectedAddOns } = useProductCustomization();
-  const { id, name, price } = addOnItem;
+  const { id, name, price } = addOnItem || {};
   const alreadySelected = selectedAddOns.find((item) => item.id === id);
 
   const toggleAddOn = () => {

@@ -17,7 +17,7 @@ const BranchCard = ({
   onBranchSelect,
   className = "",
 }: BranchCardProps) => {
-  const { id, cover_image, image, name, address } = branch;
+  const { id, cover_image, image, name, address } = branch || {};
 
   const coverImagePath = getImagePath("branch", cover_image);
   const imagePath = getImagePath("branch", image);

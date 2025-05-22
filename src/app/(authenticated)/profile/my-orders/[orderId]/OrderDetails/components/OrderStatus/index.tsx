@@ -5,7 +5,7 @@ interface OrderStatusProps {
 }
 
 const OrderStatus = ({ order }: OrderStatusProps) => {
-  const { id, delivery_date, order_status } = order;
+  const { id, delivery_date, order_status } = order || {};
 
   return (
     <div className="p-4 bg-uiWhite rounded-md">

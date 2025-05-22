@@ -22,7 +22,7 @@ const AddAddressModal = () => {
     return null;
   }
 
-  const { f_name, l_name, phone } = user;
+  const { f_name, l_name, phone } = user || {};
 
   const handleCreateAddress = async (address: Address) => {
     try {

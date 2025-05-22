@@ -6,7 +6,7 @@ interface OrderItemsProps {
 }
 
 const OrderItems = ({ order }: OrderItemsProps) => {
-  const { details: orderItems } = order;
+  const { details: orderItems } = order || {};
 
   return (
     <div className="p-4 bg-uiWhite rounded-md">

@@ -7,7 +7,7 @@ interface CustomizationInfoProps {
 }
 
 const CustomizationInfo = ({ cartItem }: CustomizationInfoProps) => {
-  const { selectedAddOns, product } = cartItem;
+  const { selectedAddOns, product } = cartItem || {};
   const { openModalWithData } = useModalById("productCustomizationModal");
 
   if (product?.add_ons.length === 0) {

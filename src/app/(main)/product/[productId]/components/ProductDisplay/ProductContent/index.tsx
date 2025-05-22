@@ -23,7 +23,7 @@ const ProductContent = ({ product }: ProductContentProps) => {
     price,
     discount,
     discount_type,
-  } = product;
+  } = product || {};
 
   const imagePath = getImagePath("product", image);
   const isVeg = product_type === "veg" ? true : false;

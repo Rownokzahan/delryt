@@ -6,7 +6,7 @@ interface VariationItemProps {
 }
 
 const VariationItem = ({ variationItem }: VariationItemProps) => {
-  const { label, optionPrice } = variationItem;
+  const { label, optionPrice } = variationItem || {};
 
   const isItemSelected = false;
 

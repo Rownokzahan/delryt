@@ -8,8 +8,8 @@ interface OrderItemProps {
 }
 
 const OrderItem = ({ orderItem }: OrderItemProps) => {
-  const { price, quantity } = orderItem;
-  const { name, image, product_type } = orderItem.product_details;
+  const { price, quantity } = orderItem || {};
+  const { name, image, product_type } = orderItem?.product_details || {};
 
   return (
     <div className="py-3 flex gap-3">

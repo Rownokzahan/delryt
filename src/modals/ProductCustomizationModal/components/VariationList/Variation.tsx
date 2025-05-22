@@ -6,7 +6,7 @@ interface VariationProps {
 }
 
 const Variation = ({ variation }: VariationProps) => {
-  const { name, values,required } = variation;
+  const { name, values, required } = variation || {};
 
   return (
     <div className="space-y-3">

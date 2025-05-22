@@ -20,7 +20,7 @@ const CouponCard = ({ coupon }: CouponCardProps) => {
     expire_date,
     min_purchase,
     max_discount,
-  } = coupon;
+  } = coupon || {};
 
   const isApplied = appliedCoupon.coupon?.id === id;
 

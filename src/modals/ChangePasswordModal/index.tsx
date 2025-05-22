@@ -21,7 +21,7 @@ const ChangePasswordModal = () => {
     return null;
   }
 
-  const { f_name, l_name, phone, email } = user;
+  const { f_name, l_name, phone, email } = user || {};
 
   const handleChangePassword = async (password: string) => {
     const updatedUser = { f_name, l_name, phone, email, password };
