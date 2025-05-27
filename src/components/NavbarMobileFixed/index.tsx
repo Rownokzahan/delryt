@@ -28,17 +28,6 @@ const NavbarMobileFixed = () => {
       >
         <NavItem href={"/"} icon={FiHome} label={"Home"} />
 
-        {user ? (
-          <NavItem href={"/profile"} icon={BiUser} label={"My Profile"} />
-        ) : (
-          <NavItem
-            isButton={true}
-            onClick={handleProfileClick}
-            icon={BiUser}
-            label={"My Profile"}
-          />
-        )}
-
         <NavItem
           href={"/party-orders"}
           icon={LuPartyPopper}
@@ -52,6 +41,17 @@ const NavbarMobileFixed = () => {
           label={"Cart"}
           count={cart.length}
         />
+
+        {user ? (
+          <NavItem href={"/profile"} icon={BiUser} label={"My Profile"} />
+        ) : (
+          <NavItem
+            isButton={true}
+            onClick={handleProfileClick}
+            icon={BiUser}
+            label={"My Profile"}
+          />
+        )}
       </nav>
     </div>
   );
