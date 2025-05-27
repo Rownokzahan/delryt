@@ -1,38 +1,24 @@
 "use client";
 
-import useModalById from "@/hooks/useModalById";
 import useUser from "@/hooks/useUser";
-import { FaEdit } from "react-icons/fa";
 import { FaCircleUser } from "react-icons/fa6";
 
 const ProfileHeaderMobile = () => {
-  const { openModal } = useModalById("editProfileModal");
   const { user } = useUser();
   const { f_name, l_name, phone } = user || {};
 
-  const handleProfileEdit = () => {
-    openModal();
-  };
-
   return (
-    <div className="rounded-md bg-primary">
-      <div className="px-2 py-4 rounded-md flex items-center gap-3 text-uiWhite">
-        <div className="bg-uiWhite rounded-full">
-          <FaCircleUser className="text-6xl text-gray-200" />
+    <div className="rounded-md bg-uiWhite">
+      <div className="px-2 py-4 rounded-md bg-primary/90 text-uiWhite">
+        <div className="size-max mx-auto mb-2 bg-uiWhite rounded-full">
+          <FaCircleUser className="text-5xl text-gray-200" />
         </div>
-        <div>
+
+        <div className="text-center">
           <h3 className="text-lg font-medium truncate">
             Hi, {f_name} {l_name}
           </h3>
-          <p className="mb-2 text-xs">{phone}</p>
-
-          <button
-            onClick={handleProfileEdit}
-            className="text-uiWhite text-xs flex items-center gap-1"
-          >
-            <FaEdit />
-            Edit Profile
-          </button>
+          <p className="text-sm">{phone}</p>
         </div>
       </div>
     </div>
