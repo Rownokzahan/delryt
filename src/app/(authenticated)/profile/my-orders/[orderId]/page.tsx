@@ -23,7 +23,7 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
           <span>Back to My Orders</span>
         </Link>
 
-        <div className="sm:h-[calc(100dvh-235px)] sm:overflow-y-auto p-4 bg-uiBlack/10 space-y-4">
+        <div className="sm:h-[calc(100dvh-235px)] sm:overflow-y-auto p-4 bg-uiBlack/10 space-y-4 relative">
           <OrderDetails orderId={orderId} />
         </div>
       </main>

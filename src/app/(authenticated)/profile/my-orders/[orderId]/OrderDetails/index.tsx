@@ -10,6 +10,7 @@ import OrderPayment from "./components/OrderPayment";
 import OrderStatus from "./components/OrderStatus";
 import OrderItems from "./components/OrderItems";
 import OrderDetailsSkeleton from "./OrderDetailsSkeleton";
+import OrderDetailsNotFound from "./OrderDetailsNotFound";
 
 interface OrderDetails {
   orderId: Id;
@@ -24,11 +25,10 @@ const OrderDetails = ({ orderId }: OrderDetails) => {
 
   if (error) {
     console.error("Error fetching order details:", error);
-    return;
   }
 
   if (order === undefined) {
-    return <>No Order Found</>;
+    return <OrderDetailsNotFound />;
   }
 
   return (
