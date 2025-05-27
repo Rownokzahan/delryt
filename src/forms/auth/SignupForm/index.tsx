@@ -1,3 +1,5 @@
+"use client"
+
 import { SubmitHandler, useForm } from "react-hook-form";
 import AuthInputField from "../componets/AuthInputField";
 import EmailField from "../componets/EmailField";
@@ -7,7 +9,7 @@ import { useSearchParams } from "next/navigation";
 import AuthAlert from "../componets/AuthAlert";
 import useModalById from "@/hooks/useModalById";
 import FormSubmitButton from "@/forms/components/FormSubmitButton";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface Inputs {
   f_name: string;
