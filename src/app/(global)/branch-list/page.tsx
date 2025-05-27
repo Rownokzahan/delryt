@@ -29,7 +29,7 @@ const Page = () => {
   };
 
   return (
-    <div className="min-h-screen bg-primary/5 py-12">
+    <div className="min-h-[calc(100dvh-126px)] bg-primary/5 py-12">
       <div className="ui-container">
         <h3 className="mb-8 capitalize text-2xl font-medium">
           Choose your nearest branch

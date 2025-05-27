@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { FiMenu, FiShoppingCart } from "react-icons/fi";
-import { PiPhoneCall } from "react-icons/pi";
 import { RiSearchLine } from "react-icons/ri";
 import useModalById from "@/hooks/useModalById";
 import LogoWithBranchLink from "../shared/LogoWithBranchLink";
 import ProfileOrSignInButton from "./ProfileOrSignInButton";
 import { useCart } from "@/hooks/useCart";
+import CallUsInfo from "@/components/ui/CallUsInfo";
 
 const NavbarDesktop = () => {
   const { openModal: openSearchModal } = useModalById("searchModal");
@@ -22,14 +22,7 @@ const NavbarDesktop = () => {
 
         {/* Action buttons and links */}
         <div className="flex items-center justify-items-end gap-6 text-primary">
-          {/* Contact Information */}
-          <div className="flex items-center gap-1">
-            <PiPhoneCall className="text-xl" />
-            <div className="grid text-sm text-black">
-              <span>Call us at</span>
-              <span className="font-semibold">+8801700000011</span>
-            </div>
-          </div>
+          <CallUsInfo />
 
           {/* Search Button */}
           <button

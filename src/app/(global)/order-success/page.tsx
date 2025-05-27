@@ -4,7 +4,7 @@ import { IoWarning } from "react-icons/io5";
 
 const OrderSuccessPage = () => {
   return (
-    <main className="min-h-[100dvh] grid place-items-center px-4">
+    <main className="grid place-items-center px-4">
       <div className="text-center max-w-lg w-full">
         <IoWarning className="mx-auto text-8xl text-red-700" />
 
