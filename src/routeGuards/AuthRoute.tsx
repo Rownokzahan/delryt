@@ -1,7 +1,6 @@
 "use client";
 
 import LoadingPage from "@/components/ui/LoadingPage";
-import useReturnToPath from "@/hooks/useReturnToPath";
 import useUser from "@/hooks/useUser";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -12,19 +11,17 @@ interface AuthRouteProps {
 
 const AuthRoute = ({ children }: AuthRouteProps) => {
   const { user, isLoading } = useUser();
-  const { setReturnToPath } = useReturnToPath();
   const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
-    setReturnToPath(pathname);
-  }, [pathname, setReturnToPath]);
-
-  useEffect(() => {
-    if (!user) {
-      router.push("/login");
+    if (!isLoading && !user) {
+      // Avoid redirecting if already on /login
+      if (!pathname.startsWith("/login")) {
+        router.replace(`/login?redirect=${encodeURIComponent(pathname)}`);
+      }
     }
-  }, [user, router]);
+  }, [isLoading, user, pathname, router]);
 
   if (isLoading) {
     return <LoadingPage />;

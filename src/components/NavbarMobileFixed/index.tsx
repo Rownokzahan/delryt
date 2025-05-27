@@ -6,17 +6,17 @@ import { LuPartyPopper } from "react-icons/lu";
 import NavItem from "./NavItem";
 import useUser from "@/hooks/useUser";
 import useModalById from "@/hooks/useModalById";
-import useReturnToPath from "@/hooks/useReturnToPath";
 import { useCart } from "@/hooks/useCart";
+import { useRouter } from "next/navigation";
 
 const NavbarMobileFixed = () => {
   const { user } = useUser();
-  const { openModal: openAuthModal } = useModalById("authModal");
-  const { setReturnToPath } = useReturnToPath();
   const { cart } = useCart();
+  const { openModal: openAuthModal } = useModalById("authModal");
+  const router = useRouter();
 
-  const handleProfileClick = () => {
-    setReturnToPath("/profile");
+  const handleAuthRedirect = (path: string) => {
+    router.replace(`?redirect=${path}`, { scroll: false });
     openAuthModal();
   };
 
@@ -35,19 +35,30 @@ const NavbarMobileFixed = () => {
         />
 
         {/* Cart */}
-        <NavItem
-          href={"/checkout"}
-          icon={FiShoppingCart}
-          label={"Cart"}
-          count={cart.length}
-        />
+        {user ? (
+          <NavItem
+            href={"/checkout"}
+            icon={FiShoppingCart}
+            label={"Cart"}
+            count={cart.length}
+          />
+        ) : (
+          <NavItem
+            isButton={true}
+            onClick={() => handleAuthRedirect("/checkout")}
+            icon={FiShoppingCart}
+            label={"Cart"}
+            count={cart.length}
+          />
+        )}
 
+        {/* My Profile */}
         {user ? (
           <NavItem href={"/profile"} icon={BiUser} label={"My Profile"} />
         ) : (
           <NavItem
             isButton={true}
-            onClick={handleProfileClick}
+            onClick={() => handleAuthRedirect("/profile")}
             icon={BiUser}
             label={"My Profile"}
           />

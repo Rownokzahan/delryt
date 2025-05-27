@@ -17,10 +17,16 @@ const ConfirmLogoutModal = () => {
   }
 
   const handleLogout = () => {
-    logout();
-    toast.success("Logged out successfully!");
-    closeModal();
-    router.push("/");
+    logout()
+      .unwrap()
+      .then(() => {
+        closeModal();
+        toast.success("Logged out successfully!");
+        router.replace("/");
+      })
+      .catch((error) => {
+        console.error("Logout error:", error);
+      });
   };
 
   return (

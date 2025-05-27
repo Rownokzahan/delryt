@@ -3,11 +3,11 @@ import AuthInputField from "../componets/AuthInputField";
 import EmailField from "../componets/EmailField";
 import PasswordField from "../componets/PasswordField";
 import { useRegisterMutation } from "@/store/features/auth/authApi";
-import { redirect } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import AuthAlert from "../componets/AuthAlert";
-import useReturnToPath from "@/hooks/useReturnToPath";
 import useModalById from "@/hooks/useModalById";
 import FormSubmitButton from "@/forms/components/FormSubmitButton";
+import { useRouter } from "next/router";
 
 interface Inputs {
   f_name: string;
@@ -30,8 +30,11 @@ const SignupForm = () => {
 
   const [signup, { isLoading, isError, isSuccess, error }] =
     useRegisterMutation();
-  const { returnToPath } = useReturnToPath();
-    const { closeModal } = useModalById("authModal");
+  const { closeModal } = useModalById("authModal");
+
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect") ?? "/";
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<Inputs> = (newUser) => {
     signup(newUser)
@@ -39,7 +42,7 @@ const SignupForm = () => {
       .then(() => {
         reset();
         closeModal();
-        redirect(returnToPath);
+        router.push(redirectTo);
       });
   };
 

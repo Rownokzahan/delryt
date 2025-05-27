@@ -6,8 +6,7 @@ import AuthInputField from "../componets/AuthInputField";
 import { useLoginMutation } from "@/store/features/auth/authApi";
 import { getType, isEmail, isPhone } from "./utils";
 import AuthAlert from "../componets/AuthAlert";
-import { redirect } from "next/navigation";
-import useReturnToPath from "@/hooks/useReturnToPath";
+import { useRouter, useSearchParams } from "next/navigation";
 import useModalById from "@/hooks/useModalById";
 import FormSubmitButton from "@/forms/components/FormSubmitButton";
 
@@ -28,8 +27,11 @@ const LoginForm = () => {
   });
 
   const [login, { isLoading, isError, isSuccess, error }] = useLoginMutation();
-  const { returnToPath } = useReturnToPath();
   const { closeModal } = useModalById("authModal");
+
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect") ?? "/";
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const { email_or_phone, password } = data;
@@ -47,7 +49,7 @@ const LoginForm = () => {
       .then(() => {
         reset();
         closeModal();
-        redirect(returnToPath);
+        router.push(redirectTo);
       });
   };
 
