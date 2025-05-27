@@ -32,14 +32,14 @@ const OrderDetails = ({ orderId }: OrderDetails) => {
   }
 
   return (
-    <div className="p-4 bg-uiBlack/10 space-y-4">
+    <>
       <OrderStatus order={order} />
       <OrderDelivery order={order} />
+      <OrderItems order={order} />
+      <OrderCutlery order={order} />
       <OrderPayment />
       <OrderCostSummary order={order} />
-      <OrderCutlery order={order} />
-      <OrderItems order={order} />
-    </div>
+    </>
   );
 };
 
