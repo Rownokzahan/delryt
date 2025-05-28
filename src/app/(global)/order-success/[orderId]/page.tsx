@@ -34,8 +34,8 @@ const OrderSuccessPage = async ({ params }: OrderSuccessPageProps) => {
             </Button>
           </Link>
 
-          <Link href={"/"} className="w-full">
-            <Button className="w-full">Track Order</Button>
+          <Link href={`/profile/my-orders/${orderId}`} className="w-full">
+            <Button className="w-full">View Order</Button>
           </Link>
         </div>
       </div>

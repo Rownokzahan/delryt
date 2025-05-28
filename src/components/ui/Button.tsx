@@ -35,7 +35,7 @@ const Button = ({
     "rounded-sm",
     "text-center capitalize",
     "flex items-center justify-center",
-    "disabled:bg-neutral-300 disabled:text-uiWhite",
+    "disabled:bg-neutral-300 disabled:text-uiWhite disabled:border-neutral-300",
     "transition-all ease-in-out duration-300"
   );
 

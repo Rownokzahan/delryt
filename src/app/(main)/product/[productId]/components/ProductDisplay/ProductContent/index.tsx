@@ -3,7 +3,11 @@ import VegNonVegIcon from "@/components/ui/VegNonVegIcon";
 import useModalById from "@/hooks/useModalById";
 import { Product } from "@/types";
 import { getImagePath } from "@/utils/imageHelper";
-import { getBeforeDiscountedPrice } from "@/utils/priceHelper";
+import {
+  getBeforeDiscountedProductPrice,
+  getProductAverageRating,
+  isProductOutOfStock,
+} from "@/utils/productHelper";
 import Image from "next/image";
 import { FaStar } from "react-icons/fa6";
 import { LuShare2 } from "react-icons/lu";
@@ -15,26 +19,11 @@ interface ProductContentProps {
 const ProductContent = ({ product }: ProductContentProps) => {
   const { openModal: openShareModal } = useModalById("shareModal");
 
-  const {
-    image,
-    product_type,
-    name,
-    description,
-    price,
-    discount,
-    discount_type,
-  } = product || {};
+  const { image, product_type, name, description, price } = product || {};
 
-  const imagePath = getImagePath("product", image);
-  const isVeg = product_type === "veg" ? true : false;
-  const beforeDiscountedPrice = getBeforeDiscountedPrice(
-    price,
-    discount,
-    discount_type
-  );
-
-  //TODO: This valuse should be calculated
-  const avgRating = 4.5;
+  const avgRating = getProductAverageRating(product);
+  const beforeDiscountedPrice = getBeforeDiscountedProductPrice(product);
+  const isStockOut = isProductOutOfStock(product);
 
   return (
     <section className="ui-container grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -42,7 +31,7 @@ const ProductContent = ({ product }: ProductContentProps) => {
         <Image
           width={300}
           height={200}
-          src={imagePath}
+          src={getImagePath("product", image)}
           alt={"Product Image 1"}
           className="w-full aspect-3/2 object-cover border rounded-sm"
         />
@@ -52,7 +41,10 @@ const ProductContent = ({ product }: ProductContentProps) => {
         <div className="space-y-2">
           <div className="flex gap-2 justify-between">
             <h3 className="pt-1">
-              <VegNonVegIcon isVeg={isVeg} className="me-1 -mt-1 sm:-mt-2" />
+              <VegNonVegIcon
+                isVeg={product_type === "veg" ? true : false}
+                className="me-1 -mt-1 sm:-mt-2"
+              />
               <span className="font-medium lg:text-2xl">{name}</span>
             </h3>
 
@@ -65,10 +57,18 @@ const ProductContent = ({ product }: ProductContentProps) => {
             </button>
           </div>
 
-          <div className="size-max py-1 px-2 text-success bg-success/20 text-xs md:text-base flex items-center gap-1">
-            <FaStar className="mb-1" />
-            <span className="font-medium">{avgRating}</span>
-          </div>
+          {isStockOut && (
+            <div className="size-max px-2 py-1 bg-uiBlack-light/10 font-medium">
+              Out of stock
+            </div>
+          )}
+
+          {avgRating !== null && (
+            <div className="size-max py-1 px-2 text-success bg-success/20 text-xs md:text-base flex items-center gap-1">
+              <FaStar className="mb-1" />
+              <span className="font-medium">{avgRating}</span>
+            </div>
+          )}
 
           <p className="text-sm lg:text-base text-pretty">{description}</p>
         </div>
@@ -85,7 +85,7 @@ const ProductContent = ({ product }: ProductContentProps) => {
           </div>
 
           {/* Add to Cart Button */}
-          <AddToCartButton product={product} />
+          <AddToCartButton product={product} isStockOut={isStockOut} />
         </div>
       </div>
     </section>

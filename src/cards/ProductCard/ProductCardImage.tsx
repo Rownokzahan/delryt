@@ -1,6 +1,7 @@
 import { getImagePath } from "@/utils/imageHelper";
 import clsx from "clsx";
 import Image from "next/image";
+import { IoBanSharp } from "react-icons/io5";
 
 interface ProductCardImageProps {
   image: string;
@@ -8,6 +9,7 @@ interface ProductCardImageProps {
   noMobileLayoutShift: boolean;
   discount_type: string;
   discount: number;
+  isStockOut: boolean;
 }
 
 const ProductCardImage = ({
@@ -16,6 +18,7 @@ const ProductCardImage = ({
   noMobileLayoutShift,
   discount_type,
   discount,
+  isStockOut,
 }: ProductCardImageProps) => {
   const imagePath = getImagePath("product", image);
   const isPercentageDiscount = discount_type === "percent" && discount > 0;
@@ -41,6 +44,15 @@ const ProductCardImage = ({
       {isPercentageDiscount && (
         <div className="absolute top-3 left-3 bg-primary/70 text-uiWhite text-xs font-medium px-2 py-1 rounded-md">
           {discount}% OFF
+        </div>
+      )}
+
+      {isStockOut && (
+        <div className="absolute inset-0 bg-uiWhite/40 grid">
+          <p className="place-self-center px-2 py-1 rounded-md bg-primary/80 text-uiWhite text-sm flex items-center gap-1">
+            <IoBanSharp className="mb-[2px]" />
+            <span>Stock Out</span>
+          </p>
         </div>
       )}
     </figure>

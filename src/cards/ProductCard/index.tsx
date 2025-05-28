@@ -3,8 +3,12 @@ import { Product } from "@/types";
 import clsx from "clsx";
 import Link from "next/link";
 import ProductCardImage from "./ProductCardImage";
-import { getBeforeDiscountedPrice } from "@/utils/priceHelper";
 import AddToCartButton from "@/components/ui/AddToCartButton";
+import {
+  getBeforeDiscountedProductPrice,
+  getProductAverageRating,
+  isProductOutOfStock,
+} from "@/utils/productHelper";
 
 interface ProductCardProps {
   product: Product;
@@ -26,16 +30,9 @@ const ProductCard = ({
     discount,
   } = product || {};
 
-  const isVeg = product_type === "veg" ? true : false;
-
-  //TODO: This valuse should be calculated
-  const avgRating = 4.5;
-
-  const beforeDiscountedPrice = getBeforeDiscountedPrice(
-    price,
-    discount,
-    discount_type
-  );
+  const avgRating = getProductAverageRating(product);
+  const beforeDiscountedPrice = getBeforeDiscountedProductPrice(product);
+  const isStockOut = isProductOutOfStock(product);
 
   return (
     <article className={clsx(noMobileLayoutShift ? "p-3" : "md:p-3")}>
@@ -52,21 +49,25 @@ const ProductCard = ({
           discount={discount}
           discount_type={discount_type}
           noMobileLayoutShift={noMobileLayoutShift}
+          isStockOut={isStockOut}
         />
 
         <div className="flex-1 min-w-0 p-3 md:p-0">
           <div className="md:p-3">
             <h5 className="md:text-lg font-medium truncate">
-              <VegNonVegIcon isVeg={isVeg} className="me-2 md:-mt-[5px]" />
+              <VegNonVegIcon
+                isVeg={product_type === "veg"}
+                className="me-2 md:-mt-[5px]"
+              />
               <span>{name}</span>
             </h5>
 
-            <p className="h-6 my-2 md:my-3 text-uiBlack-light text-sm truncate leading-5">
+            <p className="h-6 my-1 md:my-2 text-uiBlack-light text-sm truncate leading-5">
               {description}
             </p>
 
             <div className="h-6 md:h-7">
-              {avgRating && (
+              {avgRating !== null && (
                 <p className="w-max py-1 px-2 text-success bg-success/10 text-xs md:text-sm">
                   ★ {avgRating}
                 </p>
@@ -85,7 +86,9 @@ const ProductCard = ({
               )}
             </div>
 
-            <AddToCartButton product={product} />
+            <div onClick={(e) => e.preventDefault()}>
+              <AddToCartButton product={product} isStockOut={isStockOut} />
+            </div>
           </div>
         </div>
       </Link>

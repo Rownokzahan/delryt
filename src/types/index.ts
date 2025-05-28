@@ -78,12 +78,25 @@ export interface Product {
   name: string;
   description: string;
   product_type: string;
-  rating: string;
   price: number;
   discount_type: string;
   discount: number;
   variations: ProductVariation[];
   add_ons: ProductAddOnItem[];
+
+  rating: {
+    average: string;
+    product_id: 25;
+  }[];
+
+  branch_product: {
+    stock_type: "fixed" | "unlimited";
+    stock: number;
+    sold_quantity: number;
+  };
+
+  available_time_starts: string;
+  available_time_ends: string;
 }
 
 export type ProductType = "all" | "veg" | "non_veg";

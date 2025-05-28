@@ -26,13 +26,13 @@ const ProductCardSkeleton = ({
       <div className="p-3 md:p-0 flex-1 min-w-0">
         <div className="md:p-3">
           <div className="h-7 md:h-6 bg-gray-200" />
-          <div className="my-2 md:my-4 h-5 w-11/12 bg-gray-200 " />
+          <div className="my-1 md:my-3 h-6 w-11/12 bg-gray-200 " />
           <div className="h-6 w-12 bg-gray-200" />
         </div>
 
-        <div className="mt-3 md:mt-0 pt-3 md:p-3 border-t flex justify-between items-center gap-2">
+        <div className="mt-3 md:mt-0 md:p-3 border-t flex justify-between items-center gap-2">
           <div className="h-7 w-32 bg-gray-200" />
-          <div className="h-7 w-16 rounded-md bg-gray-200" />
+          <div className="h-8 w-18 rounded-md bg-gray-200" />
         </div>
       </div>
     </div>

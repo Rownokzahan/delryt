@@ -38,9 +38,7 @@ const CartItemCard = ({ cartItem }: CartItemCardProps) => {
         </div>
 
         <div className="flex items-center gap-2">
-          <CustomizationInfo
-            cartItem={cartItem}
-          />
+          <CustomizationInfo cartItem={cartItem} />
           <QuantityControl cartItem={cartItem} />
         </div>
       </div>
