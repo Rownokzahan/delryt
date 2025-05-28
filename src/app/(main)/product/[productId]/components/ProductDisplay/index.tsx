@@ -29,8 +29,6 @@ const ProductDisplay = ({ productId }: ProductDisplayProps) => {
     );
   }
 
-  console.log(product);
-
   return <ProductContent product={product} />;
 };
 
