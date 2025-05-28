@@ -7,39 +7,28 @@ import {
 } from "react-icons/md";
 import Modal from "../Modal";
 import { IoLogoWhatsapp } from "react-icons/io";
-import { IconType } from "react-icons";
 import { FaFacebook, FaXTwitter } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
 import { usePathname } from "next/navigation";
 
-interface Social {
-  name: string;
-  href: string;
-  Icon: IconType;
-}
-
-const socials: Social[] = [
+const socials = [
   {
+    id: "whatsapp",
     name: "Share on WhatsApp",
-    href: "https://api.whatsapp.com/send?text=Check%20this%20out!",
     Icon: IoLogoWhatsapp,
   },
   {
+    id: "facebook",
     name: "Share on Facebook",
-    href: "https://www.facebook.com/sharer/sharer.php?u=https://example.com",
     Icon: FaFacebook,
   },
+  { id: "twitter", name: "Share on Twitter", Icon: FaXTwitter },
   {
-    name: "Share on Twitter",
-    href: "https://twitter.com/intent/tweet?text=Check%20this%20out!&url=https://example.com",
-    Icon: FaXTwitter,
-  },
-  {
+    id: "gmail",
     name: "Share via Gmail",
-    href: "mailto:?subject=Check%20this%20out!&body=Here%20is%20something%20interesting:%20https://example.com",
     Icon: IoMail,
   },
-];
+] as const;
 
 const ShareModal = () => {
   const [currentUrl, setCurrentUrl] = useState<string>("");
@@ -68,6 +57,25 @@ const ShareModal = () => {
       });
   };
 
+
+  const encodedUrl = encodeURIComponent(currentUrl);
+
+  // Build share URLs dynamically
+  const getShareLink = (id: (typeof socials)[number]["id"]) => {
+    switch (id) {
+      case "whatsapp":
+        return `https://api.whatsapp.com/send?text=${encodedUrl}`;
+      case "facebook":
+        return `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+      case "twitter":
+        return `https://twitter.com/intent/tweet?&url=${encodedUrl}`;
+      case "gmail":
+        return `mailto:?body=${currentUrl}`;
+      default:
+        return "#";
+    }
+  };
+
   return (
     <Modal modalId={"shareModal"} fullHeightOnSmall={false}>
       <h3 className="text-xl sm:text-2xl font-medium pt-9 ps-4 sm:px-8">
@@ -75,10 +83,10 @@ const ShareModal = () => {
       </h3>
       <div className="px-4 py-8 sm:px-8">
         <div className="space-y-10 mb-10">
-          {socials.map(({ href, Icon, name }, index) => (
+          {socials.map(({ id, Icon, name }) => (
             <a
-              key={index}
-              href={href}
+              key={id}
+              href={getShareLink(id)}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-between"
