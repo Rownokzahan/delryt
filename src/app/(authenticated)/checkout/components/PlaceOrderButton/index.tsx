@@ -30,7 +30,7 @@ const PlaceOrderButton = () => {
   const [createOrder, { isLoading }] = useCreateOrderMutation();
   const router = useRouter();
 
-  const handlePlaceOrder = async () => {
+  const handlePlaceOrder = () => {
     if (!checkoutAddress) {
       openAddAddressModal();
       return;
@@ -55,15 +55,20 @@ const PlaceOrderButton = () => {
       payment_method: "cash_on_delivery",
     };
 
-    try {
-      const response = await createOrder(orderPayload).unwrap();
-      router.push(`/order-success/${response.order_id}`);
-      clearCart();
-      resetCheckout();
-    } catch (error) {
-      console.error("Error placing order:", error);
-      router.push(`/order-success`);
-    }
+    createOrder(orderPayload)
+      .unwrap()
+      .then((res) => {
+        router.push(`/order-success/${res.order_id}`);
+
+        setTimeout(() => {
+          clearCart();
+          resetCheckout();
+        }, 400);
+      })
+      .catch((error) => {
+        console.error("Error placing order:", error);
+        router.push(`/order-success`);
+      });
   };
 
   return (
