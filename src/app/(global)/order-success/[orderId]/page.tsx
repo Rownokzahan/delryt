@@ -10,7 +10,7 @@ const OrderSuccessPage = async ({ params }: OrderSuccessPageProps) => {
   const { orderId } = await params;
 
   return (
-    <main className="grid place-items-center px-4">
+    <main className="absolute inset-0 grid place-items-center px-4">
       <div className="text-center max-w-lg w-full">
         <IoBagCheck className="mx-auto text-8xl text-primary" />
 
