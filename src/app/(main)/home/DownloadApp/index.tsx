@@ -15,11 +15,12 @@ const DownloadApp = () => {
               <span className="fon-medium">Downoload</span> <br />
               <span className="font-semibold">Delryt App</span>
             </h3>
-            <p className="text-[#cacaca]">
-              Delryt, when you want to enjoy multiple cuisines from different
-              trusted restaurants in one single order. Become an Delryt Elite,
-              unlock FREE dishes on orders above ৳299 and pay ZERO delivery fees
-              for orders above ৳199.
+            <p className="text-uiWhite/80">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam
+              maiores praesentium quis vitae error, laborum ipsa, eos enim nisi
+              cumque quas earum. Praesentium ducimus expedita, et at similique
+              illo porro debitis esse nulla voluptates nisi tempore nemo
+              perferendis molestias minima!
             </p>
           </div>
 
