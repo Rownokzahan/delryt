@@ -1,15 +1,15 @@
 "use client";
 
 import useModalById from "@/hooks/useModalById";
-import Logo from "./Logo";
-import CallUsInfo from "./CallUsInfo";
 import { FiMenu } from "react-icons/fi";
+import Logo from "../ui/Logo";
+import CallUsInfo from "../ui/CallUsInfo";
 
 const GlobalNavbar = () => {
   const { openModal: openSidebar } = useModalById("menuSidebar");
 
   return (
-    <nav className="shadow-md sticky z-10 top-0 bg-uiWhite">
+    <nav className="h-18 shadow-md sticky z-10 top-0 bg-uiWhite">
       <div className="ui-container py-3 flex justify-between items-center">
         <Logo />
 

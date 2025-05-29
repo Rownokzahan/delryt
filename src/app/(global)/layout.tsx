@@ -1,4 +1,4 @@
-import GlobalNavbar from "@/components/ui/GlobalNavbar";
+import GlobalNavbar from "@/components/GlobalNavbar";
 import Link from "next/link";
 
 interface GlobalLayoutProps {
