@@ -99,14 +99,14 @@ const AddToCartButton = ({ product, isStockOut }: AddToCartButtonProps) => {
     <div className="h-8 w-18 border border-primary rounded-sm flex items-center">
       <button
         onClick={decrementQuantity}
-        className="h-full flex-1 place-items-center text-sm text-primary"
+        className="h-full flex-1 grid place-items-center text-sm text-primary"
       >
         <FaMinus />
       </button>
       <span className="p-1">{quantityInCart}</span>
       <button
         onClick={incrementQuantity}
-        className="h-full flex-1 place-items-center text-sm text-primary"
+        className="h-full flex-1 grid place-items-center text-sm text-primary"
       >
         <FaPlus />
       </button>
