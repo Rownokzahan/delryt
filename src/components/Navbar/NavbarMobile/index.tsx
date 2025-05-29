@@ -12,8 +12,8 @@ const NavbarMobile = () => {
   const { user } = useUser();
 
   return (
-    <div className="ui-container py-3 shadow-xs flex justify-between items-center">
-      <LogoWithBranchLink logoSize="small" />
+    <nav className="sm:hidden h-nav-mobile ui-container shadow-xs flex justify-between items-center">
+      <LogoWithBranchLink />
 
       <div className="flex items-center gap-2">
         {!user && (
@@ -37,7 +37,7 @@ const NavbarMobile = () => {
           )}
         </button>
       </div>
-    </div>
+    </nav>
   );
 };
 

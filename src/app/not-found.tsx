@@ -6,7 +6,7 @@ export default function NotFound() {
     <>
       <GlobalNavbar />
 
-      <main className="h-[calc(100dvh-72px)] grid place-items-center">
+      <main className="min-h-screen-nav grid place-items-center">
         <div className="ui-container text-center">
           <h1 className="text-5xl sm:text-7xl font-bold">404</h1>
 

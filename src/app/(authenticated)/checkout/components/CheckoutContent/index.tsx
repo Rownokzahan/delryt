@@ -22,7 +22,7 @@ const CheckoutContent = () => {
 
   if (cart.length === 0) {
     return (
-      <main className="min-h-[calc(100dvh-60px)] sm:min-h-[calc(100dvh-130px)] grid place-content-center">
+      <main className="h-[calc(100dvh-var(--h-nav-mobile))] sm:h-[calc(100dvh-var(--h-nav-desktop)-56px)] grid place-content-center">
         <div className="ui-container flex flex-col items-center text-center">
           <GrCart className="mb-2 text-6xl" />
 

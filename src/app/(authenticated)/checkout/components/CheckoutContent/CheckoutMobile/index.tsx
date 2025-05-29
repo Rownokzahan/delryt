@@ -8,7 +8,7 @@ const CheckoutMobile = () => {
   const { mobileCheckoutView } = useCheckoutState();
 
   return (
-    <div className="md:hidden min-h-[calc(100dvh-56px)] ui-container">
+    <div className="md:hidden min-h-screen-nav-mobile ui-container">
       {mobileCheckoutView === "cart" ? <CartView /> : <CheckoutView />}
     </div>
   );

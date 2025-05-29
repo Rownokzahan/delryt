@@ -11,13 +11,13 @@ const ProfileHeaderBar = ({
   backLink = "/profile",
 }: ProfileHeaderBarProps) => {
   return (
-    <header className="sm:hidden w-full ui-container py-3 shadow-sm bg-uiWhite sticky z-20 top-0">
-      <div className="flex items-center gap-3">
+    <header className="sm:hidden h-nav-mobile w-full ui-container py-3 shadow-sm bg-uiWhite sticky z-20 top-0">
+      <div className="h-full flex items-center gap-3">
         <Link href={backLink}>
-          <IoIosArrowBack />
+          <IoIosArrowBack className="text-xl"/>
         </Link>
 
-        <h3 className="text-lg font-medium">{label}</h3>
+        <h3 className="text-xl font-medium">{label}</h3>
       </div>
     </header>
   );

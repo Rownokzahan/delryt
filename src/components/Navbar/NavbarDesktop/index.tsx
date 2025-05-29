@@ -13,8 +13,8 @@ const NavbarDesktop = () => {
   const { openModal: openSidebar } = useModalById("menuSidebar");
 
   return (
-    <div className="border-b border-primary/20 shadow-xs bg-uiWhite">
-      <div className="ui-container py-3 flex justify-between items-center">
+    <div className="hidden sm:block h-nav-desktop border-b border-primary/20 shadow-xs bg-uiWhite">
+      <div className="h-full ui-container flex justify-between items-center">
         {/* Logo with branch */}
         <LogoWithBranchLink />
 

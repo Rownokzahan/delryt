@@ -9,8 +9,8 @@ const GlobalNavbar = () => {
   const { openModal: openSidebar } = useModalById("menuSidebar");
 
   return (
-    <nav className="h-18 shadow-md sticky z-10 top-0 bg-uiWhite">
-      <div className="ui-container py-3 flex justify-between items-center">
+    <nav className="h-nav-mobile sm:h-nav-desktop shadow-md sticky z-10 top-0 bg-uiWhite">
+      <div className="h-full ui-container flex justify-between items-center">
         <Logo />
 
         <div className="flex items-center gap-6">

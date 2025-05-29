@@ -14,12 +14,10 @@ const ProfileLayout = ({ children }: ProfileLayoutProps) => {
         <NavbarDesktop />
 
         <div className="py-8 px-4 max-w-6xl mx-auto">
-          <div className="h-[calc(100dvh-137px)] bg-uiWhite grid grid-cols-13">
+          <div className="h-[calc(100dvh-var(--h-nav-desktop)-64px)] bg-uiWhite grid grid-cols-13">
             <ProfileSidebar />
 
-            <main className="col-span-9 p-4 relative overflow-y-auto">
-              {children}
-            </main>
+            <main className="h-full overflow-y-auto col-span-9 p-4 relative">{children}</main>
           </div>
         </div>
       </div>

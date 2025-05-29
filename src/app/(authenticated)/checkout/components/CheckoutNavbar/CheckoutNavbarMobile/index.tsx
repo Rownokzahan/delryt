@@ -11,10 +11,10 @@ const CheckoutNavbarMobile = () => {
   const isCartView = mobileCheckoutView === "cart";
 
   return (
-    <header className="md:hidden sticky z-10 top-0">
-      <nav className="h-14 ui-container py-3 border-b shadow-sm bg-uiWhite flex items-center">
+    <header className="md:hidden h-nav-mobile sticky z-10 top-0">
+      <nav className="h-full ui-container border-b shadow-sm bg-uiWhite flex items-center">
         {isCartView ? (
-          <Logo size="small" className="me-4" />
+          <Logo className="me-4" />
         ) : (
           <button
             onClick={() => updateMobileCheckoutView("cart")}
