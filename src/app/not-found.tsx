@@ -1,7 +1,7 @@
 import GlobalNavbar from "@/components/GlobalNavbar";
 import Button from "@/components/ui/Button";
 
-export default function NotFound() {
+const NotFoundPage = () => {
   return (
     <>
       <GlobalNavbar />
@@ -21,4 +21,6 @@ export default function NotFound() {
       </main>
     </>
   );
-}
+};
+
+export default NotFoundPage;
