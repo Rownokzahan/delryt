@@ -23,7 +23,17 @@ const Footer = () => {
         </div>
 
         {/* Footer links section */}
-        <FooterLinks />
+        <div className="flex flex-col md:flex-row gap-6 lg:gap-14 justify-between">
+          <div className="flex-1 max-w-md xl:max-w-lg text-uiWhite/70 first-letter:text-xl text-pretty">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus
+            placeat odio repellendus earum et cumque odit delectus unde aperiam
+            doloribus.
+          </div>
+
+          <div className="flex-1 flex justify-between gap-6 flex-wrap md:flex-nowrap">
+            <FooterLinks />
+          </div>
+        </div>
 
         {/* Contact information section */}
         <div className="mt-10 flex items-center sm:justify-center gap-2">
