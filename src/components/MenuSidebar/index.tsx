@@ -35,7 +35,7 @@ const MenuSidebar = () => {
   }, [pathname]);
 
   useEffect(() => {
-    // Disable body scroll if disableScroll is true and sidebar is open
+    // Disable body scroll if sidebar is open
     if (isSidebarOpen) {
       document.body.style.overflow = "hidden";
     } else {
@@ -50,7 +50,10 @@ const MenuSidebar = () => {
   return (
     <aside>
       {isSidebarOpen && (
-        <div className="fixed z-40 inset-0 bg-black/60 backdrop-blur-xs"></div>
+        <div
+          onClick={closeSidebar}
+          className="fixed z-40 inset-0 bg-black/60 backdrop-blur-xs"
+        />
       )}
 
       <div
