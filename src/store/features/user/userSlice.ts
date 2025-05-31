@@ -8,28 +8,26 @@ interface CurrentUserState {
 
 const initialState: CurrentUserState = {
   user: null,
-  isLoading: true,
+  isLoading: false,
 };
 
 const userSlice = createSlice({
   name: "currentUser",
   initialState: initialState,
   reducers: {
-    initializeCurrentUser: (state, { payload }: PayloadAction<User | null>) => {
-      state.user = payload;
-      state.isLoading = false;
+    setCurrentUserLoading: (state, { payload }: PayloadAction<boolean>) => {
+      state.isLoading = payload;
     },
 
-    updateCurrentUser: (state, { payload }: PayloadAction<User>) => {
+    setCurrentUser: (state, { payload }: PayloadAction<User | null>) => {
       state.user = payload;
     },
 
-    clearUser: (state) => {
-      state.user = null;
-    },
+    clearUser: () => initialState,
   },
 });
 
-export const { initializeCurrentUser, updateCurrentUser, clearUser } =
+export const { setCurrentUserLoading, setCurrentUser, clearUser } =
   userSlice.actions;
+
 export default userSlice.reducer;

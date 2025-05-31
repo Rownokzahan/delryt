@@ -1,6 +1,6 @@
 import { UpdateUser, User } from "@/types";
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { initializeCurrentUser } from "./userSlice";
+import { setCurrentUser, setCurrentUserLoading } from "./userSlice";
 import authBaseQuery from "@/store/utils/authBaseQuery";
 
 export const userApi = createApi({
@@ -22,16 +22,20 @@ export const userApi = createApi({
         image: response.image,
       }),
 
-      // Initialize the user in the store as soon as the query successfully completes
+      // Set the user in the store as soon as the query successfully completes
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
+          dispatch(setCurrentUserLoading(true));
+
           const { data: user } = await queryFulfilled;
           if (user) {
-            dispatch(initializeCurrentUser(user));
+            dispatch(setCurrentUser(user));
           }
         } catch (error) {
           console.log("Error fetching user data:", error);
-          dispatch(initializeCurrentUser(null));
+          dispatch(setCurrentUser(null));
+        } finally {
+          dispatch(setCurrentUserLoading(false));
         }
       },
     }),

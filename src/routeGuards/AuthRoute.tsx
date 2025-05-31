@@ -23,11 +23,13 @@ const AuthRoute = ({ children }: AuthRouteProps) => {
     }
   }, [isLoading, user, pathname, router]);
 
+  // console.log("isLoading :", isLoading, "User", user);
+
   if (isLoading) {
     return <LoadingPage />;
   }
 
-  if (!user) {
+  if (!isLoading && !user) {
     return null;
   }
 
