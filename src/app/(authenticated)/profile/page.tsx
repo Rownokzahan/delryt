@@ -23,7 +23,7 @@ const ProfilePage = () => {
   // Effect to redirect to desktop profile page when screen size is large
   useEffect(() => {
     if (isDesktopScreen) {
-      router.push("/profile/my-orders", { scroll: false });
+      router.replace("/profile/my-orders", { scroll: false });
     }
   }, [router, isDesktopScreen]);
 
