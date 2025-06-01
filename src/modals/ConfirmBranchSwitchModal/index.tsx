@@ -45,12 +45,16 @@ const ConfirmBranchSwitchModal = () => {
         </p>
       </div>
 
-      <div className="mt-5 flex justify-end gap-4 text-lg">
-        <button className="font-medium py-3 px-8" onClick={closeModal}>
+      <div className="mt-5 flex justify-end gap-4 sm:text-lg">
+        <button className="font-medium py-3 px-4 sm:px-8" onClick={closeModal}>
           Cancel
         </button>
 
-        <Button variant="primary" onClick={handleBranchSwitch}>
+        <Button
+          variant="primary"
+          onClick={handleBranchSwitch}
+          className="text-nowrap !px-4 sm:px-8"
+        >
           Yes, Switch Branch
         </Button>
       </div>
