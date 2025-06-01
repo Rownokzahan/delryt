@@ -14,7 +14,7 @@ const OrderRowCard = ({ order }: OrderRowCardProps) => {
   return (
     <Link
       href={`/profile/my-orders/${id}`}
-      className="p-3 border rounded-md grid grid-cols-5 place-items-center"
+      className="p-3 border rounded-md grid grid-cols-5 place-items-center bg-uiWhite"
     >
       <OrderCardImages images={product_images} />
       <p className="text-uiBlack-light text-sm">{total_quantity} items</p>
