@@ -14,11 +14,10 @@ const GlobalLayout = ({ children }: GlobalLayoutProps) => {
 
       <footer className="p-4">
         <p className="text-center text-sm">
-          Copyright © {new Date().getFullYear()}. Delryt - All Rights Reserved
-          <Link href={"/terms"} className="mx-2 underline">
+          Copyright © {new Date().getFullYear()}. Delryt - All Rights Reserved.
+          <Link href={"/terms"} className="ms-1 underline">
             Terms of use
           </Link>
-          Privacy
         </p>
       </footer>
     </>
