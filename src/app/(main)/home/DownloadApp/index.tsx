@@ -2,12 +2,7 @@ import Image from "next/image";
 
 const DownloadApp = () => {
   return (
-    <section
-      className="bg-primary bg-blend-overlay bg-cover bg-center"
-      style={{
-        backgroundImage: `url("https://assets.faasos.io/eatsure/production/downloadAppPattern-mini.png")`,
-      }}
-    >
+    <section className="bg-primary">
       <div className="py-16 ui-container flex flex-col lg:flex-row gap-12 items-center">
         <div className="flex-1 lg:min-w-96 space-y-6">
           <div className="space-y-2">
@@ -34,7 +29,7 @@ const DownloadApp = () => {
                 <Image
                   width={176}
                   height={48}
-                  src="https://assets.faasos.io/eatsure/production/play-store.svg"
+                  src="/images/app/google-play.svg"
                   alt="Play Store Image"
                 />
               </a>
@@ -46,7 +41,7 @@ const DownloadApp = () => {
                 <Image
                   width={176}
                   height={48}
-                  src="https://assets.faasos.io/eatsure/production/app-store.svg"
+                  src="/images/app/app-store.svg"
                   alt="App Store Image"
                 />
               </a>
@@ -54,9 +49,9 @@ const DownloadApp = () => {
 
             <figure>
               <Image
-                width={2000}
-                height={2000}
-                src="https://product-assets.faasos.io/eatsure/production/es_home_page_aug_24.jpeg"
+                width={400}
+                height={400}
+                src="/images/app/QR-code.webp"
                 alt="Scan Code"
                 className="w-28 aspect-square"
               />
@@ -68,15 +63,15 @@ const DownloadApp = () => {
         <div className="h-max grid grid-cols-2 md:grid-cols-3 gap-8">
           <Image
             width={242}
-            height={387}
-            src="https://product-assets.faasos.io/eatsure/production/download-img-01-min.jpeg"
+            height={388}
+            src="/images/app/app-image-1.webp"
             alt="download-eatsure-app"
             className="w-full aspect-5/8"
           />
           <Image
             width={242}
-            height={387}
-            src="https://product-assets.faasos.io/eatsure/production/download-img-02-min.jpeg"
+            height={388}
+            src="/images/app/app-image-2.webp"
             alt="download-eatsure-app"
             className="w-full aspect-5/8"
           />
@@ -84,8 +79,8 @@ const DownloadApp = () => {
           {/* Keeping it hidden in mobile screen */}
           <Image
             width={242}
-            height={387}
-            src="https://product-assets.faasos.io/eatsure/production/download-img-03-min.jpeg"
+            height={388}
+            src="/images/app/app-image-3.webp"
             alt="download-eatsure-app"
             className="w-full aspect-5/8 hidden sm:block"
           />
