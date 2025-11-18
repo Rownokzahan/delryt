@@ -28,7 +28,7 @@ const SearchProductCard = ({ product }: SearchProductCardProps) => {
         <p className="truncate">
           <VegNonVegIcon
             isVeg={isVeg}
-            className="float-left !size-3 mt-[6px] me-1"
+            className="float-left size-3! mt-1.5 me-1"
           />
           <span>{name}</span>
         </p>

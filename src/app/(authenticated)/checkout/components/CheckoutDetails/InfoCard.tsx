@@ -24,7 +24,7 @@ const InfoCard = ({
         </div>
 
         <div className="min-w-0 flex-1 text-sm text-uiBlack-light/80">
-          <h5 className="mb-[2px] font-medium text-uiBlack">{label}</h5>
+          <h5 className="mb-0.5 font-medium text-uiBlack">{label}</h5>
           {children}
         </div>
       </div>

@@ -11,7 +11,7 @@ const FilterByDate = () => {
       <p className="text-xs sm:text-base font-medium whitespace-nowrap">Filter by</p>
       <button
         onClick={openModal}
-        className="px-2 py-[6px] border rounded-md flex justify-center items-center gap-1 text-primary"
+        className="px-2 py-1.5 border rounded-md flex justify-center items-center gap-1 text-primary"
       >
         <span className="text-xs sm:text-sm">Date</span>
         <MdOutlineKeyboardArrowDown />

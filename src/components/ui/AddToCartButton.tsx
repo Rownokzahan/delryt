@@ -86,7 +86,7 @@ const AddToCartButton = ({ product, isStockOut }: AddToCartButtonProps) => {
         onClick={handleAddToCart}
         variant="primary-outline"
         size="small"
-        className="h-8 !w-18"
+        className="h-8 w-18!"
         disabled={isStockOut}
       >
         Add

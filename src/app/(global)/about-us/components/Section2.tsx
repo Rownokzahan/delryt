@@ -26,15 +26,15 @@ const Section2 = () => {
               100% Bio-secured. 0% BS.
             </p>
 
-            <span className="block absolute left-0 top-0 w-full border-[16px] border-x-uiWhite border-t-uiWhite border-b-transparent"></span>
+            <span className="block absolute left-0 top-0 w-full border-16 border-x-uiWhite border-t-uiWhite border-b-transparent"></span>
 
-            <span className="block absolute left-0 bottom-0 w-full border-[16px] border-x-uiWhite border-b-uiWhite border-t-transparent"></span>
+            <span className="block absolute left-0 bottom-0 w-full border-16 border-x-uiWhite border-b-uiWhite border-t-transparent"></span>
           </div>
         </div>
 
         <span className="absolute top-2 right-2 flex gap-1">
           {[...Array(4)].map((_, index) => (
-            <span key={index} className="block size-[6px] bg-primary" />
+            <span key={index} className="block size-1.5 bg-primary" />
           ))}
           <svg
             xmlns="http://www.w3.org/2000/svg"

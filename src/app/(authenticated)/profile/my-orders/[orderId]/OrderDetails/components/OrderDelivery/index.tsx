@@ -13,7 +13,7 @@ const OrderDelivery = ({ order }: OrderDeliveryProps) => {
       <h3 className="font-medium">Delivery</h3>
       <div className="text-sm divide-y">
         <div className="py-1 flex gap-1">
-          <RiMapPinLine className="mt-[2px] text-lg" />
+          <RiMapPinLine className="mt-0.5 text-lg" />
           <div>
             <p>From</p>
             <p>{branch?.name}</p>
@@ -21,7 +21,7 @@ const OrderDelivery = ({ order }: OrderDeliveryProps) => {
         </div>
 
         <div className="pt-2 flex gap-1">
-          <RiMapPinUserLine className="mt-[2px] text-lg" />
+          <RiMapPinUserLine className="mt-0.5 text-lg" />
           <div>
             <p>To</p>
             <p>{delivery_address?.address}</p>

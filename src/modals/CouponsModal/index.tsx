@@ -29,16 +29,16 @@ const CouponsModal = () => {
         }}
       >
         <div className="mb-4 flex items-center justify-center">
-          <div className="w-28 h-[2px] bg-linear-to-l from-gray-300 relative">
-            <span className="size-[6px] rounded-full bg-gray-300 absolute -right-px top-1/2 -translate-y-1/2" />
+          <div className="w-28 h-0.5 bg-linear-to-l from-gray-300 relative">
+            <span className="size-1.5 rounded-full bg-gray-300 absolute -right-px top-1/2 -translate-y-1/2" />
           </div>
 
           <p className="w-max px-4 text-xs text-uiBlack-light text-center font-medium">
             AVAILABLE COUPONS
           </p>
 
-          <div className="w-28 h-[2px] bg-linear-to-r from-gray-300 relative">
-            <span className="size-[6px] rounded-full bg-gray-300 absolute -left-px top-1/2 -translate-y-1/2" />
+          <div className="w-28 h-0.5 bg-linear-to-r from-gray-300 relative">
+            <span className="size-1.5 rounded-full bg-gray-300 absolute -left-px top-1/2 -translate-y-1/2" />
           </div>
         </div>
 

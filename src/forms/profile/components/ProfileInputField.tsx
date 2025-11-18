@@ -27,7 +27,7 @@ const ProfileInputField = ({
         <span>{label}</span> {isOptional && <span>(Optional)</span>}
       </label>
 
-      <div className="relative space-y-[2px]">
+      <div className="relative space-y-0.5">
         <input
           type={type}
           id={id}

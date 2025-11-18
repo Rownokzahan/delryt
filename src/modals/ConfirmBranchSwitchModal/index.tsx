@@ -53,7 +53,7 @@ const ConfirmBranchSwitchModal = () => {
         <Button
           variant="primary"
           onClick={handleBranchSwitch}
-          className="text-nowrap !px-4 sm:px-8"
+          className="text-nowrap px-4! sm:px-8"
         >
           Yes, Switch Branch
         </Button>

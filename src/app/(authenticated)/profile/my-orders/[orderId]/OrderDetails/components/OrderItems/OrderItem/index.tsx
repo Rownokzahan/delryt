@@ -25,7 +25,7 @@ const OrderItem = ({ orderItem }: OrderItemProps) => {
         <p className="truncate">
           <VegNonVegIcon
             isVeg={product_type === "veg" ? true : false}
-            className="float-left !size-3 mt-[6px] me-1"
+            className="float-left size-3! mt-1.5 me-1"
           />
           <span className="text-sm">{name}</span>
         </p>

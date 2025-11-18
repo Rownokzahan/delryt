@@ -50,7 +50,7 @@ const ProductCardImage = ({
       {isStockOut && (
         <div className="absolute inset-0 bg-uiWhite/40 grid">
           <p className="place-self-center px-2 py-1 rounded-md bg-primary/80 text-uiWhite text-sm flex items-center gap-1">
-            <IoBanSharp className="mb-[2px]" />
+            <IoBanSharp className="mb-0.5" />
             <span>Stock Out</span>
           </p>
         </div>

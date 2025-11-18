@@ -5,7 +5,7 @@ interface SectionSeparatorProps {
 }
 
 const SectionSeparator = ({ className = "" }: SectionSeparatorProps) => {
-  return <div className={clsx("h-[2px] w-full bg-gray-200", className)} />;
+  return <div className={clsx("h-0.5 w-full bg-gray-200", className)} />;
 };
 
 export default SectionSeparator;

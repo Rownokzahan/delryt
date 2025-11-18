@@ -32,10 +32,10 @@ const CuisineCard = ({ cuisine }: CuisineCardProps) => {
           <h4 className="ms-3 text-uiWhite font-semibold text-xl sm:text-2xl">
             {name}
           </h4>
-          <span className="absolute top-0 left-0 h-9 w-[6px] bg-secondary" />
+          <span className="absolute top-0 left-0 h-9 w-1.5 bg-secondary" />
         </div>
 
-        <span className="border-[25px] border-primary border-e-0 border-s-transparent border-b-transparent absolute -top-px -right-px" />
+        <span className="border-25 border-primary border-e-0 border-s-transparent border-b-transparent absolute -top-px -right-px" />
       </div>
     </Link>
   );

@@ -54,7 +54,7 @@ const Carousel = ({
     customPaging: function () {
       return (
         <button>
-          <span className="block w-[6px] h-[6px] m-2 rounded-full bg-gray-300" />
+          <span className="block size-1.5 m-2 rounded-full bg-gray-300" />
         </button>
       );
     },

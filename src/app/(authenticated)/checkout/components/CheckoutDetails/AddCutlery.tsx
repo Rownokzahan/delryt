@@ -32,7 +32,7 @@ const AddCutlery = () => {
               className={clsx(
                 "size-[17px] border border-gray-300 rounded-full shadow-md bg-white",
                 "absolute top-1/2 -translate-y-1/2 transition-transform duration-200",
-                addCutlery ? "translate-x-[17px]" : "-translate-x-[1px]"
+                addCutlery ? "translate-x-[17px]" : "-translate-x-px"
               )}
             />
           </div>

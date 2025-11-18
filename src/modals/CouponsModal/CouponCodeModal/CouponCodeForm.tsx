@@ -44,7 +44,7 @@ const CouponCodeForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      <div className="space-y-[2px]">
+      <div className="space-y-0.5">
         <input
           type="text"
           {...register("couponCode", { required: "Code is required" })}

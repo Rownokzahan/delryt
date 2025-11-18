@@ -29,7 +29,7 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
           />
 
           {/* Triangle */}
-          <span className="border-[16px] border-s-transparent border-b-transparent border-uiWhite absolute -top-px -right-px"></span>
+          <span className="border-16 border-s-transparent border-b-transparent border-uiWhite absolute -top-px -right-px"></span>
         </figure>
 
         <div className="my-3 flex justify-between items-center gap-3">

@@ -30,7 +30,7 @@ const NavItem = ({
     return (
       <button
         onClick={onClick}
-        className="px-2 flex flex-col items-center gap-[2px]"
+        className="px-2 flex flex-col items-center gap-0.5"
         aria-label={label}
       >
         <Icon className="text-lg" />
@@ -43,7 +43,7 @@ const NavItem = ({
   return (
     <Link
       href={href}
-      className="px-2 flex flex-col items-center gap-[2px]"
+      className="px-2 flex flex-col items-center gap-0.5"
       aria-label={label}
     >
       <div className="relative">

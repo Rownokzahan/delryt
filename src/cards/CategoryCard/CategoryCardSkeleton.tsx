@@ -7,7 +7,7 @@ const CategoryCardSkeleton = () => {
       >
         {/* Placeholder for image */}
         <div className="relative w-full aspect-100/67 bg-gray-200 animate-pulse">
-          <span className="border-[16px] border-s-transparent border-b-transparent border-white absolute -top-px -right-px"></span>
+          <span className="border-16 border-s-transparent border-b-transparent border-white absolute -top-px -right-px"></span>
         </div>
 
         <div className="my-3 flex justify-between items-center gap-3 animate-pulse">

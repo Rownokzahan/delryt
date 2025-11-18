@@ -65,7 +65,7 @@ const BranchCard = ({
             <h4 className="text-uiWhite text-xl truncate">{name}</h4>
 
             <div className="flex items-center gap-1">
-              <HiMapPin className="mb-[2px] shrink-0 text-uiWhite/70 text-sm" />
+              <HiMapPin className="mb-0.5 shrink-0 text-uiWhite/70 text-sm" />
               <p className="text-uiWhite/70 text-sm truncate">{address}</p>
             </div>
           </div>
