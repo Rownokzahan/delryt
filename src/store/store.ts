@@ -1,7 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import branchReducer from "./features/branch/branchSlice";
 import { branchApi } from "./features/branch/branchApi";
-import modalReducer from "./features/modal/modalSlice";
 import checkoutReducer from "./features/checkout/checkoutSlice";
 import userReducer from "./features/user/userSlice";
 import cartReducer from "./features/cart/cartSlice";
@@ -20,7 +19,6 @@ import { ordersApi } from "./features/orders/ordersApi";
 export const store = configureStore({
   reducer: {
     branch: branchReducer,
-    modalStatus: modalReducer,
     checkout: checkoutReducer,
     user: userReducer,
     cart: cartReducer,

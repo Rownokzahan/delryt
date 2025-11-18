@@ -1,23 +1,30 @@
-import { Address, Branch, Id, Product, SelectedAddOnItem } from ".";
+import { Address, Branch, Id, Product, SelectedAddOnItem } from "@/types";
 
-export interface ModalDataMap {
-  addAddressModal: undefined;
-  authModal: undefined;
-  changePasswordModal: undefined;
-  chooseAddressModal: undefined;
-  couponsModal: undefined;
-  couponCodeModal: undefined;
-  dateSortModal: undefined;
-  deliveryTimeSelectionModal: undefined;
-  editProfileModal: undefined;
-  menuModal: undefined;
-  searchModal: undefined;
-  shareModal: undefined;
-  sortModal: undefined;
-  confirmLogoutModal: undefined;
+type ModalState<T = null> = {
+  isOpen: boolean;
+  data: T;
+};
 
-  confirmBranchSwitchModal: Branch;
-  productCustomizationModal:
+export type ModalsState = {
+  addAddressModal: ModalState;
+  authModal: ModalState;
+  changePasswordModal: ModalState;
+  chooseAddressModal: ModalState;
+  couponsModal: ModalState;
+  couponCodeModal: ModalState;
+  dateSortModal: ModalState;
+  deliveryTimeSelectionModal: ModalState;
+  editProfileModal: ModalState;
+  menuModal: ModalState;
+  searchModal: ModalState;
+  shareModal: ModalState;
+  sortModal: ModalState;
+  confirmLogoutModal: ModalState;
+  menuSidebar: ModalState;
+
+  confirmBranchSwitchModal: ModalState<Branch>;
+  updateAddressModal: ModalState<Address>;
+  productCustomizationModal: ModalState<
     | {
         mode: "add";
         product: Product;
@@ -27,13 +34,8 @@ export interface ModalDataMap {
         product: Product;
         selectedAddOns: SelectedAddOnItem[];
         cartId: Id;
-      };
+      }
+  >;
+};
 
-  updateAddressModal: Address;
-
-  menuSidebar: undefined;
-}
-
-export type ModalId = keyof ModalDataMap;
-
-export type ModalData<T extends ModalId> = ModalDataMap[T];
+export type ModalId = keyof ModalsState;

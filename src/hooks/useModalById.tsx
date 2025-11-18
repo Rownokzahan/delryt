@@ -1,33 +1,25 @@
 "use client";
 
-import {
-  closeModalById,
-  openModalById,
-} from "@/store/features/modal/modalSlice";
-import { RootState } from "@/store/store";
-import { ModalDataMap, ModalId } from "@/types/modal";
-import { useDispatch, useSelector } from "react-redux";
+import { ModalId, ModalsState } from "@/types/modal";
+import { useModalsStateStore } from "@/stores/useModalsStateStore";
 
 const useModalById = <T extends ModalId>(modalId: T) => {
-  const dispatch = useDispatch();
-  const modal = useSelector((state: RootState) => state.modalStatus[modalId]);
+  const modal = useModalsStateStore((state) => state[modalId]);
 
-  const isModalOpen = !!modal?.isOpen;
-  const modalData = modal?.data;
+  const { openModalById, closeModalById } = useModalsStateStore(
+    (state) => state.actions
+  );
 
-  const openModal = () => {
-    dispatch(openModalById({ modalId, data: undefined }));
-  };
+  const openModal = () => openModalById(modalId, null);
 
-  const openModalWithData = (data: ModalDataMap[T]) => {
-    dispatch(openModalById({ modalId, data }));
-  };
+  const openModalWithData = (data: ModalsState[T]["data"]) =>
+    openModalById(modalId, data);
 
-  const closeModal = () => dispatch(closeModalById(modalId));
+  const closeModal = () => closeModalById(modalId);
 
   return {
-    isModalOpen,
-    modalData,
+    isModalOpen: modal.isOpen,
+    modalData: modal.data as ModalsState[T]["data"],
     openModal,
     openModalWithData,
     closeModal,
