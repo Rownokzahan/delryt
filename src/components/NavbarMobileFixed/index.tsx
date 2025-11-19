@@ -6,8 +6,8 @@ import { LuPartyPopper } from "react-icons/lu";
 import NavItem from "./NavItem";
 import useUser from "@/hooks/useUser";
 import useModalById from "@/hooks/useModalById";
-import { useCart } from "@/hooks/useCart";
 import { useRouter } from "next/navigation";
+import { useCart } from "@/stores/useCartStore";
 
 const NavbarMobileFixed = () => {
   const { user } = useUser();

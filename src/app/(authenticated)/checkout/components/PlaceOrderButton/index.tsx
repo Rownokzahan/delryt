@@ -2,8 +2,6 @@
 
 import Button from "@/components/ui/Button";
 import useBranch from "@/hooks/useBranch";
-import { useCart } from "@/hooks/useCart";
-import useCheckoutState from "@/hooks/useCheckoutState";
 import { CreateOrderPayload } from "@/types";
 import {
   formatDeliveryDate,
@@ -14,18 +12,29 @@ import useModalById from "@/hooks/useModalById";
 import { CgSpinner } from "react-icons/cg";
 import { useRouter } from "next/navigation";
 import { useCreateOrderMutation } from "@/store/features/orders/ordersApi";
+import {
+  useAddCutlery,
+  useAppliedCoupon,
+  useCheckoutActions,
+  useCheckoutAddress,
+  useDeliveryTime,
+  useOrderNote,
+} from "@/stores/useCheckoutStore";
+import { useCart, useCartActions } from "@/stores/useCartStore";
 
 const PlaceOrderButton = () => {
   const { openModal: openAddAddressModal } = useModalById("addAddressModal");
-  const { cart, cartTotal, clearCart } = useCart();
-  const {
-    deliveryTime,
-    checkoutAddress,
-    appliedCoupon,
-    orderNote,
-    addCutlery,
-    resetCheckout,
-  } = useCheckoutState();
+
+  const { cart, cartTotal } = useCart();
+  const { clearCart } = useCartActions();
+
+  const deliveryTime = useDeliveryTime();
+  const checkoutAddress = useCheckoutAddress();
+  const appliedCoupon = useAppliedCoupon();
+  const orderNote = useOrderNote();
+  const addCutlery = useAddCutlery();
+  const { resetCheckout } = useCheckoutActions();
+
   const { currentBranch } = useBranch();
   const [createOrder, { isLoading }] = useCreateOrderMutation();
   const router = useRouter();

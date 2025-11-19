@@ -1,15 +1,15 @@
 "use client";
 
-import useCheckoutState from "@/hooks/useCheckoutState";
 import BillSummary from "../../../BillSummary";
 import CartItems from "../../../CartItems";
 import Coupon from "../../../Coupon";
 import Button from "@/components/ui/Button";
-import { useCart } from "@/hooks/useCart";
+import { useCart } from "@/stores/useCartStore";
+import { useCheckoutActions } from "@/stores/useCheckoutStore";
 
 const CartView = () => {
   const { cart, cartTotal } = useCart();
-  const { updateMobileCheckoutView } = useCheckoutState();
+  const { setMobileCheckoutView } = useCheckoutActions();
 
   return (
     <div className="pt-5 pb-20 space-y-4">
@@ -34,7 +34,7 @@ const CartView = () => {
             <p className="text-lg text-primary">৳ {cartTotal}</p>
           </div>
 
-          <Button onClick={() => updateMobileCheckoutView("checkout")}>
+          <Button onClick={() => setMobileCheckoutView("checkout")}>
             Checkout
           </Button>
         </div>

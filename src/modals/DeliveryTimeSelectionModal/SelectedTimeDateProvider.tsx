@@ -1,6 +1,6 @@
 "use client";
 
-import useCheckoutState from "@/hooks/useCheckoutState";
+import { useDeliveryTime } from "@/stores/useCheckoutStore";
 import { createContext, useContext, useEffect, useState } from "react";
 
 interface SelectedTimeDateContextType {
@@ -22,7 +22,7 @@ const SelectedTimeDateProvider = ({
 }: SelectedTimeDateProviderProps) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState("now");
-  const { deliveryTime } = useCheckoutState();;
+  const deliveryTime = useDeliveryTime();
 
   useEffect(() => {
     setSelectedDate(new Date(deliveryTime.date));

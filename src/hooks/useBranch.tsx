@@ -3,8 +3,8 @@ import { AppDispatch, resetBranchRelatedState, RootState } from "@/store/store";
 import { Branch } from "@/types";
 import { redirect } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { useCart } from "./useCart";
 import useModalById from "./useModalById";
+import { useCart } from "@/stores/useCartStore";
 
 const useBranch = () => {
   const { branch: currentBranch, isLoading } = useSelector(

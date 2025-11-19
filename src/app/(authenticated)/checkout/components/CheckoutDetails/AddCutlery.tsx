@@ -1,10 +1,11 @@
 import { PiForkKnifeBold } from "react-icons/pi";
 import InfoCard from "./InfoCard";
 import clsx from "clsx";
-import useCheckoutState from "@/hooks/useCheckoutState";
+import { useAddCutlery, useCheckoutActions } from "@/stores/useCheckoutStore";
 
 const AddCutlery = () => {
-  const { addCutlery, toggleAddCutlery } = useCheckoutState();
+  const addCutlery = useAddCutlery();
+  const { toggleAddCutlery } = useCheckoutActions();
 
   return (
     <InfoCard
@@ -18,7 +19,6 @@ const AddCutlery = () => {
         {/* Toggle Button */}
         <button
           onClick={toggleAddCutlery}
-          aria-pressed={addCutlery}
           aria-label="Toggle cutlery"
           className="absolute -top-5 sm:-top-4 right-0 focus:outline-none"
         >

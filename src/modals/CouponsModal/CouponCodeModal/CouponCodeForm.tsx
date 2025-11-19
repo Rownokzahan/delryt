@@ -1,7 +1,7 @@
 "use client";
 
 import FormSubmitButton from "@/forms/components/FormSubmitButton";
-import useCheckoutState from "@/hooks/useCheckoutState";
+import useHandleCouponApply from "@/hooks/useHandleCouponApply";
 import useModalById from "@/hooks/useModalById";
 import { useLazyCheckCouponCodeQuery } from "@/store/features/checkout/couponApi";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -21,7 +21,7 @@ const CouponCodeForm = () => {
   } = useForm<Inputs>();
 
   const [checkCouponCode, { isLoading }] = useLazyCheckCouponCodeQuery();
-  const { applyCoupon } = useCheckoutState();
+  const { handleApplyCoupon } = useHandleCouponApply();
   const { closeModal: closeCouponCodeModal } = useModalById("couponCodeModal");
   const { closeModal: closeCouponsModal } = useModalById("couponsModal");
 
@@ -29,13 +29,12 @@ const CouponCodeForm = () => {
     try {
       const coupon = await checkCouponCode(data.couponCode).unwrap();
       if (coupon) {
-        applyCoupon(coupon);
+        handleApplyCoupon(coupon);
         closeCouponsModal();
       }
     } catch (error) {
       console.error("Error applying coupon code:", error);
       toast.error("Invalid coupon code. Please try again.");
-      ;
     } finally {
       reset();
       closeCouponCodeModal();

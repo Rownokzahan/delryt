@@ -1,11 +1,11 @@
 "use client";
 
-import { useCart } from "@/hooks/useCart";
-import useCheckoutState from "@/hooks/useCheckoutState";
+import { useCart } from "@/stores/useCartStore";
+import { useAppliedCoupon } from "@/stores/useCheckoutStore";
 
 const BillSummary = () => {
   const { cartTotal } = useCart();
-  const { appliedCoupon } = useCheckoutState();
+  const appliedCoupon = useAppliedCoupon();
 
   return (
     <div className="p-3 rounded-lg bg-uiWhite">

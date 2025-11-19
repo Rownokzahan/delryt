@@ -1,7 +1,12 @@
-import useCheckoutState from "@/hooks/useCheckoutState";
+import useHandleCouponApply from "@/hooks/useHandleCouponApply";
 import useModalById from "@/hooks/useModalById";
+import {
+  useAppliedCoupon,
+  useCheckoutActions,
+} from "@/stores/useCheckoutStore";
 import { Coupon } from "@/types";
 import clsx from "clsx";
+import toast from "react-hot-toast";
 import { PiPercentBold } from "react-icons/pi";
 
 interface CouponCardProps {
@@ -9,8 +14,11 @@ interface CouponCardProps {
 }
 
 const CouponCard = ({ coupon }: CouponCardProps) => {
-  const { appliedCoupon, applyCoupon, removeCoupon } = useCheckoutState();
   const { closeModal } = useModalById("couponsModal");
+
+  const appliedCoupon = useAppliedCoupon();
+  const { removeCoupon } = useCheckoutActions();
+  const { handleApplyCoupon } = useHandleCouponApply();
 
   const {
     id,
@@ -33,10 +41,11 @@ const CouponCard = ({ coupon }: CouponCardProps) => {
   const handleClick = () => {
     if (isApplied) {
       removeCoupon();
+      toast.error("Coupon removed!");
       return;
     }
 
-    applyCoupon(coupon);
+    handleApplyCoupon(coupon);
     closeModal();
   };
 

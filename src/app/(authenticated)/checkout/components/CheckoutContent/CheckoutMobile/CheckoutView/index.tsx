@@ -1,16 +1,14 @@
-import { useCart } from "@/hooks/useCart";
 import CheckoutDetails from "../../../CheckoutDetails";
 import PlaceOrderButton from "../../../PlaceOrderButton";
-import useCheckoutState from "@/hooks/useCheckoutState";
 import { RiArrowUpWideLine } from "react-icons/ri";
 import BillSummary from "../../../BillSummary";
 import { useState } from "react";
+import { useCart } from "@/stores/useCartStore";
+import { useAppliedCoupon } from "@/stores/useCheckoutStore";
 
 const CheckoutView = () => {
   const { cartTotal } = useCart();
-  const {
-    appliedCoupon: { couponDiscountAmount },
-  } = useCheckoutState();
+  const { couponDiscountAmount } = useAppliedCoupon();
 
   const [showBillSummary, setShowBillSummary] = useState(false);
 

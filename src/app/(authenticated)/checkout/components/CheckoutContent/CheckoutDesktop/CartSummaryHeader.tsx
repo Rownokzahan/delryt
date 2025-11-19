@@ -1,6 +1,6 @@
 "use client";
 
-import { useCart } from "@/hooks/useCart";
+import { useCart } from "@/stores/useCartStore";
 
 const CartSummaryHeader = () => {
   const { cart, cartTotal } = useCart();

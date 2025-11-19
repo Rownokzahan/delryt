@@ -1,9 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import branchReducer from "./features/branch/branchSlice";
 import { branchApi } from "./features/branch/branchApi";
-import checkoutReducer from "./features/checkout/checkoutSlice";
 import userReducer from "./features/user/userSlice";
-import cartReducer from "./features/cart/cartSlice";
 import { bannerApi } from "./features/banner/bannerApi";
 import { cuisineApi } from "./features/cuisine/cuisineApi";
 import { categoryApi } from "./features/category/categoryApi";
@@ -12,16 +10,13 @@ import { authApi } from "./features/auth/authApi";
 import { userApi } from "./features/user/userApi";
 import { productApi } from "./features/product/productApi";
 import { addressApi } from "./features/address/adressApi";
-import { initializeCart } from "@/store/features/cart/cartSlice";
 import { couponApi } from "./features/checkout/couponApi";
 import { ordersApi } from "./features/orders/ordersApi";
 
 export const store = configureStore({
   reducer: {
     branch: branchReducer,
-    checkout: checkoutReducer,
     user: userReducer,
-    cart: cartReducer,
 
     [branchApi.reducerPath]: branchApi.reducer,
     [bannerApi.reducerPath]: bannerApi.reducer,
@@ -63,7 +58,7 @@ export const resetBranchRelatedState = () => (dispatch: AppDispatch) => {
   dispatch(couponApi.util.resetApiState());
   dispatch(ordersApi.util.resetApiState());
 
-  dispatch(initializeCart());
+  // dispatch(initializeCart());
 };
 
 export type RootState = ReturnType<typeof store.getState>;

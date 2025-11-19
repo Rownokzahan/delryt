@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import useCheckoutState from "@/hooks/useCheckoutState";
 import useModalById from "@/hooks/useModalById";
+import { useDeliveryTime } from "@/stores/useCheckoutStore";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdOutlineDeliveryDining } from "react-icons/md";
 
 const SelectDeliverySlotSection = () => {
-  const { deliveryTime } = useCheckoutState();;
+  const deliveryTime = useDeliveryTime();
   const { openModal } = useModalById("deliveryTimeSelectionModal");
 
   return (

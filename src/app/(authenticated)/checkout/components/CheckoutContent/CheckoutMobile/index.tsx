@@ -1,11 +1,11 @@
 "use client";
 
-import useCheckoutState from "@/hooks/useCheckoutState";
 import CartView from "./CartView";
 import CheckoutView from "./CheckoutView";
+import { useMobileCheckoutView } from "@/stores/useCheckoutStore";
 
 const CheckoutMobile = () => {
-  const { mobileCheckoutView } = useCheckoutState();
+  const mobileCheckoutView = useMobileCheckoutView();
 
   return (
     <div className="md:hidden min-h-screen-nav-mobile ui-container">

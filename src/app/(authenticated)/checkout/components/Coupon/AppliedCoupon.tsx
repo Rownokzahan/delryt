@@ -1,10 +1,14 @@
-"use client"
+"use client";
 
-import useCheckoutState from "@/hooks/useCheckoutState";
+import {
+  useAppliedCoupon,
+  useCheckoutActions,
+} from "@/stores/useCheckoutStore";
 import { CgCheck } from "react-icons/cg";
 
 const AppliedCoupon = () => {
-  const { appliedCoupon, removeCoupon } = useCheckoutState();
+  const appliedCoupon = useAppliedCoupon();
+  const { removeCoupon } = useCheckoutActions();
 
   if (appliedCoupon.coupon === null) {
     return null;

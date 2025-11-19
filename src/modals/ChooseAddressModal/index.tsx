@@ -6,11 +6,17 @@ import AddressOption from "./AddressOption/AddressOption";
 import { useEffect, useState } from "react";
 import Button from "@/components/ui/Button";
 import useModalById from "@/hooks/useModalById";
-import useCheckoutState from "@/hooks/useCheckoutState";
+import {
+  useCheckoutActions,
+  useCheckoutAddress,
+} from "@/stores/useCheckoutStore";
 
 const ChooseAddressModal = () => {
   const { data: addressList = [] } = useGetAddressListQuery();
-  const { checkoutAddress, updateCheckoutAddress } = useCheckoutState();
+
+  const checkoutAddress = useCheckoutAddress();
+
+  const { setCheckoutAddress } = useCheckoutActions();
   const { openModal: openAddAddressModal } = useModalById("addAddressModal");
   const { closeModal } = useModalById("chooseAddressModal");
 
@@ -25,7 +31,7 @@ const ChooseAddressModal = () => {
       return;
     }
 
-    updateCheckoutAddress(selectedAddress);
+    setCheckoutAddress(selectedAddress);
     closeModal();
   };
 

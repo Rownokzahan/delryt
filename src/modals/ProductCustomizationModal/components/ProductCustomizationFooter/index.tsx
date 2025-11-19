@@ -1,21 +1,25 @@
-import { useCart } from "@/hooks/useCart";
 import { useProductCustomization } from "../../ProductCustomizationProvider";
 import useModalById from "@/hooks/useModalById";
 import toast from "react-hot-toast";
+import { useCartActions } from "@/stores/useCartStore";
 
 const ProductCustomizationFooter = () => {
   const { totalPrice, product, selectedAddOns } = useProductCustomization();
-  const { addCustomProductToCart, updateCartItem } = useCart();
+  const { addCustomizedProduct, updateCartItemAddOns } = useCartActions();
   const { closeModal, modalData } = useModalById("productCustomizationModal");
 
   const saveCartItem = () => {
     if (!modalData) return;
 
     if (modalData.mode === "edit") {
-      updateCartItem({ cartId: modalData.cartId, totalPrice, selectedAddOns });
+      updateCartItemAddOns({
+        cartId: modalData.cartId,
+        totalPrice,
+        selectedAddOns,
+      });
       toast.success("Cart item updated");
     } else {
-      addCustomProductToCart(product, totalPrice, selectedAddOns);
+      addCustomizedProduct({ product, totalPrice, selectedAddOns });
       toast.success("Added to cart");
     }
 

@@ -2,8 +2,8 @@ import { Product } from "@/types";
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import Button from "./Button";
 import useModalById from "@/hooks/useModalById";
-import { useCart } from "@/hooks/useCart";
 import toast from "react-hot-toast";
+import { useCart, useCartActions } from "@/stores/useCartStore";
 
 interface AddToCartButtonProps {
   product: Product;
@@ -12,12 +12,12 @@ interface AddToCartButtonProps {
 
 const AddToCartButton = ({ product, isStockOut }: AddToCartButtonProps) => {
   const { openModalWithData } = useModalById("productCustomizationModal");
+  const { cart } = useCart();
   const {
-    cart,
-    addSimpleProductToCart,
+    addSimpleProduct,
     updateCartItemQuantity,
     removeLastCustomizedProduct,
-  } = useCart();
+  } = useCartActions();
 
   const isCustomizable = product.add_ons.length !== 0;
 
@@ -38,16 +38,16 @@ const AddToCartButton = ({ product, isStockOut }: AddToCartButtonProps) => {
 
   // Handle initial add to cart
   const handleAddToCart = () => {
-    if (isStockOut) {
-      return;
-    }
+    // if (isStockOut) {
+    //   return;
+    // }
 
     if (isCustomizable) {
       openModalWithData({ mode: "add", product });
       return;
     }
 
-    addSimpleProductToCart(product);
+    addSimpleProduct(product);
     toast.success("Added to cart");
   };
 
@@ -87,7 +87,7 @@ const AddToCartButton = ({ product, isStockOut }: AddToCartButtonProps) => {
         variant="primary-outline"
         size="small"
         className="h-8 w-18!"
-        disabled={isStockOut}
+        // disabled={isStockOut}
       >
         Add
       </Button>

@@ -1,4 +1,4 @@
-import { useCart } from "@/hooks/useCart";
+import { useCartActions } from "@/stores/useCartStore";
 import { LocalCartItem } from "@/types";
 import { HiOutlineMinusSm, HiOutlinePlusSm } from "react-icons/hi";
 
@@ -7,7 +7,7 @@ interface QuantityControlProps {
 }
 
 const QuantityControl = ({ cartItem }: QuantityControlProps) => {
-  const { updateCartItemQuantity } = useCart();
+  const { updateCartItemQuantity } = useCartActions();
 
   const { id, quantity } = cartItem || {};
 
