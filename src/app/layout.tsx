@@ -16,17 +16,24 @@ import ChangePasswordModal from "@/modals/ChangePasswordModal";
 import ConfirmLogoutModal from "@/modals/ConfirmLogoutModal";
 import DeliveryTimeSelectionModal from "@/modals/DeliveryTimeSelectionModal";
 import ConfirmBranchSwitchModal from "@/modals/ConfirmBranchSwitchModal";
+import { getCurrentUser } from "@/lib/auth";
+import { cookies } from "next/headers";
+import { BRANCH_ID_KEY } from "@/constants/cookies";
 
 export const metadata = {
   title: "Delryt",
   description: "Food delivery app",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const user = await getCurrentUser();
+
+  console.log(user);
+
   return (
     <html lang="en">
       <body
